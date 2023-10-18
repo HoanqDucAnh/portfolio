@@ -98,7 +98,7 @@ export const PROJECTS: IProject[] = [
 			"end-to-end ETL data pipeline integrating Uber ride-sharing data",
 		gradient: ["#1fbad6", "#09091a"],
 		url: "https://github.com/MarkPhamm/Uber-BI-Engineering-Project",
-		tech: ["python", "mysql", "gcp"],
+		tech: ["python", "gcp", "bigquery", "compute_engine"],
 	},
 	{
 		name: "AWS Spotify Analytics",
@@ -108,7 +108,7 @@ export const PROJECTS: IProject[] = [
 			"automated ETL pipeline to extract Spotify data via the Spotify API",
 		gradient: ["#1DB954", "#191414"],
 		url: "https://github.com/MarkPhamm/Spotify-BI-Engineering-Project",
-		tech: ["aws", "aws-s3"],
+		tech: ["Lambda", "aws-s3", "Athena", "Glue", "aws"],
 	},
 	{
 		name: "Segment Shopping Customers",
@@ -121,6 +121,15 @@ export const PROJECTS: IProject[] = [
 		tech: ["python", "numpy", "Pandas", "Matplotlib"],
 	},
 	{
+		name: "Sample Sales Dashboard",
+		image: "/projects/ngx-quill-upload.jpg",
+		blurImage: "/projects/blur/ngx-quill-upload-blur.jpg",
+		description: "Sales Dashboard with key metrics for Global Superstore",
+		gradient: ["#ffddaa", "#49789d"],
+		url: "https://public.tableau.com/app/profile/minh.pham1154/viz/GlobalSuperstoreSalesDashboard_16962776044380/SalesDashboard",
+		tech: ["excel", "alteryx", "tableau-software"],
+	},
+	{
 		name: "Stock Analysis (Coming soon)",
 		image: "/projects/dl-unify.jpg",
 		blurImage: "/projects/blur/dl-unify-blur.jpg",
@@ -129,15 +138,7 @@ export const PROJECTS: IProject[] = [
 		url: "",
 		tech: [],
 	},
-	{
-		name: "Sample Sales Dashboard",
-		image: "/projects/ngx-quill-upload.jpg",
-		blurImage: "/projects/blur/ngx-quill-upload-blur.jpg",
-		description: "Sales Dashboard with key metrics for Global Superstore",
-		gradient: ["#ffddaa", "#49789d"],
-		url: "https://public.tableau.com/app/profile/minh.pham1154/viz/GlobalSuperstoreSalesDashboard_16962776044380/SalesDashboard",
-		tech: ["excel", "alteryx", "tableau"],
-	},
+
 	// {
 	// 	name: "Coming soon",
 	// 	image: "/projects/ngx-quill-upload.jpg",
