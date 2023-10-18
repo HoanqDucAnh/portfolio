@@ -57,6 +57,15 @@ const SkillsSection = () => {
 		</div>
 	);
 
+	const render2ndSectionTitle = (): React.ReactNode => (
+		<div className="flex flex-col">
+			<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
+				I like to take responsibility to craft aesthetic user experience using
+				modern frontend architecture.{" "}
+			</h2>
+		</div>
+	);
+
 	const renderBackgroundPattern = (): React.ReactNode => (
 		<>
 			<div className="absolute right-0 -bottom-1/3 w-1/5 max-w-xs md:flex hidden justify-end">
@@ -94,12 +103,51 @@ const SkillsSection = () => {
 				{skills.map((skill) => (
 					<Image
 						key={skill}
-						src={`/skills/${skill}.svg`}
+						src={`/skills/1st/${skill}.svg`}
 						alt={skill}
 						width={76}
 						height={76}
 						className="skill"
 					/>
+				))}
+			</div>
+		</>
+	);
+
+	const renderSQLStats = (title: string, skills: string[]): React.ReactNode => (
+		<>
+			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
+			<div
+				className={`flex flex-wrap seq ${
+					willChange ? "will-change-opacity" : ""
+				}`}
+			>
+				{skills.map((skill) => (
+					<Image
+						key={skill}
+						src={`/skills/2nd/${skill}.svg`}
+						alt={skill}
+						width={200}
+						height={200}
+						className="skill"
+					/>
+				))}
+			</div>
+		</>
+	);
+
+	const renderTextRow = (title: string, skills: string[]): React.ReactNode => (
+		<>
+			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
+			<div
+				className={`flex flex-col seq ${
+					willChange ? "will-change-opacity" : ""
+				}`}
+			>
+				{skills.map((skill) => (
+					<p key={skill} className="skill ">
+						{skill}
+					</p>
 				))}
 			</div>
 		</>
@@ -115,18 +163,59 @@ const SkillsSection = () => {
 			>
 				<div className="flex flex-col skills-wrapper">
 					{renderSectionTitle()}
-					<div className="mt-10">
-						{renderSkillColumn("FRONTEND DEVELOPMENT", SKILLS.frontend)}
+					<div className="flex flex-wrap mt-10">
+						<div className="mr-6 mb-6">
+							{renderSkillColumn("Technical", SKILLS.technical)}
+						</div>
+						<div>
+							{renderSkillColumn("Visualization", SKILLS.visualization)}
+						</div>
 					</div>
 					<div className="flex flex-wrap mt-10">
 						<div className="mr-6 mb-6">
-							{renderSkillColumn(
-								"User Interface, User Experience Design",
-								SKILLS.userInterface
-							)}
+							{renderSkillColumn("Statistics & Data Science", SKILLS.statistic)}
 						</div>
-						<div>{renderSkillColumn("Other Skills", SKILLS.other)}</div>
+						<div>{renderSkillColumn("Other tools", SKILLS.other)}</div>
 					</div>
+					<div className="mt-10">
+						{renderSkillColumn("Clouds", SKILLS.clouds)}
+					</div>
+					{render2ndSectionTitle()}
+					<div className="mt-10">
+						{renderSQLStats(
+							"Stratascratch & Hackerrank & Leetcode Stats (SQL) ",
+							SKILLS.sqlprob
+						)}
+					</div>
+					<div className="mt-10">
+						<h3 className={SKILL_STYLES.SKILL_TITLE}>My stats</h3>
+						<div
+							className={`flex flex-wrap seq ${
+								willChange ? "will-change-opacity" : ""
+							}`}
+						>
+							<Image
+								key="stat"
+								src={`/skills/2nd/stats.png`}
+								alt="stat"
+								width={800}
+								height={400}
+								className="skill"
+							/>
+						</div>
+					</div>
+					<div className="mt-10">
+						{renderTextRow("Relevant courseworks", SKILLS.relevant)}
+					</div>
+					<div className="mt-10">
+						{renderTextRow("Certifications", SKILLS.certified)}
+					</div>
+					{/* <div className="flex flex-row mt-10">
+						<div className="mr-6 mb-6">
+							{renderTextRow("Relevant courseworks", SKILLS.relevant)}
+						</div>
+						<div>{renderTextRow("Certifications", SKILLS.certified)}</div>
+					</div> */}
 				</div>
 			</div>
 		</section>

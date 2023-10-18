@@ -69,18 +69,18 @@ const AboutSection = () => {
 					willChange ? "will-change-opacity" : ""
 				}`}
 			>
-				As a future analytics and business intelligence professional with
-				exceptional technical proficiency, I aim to connect complex data to
-				strategic insights, aspiring to make informed decisions.{" "}
+				As an analytics and business intelligence enthusiast, I aim to connect
+				complex data to strategic insights, enabling informed decisions to drive
+				tangible business outcomes.{" "}
 			</span>
-			<span
+			{/* <span
 				className={`about-2 leading-tight ${
 					willChange ? "will-change-opacity" : ""
 				}`}
 			>
 				With a passion for crafting impactful solutions, I strive to master
 				modern analytical techniques for tangible business outcomes
-			</span>
+			</span> */}
 		</h1>
 	);
 

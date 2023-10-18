@@ -149,22 +149,41 @@ export const PROJECTS: IProject[] = [
 ];
 
 export const SKILLS = {
-	frontend: [
-		"javascript",
-		"react",
-		"redux",
-		"next",
-		"angular",
-		"gsap",
-		"tailwind",
-		"sass",
-		"svg",
-		"html",
-		"css",
+	technical: [
+		"mysql",
+		"postgresql",
 		"microsql",
+		"numpy-1",
+		"pandas",
+		"matplotlib",
+		"seaborn",
 	],
-	userInterface: ["figma", "sketch", "illustrator", "photoshop"],
-	other: ["git", "webpack", "gulp", "lightroom", "aftereffects"],
+	statistic: ["abtest", "ttest", "square", "regression", "confi"],
+	visualization: ["amazon-quicksight", "tableu", "powerbi", "looker"],
+	clouds: [
+		"aws-s3",
+		"aws-ec2",
+		"aws-cloudwatch",
+		"aws-glue",
+		"aws-athena",
+		"aws-lambda",
+		"aws-redshift",
+		"compute_engine",
+		"google-bigquery",
+	],
+	other: ["alteryx", "SNOW", "databricks", "mageai", "sap-icon"],
+	sqlprob: ["strata", "hacker", "leetcode"],
+	certified: [
+		"Certified Scrum Product Owner",
+		"SQL Advanced Hackerrank Certification",
+		"DataCamp Certified Data Analyst",
+	],
+	relevant: [
+		"Business Intelligence (Tableau, Alteryx, Google Looker Studio)",
+		"Database Management System (SQL Server, MongoDB, Data Modelling, ETL Pipelines)",
+		"Statistical Modelling (A/B test, T-test, Chi-Square, Linear Regression)",
+		"System planning (Agile, Scrum, Kanban, Jira, SDLC, Lean 6σ)",
+	],
 };
 
 export enum Branch {
