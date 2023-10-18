@@ -94,8 +94,7 @@ export const PROJECTS: IProject[] = [
 		name: "GCP Uber Analytics",
 		image: "/projects/figgen.jpg",
 		blurImage: "/projects/blur/figgen-blur.jpg",
-		description:
-			"end-to-end ETL data pipeline integrating Uber ride-sharing data",
+		description: "end-to-end ETL data pipeline integrating Uber data",
 		gradient: ["#1fbad6", "#09091a"],
 		url: "https://github.com/MarkPhamm/Uber-BI-Engineering-Project",
 		tech: ["python", "gcp", "bigquery", "compute_engine"],
@@ -105,7 +104,7 @@ export const PROJECTS: IProject[] = [
 		image: "/projects/myokr.jpg",
 		blurImage: "/projects/blur/myokr-blur.jpg",
 		description:
-			"automated ETL pipeline to extract Spotify data via the Spotify API",
+			"Automated ETL pipeline integrating Spotify data via Spotify API",
 		gradient: ["#1DB954", "#191414"],
 		url: "https://github.com/MarkPhamm/Spotify-BI-Engineering-Project",
 		tech: ["Lambda", "aws-s3", "Athena", "Glue", "aws"],
@@ -114,8 +113,7 @@ export const PROJECTS: IProject[] = [
 		name: "Segment Shopping Customers",
 		image: "/projects/dlt-website.jpg",
 		blurImage: "/projects/blur/dlt-website-blur.jpg",
-		description:
-			"K-Means Clustering Algorithm to divide the mall target market into approachable groups",
+		description: "K-Means Clustering Algorithm for Market Segmentation",
 		gradient: ["#ccb08f", "#f2ece4"],
 		url: "https://github.com/MarkPhamm/Python-Segment-Shopping-Customers",
 		tech: ["python", "numpy", "Pandas", "Matplotlib"],
