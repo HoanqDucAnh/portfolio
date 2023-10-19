@@ -4,22 +4,19 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import { MENULINKS, SKILLS, COURSES } from "../../constants";
+import { MENULINKS, SKILLS } from "../../constants";
 import Image from "next/image";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import CountUp from "react-countup";
-import SkillTimeLine from "./skills-timeline";
-import { IDesktop } from "pages";
 
 const SKILL_STYLES = {
 	SECTION:
-		"w-full relative select-none mb-12 section-container py-12 flex flex-col justify-center",
+		"w-full relative select-none mb-24 section-container py-12 flex flex-col justify-center",
 	SKILL_TITLE: "section-title-sm mb-4 seq",
 };
 
-const SkillsSection = ({ isDesktop }: IDesktop) => {
+const ArticleSection = () => {
 	const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 	const [willChange, setwillChange] = useState(false);
 
@@ -60,9 +57,12 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 		</div>
 	);
 
-	const render2ndSectionTitle = (title: string): React.ReactNode => (
+	const render2ndSectionTitle = (): React.ReactNode => (
 		<div className="flex flex-col">
-			<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">{title}</h2>
+			<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
+				I like to take responsibility to craft aesthetic user experience using
+				modern frontend architecture.{" "}
+			</h2>
 		</div>
 	);
 
@@ -114,34 +114,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 		</>
 	);
 
-	const renderSQLStats = (
-		title: string,
-		skills: { count: string; title: string }[]
-	): React.ReactNode => (
-		<>
-			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
-			<div
-				className={`flex flex-col seq ${
-					willChange ? "will-change-opacity" : ""
-				}`}
-			>
-				{skills.map((skill) => (
-					<h1 className="">
-						<CountUp
-							key={skill.title}
-							className="stats-number"
-							start={0}
-							end={parseInt(skill.count)}
-							duration={5}
-						/>
-						{skill.title}
-					</h1>
-				))}
-			</div>
-		</>
-	);
-
-	const renderCourse = (title: string, skills: string[]): React.ReactNode => (
+	const renderSQLStats = (title: string, skills: string[]): React.ReactNode => (
 		<>
 			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
 			<div
@@ -152,12 +125,29 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 				{skills.map((skill) => (
 					<Image
 						key={skill}
-						src={`/skills/1st/${skill}.svg`}
+						src={`/skills/2nd/${skill}.svg`}
 						alt={skill}
-						width={76}
-						height={76}
+						width={200}
+						height={200}
 						className="skill"
 					/>
+				))}
+			</div>
+		</>
+	);
+
+	const renderTextRow = (title: string, skills: string[]): React.ReactNode => (
+		<>
+			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
+			<div
+				className={`flex flex-col seq ${
+					willChange ? "will-change-opacity" : ""
+				}`}
+			>
+				{skills.map((skill) => (
+					<p key={skill} className="skill ">
+						{skill}
+					</p>
 				))}
 			</div>
 		</>
@@ -190,7 +180,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					<div className="mt-10">
 						{renderSkillColumn("Clouds", SKILLS.clouds)}
 					</div>
-					{render2ndSectionTitle("uhmmm")}
+					{render2ndSectionTitle()}
 					<div className="mt-10">
 						{renderSQLStats(
 							"Stratascratch & Hackerrank & Leetcode Stats (SQL) ",
@@ -214,27 +204,22 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 							/>
 						</div>
 					</div>
-					{render2ndSectionTitle("Certifications")}
-					<SkillTimeLine isDesktop={isDesktop} />
-					{render2ndSectionTitle("Relevant courseworks")}
-					<div className="flex flex-wrap mt-10">
-						<div className="mr-6 mb-6">
-							{renderCourse("Business Intelligence", COURSES.bi)}
-						</div>
-						<div>
-							{renderCourse("Database Management System", COURSES.dbms)}
-						</div>
+					<div className="mt-10">
+						{renderTextRow("Relevant courseworks", SKILLS.relevant)}
 					</div>
-					<div className="flex flex-wrap mt-10">
-						<div className="mr-6 mb-6">
-							{renderCourse("Statistical Modelling", COURSES.stats)}
-						</div>
-						<div>{renderCourse("System planning", COURSES.sysplan)}</div>
+					<div className="mt-10">
+						{renderTextRow("Certifications", SKILLS.certified)}
 					</div>
+					{/* <div className="flex flex-row mt-10">
+						<div className="mr-6 mb-6">
+							{renderTextRow("Relevant courseworks", SKILLS.relevant)}
+						</div>
+						<div>{renderTextRow("Certifications", SKILLS.certified)}</div>
+					</div> */}
 				</div>
 			</div>
 		</section>
 	);
 };
 
-export default SkillsSection;
+export default ArticleSection;

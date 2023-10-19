@@ -83,7 +83,7 @@ export default function Home() {
 					<AboutSection />
 					<ProjectsSection isDesktop={isDesktop} />
 					{/* <QuoteSection /> */}
-					<SkillsSection />
+					<SkillsSection isDesktop={isDesktop} />
 					<TimelineSection isDesktop={isDesktop} />
 					<CollaborationSection />
 					<Footer />

@@ -91,9 +91,18 @@ export interface IProject {
 
 export const PROJECTS: IProject[] = [
 	{
-		name: "GCP Uber Analytics",
-		image: "/projects/figgen.jpg",
-		blurImage: "/projects/blur/figgen-blur.jpg",
+		name: "Sample Sales Dashboard",
+		image: "/projects/samplesale.png",
+		blurImage: "/projects/samplesale.png",
+		description: "Sales Dashboard with key metrics for Global Superstore",
+		gradient: ["#ffddaa", "#49789d"],
+		url: "https://public.tableau.com/app/profile/minh.pham1154/viz/GlobalSuperstoreSalesDashboard_16962776044380/SalesDashboard",
+		tech: ["excel", "alteryx", "tableau-software"],
+	},
+	{
+		name: "Uber Analytics (GCP)",
+		image: "/projects/gcpuber.png",
+		blurImage: "/projects/gcpuber.png",
 		description: "end-to-end ETL data pipeline integrating Uber data",
 		gradient: ["#1fbad6", "#09091a"],
 		url: "https://github.com/MarkPhamm/Uber-BI-Engineering-Project",
@@ -101,36 +110,28 @@ export const PROJECTS: IProject[] = [
 	},
 	{
 		name: "AWS Spotify Analytics",
-		image: "/projects/myokr.jpg",
-		blurImage: "/projects/blur/myokr-blur.jpg",
+		image: "/projects/awsspoti.png",
+		blurImage: "/projects/awsspoti.png",
 		description:
 			"Automated ETL pipeline integrating Spotify data via Spotify API",
 		gradient: ["#1DB954", "#191414"],
 		url: "https://github.com/MarkPhamm/Spotify-BI-Engineering-Project",
-		tech: ["Lambda", "aws-s3", "Athena", "Glue", "aws"],
+		tech: ["Lambda", "amazons3", "Athena", "Glue", "aws"],
 	},
 	{
 		name: "Segment Shopping Customers",
-		image: "/projects/dlt-website.jpg",
-		blurImage: "/projects/blur/dlt-website-blur.jpg",
+		image: "/projects/segment.png",
+		blurImage: "/projects/segment.png",
 		description: "K-Means Clustering Algorithm for Market Segmentation",
 		gradient: ["#ccb08f", "#f2ece4"],
 		url: "https://github.com/MarkPhamm/Python-Segment-Shopping-Customers",
 		tech: ["python", "numpy", "Pandas", "Matplotlib"],
 	},
-	{
-		name: "Sample Sales Dashboard",
-		image: "/projects/ngx-quill-upload.jpg",
-		blurImage: "/projects/blur/ngx-quill-upload-blur.jpg",
-		description: "Sales Dashboard with key metrics for Global Superstore",
-		gradient: ["#ffddaa", "#49789d"],
-		url: "https://public.tableau.com/app/profile/minh.pham1154/viz/GlobalSuperstoreSalesDashboard_16962776044380/SalesDashboard",
-		tech: ["excel", "alteryx", "tableau-software"],
-	},
+
 	{
 		name: "Stock Analysis (Coming soon)",
-		image: "/projects/dl-unify.jpg",
-		blurImage: "/projects/blur/dl-unify-blur.jpg",
+		image: "/projects/comingsoon.jpg",
+		blurImage: "/projects/comingsoon.jpg",
 		description: "Coming soon",
 		gradient: ["#003052", "#167187"],
 		url: "",
@@ -172,7 +173,11 @@ export const SKILLS = {
 		"google-bigquery",
 	],
 	other: ["alteryx", "SNOW", "databricks", "mageai", "sap-icon"],
-	sqlprob: ["strata", "hacker", "leetcode"],
+	sqlprob: [
+		{ count: "602", title: "Stratascratch problems" },
+		{ count: "87", title: "Leetcode problems" },
+		{ count: "45", title: "Hackerrank problems" },
+	],
 	certified: [
 		"Certified Scrum Product Owner",
 		"SQL Advanced Hackerrank Certification",
@@ -184,6 +189,13 @@ export const SKILLS = {
 		"Statistical Modelling (A/B test, T-test, Chi-Square, Linear Regression)",
 		"System planning (Agile, Scrum, Kanban, Jira, SDLC, Lean 6σ)",
 	],
+};
+
+export const COURSES = {
+	bi: ["tableu", "alteryx", "looker"],
+	dbms: ["microsql", "mongodb", "datamodel", "datapipe"],
+	stats: ["abtest", "ttest", "square", "regression", "confi"],
+	sysplan: ["agile", "scrum", "kanban", "jira", "sdlc", "lean"],
 };
 
 export enum Branch {
@@ -273,6 +285,49 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		title: "May 2020",
 		size: ItemSize.LARGE,
 		shouldDrawLine: false,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "The Coconut Consulting Academy - CEO, Founder",
+		size: ItemSize.SMALL,
+		subtitle:
+			"CEO, Founder @The Coconut consulting Academy, managed team of 10 consultants to generate 10000$ in yearly revenue",
+		image: "/timeline/Coconut.png",
+		slideImage: "/timeline/Coconut.png",
+		shouldDrawLine: true,
+		alignment: Branch.LEFT,
+	},
+];
+
+export const SKILLCERTI: Array<TimelineNodeV2> = [
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "My certifications",
+		size: ItemSize.LARGE,
+		shouldDrawLine: false,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "KPIM Consulting - Data Analyst intern",
+		size: ItemSize.SMALL,
+		subtitle:
+			"Data Analyst @ BI team, focusing on creating ad-hoc report and dashboards for the Sales team",
+		image: "/timeline/KPIM.jpg",
+		slideImage: "/timeline/KPIM.jpg",
+		shouldDrawLine: true,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "UNAPAS Vietnam - Data Analyst intern",
+		size: ItemSize.SMALL,
+		subtitle:
+			"Data Analyst @ IT team, focusing on data house modeling and data visualization",
+		image: "/timeline/NAPAS.jpg",
+		slideImage: "/timeline/NAPAS.jpg",
+		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},
 	{

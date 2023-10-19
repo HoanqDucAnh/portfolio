@@ -12,7 +12,7 @@ import {
 	ItemSize,
 	MENULINKS,
 	NodeTypes,
-	TIMELINE,
+	SKILLCERTI,
 	TimelineNodeV2,
 } from "../../constants";
 import Image from "next/image";
@@ -28,11 +28,11 @@ const leftBranchX = 13;
 const curveLength = 150;
 const dotSize = 26;
 
-const TimelineSection = ({ isDesktop }: IDesktop) => {
+const SkillTimeLine = ({ isDesktop }: IDesktop) => {
 	const [svgWidth, setSvgWidth] = useState(400);
 	const [rightBranchX, setRightBranchX] = useState(109);
 
-	const svgCheckpointItems = TIMELINE.filter(
+	const svgCheckpointItems = SKILLCERTI.filter(
 		(item) => item.type === NodeTypes.CHECKPOINT && item.shouldDrawLine
 	);
 
@@ -329,7 +329,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 	const animateTimeline = (timeline: GSAPTimeline, duration: number): void => {
 		let index = 0;
 
-		addNodeRefsToItems(TIMELINE).forEach((item) => {
+		addNodeRefsToItems(SKILLCERTI).forEach((item) => {
 			const { type } = item;
 
 			if (type === NodeTypes.CHECKPOINT && item.shouldDrawLine) {
@@ -355,7 +355,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 		const containerWidth = svgContainer.current.clientWidth;
 		setSvgWidth(containerWidth);
 
-		const resultSvgString = generateTimelineSvg(TIMELINE);
+		const resultSvgString = generateTimelineSvg(SKILLCERTI);
 		timelineSvg.current.innerHTML = resultSvgString;
 
 		if (isSmallScreen()) {
@@ -510,10 +510,9 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
 	return (
 		<section
-			className="w-full relative select-none min-h-screen section-container py-8 flex flex-col justify-center"
+			className="w-full relative select-none min-h-screen px-0 flex flex-col justify-center"
 			id={MENULINKS[3].ref}
 		>
-			{renderSectionTitle()}
 			<div className="grid grid-cols-12 gap-4 mt-20">
 				<div className="col-span-12 md:col-span-6 line-svg" ref={svgContainer}>
 					{renderSVG()}
@@ -526,7 +525,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 	);
 };
 
-export default TimelineSection;
+export default SkillTimeLine;
 
 type LinkedTimelineNode = LinkedCheckpointNode | LinkedBranchNode;
 
