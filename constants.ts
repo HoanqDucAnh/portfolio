@@ -173,11 +173,7 @@ export const SKILLS = {
 		"google-bigquery",
 	],
 	other: ["alteryx", "SNOW", "databricks", "mageai", "sap-icon"],
-	sqlprob: [
-		{ count: "602", title: "Stratascratch problems" },
-		{ count: "87", title: "Leetcode problems" },
-		{ count: "45", title: "Hackerrank problems" },
-	],
+
 	certified: [
 		"Certified Scrum Product Owner",
 		"SQL Advanced Hackerrank Certification",
@@ -188,6 +184,11 @@ export const SKILLS = {
 		"Database Management System (SQL Server, MongoDB, Data Modelling, ETL Pipelines)",
 		"Statistical Modelling (A/B test, T-test, Chi-Square, Linear Regression)",
 		"System planning (Agile, Scrum, Kanban, Jira, SDLC, Lean 6σ)",
+	],
+	sqlprob: [
+		"602 SQL questions solved",
+		"87 Leetcode problems solved",
+		"45 Hackerrank problems solved",
 	],
 };
 
@@ -271,7 +272,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "UNAPAS Vietnam - Data Analyst intern",
+		title: "NAPAS Vietnam - Data Analyst intern",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Data Analyst @ IT team, focusing on data house modeling and data visualization",

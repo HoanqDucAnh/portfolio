@@ -12,6 +12,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import CountUp from "react-countup";
 import SkillTimeLine from "./skills-timeline";
 import { IDesktop } from "pages";
+import { stat } from "fs";
 
 const SKILL_STYLES = {
 	SECTION:
@@ -114,10 +115,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 		</>
 	);
 
-	const renderSQLStats = (
-		title: string,
-		skills: { count: string; title: string }[]
-	): React.ReactNode => (
+	const renderSQLStats = (title: string, skill: string[]): React.ReactNode => (
 		<>
 			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
 			<div
@@ -125,17 +123,8 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					willChange ? "will-change-opacity" : ""
 				}`}
 			>
-				{skills.map((skill) => (
-					<h1 className="">
-						<CountUp
-							key={skill.title}
-							className="stats-number"
-							start={0}
-							end={parseInt(skill.count)}
-							duration={5}
-						/>
-						{skill.title}
-					</h1>
+				{skill.map((skill) => (
+					<h1 className="stats-number">{skill}</h1>
 				))}
 			</div>
 		</>
@@ -191,17 +180,32 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						{renderSkillColumn("Clouds", SKILLS.clouds)}
 					</div>
 					{render2ndSectionTitle("uhmmm")}
-					<div className="mt-10">
-						{/* {renderSQLStats(
-							"Stratascratch & Hackerrank & Leetcode Stats (SQL) ",
-							SKILLS.sqlprob
-						)} */}
-						{renderSQLStats(
-							"Stratascratch & Hackerrank & Leetcode Stats (SQL) ",
-							SKILLS.sqlprob
-						)}
+
+					<div className="flex flex-wrap mt-10">
+						<div className="mr-6 mb-6">
+							<div
+								className={`flex flex-wrap seq ${
+									willChange ? "will-change-opacity" : ""
+								}`}
+							>
+								<Image
+									key="stat"
+									src={`/skills/2nd/stats.png`}
+									alt="stat"
+									width={800}
+									height={400}
+									className="skill"
+								/>
+							</div>
+						</div>
+						<div>
+							{renderSQLStats(
+								"Stratascratch & Hackerrank & Leetcode Stats (SQL) ",
+								SKILLS.sqlprob
+							)}
+						</div>
 					</div>
-					<div className="mt-10">
+					{/* <div className="mt-10">
 						<h3 className={SKILL_STYLES.SKILL_TITLE}>My stats</h3>
 						<div
 							className={`flex flex-wrap seq ${
@@ -217,7 +221,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 								className="skill"
 							/>
 						</div>
-					</div>
+					</div> */}
 					{render2ndSectionTitle("Certifications")}
 					<SkillTimeLine isDesktop={isDesktop} />
 					{render2ndSectionTitle("Relevant courseworks")}
