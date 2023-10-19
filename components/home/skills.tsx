@@ -124,7 +124,9 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 				}`}
 			>
 				{skill.map((skill) => (
-					<h1 className="stats-number">{skill}</h1>
+					<h1 className="stats-number" key={skill}>
+						{skill}
+					</h1>
 				))}
 			</div>
 		</>
