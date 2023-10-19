@@ -192,6 +192,10 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					</div>
 					{render2ndSectionTitle("uhmmm")}
 					<div className="mt-10">
+						{/* {renderSQLStats(
+							"Stratascratch & Hackerrank & Leetcode Stats (SQL) ",
+							SKILLS.sqlprob
+						)} */}
 						{renderSQLStats(
 							"Stratascratch & Hackerrank & Leetcode Stats (SQL) ",
 							SKILLS.sqlprob
