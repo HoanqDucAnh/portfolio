@@ -231,8 +231,15 @@ a {
 }
 
 .img-cus {
-	border: 1px solid #6dd5ed !important;
+	border: 1px solid #f27d0d !important;
 	border-radius: 0.5rem !important;
+}
+
+.img-cus:hover {
+	border: 1px solid #f27d0d !important;
+	cursor: pointer;
+	transition: all 0.4s ease-in-out;
+	transform: scale(1.1);
 }
 
 .stats-number {
@@ -258,4 +265,22 @@ footer {
 
 .section-title-sm {
 	@apply uppercase tracking-widest text-gray-200 text-sm;
+}
+
+.article-title-sm {
+	@apply uppercase tracking-widest text-sm;
+	color: #f27d0d;
+}
+
+.article-title-sm:hover {
+	@apply text-gray-200;
+	cursor: pointer;
+}
+
+.article-text-sm {
+	@apply text-sm text-gray-200;
+}
+
+.article-min-read {
+	@apply italic opacity-80 text-gray-200;
 }
