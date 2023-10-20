@@ -5,7 +5,7 @@
 // License text available at https://opensource.org/licenses/MIT
 
 export const METADATA = {
-	title: "Portfolio | Ayush Singh",
+	title: "Portfolio | Mark Pham",
 	description:
 		"I bridge the gap between design and development. I take responsibility to craft an aesthetic user experience using modern frontend architecture.",
 	siteUrl: "https://ayushsingh.net/",
@@ -13,6 +13,10 @@ export const METADATA = {
 
 export const NAVBARITEMS = [
 	{
+		name: "Home",
+		ref: "home",
+	},
+	{
 		name: "Projects",
 		ref: "works",
 	},
@@ -34,34 +38,30 @@ export const NAVBARITEMS = [
 	},
 	{
 		name: "Start-ups",
-		ref: "Start-ups",
+		ref: "start-ups",
 	},
 ];
 
 export const MENULINKS = [
 	{
-		name: "Projects",
-		ref: "works",
+		name: "Home",
+		ref: "home",
 	},
 	{
-		name: "Articles",
-		ref: "articles",
+		name: "Projects",
+		ref: "works",
 	},
 	{
 		name: "Skillset",
 		ref: "skills",
 	},
 	{
+		name: "Articles",
+		ref: "articles",
+	},
+	{
 		name: "Experience",
 		ref: "timeline",
-	},
-	{
-		name: "Passions",
-		ref: "passions",
-	},
-	{
-		name: "Start-ups",
-		ref: "Start-ups",
 	},
 ];
 

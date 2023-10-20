@@ -182,50 +182,27 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						{renderSkillColumn("Clouds", SKILLS.clouds)}
 					</div>
 					{render2ndSectionTitle("uhmmm")}
-
-					<div className="flex flex-wrap mt-10">
-						<div className="mr-6 mb-6">
-							<div
-								className={`flex flex-wrap seq ${
-									willChange ? "will-change-opacity" : ""
-								}`}
-							>
-								<Image
-									key="stat"
-									src={`/skills/2nd/stats.png`}
-									alt="stat"
-									width={800}
-									height={400}
-									className="skill"
-								/>
-							</div>
+					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-2">
+						<div className="col-span-1">
+							<Image
+								key="stat"
+								src={`/skills/2nd/stats.png`}
+								alt="stat"
+								width={700}
+								height={350}
+								className="skill"
+							/>
+							{/* </div> */}
 						</div>
-						<div>
+						<div className="col-span-1">
 							{renderSQLStats(
 								"Stratascratch & Hackerrank & Leetcode Stats (SQL) ",
 								SKILLS.sqlprob
 							)}
 						</div>
 					</div>
-					{/* <div className="mt-10">
-						<h3 className={SKILL_STYLES.SKILL_TITLE}>My stats</h3>
-						<div
-							className={`flex flex-wrap seq ${
-								willChange ? "will-change-opacity" : ""
-							}`}
-						>
-							<Image
-								key="stat"
-								src={`/skills/2nd/stats.png`}
-								alt="stat"
-								width={800}
-								height={400}
-								className="skill"
-							/>
-						</div>
-					</div> */}
 					{render2ndSectionTitle("Certifications")}
-					<SkillTimeLine isDesktop={isDesktop} />
+					{/* <SkillTimeLine isDesktop={isDesktop} /> */}
 					{render2ndSectionTitle("Relevant courseworks")}
 					<div className="flex flex-wrap mt-10">
 						<div className="mr-6 mb-6">

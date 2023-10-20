@@ -48,11 +48,10 @@ const ArticleSection = () => {
 
 	const renderSectionTitle = (): React.ReactNode => (
 		<div className="flex flex-col">
-			<p className="section-title-sm seq">SKILLS</p>
-			<h1 className="section-heading seq mt-2">My Skills</h1>
+			<p className="section-title-sm seq">Articles</p>
+			<h1 className="section-heading seq mt-2">My articles</h1>
 			<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
-				I like to take responsibility to craft aesthetic user experience using
-				modern frontend architecture.{" "}
+				bla bla bla bla bla bla bla{" "}
 			</h2>
 		</div>
 	);
@@ -114,28 +113,6 @@ const ArticleSection = () => {
 		</>
 	);
 
-	const renderSQLStats = (title: string, skills: string[]): React.ReactNode => (
-		<>
-			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
-			<div
-				className={`flex flex-wrap seq ${
-					willChange ? "will-change-opacity" : ""
-				}`}
-			>
-				{skills.map((skill) => (
-					<Image
-						key={skill}
-						src={`/skills/2nd/${skill}.svg`}
-						alt={skill}
-						width={200}
-						height={200}
-						className="skill"
-					/>
-				))}
-			</div>
-		</>
-	);
-
 	const renderTextRow = (title: string, skills: string[]): React.ReactNode => (
 		<>
 			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
@@ -155,67 +132,114 @@ const ArticleSection = () => {
 
 	return (
 		<section className="relative">
-			{renderBackgroundPattern()}
+			{/* {renderBackgroundPattern()} */}
 			<div
 				className={SKILL_STYLES.SECTION}
-				id={MENULINKS[2].ref}
+				id={MENULINKS[3].ref}
 				ref={targetSection}
 			>
 				<div className="flex flex-col skills-wrapper">
 					{renderSectionTitle()}
-					<div className="flex flex-wrap mt-10">
-						<div className="mr-6 mb-6">
-							{renderSkillColumn("Technical", SKILLS.technical)}
+					<div className="grid lg:grid-cols-2 md:grid-cols-1 pt-10 gap-4">
+						<div className="col-span-1">
+							<div className="grid lg:grid-cols-8">
+								<div className="col-span-6 seq">
+									<div>
+										<h3>User Streaks (Classis Gaps and Islands)</h3>
+										<p>
+											Find the top 3 users with the longest continuous streak of
+											visiting the platform as of August 10, 2022, using gap and
+											island analysis, CASE WHEN statements, ROW_NUMBER(),
+											RANK(), and CTEs.
+										</p>
+									</div>
+								</div>
+								<div className="col-span-2 hidden lg:grid m-auto seq">
+									<Image
+										src="/article/streak.jpg"
+										alt="React"
+										width={200}
+										height={120}
+										className="img-cus"
+									/>
+								</div>
+							</div>
 						</div>
-						<div>
-							{renderSkillColumn("Visualization", SKILLS.visualization)}
+						<div className="col-span-1">
+							<div className="grid lg:grid-cols-8">
+								<div className="col-span-6 seq">
+									<div>
+										<h3>User Streaks (Classis Gaps and Islands)</h3>
+										<p>
+											Find the top 3 users with the longest continuous streak of
+											visiting the platform as of August 10, 2022, using gap and
+											island analysis, CASE WHEN statements, ROW_NUMBER(),
+											RANK(), and CTEs.
+										</p>
+									</div>
+								</div>
+								<div className="col-span-2 hidden lg:grid m-auto seq">
+									<Image
+										src="/article/streak.jpg"
+										alt="React"
+										width={200}
+										height={120}
+										className="img-cus"
+									/>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div className="flex flex-wrap mt-10">
-						<div className="mr-6 mb-6">
-							{renderSkillColumn("Statistics & Data Science", SKILLS.statistic)}
+					<div className="grid lg:grid-cols-2 md:grid-cols-1 pt-10 gap-4">
+						<div className="col-span-1">
+							<div className="grid lg:grid-cols-8">
+								<div className="col-span-6 seq">
+									<div>
+										<h3>User Streaks (Classis Gaps and Islands)</h3>
+										<p>
+											Find the top 3 users with the longest continuous streak of
+											visiting the platform as of August 10, 2022, using gap and
+											island analysis, CASE WHEN statements, ROW_NUMBER(),
+											RANK(), and CTEs.
+										</p>
+									</div>
+								</div>
+								<div className="col-span-2 hidden lg:grid m-auto seq">
+									<Image
+										src="/article/streak.jpg"
+										alt="React"
+										width={200}
+										height={120}
+										className="img-cus"
+									/>
+								</div>
+							</div>
 						</div>
-						<div>{renderSkillColumn("Other tools", SKILLS.other)}</div>
-					</div>
-					<div className="mt-10">
-						{renderSkillColumn("Clouds", SKILLS.clouds)}
-					</div>
-					{render2ndSectionTitle()}
-					<div className="mt-10">
-						{renderSQLStats(
-							"Stratascratch & Hackerrank & Leetcode Stats (SQL) ",
-							SKILLS.sqlprob
-						)}
-					</div>
-					<div className="mt-10">
-						<h3 className={SKILL_STYLES.SKILL_TITLE}>My stats</h3>
-						<div
-							className={`flex flex-wrap seq ${
-								willChange ? "will-change-opacity" : ""
-							}`}
-						>
-							<Image
-								key="stat"
-								src={`/skills/2nd/stats.png`}
-								alt="stat"
-								width={800}
-								height={400}
-								className="skill"
-							/>
+						<div className="col-span-1">
+							<div className="grid lg:grid-cols-8">
+								<div className="col-span-6 seq">
+									<div>
+										<h3>User Streaks (Classis Gaps and Islands)</h3>
+										<p>
+											Find the top 3 users with the longest continuous streak of
+											visiting the platform as of August 10, 2022, using gap and
+											island analysis, CASE WHEN statements, ROW_NUMBER(),
+											RANK(), and CTEs.
+										</p>
+									</div>
+								</div>
+								<div className="col-span-2 hidden lg:grid m-auto seq">
+									<Image
+										src="/article/streak.jpg"
+										alt="React"
+										width={200}
+										height={120}
+										className="img-cus"
+									/>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div className="mt-10">
-						{renderTextRow("Relevant courseworks", SKILLS.relevant)}
-					</div>
-					<div className="mt-10">
-						{renderTextRow("Certifications", SKILLS.certified)}
-					</div>
-					{/* <div className="flex flex-row mt-10">
-						<div className="mr-6 mb-6">
-							{renderTextRow("Relevant courseworks", SKILLS.relevant)}
-						</div>
-						<div>{renderTextRow("Certifications", SKILLS.certified)}</div>
-					</div> */}
 				</div>
 			</div>
 		</section>

@@ -24,6 +24,7 @@ import Footer from "@/components/common/footer";
 import TimelineSection from "@/components/home/timeline";
 import Scripts from "@/components/common/scripts";
 import AboutSection from "@/components/home/about";
+import ArticleSection from "@/components/home/article";
 
 const DEBOUNCE_TIME = 100;
 
@@ -84,6 +85,7 @@ export default function Home() {
 					<ProjectsSection isDesktop={isDesktop} />
 					{/* <QuoteSection /> */}
 					<SkillsSection isDesktop={isDesktop} />
+					<ArticleSection />
 					<TimelineSection isDesktop={isDesktop} />
 					<CollaborationSection />
 					<Footer />

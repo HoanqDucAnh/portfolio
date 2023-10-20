@@ -148,7 +148,6 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		));
 
 	const { ref: projectsSectionRef } = MENULINKS[1];
-
 	return (
 		<section
 			ref={targetSectionRef}
