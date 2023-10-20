@@ -190,69 +190,7 @@ const ArticleSection = () => {
 										</p>
 									</div>
 								</div>
-								<div className="col-start-4 col-span-2 hidden lg:grid m-auto seq">
-									<Image
-										src="/article/streak.jpg"
-										alt="React"
-										width={300}
-										height={170}
-										className="img-cus"
-									/>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className="grid grid-cols-1 pt-10 gap-4">
-						<div className="col-span-1">
-							<div className="grid grid-cols-7">
-								<div className="col-span-3 seq">
-									<div>
-										<h3 className="article-title-sm mb-4 seq">
-											User Streaks (Classis Gaps and Islands)
-										</h3>
-										<p className="article-text-sm seq">
-											Find the top 3 users with the longest continuous streak of
-											visiting the platform as of August 10, 2022, using gap and
-											island analysis, CASE WHEN statements, ROW_NUMBER(),
-											RANK(), and CTEs.
-										</p>
-										<p className="article-min-read seq text-right">
-											12 mins read
-										</p>
-									</div>
-								</div>
-								<div className="col-start-4 col-span-2 hidden lg:grid m-auto seq">
-									<Image
-										src="/article/streak.jpg"
-										alt="React"
-										width={300}
-										height={170}
-										className="img-cus"
-									/>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className="grid grid-cols-1 pt-10 gap-4">
-						<div className="col-span-1">
-							<div className="grid grid-cols-7">
-								<div className="col-span-3 seq">
-									<div>
-										<h3 className="article-title-sm mb-4 seq">
-											User Streaks (Classis Gaps and Islands)
-										</h3>
-										<p className="article-text-sm seq">
-											Find the top 3 users with the longest continuous streak of
-											visiting the platform as of August 10, 2022, using gap and
-											island analysis, CASE WHEN statements, ROW_NUMBER(),
-											RANK(), and CTEs.
-										</p>
-										<p className="article-min-read seq text-right">
-											12 mins read
-										</p>
-									</div>
-								</div>
-								<div className="col-start-4 col-span-2 hidden lg:grid m-auto seq">
+								<div className="col-start-5 col-span-2 hidden lg:grid m-auto seq">
 									<Image
 										src="/article/streak.jpg"
 										alt="React"
