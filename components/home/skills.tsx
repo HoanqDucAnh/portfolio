@@ -4,6 +4,8 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
+"use client";
+
 import { MENULINKS, SKILLS, COURSES } from "../../constants";
 import Image from "next/image";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
@@ -13,6 +15,7 @@ import CountUp from "react-countup";
 import SkillTimeLine from "./skills-timeline";
 import { IDesktop } from "pages";
 import { stat } from "fs";
+import Tooltip from "../common/tool-tip";
 
 const SKILL_STYLES = {
 	SECTION:
@@ -102,14 +105,16 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 				}`}
 			>
 				{skills.map((skill) => (
-					<Image
-						key={skill}
-						src={`/skills/1st/${skill}.svg`}
-						alt={skill}
-						width={76}
-						height={76}
-						className="skill"
-					/>
+					<Tooltip text={skill} key={skill}>
+						<Image
+							key={skill}
+							src={`/skills/1st/${skill}.svg`}
+							alt={skill}
+							width={76}
+							height={76}
+							className="skill"
+						/>
+					</Tooltip>
 				))}
 			</div>
 		</>
@@ -206,17 +211,17 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					{render2ndSectionTitle("Relevant courseworks")}
 					<div className="flex flex-wrap mt-10">
 						<div className="mr-6 mb-6">
-							{renderCourse("Business Intelligence", COURSES.bi)}
+							{renderSkillColumn("Business Intelligence", COURSES.bi)}
 						</div>
 						<div>
-							{renderCourse("Database Management System", COURSES.dbms)}
+							{renderSkillColumn("Database Management System", COURSES.dbms)}
 						</div>
 					</div>
 					<div className="flex flex-wrap mt-10">
 						<div className="mr-6 mb-6">
-							{renderCourse("Statistical Modelling", COURSES.stats)}
+							{renderSkillColumn("Statistical Modelling", COURSES.stats)}
 						</div>
-						<div>{renderCourse("System planning", COURSES.sysplan)}</div>
+						<div>{renderSkillColumn("System planning", COURSES.sysplan)}</div>
 					</div>
 				</div>
 			</div>
