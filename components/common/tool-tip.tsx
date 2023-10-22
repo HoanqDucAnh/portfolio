@@ -1,10 +1,4 @@
-import React, { useState } from "react";
 import styled from "styled-components";
-
-interface TooltipProps {
-	text: string;
-	children: React.ReactNode;
-}
 
 const TooltipContainer = styled.div`
 	position: relative;
@@ -32,6 +26,11 @@ const TooltipText = styled.span`
 		opacity: 1;
 	}
 `;
+
+interface TooltipProps {
+	text: string;
+	children: React.ReactNode;
+}
 
 const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
 	return (

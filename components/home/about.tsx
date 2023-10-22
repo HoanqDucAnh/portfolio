@@ -73,14 +73,6 @@ const AboutSection = () => {
 				complex data to strategic insights, enabling informed decisions to drive
 				tangible business outcomes.{" "}
 			</span>
-			{/* <span
-				className={`about-2 leading-tight ${
-					willChange ? "will-change-opacity" : ""
-				}`}
-			>
-				With a passion for crafting impactful solutions, I strive to master
-				modern analytical techniques for tangible business outcomes
-			</span> */}
 		</h1>
 	);
 

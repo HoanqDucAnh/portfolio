@@ -151,16 +151,22 @@ export const PROJECTS: IProject[] = [
 
 export const SKILLS = {
 	technical: [
-		"mysql",
+		"MySQL",
 		"postgresql",
-		"microsql",
-		"numpy-1",
+		"Microsoft SQL Server",
+		"NumPy",
 		"pandas",
 		"matplotlib",
 		"seaborn",
 	],
-	statistic: ["abtest", "ttest", "square", "regression", "confi"],
-	visualization: ["amazon-quicksight", "tableu", "powerbi", "looker"],
+	statistic: [
+		"AB Test",
+		"T-Test",
+		"Chi-Square",
+		"regression",
+		"Confidence Interval",
+	],
+	visualization: ["Amazon Quicksight", "tableu", "Power BI", "GCP Looker"],
 	clouds: [
 		"aws-s3",
 		"aws-ec2",
@@ -169,10 +175,10 @@ export const SKILLS = {
 		"aws-athena",
 		"aws-lambda",
 		"aws-redshift",
-		"compute_engine",
-		"google-bigquery",
+		"GCP Mage compute engine",
+		"GCP Bigquery",
 	],
-	other: ["alteryx", "SNOW", "databricks", "mageai", "sap-icon"],
+	other: ["alteryx", "SNOW", "databricks", "Mage AI", "SAP ERP"],
 
 	certified: [
 		"Certified Scrum Product Owner",
@@ -193,9 +199,15 @@ export const SKILLS = {
 };
 
 export const COURSES = {
-	bi: ["tableu", "alteryx", "looker"],
-	dbms: ["microsql", "mongodb", "datamodel", "datapipe"],
-	stats: ["abtest", "ttest", "square", "regression", "confi"],
+	bi: ["tableu", "alteryx", "GCP Looker"],
+	dbms: ["Microsoft SQL Server", "mongodb", "datamodel", "datapipe"],
+	stats: [
+		"AB Test",
+		"T-Test",
+		"Chi-Square",
+		"regression",
+		"Confidence Interval",
+	],
 	sysplan: ["agile", "scrum", "kanban", "jira", "sdlc", "lean"],
 };
 
