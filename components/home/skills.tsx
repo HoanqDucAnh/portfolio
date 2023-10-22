@@ -143,7 +143,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 				}`}
 			>
 				{skills.map((skill) => (
-					<Tooltip text={skill} key={skill}>
+					<Tooltip key={skill} text={skill}>
 						<Image
 							key={skill}
 							src={`/skills/1st/${skill}.svg`}
@@ -154,6 +154,18 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						/>
 					</Tooltip>
 				))}
+				{/* {skills.map((skill) => (
+					
+					<Image
+						key={skill}
+						src={`/skills/1st/${skill}.svg`}
+						alt={skill}
+						width={76}
+						height={76}
+						className="skill"
+					/>
+					
+				))} */}
 			</div>
 		</>
 	);
@@ -207,20 +219,23 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 			>
 				<div className="flex flex-col skills-wrapper">
 					{renderSectionTitle()}
-					<div className="flex flex-wrap mt-10">
-						<div className="mr-6 mb-6">
-							{renderSkillColumn("Technical", SKILLS.technical)}
-						</div>
-						<div>
+					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-2">
+						<div className="col-span-1">
 							{renderSkillColumn("Visualization", SKILLS.visualization)}
 						</div>
+						<div className=" col-span-2">
+							{renderSkillColumn("Visualization", SKILLS.technical)}
+						</div>
 					</div>
-					<div className="flex flex-wrap mt-10">
-						<div className="mr-6 mb-6">
+					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-2">
+						<div className="col-span-1">
 							{renderSkillColumn("Statistics & Data Science", SKILLS.statistic)}
 						</div>
-						<div>{renderSkillColumn("Other tools", SKILLS.other)}</div>
+						<div className=" col-span-2">
+							{renderSkillColumn("Other tools", SKILLS.other)}
+						</div>
 					</div>
+
 					<div className="mt-10">
 						{renderSkillColumn("Clouds", SKILLS.clouds)}
 					</div>
@@ -247,19 +262,21 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					{render2ndSectionTitle("Certifications")}
 					{/* <SkillTimeLine isDesktop={isDesktop} /> */}
 					{render2ndSectionTitle("Relevant courseworks")}
-					<div className="flex flex-wrap mt-10">
-						<div className="mr-6 mb-6">
+					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-2">
+						<div className="col-span-1">
 							{renderSkillColumn("Business Intelligence", COURSES.bi)}
 						</div>
-						<div>
+						<div className=" col-span-2">
 							{renderSkillColumn("Database Management System", COURSES.dbms)}
 						</div>
 					</div>
-					<div className="flex flex-wrap mt-10">
-						<div className="mr-6 mb-6">
+					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-2">
+						<div className="col-span-1">
 							{renderSkillColumn("Statistical Modelling", COURSES.stats)}
 						</div>
-						<div>{renderSkillColumn("System planning", COURSES.sysplan)}</div>
+						<div className=" col-span-2">
+							{renderSkillColumn("System planning", COURSES.sysplan)}
+						</div>
 					</div>
 				</div>
 			</div>
