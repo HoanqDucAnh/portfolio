@@ -155,7 +155,6 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					</Tooltip>
 				))}
 				{/* {skills.map((skill) => (
-					
 					<Image
 						key={skill}
 						src={`/skills/1st/${skill}.svg`}
@@ -164,7 +163,6 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						height={76}
 						className="skill"
 					/>
-					
 				))} */}
 			</div>
 		</>

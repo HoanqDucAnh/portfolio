@@ -241,7 +241,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		size: ItemSize.SMALL,
 		subtitle:
 			"BI & Analytics intern @Global Supply Chain Team, focusing on Logistic cost Analysis and Warehouse’s Location optimization",
-		image: "/timeline/Corning 1.jpg",
+		image: "/timeline/Corning.png",
 		slideImage: "/timeline/Corning 1.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
@@ -259,7 +259,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		size: ItemSize.SMALL,
 		subtitle:
 			"Product Management @Payment Team, focusing on cryptocurrency payments",
-		image: "/timeline/Stealth.jpg",
+		image: "/timeline/Stealth1.jpg",
 		slideImage: "/timeline/Stealth.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
@@ -277,9 +277,16 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		size: ItemSize.SMALL,
 		subtitle:
 			"Data Analyst @ BI team, focusing on creating ad-hoc report and dashboards for the Sales team",
-		image: "/timeline/KPIM.jpg",
+		image: "/timeline/KPIM1.jpg",
 		slideImage: "/timeline/KPIM.jpg",
 		shouldDrawLine: true,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "June 2022",
+		size: ItemSize.LARGE,
+		shouldDrawLine: false,
 		alignment: Branch.LEFT,
 	},
 	{
@@ -288,7 +295,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		size: ItemSize.SMALL,
 		subtitle:
 			"Data Analyst @ IT team, focusing on data house modeling and data visualization",
-		image: "/timeline/NAPAS.jpg",
+		image: "/timeline/NAPAS1.png",
 		slideImage: "/timeline/NAPAS.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,

@@ -12,7 +12,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const SKILL_STYLES = {
 	SECTION:
-		"w-full relative select-none mb-24 section-container py-12 flex flex-col justify-center",
+		"w-full relative select-none mb-12 section-container py-12 flex flex-col justify-center",
 	SKILL_TITLE: "section-title-sm mb-4 seq",
 };
 
@@ -146,22 +146,22 @@ const ArticleSection = () => {
 								<div className="col-span-3 seq">
 									<div>
 										<h3 className="article-title-sm mb-4 seq">
-											User Streaks (Classis Gaps and Islands)
+											First Day Retention Rate
 										</h3>
 										<p className="article-text-sm seq">
-											Find the top 3 users with the longest continuous streak of
-											visiting the platform as of August 10, 2022, using gap and
-											island analysis, CASE WHEN statements, ROW_NUMBER(),
-											RANK(), and CTEs.
+											Calculate the first-day retention rate of video game
+											players using advanced SQL techniques like dense_rank,
+											CTEs, subqueries, aggregate functions, and CASE
+											statements.
 										</p>
 										<p className="article-min-read seq text-right">
-											12 mins read
+											8 mins read
 										</p>
 									</div>
 								</div>
 								<div className="col-start-4 col-span-2 hidden lg:grid m-auto seq">
 									<Image
-										src="/article/streak.jpg"
+										src="/article/firstday.jpg"
 										alt="React"
 										width={300}
 										height={170}
@@ -177,22 +177,22 @@ const ArticleSection = () => {
 								<div className="col-start-2 col-span-3 seq">
 									<div>
 										<h3 className="article-title-sm mb-4 seq">
-											User Streaks (Classis Gaps and Islands)
+											Marketing Campaign Success
 										</h3>
 										<p className="article-text-sm seq">
-											Find the top 3 users with the longest continuous streak of
-											visiting the platform as of August 10, 2022, using gap and
-											island analysis, CASE WHEN statements, ROW_NUMBER(),
-											RANK(), and CTEs.
+											Find the number of users that made additional in-app
+											purchases after their first purchase and exposure to the
+											marketing campaign by using CTEs, COUNT(), DISTINCT(), and
+											RANK() OVER ()
 										</p>
 										<p className="article-min-read seq text-right">
-											12 mins read
+											10 mins read
 										</p>
 									</div>
 								</div>
 								<div className="col-start-5 col-span-2 hidden lg:grid m-auto seq">
 									<Image
-										src="/article/streak.jpg"
+										src="/article/marketing.jpg"
 										alt="React"
 										width={300}
 										height={170}
@@ -239,22 +239,20 @@ const ArticleSection = () => {
 								<div className="col-start-2 col-span-3 seq">
 									<div>
 										<h3 className="article-title-sm mb-4 seq">
-											User Streaks (Classis Gaps and Islands)
+											Time Between Two Events
 										</h3>
 										<p className="article-text-sm seq">
-											Find the top 3 users with the longest continuous streak of
-											visiting the platform as of August 10, 2022, using gap and
-											island analysis, CASE WHEN statements, ROW_NUMBER(),
-											RANK(), and CTEs.
+											Find the Facebook’s user with the least time between page
+											load and first scroll
 										</p>
 										<p className="article-min-read seq text-right">
-											12 mins read
+											5 mins read
 										</p>
 									</div>
 								</div>
 								<div className="col-start-5 col-span-2 hidden lg:grid m-auto seq">
 									<Image
-										src="/article/streak.jpg"
+										src="/article/time.jpg"
 										alt="React"
 										width={300}
 										height={170}
