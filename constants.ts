@@ -242,7 +242,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		subtitle:
 			"BI & Analytics intern @Global Supply Chain Team, focusing on Logistic cost Analysis and Warehouse’s Location optimization",
 		image: "/timeline/Corning.png",
-		slideImage: "/timeline/Corning 1.jpg",
+		slideImage: "/timeline/Corningdark.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},
