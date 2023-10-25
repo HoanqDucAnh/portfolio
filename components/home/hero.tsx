@@ -100,7 +100,7 @@ const HeroSection = React.memo(() => {
 					}}
 					href="/Ayush_Resume.pdf"
 				></Button>
-				<Button
+				{/* <Button
 					classes=""
 					type={ButtonTypes.PRIMARY}
 					name="Contact me!"
@@ -109,7 +109,15 @@ const HeroSection = React.memo(() => {
 						target: "_blank",
 						rel: "noreferrer",
 					}}
-				></Button>
+				></Button> */}
+				<a
+					target="_blank"
+					rel="noreferrer"
+					href=""
+					className="cus-btn py-2 px-7 font-medium rounded text-base md:text-xl tracking-wide link duration-300 flex items-center "
+				>
+					Contact me!
+				</a>
 			</div>
 		</div>
 	);
