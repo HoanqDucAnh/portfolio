@@ -150,9 +150,7 @@ const ArticleSection = () => {
 										</h3>
 										<p className="article-text-sm seq">
 											Calculate the first-day retention rate of video game
-											players using advanced SQL techniques like dense_rank,
-											CTEs, subqueries, aggregate functions, and CASE
-											statements.
+											players
 										</p>
 										<p className="article-min-read seq text-right">
 											8 mins read
@@ -182,8 +180,7 @@ const ArticleSection = () => {
 										<p className="article-text-sm seq">
 											Find the number of users that made additional in-app
 											purchases after their first purchase and exposure to the
-											marketing campaign by using CTEs, COUNT(), DISTINCT(), and
-											RANK() OVER ()
+											marketing campaign
 										</p>
 										<p className="article-min-read seq text-right">
 											10 mins read
@@ -212,9 +209,7 @@ const ArticleSection = () => {
 										</h3>
 										<p className="article-text-sm seq">
 											Find the top 3 users with the longest continuous streak of
-											visiting the platform as of August 10, 2022, using gap and
-											island analysis, CASE WHEN statements, ROW_NUMBER(),
-											RANK(), and CTEs.
+											visiting the platform as of August 10, 2022
 										</p>
 										<p className="article-min-read seq text-right">
 											12 mins read

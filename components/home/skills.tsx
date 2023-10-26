@@ -222,7 +222,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 							{renderSkillColumn("Visualization", SKILLS.visualization)}
 						</div>
 						<div className=" col-span-2">
-							{renderSkillColumn("Visualization", SKILLS.technical)}
+							{renderSkillColumn("Technical", SKILLS.technical)}
 						</div>
 					</div>
 					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-2">
@@ -251,10 +251,29 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 							{/* </div> */}
 						</div>
 						<div className="col-span-1">
-							{renderSQLStats(
-								"Stratascratch & Hackerrank & Leetcode Stats (SQL) ",
-								SKILLS.sqlprob
-							)}
+							<h3 className={SKILL_STYLES.SKILL_TITLE}>
+								Stratascratch & Hackerrank & Leetcode Stats (SQL)
+							</h3>
+							<div
+								className={`flex flex-col seq ${
+									willChange ? "will-change-opacity" : ""
+								}`}
+							>
+								<h1 className="stats-number">
+									<p>
+										<span className="text-[#f27d0d]">602</span> SQL questions
+										solved
+									</p>
+									<p>
+										<span className="text-[#f27d0d]">87</span> Leetcode problems
+										solved
+									</p>
+									<p>
+										<span className="text-[#f27d0d]">45</span> Hackerrank
+										problems solved
+									</p>
+								</h1>
+							</div>
 						</div>
 					</div>
 					{render2ndSectionTitle("Certifications")}

@@ -70,8 +70,10 @@ const AboutSection = () => {
 				}`}
 			>
 				As an analytics and business intelligence enthusiast, I aim to connect
-				complex data to strategic insights, enabling informed decisions to drive
-				tangible business outcomes.{" "}
+				complex data to strategic insights,
+				<span className="text-[#f27d0d]">
+					enabling informed decisions to drive tangible business outcomes.
+				</span>{" "}
 			</span>
 		</h1>
 	);
