@@ -142,7 +142,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					willChange ? "will-change-opacity" : ""
 				}`}
 			>
-				{skills.map((skill) => (
+				{/* {skills.map((skill) => (
 					<Tooltip key={skill} text={skill}>
 						<Image
 							key={skill}
@@ -153,46 +153,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 							className="skill"
 						/>
 					</Tooltip>
-				))}
-				{/* {skills.map((skill) => (
-					<Image
-						key={skill}
-						src={`/skills/1st/${skill}.svg`}
-						alt={skill}
-						width={76}
-						height={76}
-						className="skill"
-					/>
 				))} */}
-			</div>
-		</>
-	);
-
-	const renderSQLStats = (title: string, skill: string[]): React.ReactNode => (
-		<>
-			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
-			<div
-				className={`flex flex-col seq ${
-					willChange ? "will-change-opacity" : ""
-				}`}
-			>
-				{skill.map((skill) => (
-					<h1 className="stats-number" key={skill}>
-						{skill}
-					</h1>
-				))}
-			</div>
-		</>
-	);
-
-	const renderCourse = (title: string, skills: string[]): React.ReactNode => (
-		<>
-			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
-			<div
-				className={`flex flex-wrap seq ${
-					willChange ? "will-change-opacity" : ""
-				}`}
-			>
 				{skills.map((skill) => (
 					<Image
 						key={skill}
@@ -203,6 +164,31 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						className="skill"
 					/>
 				))}
+			</div>
+		</>
+	);
+
+	const renderCertified = (skill: string): React.ReactNode => (
+		<>
+			<div
+				className={`flex flex-col seq ${
+					willChange ? "will-change-opacity" : ""
+				}`}
+			>
+				{/* <Image
+					key={skill}
+					src={`/skills/3rd/${skill}.png`}
+					alt={skill}
+					width={431}
+					height={323}
+					className="skill"
+				/> */}
+				<div
+					style={{ height: "310px" }}
+					className="flex align-middle justify-center "
+				>
+					<img src={`/skills/3rd/${skill}.png`} />
+				</div>
 			</div>
 		</>
 	);
@@ -233,11 +219,13 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 							{renderSkillColumn("Other tools", SKILLS.other)}
 						</div>
 					</div>
-
+					<div className="mt-10">
+						{renderSkillColumn("Framework", COURSES.sysplan)}
+					</div>
 					<div className="mt-10">
 						{renderSkillColumn("Clouds", SKILLS.clouds)}
 					</div>
-					{render2ndSectionTitle("uhmmm")}
+					{render2ndSectionTitle("Check out my stats!")}
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-2">
 						<div className="col-span-1">
 							<Image
@@ -277,8 +265,15 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						</div>
 					</div>
 					{render2ndSectionTitle("Certifications")}
+					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-5">
+						<div className="col-span-1">{renderCertified(SKILLS.alteryx)}</div>
+						<div className="col-span-1">
+							{renderCertified(SKILLS.hackerank)}
+						</div>
+						<div className="col-span-1">{renderCertified(SKILLS.scrum)}</div>
+					</div>
 
-					{render2ndSectionTitle("Relevant courseworks")}
+					{/* {render2ndSectionTitle("Relevant courseworks")}
 					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-2">
 						<div className="col-span-1">
 							{renderSkillColumn("Business Intelligence", COURSES.bi)}
@@ -294,7 +289,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						<div className=" col-span-2">
 							{renderSkillColumn("System planning", COURSES.sysplan)}
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</section>

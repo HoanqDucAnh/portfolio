@@ -192,6 +192,9 @@ export const SKILLS = {
 		"87 Leetcode problems solved",
 		"45 Hackerrank problems solved",
 	],
+	alteryx: "alteryx",
+	hackerank: "hackerank",
+	scrum: "scrum",
 };
 
 export const COURSES = {
