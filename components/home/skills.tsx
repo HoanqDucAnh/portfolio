@@ -142,7 +142,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					willChange ? "will-change-opacity" : ""
 				}`}
 			>
-				{/* {skills.map((skill) => (
+				{skills.map((skill) => (
 					<Tooltip key={skill} text={skill}>
 						<Image
 							key={skill}
@@ -153,8 +153,8 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 							className="skill"
 						/>
 					</Tooltip>
-				))} */}
-				{skills.map((skill) => (
+				))}
+				{/* {skills.map((skill) => (
 					<Image
 						key={skill}
 						src={`/skills/1st/${skill}.svg`}
@@ -163,7 +163,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						height={76}
 						className="skill"
 					/>
-				))}
+				))} */}
 			</div>
 		</>
 	);
