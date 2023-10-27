@@ -153,19 +153,14 @@ export const SKILLS = {
 	technical: [
 		"MySQL",
 		"postgresql",
+		"mongodb",
 		"Microsoft SQL Server",
 		"NumPy",
 		"pandas",
 		"matplotlib",
 		"seaborn",
 	],
-	statistic: [
-		"AB Test",
-		"T-Test",
-		"Chi-Square",
-		"regression",
-		"Confidence Interval",
-	],
+	statistic: ["Excel", "Jupyter Notebook", "Python"],
 	visualization: ["Amazon Quicksight", "tableu", "Power BI", "GCP Looker"],
 	clouds: [
 		"aws-s3",
@@ -177,6 +172,7 @@ export const SKILLS = {
 		"aws-redshift",
 		"GCP Mage compute engine",
 		"GCP Bigquery",
+		"Google Cloud",
 	],
 	other: ["alteryx", "SNOW", "databricks", "Mage AI", "SAP ERP"],
 
@@ -237,12 +233,12 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "BI and Analytics Intern - Corning Inc., (Fortune 500)",
+		title: "BI & Analytics Intern - Corning Inc",
 		size: ItemSize.SMALL,
 		subtitle:
 			"BI & Analytics intern @Global Supply Chain Team, focusing on Logistic cost Analysis and Warehouse’s Location optimization",
 		image: "/timeline/Corning.png",
-		slideImage: "/timeline/Corningdark.jpg",
+		slideImage: "/timeline/Corning.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},

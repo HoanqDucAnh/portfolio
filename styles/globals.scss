@@ -272,7 +272,7 @@ footer {
 }
 
 .article-title-sm {
-	@apply uppercase tracking-widest text-sm;
+	@apply uppercase tracking-widest text-lg;
 	color: #f27d0d;
 }
 
@@ -282,7 +282,7 @@ footer {
 }
 
 .article-text-sm {
-	@apply text-sm text-gray-200;
+	@apply text-lg text-gray-200;
 }
 
 .article-min-read {

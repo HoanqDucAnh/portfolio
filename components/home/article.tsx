@@ -51,83 +51,9 @@ const ArticleSection = () => {
 			<p className="section-title-sm seq">Articles</p>
 			<h1 className="section-heading seq mt-2">My articles</h1>
 			<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
-				bla bla bla bla bla bla bla{" "}
+				Check out my newest blogs!{" "}
 			</h2>
 		</div>
-	);
-
-	const render2ndSectionTitle = (): React.ReactNode => (
-		<div className="flex flex-col">
-			<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
-				I like to take responsibility to craft aesthetic user experience using
-				modern frontend architecture.{" "}
-			</h2>
-		</div>
-	);
-
-	const renderBackgroundPattern = (): React.ReactNode => (
-		<>
-			<div className="absolute right-0 -bottom-1/3 w-1/5 max-w-xs md:flex hidden justify-end">
-				<Image
-					src="/pattern-r.svg"
-					loading="lazy"
-					height={700}
-					width={320}
-					alt="pattern"
-				/>
-			</div>
-			<div className="absolute left-0 -bottom-3.5 w-1/12 max-w-xs md:block hidden">
-				<Image
-					src="/pattern-l.svg"
-					loading="lazy"
-					height={335}
-					width={140}
-					alt="pattern"
-				/>
-			</div>
-		</>
-	);
-
-	const renderSkillColumn = (
-		title: string,
-		skills: string[]
-	): React.ReactNode => (
-		<>
-			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
-			<div
-				className={`flex flex-wrap seq ${
-					willChange ? "will-change-opacity" : ""
-				}`}
-			>
-				{skills.map((skill) => (
-					<Image
-						key={skill}
-						src={`/skills/1st/${skill}.svg`}
-						alt={skill}
-						width={76}
-						height={76}
-						className="skill"
-					/>
-				))}
-			</div>
-		</>
-	);
-
-	const renderTextRow = (title: string, skills: string[]): React.ReactNode => (
-		<>
-			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
-			<div
-				className={`flex flex-col seq ${
-					willChange ? "will-change-opacity" : ""
-				}`}
-			>
-				{skills.map((skill) => (
-					<p key={skill} className="skill ">
-						{skill}
-					</p>
-				))}
-			</div>
-		</>
 	);
 
 	return (

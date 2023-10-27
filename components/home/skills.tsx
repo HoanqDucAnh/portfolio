@@ -277,7 +277,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						</div>
 					</div>
 					{render2ndSectionTitle("Certifications")}
-					{/* <SkillTimeLine isDesktop={isDesktop} /> */}
+
 					{render2ndSectionTitle("Relevant courseworks")}
 					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-2">
 						<div className="col-span-1">

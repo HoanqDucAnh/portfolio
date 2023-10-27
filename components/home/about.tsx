@@ -44,7 +44,7 @@ const AboutSection = () => {
 
 		const scrollTriggerInstance = ScrollTrigger.create({
 			trigger: targetSection.current,
-			start: "center 80%",
+			start: "center 65%",
 			end: "center top",
 			scrub: 0,
 			animation: timeline,
@@ -72,6 +72,7 @@ const AboutSection = () => {
 				As an analytics and business intelligence enthusiast, I aim to connect
 				complex data to strategic insights,
 				<span className="text-[#f27d0d]">
+					{" "}
 					enabling informed decisions to drive tangible business outcomes.
 				</span>{" "}
 			</span>
