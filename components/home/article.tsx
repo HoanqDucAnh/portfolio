@@ -95,8 +95,8 @@ const ArticleSection = () => {
 									<Image
 										src="/article/firstday.jpg"
 										alt="React"
-										width={400}
-										height={200}
+										width={300}
+										height={170}
 										className="img-cus"
 									/>
 								</div>
