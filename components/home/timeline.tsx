@@ -243,7 +243,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 					y + separation - curveLength + curveLength / 2
 				} ${leftBranchX} ${
 					y + separation
-				} stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(
+				}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(
 					y + separation - curveLength
 				)} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${rightBranchX} ${
 					y + separation - curveLength
