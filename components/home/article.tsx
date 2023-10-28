@@ -53,6 +53,14 @@ const ArticleSection = () => {
 			<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
 				Check out my newest blogs!{" "}
 			</h2>
+			<div className=" seq mt-2" style={{ width: "70%" }}>
+				<p className="text-sm ">
+					Unlock the world of SQL with my insightful and practical blogs. Dive
+					into comprehensive guides, tips, and best practices that simplify
+					complex concepts and empower you to harness the full potential of SQL
+					in your data journey.
+				</p>
+			</div>
 		</div>
 	);
 
@@ -87,8 +95,8 @@ const ArticleSection = () => {
 									<Image
 										src="/article/firstday.jpg"
 										alt="React"
-										width={300}
-										height={170}
+										width={400}
+										height={200}
 										className="img-cus"
 									/>
 								</div>

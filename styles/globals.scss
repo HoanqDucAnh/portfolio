@@ -245,7 +245,7 @@ a {
 .stats-number {
 	padding-right: 1.25rem !important;
 	padding-bottom: 1.25rem !important;
-	font-size: 1.5rem;
+	font-size: 1.75rem;
 }
 
 .stats-number p:hover {
@@ -272,7 +272,9 @@ footer {
 }
 
 .article-title-sm {
-	@apply uppercase tracking-widest text-lg;
+	@apply uppercase tracking-widest;
+	font-size: 1.3rem;
+	line-height: 1.75rem;
 	color: #f27d0d;
 }
 
@@ -282,7 +284,9 @@ footer {
 }
 
 .article-text-sm {
-	@apply text-lg text-gray-200;
+	font-size: 1.25rem;
+	line-height: 1.75rem;
+	@apply text-gray-200;
 }
 
 .article-min-read {

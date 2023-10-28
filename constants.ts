@@ -254,7 +254,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "Stealth Startup - Product Management Intern",
+		title: "Product Management Intern - Stealth Startup",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Product Management @Payment Team, focusing on cryptocurrency payments",
@@ -272,7 +272,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "KPIM Consulting - Data Analyst intern",
+		title: "Data Analyst intern - KPIM Consulting",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Data Analyst @ BI team, focusing on creating ad-hoc report and dashboards for the Sales team",
@@ -290,7 +290,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "NAPAS Vietnam - Data Analyst intern",
+		title: "Data Analyst intern - NAPAS Vietnam",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Data Analyst @ IT team, focusing on data house modeling and data visualization",
@@ -308,7 +308,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "The Coconut Consulting Academy - CEO, Founder",
+		title: "CEO, Founder - The Coconut Consulting Academy",
 		size: ItemSize.SMALL,
 		subtitle:
 			"CEO, Founder @The Coconut consulting Academy, managed team of 10 consultants to generate 10000$ in yearly revenue",
@@ -329,7 +329,7 @@ export const SKILLCERTI: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "KPIM Consulting - Data Analyst intern",
+		title: "Data Analyst intern - KPIM Consulting",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Data Analyst @ BI team, focusing on creating ad-hoc report and dashboards for the Sales team",
@@ -340,7 +340,7 @@ export const SKILLCERTI: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "UNAPAS Vietnam - Data Analyst intern",
+		title: "Data Analyst intern - UNAPAS Vietnam",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Data Analyst @ IT team, focusing on data house modeling and data visualization",
@@ -351,7 +351,7 @@ export const SKILLCERTI: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "The Coconut Consulting Academy - CEO, Founder",
+		title: "CEO, Founder - The Coconut Consulting Academy",
 		size: ItemSize.SMALL,
 		subtitle:
 			"CEO, Founder @The Coconut consulting Academy, managed team of 10 consultants to generate 10000$ in yearly revenue",
