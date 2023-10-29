@@ -93,6 +93,7 @@ const HeroSection = React.memo(() => {
 				<a
 					href="mailto:friend9990x@gmail.com"
 					className={HERO_STYLES.SOCIAL_LINK}
+					rel="noreferrer"
 					target="_blank"
 				>
 					<Image
