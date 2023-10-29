@@ -88,7 +88,21 @@ const HeroSection = React.memo(() => {
 			<p className="mb-4">
 				<span className={HERO_STYLES.TYPED_SPAN} ref={typedSpanElement}></span>
 			</p>
-			<div className="flex seq mb-5">{renderSocialLinks()}</div>
+			<div className="flex seq mb-5">
+				{renderSocialLinks()}
+				<a
+					href="mailto:friend9990x@gmail.com"
+					className={HERO_STYLES.SOCIAL_LINK}
+					target="_blank"
+				>
+					<Image
+						src={`/social/gmail.svg`}
+						alt={"gmail"}
+						width={40}
+						height={40}
+					/>
+				</a>
+			</div>
 			<div className="flex seq">
 				<Button
 					classes="mr-3"

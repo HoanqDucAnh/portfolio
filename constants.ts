@@ -137,44 +137,34 @@ export const PROJECTS: IProject[] = [
 		url: "",
 		tech: [],
 	},
-
-	// {
-	// 	name: "Coming soon",
-	// 	image: "/projects/ngx-quill-upload.jpg",
-	// 	blurImage: "/projects/blur/ngx-quill-upload-blur.jpg",
-	// 	description: "NPM Package for Quill JS uploads from Angular",
-	// 	gradient: ["#245B57", "#004741"],
-	// 	url: "",
-	// 	tech: ["npm", "angular", "typescript"],
-	// },
 ];
 
 export const SKILLS = {
 	technical: [
 		"MySQL",
-		"postgresql",
-		"mongodb",
+		"PostgreSQL",
+		"MongoDB",
 		"Microsoft SQL Server",
 		"NumPy",
-		"pandas",
-		"matplotlib",
-		"seaborn",
+		"Pandas",
+		"Matplotlib",
+		"Seaborn",
 	],
 	statistic: ["Excel", "Jupyter Notebook", "Python"],
-	visualization: ["Amazon Quicksight", "tableu", "Power BI", "GCP Looker"],
+	visualization: ["Amazon Quicksight", "Tableau", "Power BI", "GCP Looker"],
 	clouds: [
-		"aws-s3",
-		"aws-ec2",
-		"aws-cloudwatch",
-		"aws-glue",
-		"aws-athena",
-		"aws-lambda",
-		"aws-redshift",
+		"AWS S3",
+		"AWS EC2",
+		"AWS Cloudwatch",
+		"AWS Glue",
+		"AWS Athena",
+		"AWS Lambda",
+		"AWS Redshift",
 		"GCP Mage compute engine",
 		"GCP Bigquery",
 		"Google Cloud",
 	],
-	other: ["alteryx", "SNOW", "databricks", "Mage AI", "SAP ERP"],
+	other: ["Alteryx", "Snowflake", "Databricks", "Mage AI", "SAP ERP"],
 
 	certified: [
 		"Certified Scrum Product Owner",
@@ -192,9 +182,9 @@ export const SKILLS = {
 		"87 Leetcode problems solved",
 		"45 Hackerrank problems solved",
 	],
-	alteryx: "alteryx",
-	hackerank: "hackerank",
-	scrum: "scrum",
+	alteryx: "Alteryx",
+	hackerank: "Hackerank",
+	scrum: "Scrum",
 };
 
 export const COURSES = {
@@ -207,7 +197,7 @@ export const COURSES = {
 		"regression",
 		"Confidence Interval",
 	],
-	sysplan: ["agile", "scrum", "kanban", "jira", "sdlc", "lean"],
+	sysplan: ["Agile", "Scrum", "Kanban", "Jira", "Sdlc", "Lean 6σ"],
 };
 
 export enum Branch {
