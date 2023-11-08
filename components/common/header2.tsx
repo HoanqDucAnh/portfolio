@@ -6,8 +6,9 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Menu from "@/components/common/menu";
+import Menu from "@/components/common/menu2";
 import { NAVBARITEMS } from "../../constants";
+import Link from "next/link";
 
 const Header = () => {
 	const [menuVisible, setmenuVisible] = useState(false);
@@ -15,14 +16,16 @@ const Header = () => {
 	return (
 		<header className="w-full fixed top-0 py-8 select-none z-50 bg-gradient-to-b from-gray-900 to-transparent">
 			<div className="flex justify-between section-container">
-				<a href="/#home" className="link">
-					<Image src="/logo.svg" alt="Logo" width={22} height={22} />
-				</a>
+				<Link href="/#home">
+					<a className="link">
+						<Image src="/logo.svg" alt="Logo" width={22} height={22} />
+					</a>
+				</Link>
 				<div className="hidden md:flex items-center justify-center">
 					{NAVBARITEMS.map((item: any) => (
-						<a key={item.name} href={`/#${item.ref}`} className="link px-3">
-							{item.name}
-						</a>
+						<Link href={`/#${item.ref}`} key={item.name}>
+							<a className="link px-3">{item.name}</a>
+						</Link>
 					))}
 				</div>
 				<nav className={`outer-menu ${menuVisible ? "menu-visible" : ""}`}>
