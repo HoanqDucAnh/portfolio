@@ -88,7 +88,7 @@ const HeroSection = React.memo(() => {
 			<p className="mb-4">
 				<span className={HERO_STYLES.TYPED_SPAN} ref={typedSpanElement}></span>
 			</p>
-			<div className="flex seq mb-5">
+			{/* <div className="flex seq mb-5">
 				{renderSocialLinks()}
 				<a
 					href="mailto:friend9990x@gmail.com"
@@ -103,7 +103,7 @@ const HeroSection = React.memo(() => {
 						height={40}
 					/>
 				</a>
-			</div>
+			</div> */}
 			<div className="flex seq">
 				<Button
 					classes="mr-3"

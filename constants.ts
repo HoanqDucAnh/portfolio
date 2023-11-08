@@ -187,6 +187,11 @@ export const SKILLS = {
 	scrum: "Scrum",
 };
 
+export const SQLCode = {
+	sql1: `SELECT * FROM marketing_campaign
+ORDER BY 1,2`,
+};
+
 export const COURSES = {
 	bi: ["tableu", "alteryx", "GCP Looker"],
 	dbms: ["Microsoft SQL Server", "mongodb", "datamodel", "datapipe"],
@@ -308,49 +313,6 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		alignment: Branch.LEFT,
 	},
 ];
-
-// export const SKILLCERTI: Array<TimelineNodeV2> = [
-// 	{
-// 		type: NodeTypes.CHECKPOINT,
-// 		title: "My certifications",
-// 		size: ItemSize.LARGE,
-// 		shouldDrawLine: false,
-// 		alignment: Branch.LEFT,
-// 	},
-// 	{
-// 		type: NodeTypes.CHECKPOINT,
-// 		title: "Data Analyst intern - KPIM Consulting",
-// 		size: ItemSize.SMALL,
-// 		subtitle:
-// 			"Data Analyst @ BI team, focusing on creating ad-hoc report and dashboards for the Sales team",
-// 		image: "/timeline/KPIM.jpg",
-// 		slideImage: "/timeline/KPIM.jpg",
-// 		shouldDrawLine: true,
-// 		alignment: Branch.LEFT,
-// 	},
-// 	{
-// 		type: NodeTypes.CHECKPOINT,
-// 		title: "Data Analyst intern - UNAPAS Vietnam",
-// 		size: ItemSize.SMALL,
-// 		subtitle:
-// 			"Data Analyst @ IT team, focusing on data house modeling and data visualization",
-// 		image: "/timeline/NAPAS.jpg",
-// 		slideImage: "/timeline/NAPAS.jpg",
-// 		shouldDrawLine: true,
-// 		alignment: Branch.LEFT,
-// 	},
-// 	{
-// 		type: NodeTypes.CHECKPOINT,
-// 		title: "CEO, Founder - The Coconut Consulting Academy",
-// 		size: ItemSize.SMALL,
-// 		subtitle:
-// 			"CEO, Founder @The Coconut consulting Academy, managed team of 10 consultants to generate 10000$ in yearly revenue",
-// 		image: "/timeline/Coconut.png",
-// 		slideImage: "/timeline/Coconut.png",
-// 		shouldDrawLine: true,
-// 		alignment: Branch.LEFT,
-// 	},
-// ];
 
 export type TimelineNodeV2 = CheckpointNode | BranchNode;
 

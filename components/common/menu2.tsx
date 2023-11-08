@@ -31,7 +31,7 @@ const Menu = ({
 							>
 								<a
 									className="link relative inline font-bold text-5xl duration-300 hover:no-underline"
-									href={`#${el.ref}`}
+									href={`/#${el.ref}`}
 									onClick={setmenuVisible.bind(null, false)}
 								>
 									{el.name}

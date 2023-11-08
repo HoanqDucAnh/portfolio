@@ -33,6 +33,110 @@ body {
 	cursor: none;
 }
 
+.sql-table {
+	background-color: #44475a;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+	overflow-y: scroll;
+	max-height: 250px;
+	margin-bottom: 1rem;
+}
+
+.table-title {
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 10px;
+	color: #f27d0d;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	height: 100px;
+	overflow: scroll;
+	position: relative;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #282a36;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #f27d0d;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #6c3706;
+}
+
+th,
+td {
+	border: 1px solid #666;
+	padding: 8px;
+	text-align: left;
+}
+
+th {
+	background-color: #282a36;
+	color: #ff5555;
+	text-align: center;
+}
+
+thead:first-child {
+	position: sticky;
+	top: -11px;
+	z-index: 1;
+}
+
+tr:nth-child(even) {
+	background-color: #282a36;
+}
+
+tr:nth-child(odd) {
+	background-color: #44475a;
+}
+
+td {
+	text-align: center;
+	color: #f8f8f2;
+}
+
+.code-block {
+	overflow: auto;
+}
+
+.code-header {
+	background-color: #44475a;
+	color: #fff;
+	padding: 0.5rem;
+	font-weight: bold;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	text-transform: uppercase;
+}
+
+pre {
+	margin: 0;
+}
+
+.codeSec {
+	display: block;
+	color: #333;
+	white-space: pre-wrap;
+}
+
+.language-sql {
+	background-color: #282a36 !important;
+}
+
 html {
 	scroll-behavior: smooth;
 	overflow-x: hidden;

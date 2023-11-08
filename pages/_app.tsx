@@ -5,10 +5,13 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import "../styles/globals.scss";
+import "../styles/article.css";
+// import "prismjs/themes/prism.css";
+
 import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+	return <Component {...pageProps} />;
 }
 
 export default MyApp;

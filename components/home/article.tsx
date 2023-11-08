@@ -9,6 +9,7 @@ import Image from "next/image";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Link from "next/link";
 
 const SKILL_STYLES = {
 	SECTION:
@@ -108,9 +109,11 @@ const ArticleSection = () => {
 							<div className="grid grid-cols-7">
 								<div className="col-start-2 col-span-3 seq">
 									<div>
-										<h3 className="article-title-sm mb-4 seq">
-											Marketing Campaign Success
-										</h3>
+										<Link href="/myarticle/marketcamp">
+											<h3 className="article-title-sm mb-4 seq">
+												Marketing Campaign Success
+											</h3>
+										</Link>
 										<p className="article-text-sm seq">
 											Find the number of users that made additional in-app
 											purchases after their first purchase and exposure to the

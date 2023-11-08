@@ -1,0 +1,93 @@
+.amazon-color-orange {
+	color: #ff9900;
+}
+
+.amazon-color-black {
+	color: #232f3e;
+	font-weight: 600;
+}
+
+.amazon-color-black-text {
+	color: #232f3e;
+	text-decoration: underline;
+}
+
+.text-rounded-pill {
+	border-radius: 20px;
+	background-color: #ff9900;
+	color: #232f3e;
+	padding: 5px, 5px;
+}
+
+.sticky-scrollspy {
+	position: sticky;
+	top: 13%;
+	height: 100vh;
+	z-index: 1;
+}
+
+.sticky-follow {
+	position: sticky;
+	top: 40%;
+	height: 100vh;
+	z-index: 1;
+	text-align: start;
+}
+
+.sticky-follow a {
+	text-decoration: none;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	color: #232f3e;
+}
+
+.sticky-follow a:hover {
+	color: #ff9900;
+}
+
+ul {
+	list-style-type: none;
+	text-decoration: none;
+}
+
+ul ll {
+	cursor: pointer;
+	padding-bottom: 10px;
+}
+
+.cus-nav-item:hover {
+	color: #ff9900;
+	background-color: transparent;
+	font-weight: 600;
+	border-radius: 0;
+	transition: all 0.1s ease-in-out;
+	text-decoration: none;
+}
+
+.cus-nav-item {
+	padding-bottom: 3px;
+	cursor: pointer;
+	text-decoration: none;
+	color: #232f3e;
+}
+
+.scroll-active {
+	color: #ff9900;
+	background-color: transparent;
+	box-shadow: none;
+	border-left: 0.15rem solid #232f3e;
+	font-weight: 600;
+	padding-left: 0.25rem;
+	border-radius: 0;
+	line-height: 1.1rem;
+	transition: all 0.1s ease-in-out;
+}
+
+.sub-header {
+	padding-top: 15px;
+	padding-bottom: 5px;
+	color: #ff9900;
+	font-weight: bolder;
+}
