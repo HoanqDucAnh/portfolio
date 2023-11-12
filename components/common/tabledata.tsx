@@ -22,7 +22,6 @@ const SqlTable: React.FC<TableData> = ({ tableTitle, tableCol, tableData }) => {
 
 	let tableDataArray = convertObjectToKeyVal(tableData);
 	let tableDataCol = convertObjectToKeyVal(tableCol);
-	console.log(tableDataCol[0][0].value.join(""));
 
 	// const convertToString = (concatenatedString: []): string => {
 	// 	return concatenatedString.split("+").join("");

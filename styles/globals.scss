@@ -123,6 +123,40 @@ td {
 	text-transform: uppercase;
 }
 
+.scrollspy-sticky {
+	position: sticky;
+	z-index: 1;
+	top: 0;
+	font-size: 14px;
+}
+
+.scrollspy-item:hover {
+	color: #ff9900;
+	background-color: transparent;
+	font-weight: 600;
+	border-radius: 0;
+	transition: all 0.1s ease-in-out;
+	text-decoration: none;
+}
+
+.scrollspy-item {
+	padding-bottom: 3px;
+	text-decoration: none;
+	color: #efeff0;
+}
+
+.scrollspy-active {
+	color: #ff9900;
+	background-color: transparent;
+	box-shadow: none;
+	border-left: 0.15rem solid #232f3e;
+	font-weight: 600;
+	padding-left: 0.25rem;
+	border-radius: 0;
+	line-height: 1.1rem;
+	transition: all 0.1s ease-in-out;
+}
+
 pre {
 	margin: 0;
 }
