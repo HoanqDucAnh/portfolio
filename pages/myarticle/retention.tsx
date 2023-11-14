@@ -78,7 +78,7 @@ export default function Home() {
 				<Cursor isDesktop={isDesktop} />
 				<div className="flex-col flex">
 					{renderBackdrop()}
-					<MarketComponent />
+					<RetentionComponent />
 					<CollaborationSection />
 					<Footer />
 				</div>

@@ -15,10 +15,10 @@ import { Link as NavLink } from "react-scroll";
 
 export default function MarketComponent() {
 	return (
-		<div className="grid grid-cols-5 mt-24 self-start">
-			<div className="lg:col-span-1 mt-10 hidden lg:grid pl-9 min-h-screen mb-24 ">
-				<div className="scrollspy-sticky ">
-					<h6>Table content</h6>
+		<div className="grid grid-cols-5 mt-24 ">
+			<div className="col-span-1 mt-10 hidden lg:flex pl-9 self-start scrollspy-sticky">
+				<div className="">
+					<h6 className="text-3xl">Table content</h6>
 					<ul>
 						<li className="scrollspy-item ">
 							<NavLink
@@ -39,7 +39,7 @@ export default function MarketComponent() {
 								smooth={true}
 								offset={-80}
 								duration={50}
-								activeClass="scrollspy-active "
+								activeClass="scrollspy-active"
 							>
 								Prompt
 							</NavLink>
@@ -51,13 +51,12 @@ export default function MarketComponent() {
 								smooth={true}
 								offset={-80}
 								duration={50}
-								onClick={() => window.scrollTo(0, 0)}
 								activeClass="scrollspy-active "
 								className="scrollspy-item "
 							>
 								Tables and Data
 							</NavLink>
-							<ul>
+							<ul className="ml-4">
 								<li className="scrollspy-item ">
 									<NavLink
 										to="undData"
@@ -65,7 +64,7 @@ export default function MarketComponent() {
 										smooth={true}
 										offset={-80}
 										duration={50}
-										activeClass="scrollspy-active "
+										activeClass="scrollspy-active"
 									>
 										Understand the data
 									</NavLink>
@@ -77,7 +76,7 @@ export default function MarketComponent() {
 										smooth={true}
 										offset={-80}
 										duration={50}
-										activeClass="scrollspy-active "
+										activeClass="scrollspy-active"
 									>
 										Problem Statement
 									</NavLink>
@@ -96,7 +95,7 @@ export default function MarketComponent() {
 							>
 								Solution
 							</NavLink>
-							<ul>
+							<ul className="ml-4">
 								<li className="scrollspy-item ">
 									<NavLink
 										to="step1"
@@ -120,7 +119,7 @@ export default function MarketComponent() {
 									>
 										Step 2: Filter out ‘repeating purchase’ user
 									</NavLink>
-									<ul>
+									<ul className="ml-4">
 										<li className="scrollspy-item ">
 											<NavLink
 												to="step2-1"
@@ -209,7 +208,7 @@ export default function MarketComponent() {
 							>
 								Query optimizations Solutions
 							</NavLink>
-							<ul>
+							<ul className="ml-4">
 								<li className="scrollspy-item ">
 									<NavLink
 										to="res2"

@@ -67,7 +67,6 @@ const ArticleSection = () => {
 
 	return (
 		<section className="relative">
-			{/* {renderBackgroundPattern()} */}
 			<div
 				className={SKILL_STYLES.SECTION}
 				id={MENULINKS[3].ref}
@@ -80,9 +79,11 @@ const ArticleSection = () => {
 							<div className="grid grid-cols-7">
 								<div className="col-span-3 seq">
 									<div>
-										<h3 className="article-title-sm mb-4 seq">
-											First Day Retention Rate
-										</h3>
+										<Link href="/myarticle/retention">
+											<h3 className="article-title-sm mb-4 seq">
+												First Day Retention Rate
+											</h3>
+										</Link>
 										<p className="article-text-sm seq">
 											Calculate the first-day retention rate of video game
 											players
@@ -93,13 +94,15 @@ const ArticleSection = () => {
 									</div>
 								</div>
 								<div className="col-start-4 col-span-2 hidden lg:grid m-auto seq">
-									<Image
-										src="/article/firstday.jpg"
-										alt="React"
-										width={300}
-										height={170}
-										className="img-cus"
-									/>
+									<Link href="/myarticle/retention">
+										<Image
+											src="/article/firstday.jpg"
+											alt="React"
+											width={300}
+											height={170}
+											className="img-cus"
+										/>
+									</Link>
 								</div>
 							</div>
 						</div>
@@ -125,13 +128,15 @@ const ArticleSection = () => {
 									</div>
 								</div>
 								<div className="col-start-5 col-span-2 hidden lg:grid m-auto seq">
-									<Image
-										src="/article/marketing.jpg"
-										alt="React"
-										width={300}
-										height={170}
-										className="img-cus"
-									/>
+									<Link href="/myarticle/marketcamp">
+										<Image
+											src="/article/marketing.jpg"
+											alt="React"
+											width={300}
+											height={170}
+											className="img-cus"
+										/>
+									</Link>
 								</div>
 							</div>
 						</div>
@@ -141,9 +146,11 @@ const ArticleSection = () => {
 							<div className="grid grid-cols-7">
 								<div className="col-span-3 seq">
 									<div>
-										<h3 className="article-title-sm mb-4 seq">
-											User Streaks (Classis Gaps and Islands)
-										</h3>
+										<Link href="/myarticle/userstreak">
+											<h3 className="article-title-sm mb-4 seq">
+												User Streaks (Classis Gaps and Islands)
+											</h3>
+										</Link>
 										<p className="article-text-sm seq">
 											Find the top 3 users with the longest continuous streak of
 											visiting the platform as of August 10, 2022
@@ -154,13 +161,15 @@ const ArticleSection = () => {
 									</div>
 								</div>
 								<div className="col-start-4 col-span-2 hidden lg:grid m-auto seq">
-									<Image
-										src="/article/streak.jpg"
-										alt="React"
-										width={300}
-										height={170}
-										className="img-cus"
-									/>
+									<Link href="/myarticle/userstreak">
+										<Image
+											src="/article/streak.jpg"
+											alt="React"
+											width={300}
+											height={170}
+											className="img-cus"
+										/>
+									</Link>
 								</div>
 							</div>
 						</div>
@@ -170,11 +179,13 @@ const ArticleSection = () => {
 							<div className="grid grid-cols-7">
 								<div className="col-start-2 col-span-3 seq">
 									<div>
-										<h3 className="article-title-sm mb-4 seq">
-											Time Between Two Events
-										</h3>
+										<Link href="/myarticle/time">
+											<h3 className="article-title-sm mb-4 seq">
+												Time Between Two Events
+											</h3>
+										</Link>
 										<p className="article-text-sm seq">
-											Find the Facebook’s user with the least time between page
+											Find the Facebook's user with the least time between page
 											load and first scroll
 										</p>
 										<p className="article-min-read seq text-right">
@@ -183,13 +194,15 @@ const ArticleSection = () => {
 									</div>
 								</div>
 								<div className="col-start-5 col-span-2 hidden lg:grid m-auto seq">
-									<Image
-										src="/article/time.jpg"
-										alt="React"
-										width={300}
-										height={170}
-										className="img-cus"
-									/>
+									<Link href="/myarticle/time">
+										<Image
+											src="/article/time.jpg"
+											alt="React"
+											width={300}
+											height={170}
+											className="img-cus"
+										/>
+									</Link>
 								</div>
 							</div>
 						</div>

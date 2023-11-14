@@ -126,7 +126,7 @@ td {
 .scrollspy-sticky {
 	position: sticky;
 	z-index: 1;
-	top: 0;
+	top: 0 !important;
 	font-size: 14px;
 }
 
