@@ -6,12 +6,20 @@ export default function inforarticle() {
 			<h6>Follow me!</h6>
 			<section id="social">
 				<div>
-					<a href="https://www.linkedin.com/in/minhbphamm/" target="_blank">
+					<a
+						href="https://www.linkedin.com/in/minhbphamm/"
+						target="_blank"
+						rel="noreferrer"
+					>
 						<i className="bi bi-linkedin"> LinkedIn</i>
 					</a>
 				</div>
 				<div>
-					<a href="https://github.com/MarkPhamm" target="_blank">
+					<a
+						href="https://github.com/MarkPhamm"
+						target="_blank"
+						rel="noreferrer"
+					>
 						<i className="bi bi-github"> Github</i>
 					</a>
 				</div>
