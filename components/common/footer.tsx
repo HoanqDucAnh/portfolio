@@ -28,7 +28,7 @@ const Footer = () => {
 			<h1 className="font-medium text-3xl md:text-4xl text-center">
 				Connect with me on social media.
 			</h1>
-			<div className="flex mt-8">{renderSocialIcons()}</div>
+
 			<div className="flex mt-8">
 				<Button
 					classes="mr-3"
@@ -44,7 +44,7 @@ const Footer = () => {
 					classes="ml-3"
 					type={ButtonTypes.WHITE}
 					name="Let's Talk"
-					href=""
+					href="https://www.linkedin.com/in/minhbphamm/"
 					otherProps={{
 						target: "_blank",
 						rel: "noreferrer",
@@ -52,7 +52,7 @@ const Footer = () => {
 				></Button>
 			</div>
 			<h2 className="text-center text-sm sm:text-base mt-8">
-				Designed and Developed with ❤️ by Ayush
+				Designed by Ayush
 			</h2>
 		</>
 	);

@@ -13,6 +13,7 @@ import CountUp from "react-countup";
 import { IDesktop } from "pages";
 import { stat } from "fs";
 import styled from "styled-components";
+import Link from "next/link";
 
 const TooltipContainer = styled.div`
 	position: relative;
@@ -105,14 +106,14 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 	const render2ndSectionTitle = (title: string): React.ReactNode => (
 		<div className="flex flex-col">
 			<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">{title}</h2>
-			<div className=" seq mt-2" style={{ width: "70%" }}>
+			{/* <div className=" seq mt-2" style={{ width: "70%" }}>
 				<p className="text-sm ">
 					Certified Scrum Product Owner (CSPO) equipped with an Alteryx Core
 					Designer proficiency and advanced Hackkerank SQL certification. Ready
 					to employ my comprehensive skill set to drive effective project
 					management and data-driven solutions.
 				</p>
-			</div>
+			</div> */}
 		</div>
 	);
 
@@ -236,11 +237,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					<div className="flex flex-col mt-10">
 						<p className="section-title-sm seq">Stats</p>
 						<h1 className="section-heading seq mt-2">My stats</h1>
-						{/* <h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
-				I like to take responsibility to craft aesthetic user experience using
-				modern frontend architecture.{" "}
-			</h2> */}
-						<div className=" seq mt-2" style={{ width: "70%" }}>
+						{/* <div className=" seq mt-2" style={{ width: "70%" }}>
 							<p className="text-sm ">
 								SQL problem-solver tackling real-world challenges for 2+ years.
 								With a daily goal of 2-3 problem resolutions, I've conquered 738
@@ -248,7 +245,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 								HackerRank. Eager to apply my expertise to drive data-driven
 								solutions.
 							</p>
-						</div>
+						</div> */}
 					</div>
 
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-2">
@@ -285,11 +282,31 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 										<span className="text-[#f27d0d]">45</span> Hackerrank
 										problems solved
 									</p>
+									<Link
+										href={
+											"https://platform.stratascratch.com/user/SmartPersonality1862 "
+										}
+									>
+										<p>Clicked to visit my stratascratch!</p>
+									</Link>
 								</h1>
 							</div>
 						</div>
 					</div>
-					{render2ndSectionTitle("Certifications")}
+					{/* {render2ndSectionTitle("Certifications")} */}
+					<div className="flex flex-col mt-10">
+						<p className="section-title-sm seq">Certifications</p>
+						<h1 className="section-heading seq mt-2">My certifications</h1>
+						{/* <div className=" seq mt-2" style={{ width: "70%" }}>
+							<p className="text-sm ">
+								SQL problem-solver tackling real-world challenges for 2+ years.
+								With a daily goal of 2-3 problem resolutions, I've conquered 738
+								queries on platforms like Stratascratch, LeetCode, and
+								HackerRank. Eager to apply my expertise to drive data-driven
+								solutions.
+							</p>
+						</div> */}
+					</div>
 					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-5">
 						<div className="col-span-1">{renderCertified(SKILLS.alteryx)}</div>
 						<div className="col-span-1">

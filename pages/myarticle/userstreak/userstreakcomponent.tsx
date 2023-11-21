@@ -11,12 +11,13 @@ import {
 import React from "react";
 import SqlTable from "@/components/common/tabledata";
 import { Link } from "react-scroll";
+import Inforarticle from "@/components/common/inforarticle";
 
 export default function UserStreakComponent() {
 	return (
 		<div className="grid grid-cols-5 mt-24 ">
-			<div className="col-span-1 mt-10 hidden lg:flex pl-9 self-start scrollspy-sticky">
-				<div className="">
+			<div className="col-span-1  mt-10 hidden lg:block pl-9 self-start ">
+				<div className="fixed">
 					<h6 className="text-3xl">Table content</h6>
 					<ul>
 						<li className="scrollspy-item">
@@ -539,6 +540,11 @@ export default function UserStreakComponent() {
 							<CodeBlock language="sql" code={sqlCode.code10} />
 						</div>
 					</section>
+				</div>
+			</div>
+			<div className="col-span-1">
+				<div className="fixed">
+					<Inforarticle />
 				</div>
 			</div>
 		</div>

@@ -110,7 +110,7 @@ const ArticleSection = () => {
 					<div className="grid grid-cols-1 pt-10 gap-4 mt-5">
 						<div className="col-span-1">
 							<div className="grid grid-cols-7">
-								<div className="col-start-2 col-span-3 seq">
+								<div className="col-start-3 col-span-3 seq">
 									<div>
 										<Link href="/myarticle/marketcamp">
 											<h3 className="article-title-sm mb-4 seq">
@@ -127,7 +127,7 @@ const ArticleSection = () => {
 										</p>
 									</div>
 								</div>
-								<div className="col-start-5 col-span-2 hidden lg:grid m-auto seq">
+								<div className="col-start-6 col-span-2 hidden lg:grid m-auto seq">
 									<Link href="/myarticle/marketcamp">
 										<Image
 											src="/article/marketing.jpg"
@@ -177,7 +177,7 @@ const ArticleSection = () => {
 					<div className="grid grid-cols-1 pt-10 gap-4 mt-5">
 						<div className="col-span-1">
 							<div className="grid grid-cols-7">
-								<div className="col-start-2 col-span-3 seq">
+								<div className="col-start-3 col-span-3 seq">
 									<div>
 										<Link href="/myarticle/time">
 											<h3 className="article-title-sm mb-4 seq">
@@ -193,7 +193,7 @@ const ArticleSection = () => {
 										</p>
 									</div>
 								</div>
-								<div className="col-start-5 col-span-2 hidden lg:grid m-auto seq">
+								<div className="col-start-6 col-span-2 hidden lg:grid m-auto seq">
 									<Link href="/myarticle/time">
 										<Image
 											src="/article/time.jpg"

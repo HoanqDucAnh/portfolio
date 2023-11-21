@@ -11,6 +11,7 @@ import Image from "next/image";
 import { gsap, Linear } from "gsap";
 import Button, { ButtonTypes } from "../common/button";
 import HeroImage from "./hero-image";
+import Link from "next/link";
 
 const HERO_STYLES = {
 	SECTION:
@@ -125,14 +126,16 @@ const HeroSection = React.memo(() => {
 						rel: "noreferrer",
 					}}
 				></Button> */}
-				<a
-					target="_blank"
-					rel="noreferrer"
-					href=""
-					className="cus-btn py-2 px-7 font-medium rounded text-base md:text-xl tracking-wide link duration-300 flex items-center "
-				>
-					Contact me!
-				</a>
+				<Link href="https://www.linkedin.com/in/minhbphamm/">
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href="https://www.linkedin.com/in/minhbphamm/"
+						className="cus-btn py-2 px-7 font-medium rounded text-base md:text-xl tracking-wide link duration-300 flex items-center "
+					>
+						Contact me!
+					</a>
+				</Link>
 			</div>
 		</div>
 	);
