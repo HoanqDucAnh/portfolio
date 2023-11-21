@@ -258,7 +258,6 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 								height={350}
 								className="skill"
 							/>
-							{/* </div> */}
 						</div>
 						<div className="col-span-1">
 							<h3 className={SKILL_STYLES.SKILL_TITLE}>
@@ -308,11 +307,19 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						</div> */}
 					</div>
 					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-5">
-						<div className="col-span-1">{renderCertified(SKILLS.alteryx)}</div>
 						<div className="col-span-1">
-							{renderCertified(SKILLS.hackerank)}
+							<Tooltip text="Alteryx Core Designer">
+								{renderCertified(SKILLS.alteryx)}
+							</Tooltip>
 						</div>
-						<div className="col-span-1">{renderCertified(SKILLS.scrum)}</div>
+						<div className="col-span-1">
+							<Tooltip text="hackerank">
+								{renderCertified(SKILLS.hackerank)}
+							</Tooltip>
+						</div>
+						<div className="col-span-1">
+							<Tooltip text="scrum">{renderCertified(SKILLS.scrum)}</Tooltip>
+						</div>
 					</div>
 
 					{/* {render2ndSectionTitle("Relevant courseworks")}
