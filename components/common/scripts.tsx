@@ -9,36 +9,39 @@ import React from "react";
 import { GTAG } from "../../constants";
 
 const Scripts = React.memo(() => {
-  return (
-    <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GTAG}`}
-        strategy="afterInteractive"
-      />
-      <Script strategy="afterInteractive" id="gtag-config">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-    
-            gtag('config', '${GTAG}');
-        `}
-      </Script>
-      <Script strategy="lazyOnload" id="chaport-config">
-        {`
-            setTimeout(() => {
-                (function (w, d, v3) {
-                    w.chaportConfig = {
-                        appId: '5ec95b5d1db3487e521123ca'
-                    };
-    
-                    if (w.chaport) return; v3 = w.chaport = {}; v3._q = []; v3._l = {}; v3.q = function () { v3._q.push(arguments) }; v3.on = function (e, fn) { if (!v3._l[e]) v3._l[e] = []; v3._l[e].push(fn) }; var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://app.chaport.com/javascripts/insert.js'; var ss = d.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss)
-                })(window, document);
-            }, 15000);
-        `}
-      </Script>
-    </>
-  );
+	const handleJumpToFirst = () => {
+		// Logic to jump to the first section
+		// You can use scrollIntoView or any other method to achieve this
+		window.scrollTo(0, 0);
+	};
+
+	return (
+		<>
+			<button
+				onClick={handleJumpToFirst}
+				className="fixed right-5 bottom-5 display: flex items-center flex-col border-l-indigo-50 rounded-3xl"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="32"
+					height="32"
+					fill="currentColor"
+					className="bi bi-chevron-double-up"
+					viewBox="0 0 16 16"
+				>
+					<path
+						fill-rule="evenodd"
+						d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z"
+					/>
+					<path
+						fill-rule="evenodd"
+						d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
+					/>
+				</svg>
+				Go to top
+			</button>
+		</>
+	);
 });
 
 Scripts.displayName = "Scripts";

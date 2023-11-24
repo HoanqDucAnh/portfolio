@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Menu from "@/components/common/menu";
 import { NAVBARITEMS } from "../../constants";
+import Link from "next/link";
 
 const Header = () => {
 	const [menuVisible, setmenuVisible] = useState(false);
@@ -24,6 +25,12 @@ const Header = () => {
 							{item.name}
 						</a>
 					))}
+					<Link href="/aboutme/passion">
+						<a className="link px-3">My Passion</a>
+					</Link>
+					<Link href="/aboutme/startup">
+						<a className="link px-3">My Startup</a>
+					</Link>
 				</div>
 				<nav className={`outer-menu ${menuVisible ? "menu-visible" : ""}`}>
 					<button

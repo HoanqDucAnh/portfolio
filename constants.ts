@@ -32,14 +32,6 @@ export const NAVBARITEMS = [
 		name: "Experience",
 		ref: "timeline",
 	},
-	{
-		name: "Passions",
-		ref: "passions",
-	},
-	{
-		name: "Start-ups",
-		ref: "start-ups",
-	},
 ];
 
 export const MENULINKS = [

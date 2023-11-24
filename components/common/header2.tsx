@@ -27,6 +27,12 @@ const Header = () => {
 							<a className="link px-3">{item.name}</a>
 						</Link>
 					))}
+					<Link href="/aboutme/passion">
+						<a className="link px-3">My Passion</a>
+					</Link>
+					<Link href="/aboutme/startup">
+						<a className="link px-3">My Startup</a>
+					</Link>
 				</div>
 				<nav className={`outer-menu ${menuVisible ? "menu-visible" : ""}`}>
 					<button
