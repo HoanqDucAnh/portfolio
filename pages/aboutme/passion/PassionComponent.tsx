@@ -9,6 +9,7 @@ import spaghetti2 from "/public/about/passion/sphagheti2.jpg";
 import carbonara from "/public/about/passion/carbonara.jpg";
 import salmon from "/public/about/passion/salmon.jpg";
 
+//TODO: fix all import, add them to constants file
 export default function PassionComponent() {
 	return (
 		<div className="w-[60%] m-auto mt-24 pt-2 ">
@@ -52,7 +53,7 @@ export default function PassionComponent() {
 				</div>
 				<div className="mt-2 text-center">
 					<Image
-						src={xaxiu}
+						src={`/public/about/passion/xaxiu.jpg`}
 						width={700}
 						height={550}
 						loading="lazy"
@@ -78,7 +79,7 @@ export default function PassionComponent() {
 					<div className="col-span-2">
 						<div className="text-center">
 							<Image
-								src={steak1}
+								src={`/public/about/passion/steak1.jpg`}
 								width={220}
 								height={250}
 								loading="lazy"
@@ -135,7 +136,7 @@ export default function PassionComponent() {
 				</div>
 				<div className="mt-2 text-center">
 					<Image
-						src={steak2}
+						src={`/public/about/passion/steak2.jpeg`}
 						width={500}
 						height={500}
 						loading="lazy"
@@ -160,7 +161,7 @@ export default function PassionComponent() {
 				</div>
 				<div className="mt-2 text-center">
 					<Image
-						src={steak3}
+						src={`/public/about/passion/steak3.jpg`}
 						width={500}
 						height={500}
 						loading="lazy"
@@ -189,7 +190,7 @@ export default function PassionComponent() {
 							that never fails to delight.
 						</div>
 						<Image
-							src={spaghetti1}
+							src={`/public/about/passion/sphagheti1.jpg`}
 							width={500}
 							height={350}
 							loading="lazy"
@@ -212,7 +213,7 @@ export default function PassionComponent() {
 							light, flavorful, satisfying, and comforting pasta.
 						</div>
 						<Image
-							src={spaghetti2}
+							src={`/public/about/passion/sphagheti2.jpg`}
 							width={500}
 							height={350}
 							loading="lazy"
@@ -236,7 +237,7 @@ export default function PassionComponent() {
 				</div>
 				<div className="mt-2 text-center">
 					<Image
-						src={carbonara}
+						src={`/public/about/passion/carbonara.jpg`}
 						width={600}
 						height={450}
 						loading="lazy"
@@ -263,7 +264,7 @@ export default function PassionComponent() {
 				</div>
 				<div className="mt-2 text-center">
 					<Image
-						src={salmon}
+						src={`/public/about/passion/salmon.jpg`}
 						width={600}
 						height={450}
 						loading="lazy"
