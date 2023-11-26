@@ -1,15 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import xaxiu from "/public/about/passion/xaxiu.jpg";
-import steak1 from "/public/about/passion/steak1.jpg";
-import steak2 from "/public/about/passion/steak2.jpeg";
-import steak3 from "/public/about/passion/steak3.jpg";
-import spaghetti1 from "/public/about/passion/sphagheti1.jpg";
-import spaghetti2 from "/public/about/passion/sphagheti2.jpg";
-import carbonara from "/public/about/passion/carbonara.jpg";
-import salmon from "/public/about/passion/salmon.jpg";
 
-//TODO: fix all import, add them to constants file
 export default function PassionComponent() {
 	return (
 		<div className="w-[60%] m-auto mt-24 pt-2 ">
@@ -237,7 +228,7 @@ export default function PassionComponent() {
 				</div>
 				<div className="mt-2 text-center">
 					<Image
-						src={`/about/passion/carbonara.jpg`}
+						src={`/about/passion/carbo.jpg`}
 						width={600}
 						height={450}
 						loading="lazy"
