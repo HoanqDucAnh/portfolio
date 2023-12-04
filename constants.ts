@@ -8,7 +8,7 @@ export const METADATA = {
 	title: "Portfolio | Mark Pham",
 	description:
 		"I bridge the gap between design and development. I take responsibility to craft an aesthetic user experience using modern frontend architecture.",
-	siteUrl: "https://ayushsingh.net/",
+	siteUrl: "",
 };
 
 export const NAVBARITEMS = [
@@ -95,7 +95,7 @@ export const PROJECTS: IProject[] = [
 		name: "Uber Analytics (GCP)",
 		image: "/projects/gcpuber.png",
 		blurImage: "/projects/gcpuber.png",
-		description: "end-to-end ETL data pipeline integrating Uber data",
+		description: "End-to-end ETL data pipeline integrating Uber data",
 		gradient: ["#1fbad6", "#09091a"],
 		url: "https://github.com/MarkPhamm/Uber-BI-Engineering-Project",
 		tech: ["python", "gcp", "bigquery", "compute_engine"],
@@ -121,13 +121,13 @@ export const PROJECTS: IProject[] = [
 	},
 
 	{
-		name: "Stock Analysis (Coming soon)",
-		image: "/projects/comingsoon.jpg",
+		name: "Adventureworks-Analytics",
+		image: "/projects/adventure-analytics.png",
 		blurImage: "/projects/comingsoon.jpg",
-		description: "Coming soon",
+		description: "Adventureworks-Analytics",
 		gradient: ["#003052", "#167187"],
-		url: "",
-		tech: [],
+		url: "https://github.com/MarkPhamm/Adventureworks-Analytics",
+		tech: ["python", "Microsoft SQL Server", "PowerBI", "azure"],
 	},
 ];
 
@@ -143,7 +143,7 @@ export const SKILLS = {
 		"Seaborn",
 	],
 	statistic: ["Excel", "Jupyter Notebook", "Python"],
-	visualization: ["Amazon Quicksight", "Tableau", "Power BI", "GCP Looker"],
+	visualization: ["Quicksight", "Tableau", "PowerBI", "GCP Looker"],
 	clouds: [
 		"AWS S3",
 		"AWS EC2",
@@ -175,7 +175,7 @@ export const SKILLS = {
 		"45 Hackerrank problems solved",
 	],
 	alteryx: "Alteryx",
-	hackerank: "Hackerank",
+	hackerank: "HackerRank",
 	scrum: "Scrum",
 };
 

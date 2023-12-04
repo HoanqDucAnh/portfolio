@@ -260,24 +260,21 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 							/>
 						</div>
 						<div className="col-span-1">
-							<h3 className={SKILL_STYLES.SKILL_TITLE}>
-								Stratascratch & Hackerrank & Leetcode Stats (SQL)
-							</h3>
 							<div
 								className={`flex flex-col seq ${
 									willChange ? "will-change-opacity" : ""
 								}`}
 							>
-								<h1 className="stats-number">
-									<p>
-										<span className="text-[#f27d0d]">602</span> SQL questions
+								<div className="stats-number ">
+									<p className="text-4xl">
+										<span className="text-[#f27d0d] ">603</span> SQL questions
 										solved
 									</p>
-									<p>
-										<span className="text-[#f27d0d]">87</span> Leetcode problems
-										solved
+									<p className="text-4xl">
+										<span className="text-[#f27d0d]">268</span> Leetcode
+										problems solved
 									</p>
-									<p>
+									<p className="text-4xl">
 										<span className="text-[#f27d0d]">45</span> Hackerrank
 										problems solved
 									</p>
@@ -286,9 +283,11 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 											"https://platform.stratascratch.com/user/SmartPersonality1862 "
 										}
 									>
-										<p>Clicked to visit my stratascratch!</p>
+										<p className="text-4xl">
+											Clicked to visit my stratascratch!
+										</p>
 									</Link>
-								</h1>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -313,12 +312,14 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 							</Tooltip>
 						</div>
 						<div className="col-span-1">
-							<Tooltip text="hackerank">
+							<Tooltip text="HackerRank">
 								{renderCertified(SKILLS.hackerank)}
 							</Tooltip>
 						</div>
 						<div className="col-span-1">
-							<Tooltip text="scrum">{renderCertified(SKILLS.scrum)}</Tooltip>
+							<Tooltip text="Certified Scrum Product Owner">
+								{renderCertified(SKILLS.scrum)}
+							</Tooltip>
 						</div>
 					</div>
 

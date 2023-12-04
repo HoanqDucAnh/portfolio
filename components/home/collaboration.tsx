@@ -108,17 +108,11 @@ const CollaborationSection = () => {
 
 	return (
 		<section className={COLLABORATION_STYLE.SECTION} ref={targetSection}>
-			{renderSlidingText(
-				" User Interface Design  User Experience Design ",
-				"ui-left"
-			)}
+			{renderSlidingText(" SQL - Python - PowerBI ", "ui-left")}
 
 			{renderTitle()}
 
-			{renderSlidingText(
-				" Frontend Development  Motion Graphics ",
-				"mt-6 md:mt-8 ui-right"
-			)}
+			{renderSlidingText(" SQL - Python - PowerBI ", "mt-6 md:mt-8 ui-right")}
 		</section>
 	);
 };

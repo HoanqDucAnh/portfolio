@@ -18,11 +18,7 @@ import Cursor from "@/components/common/cursor";
 import CollaborationSection from "@/components/home/collaboration";
 import Footer from "@/components/common/footer";
 import Scripts from "@/components/common/scripts";
-import MarketComponent from "./marketcamp/marketcomponent";
-import UserStreakComponent from "./userstreak/userstreakcomponent";
-import RetentionComponent from "./retention/retentioncomponent";
 import TimeBetweenComponent from "./time/timebetweencomponent";
-import { useRouter } from "next/router";
 
 const DEBOUNCE_TIME = 100;
 

@@ -9,8 +9,7 @@ export default function PassionComponent() {
 			<div className="text-center mt-10">
 				<em className="text-2xl">
 					“If you are a chef, no matter how good a chef you are, it's not good
-					cooking for yourself; the joy is in cooking for others. It's the same
-					with music.” - Will.i.am
+					cooking for yourself; the joy is in cooking for others.” - Will.i.am
 				</em>
 			</div>
 			<div className="text-justify mt-5 border-l-2 border-l-white">
@@ -22,7 +21,7 @@ export default function PassionComponent() {
 				</p>
 				<br />
 				<p className="text-md pl-5">
-					That was far from my first trade-off. To my parents’ bewilderment, I
+					That was far from my first trade-off. To my parents' bewilderment, I
 					never hesitated to sacrifice Lego blocks, Tamagochi, or Spider-Man
 					action figures for a cast iron pan. That passion never left me; it
 					only grew stronger with time, as I discovered the joy of building
