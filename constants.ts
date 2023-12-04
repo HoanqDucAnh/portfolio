@@ -92,6 +92,15 @@ export const PROJECTS: IProject[] = [
 		tech: ["excel", "alteryx", "tableau-software"],
 	},
 	{
+		name: "Adventureworks-Analytics",
+		image: "/projects/adventure-analytics.png",
+		blurImage: "/projects/comingsoon.jpg",
+		description: "Adventureworks-Analytics",
+		gradient: ["#003052", "#167187"],
+		url: "https://github.com/MarkPhamm/Adventureworks-Analytics",
+		tech: ["python", "Microsoft SQL Server", "PowerBI", "azure"],
+	},
+	{
 		name: "Uber Analytics (GCP)",
 		image: "/projects/gcpuber.png",
 		blurImage: "/projects/gcpuber.png",
@@ -118,16 +127,6 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#ccb08f", "#f2ece4"],
 		url: "https://github.com/MarkPhamm/Python-Segment-Shopping-Customers",
 		tech: ["python", "numpy", "Pandas", "Matplotlib"],
-	},
-
-	{
-		name: "Adventureworks-Analytics",
-		image: "/projects/adventure-analytics.png",
-		blurImage: "/projects/comingsoon.jpg",
-		description: "Adventureworks-Analytics",
-		gradient: ["#003052", "#167187"],
-		url: "https://github.com/MarkPhamm/Adventureworks-Analytics",
-		tech: ["python", "Microsoft SQL Server", "PowerBI", "azure"],
 	},
 ];
 
@@ -301,6 +300,24 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 			"CEO, Founder @The Coconut consulting Academy, managed team of 10 consultants to generate 10000$ in yearly revenue",
 		image: "/timeline/Coconut.png",
 		slideImage: "/timeline/Coconut.png",
+		shouldDrawLine: true,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "Janurary 2024",
+		size: ItemSize.LARGE,
+		shouldDrawLine: false,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "Incoming BI-Analytics intern - Techsmith Corporation",
+		size: ItemSize.SMALL,
+		subtitle:
+			"BI & Analytics intern @Sales teams, focusing on ROI/Revenue report and prediction",
+		image: "/timeline/techsmith.jpg",
+		slideImage: "/timeline/techsmith.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},
