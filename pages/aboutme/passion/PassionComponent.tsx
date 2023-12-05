@@ -227,7 +227,7 @@ export default function PassionComponent() {
 				</div>
 				<div className="mt-2 text-center">
 					<Image
-						src={`/about/passion/carbo.jpg`}
+						src={`/about/passion/carbo.png`}
 						width={600}
 						height={450}
 						loading="lazy"
