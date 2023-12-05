@@ -283,7 +283,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 											"https://platform.stratascratch.com/user/SmartPersonality1862 "
 										}
 										target="_blank"
-										rel="noreferrer"
+										rel="noopener noreferrer"
 									>
 										<p className="text-4xl">
 											Clicked to visit my stratascratch!

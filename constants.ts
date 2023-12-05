@@ -58,9 +58,9 @@ export const MENULINKS = [
 ];
 
 export const TYPED_STRINGS = [
-	"738 SQL questions solved",
+	"900+ SQL questions solved",
 	"BI & Analytics Enthusiast",
-	"TCU Math and MIS class of 2025",
+	"TCU Math & MIS class of 2025",
 	"Certified Scrum Product Owner",
 ];
 
@@ -92,10 +92,10 @@ export const PROJECTS: IProject[] = [
 		tech: ["excel", "alteryx", "tableau-software"],
 	},
 	{
-		name: "Adventureworks-Analytics",
+		name: "Adventureworks Analytics",
 		image: "/projects/adventure-analytics.png",
 		blurImage: "/projects/comingsoon.jpg",
-		description: "Adventureworks-Analytics",
+		description: "Adventureworks Analytics",
 		gradient: ["#003052", "#167187"],
 		url: "https://github.com/MarkPhamm/Adventureworks-Analytics",
 		tech: ["python", "Microsoft SQL Server", "PowerBI", "azure"],
@@ -215,6 +215,24 @@ export enum ItemSize {
 export const TIMELINE: Array<TimelineNodeV2> = [
 	{
 		type: NodeTypes.CHECKPOINT,
+		title: "Janurary 2024",
+		size: ItemSize.LARGE,
+		shouldDrawLine: false,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "Incoming BI & Analytics intern - Techsmith Corporation",
+		size: ItemSize.SMALL,
+		subtitle:
+			"BI & Analytics intern @Sales teams, focusing on ROI/Revenue report and prediction",
+		image: "/timeline/techsmith.jpg",
+		slideImage: "/timeline/techsmith.jpg",
+		shouldDrawLine: true,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
 		title: "January 2023",
 		size: ItemSize.LARGE,
 		shouldDrawLine: false,
@@ -300,24 +318,6 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 			"CEO, Founder @The Coconut consulting Academy, managed team of 10 consultants to generate 10000$ in yearly revenue",
 		image: "/timeline/Coconut.png",
 		slideImage: "/timeline/Coconut.png",
-		shouldDrawLine: true,
-		alignment: Branch.LEFT,
-	},
-	{
-		type: NodeTypes.CHECKPOINT,
-		title: "Janurary 2024",
-		size: ItemSize.LARGE,
-		shouldDrawLine: false,
-		alignment: Branch.LEFT,
-	},
-	{
-		type: NodeTypes.CHECKPOINT,
-		title: "Incoming BI-Analytics intern - Techsmith Corporation",
-		size: ItemSize.SMALL,
-		subtitle:
-			"BI & Analytics intern @Sales teams, focusing on ROI/Revenue report and prediction",
-		image: "/timeline/techsmith.jpg",
-		slideImage: "/timeline/techsmith.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},
