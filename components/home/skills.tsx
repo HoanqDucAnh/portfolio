@@ -249,7 +249,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					</div>
 
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-2">
-						<div className="col-span-1">
+						{/* <div className="col-span-1">
 							<Image
 								key="stat"
 								src={`/skills/2nd/stats.png`}
@@ -258,8 +258,8 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 								height={350}
 								className="skill"
 							/>
-						</div>
-						<div className="col-span-1">
+						</div>{" "} */}
+						<div className="col-span-1 justify-center">
 							<div
 								className={`flex flex-col seq ${
 									willChange ? "will-change-opacity" : ""
@@ -278,18 +278,49 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 										<span className="text-[#f27d0d]">45</span> Hackerrank
 										problems solved
 									</p>
-									<Link
+									<a
 										href={
 											"https://platform.stratascratch.com/user/SmartPersonality1862 "
 										}
+										target="_blank"
 									>
 										<p className="text-4xl">
 											Clicked to visit my stratascratch!
 										</p>
-									</Link>
+									</a>
 								</div>
 							</div>
 						</div>
+						{/* <div className="col-span-1">
+							<Image
+								key="stat1"
+								src={`/skills/2nd/strata.png`}
+								alt="stat1"
+								width={350}
+								height={350}
+								className="skill"
+							/>
+						</div>
+						<div className="col-span-1">
+							<Image
+								key="stat2"
+								src={`/skills/2nd/hackerrank.png`}
+								alt="stat2"
+								width={350}
+								height={350}
+								className="skill"
+							/>
+						</div>
+						<div className="col-span-1">
+							<Image
+								key="stat3"
+								src={`/skills/2nd/leetcode.png`}
+								alt="stat3"
+								width={350}
+								height={350}
+								className="skill"
+							/>
+						</div> */}
 					</div>
 					{/* {render2ndSectionTitle("Certifications")} */}
 					<div className="flex flex-col mt-10">
