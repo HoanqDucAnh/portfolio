@@ -265,7 +265,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 									willChange ? "will-change-opacity" : ""
 								}`}
 							>
-								<div className="stats-number ">
+								{/* <div className="stats-number ">
 									<p className="text-4xl">
 										<span className="text-[#f27d0d] ">603</span> SQL questions
 										solved
@@ -289,7 +289,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 											Clicked to visit my stratascratch!
 										</p>
 									</a>
-								</div>
+								</div> */}
 							</div>
 						</div>
 						{/* <div className="col-span-1">

@@ -110,7 +110,7 @@ export const PROJECTS: IProject[] = [
 		tech: ["python", "gcp", "bigquery", "compute_engine"],
 	},
 	{
-		name: "AWS Spotify Analytics",
+		name: "Spotify Analytics (AWS)",
 		image: "/projects/awsspoti.png",
 		blurImage: "/projects/awsspoti.png",
 		description:
