@@ -335,17 +335,17 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						</div> */}
 					</div>
 					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-5">
-						<div className="col-span-1">
+						<div className="col-span-1 text-center">
 							<Tooltip text="Alteryx Core Designer">
 								{renderCertified(SKILLS.alteryx)}
 							</Tooltip>
 						</div>
-						<div className="col-span-1">
-							<Tooltip text="HackerRank">
+						<div className="col-span-1 text-center">
+							<Tooltip text="HackerRank SQL Advanced">
 								{renderCertified(SKILLS.hackerank)}
 							</Tooltip>
 						</div>
-						<div className="col-span-1">
+						<div className="col-span-1 text-center">
 							<Tooltip text="Certified Scrum Product Owner">
 								{renderCertified(SKILLS.scrum)}
 							</Tooltip>

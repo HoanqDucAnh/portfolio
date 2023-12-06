@@ -6,8 +6,7 @@
 
 export const METADATA = {
 	title: "Portfolio | Mark Pham",
-	description:
-		"I bridge the gap between design and development. I take responsibility to craft an aesthetic user experience using modern frontend architecture.",
+	description: "I bridge the gap between data and actionable insights",
 	siteUrl: "",
 };
 
@@ -64,11 +63,11 @@ export const TYPED_STRINGS = [
 	"Certified Scrum Product Owner",
 ];
 
-export const EMAIL = "ayush.singh.xda@gmail.com";
+export const EMAIL = "minh.b.pham@tcu.edu@gmail.com";
 
 export const SOCIAL_LINKS = {
-	linkedin: "https://www.linkedin.com/in/alphaayush/",
-	github: "https://github.com/ayush013",
+	linkedin: "https://www.linkedin.com/in/minhbphamm/",
+	github: "https://github.com/MarkPhamm",
 };
 
 export interface IProject {
@@ -92,10 +91,10 @@ export const PROJECTS: IProject[] = [
 		tech: ["excel", "alteryx", "tableau-software"],
 	},
 	{
-		name: "Adventureworks Analytics",
+		name: "AdventureWorks Analytics",
 		image: "/projects/adventure-analytics.png",
 		blurImage: "/projects/comingsoon.jpg",
-		description: "Adventureworks Analytics",
+		description: "AdventureWorks Analytics",
 		gradient: ["#003052", "#167187"],
 		url: "https://github.com/MarkPhamm/Adventureworks-Analytics",
 		tech: ["python", "Microsoft SQL Server", "PowerBI", "azure"],
@@ -133,12 +132,11 @@ export const PROJECTS: IProject[] = [
 export const SKILLS = {
 	technical: [
 		"Python",
-		"MySQL",
-		"PostgreSQL",
-		"MongoDB",
-		"Microsoft SQL Server",
 		"NumPy",
 		"Pandas",
+		"MySQL",
+		"Microsoft SQL Server",
+		"MongoDB",
 	],
 	visualization: [
 		"Quicksight",
@@ -227,10 +225,11 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "Incoming BI & Analytics intern - Techsmith Corporation",
+		title:
+			"Incoming BI & Analytics intern - <a class='underline underline-offset-2' href='https://www.techsmith.com/' target='_blank' rel='noopener noreferrer'>Techsmith</a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"BI & Analytics intern @Sales teams, focusing on ROI/Revenue report and prediction",
+			"BI & Analytics intern @Marketing/Sales teams, focusing on ROI/Revenue report and prediction",
 		image: "/timeline/techsmith.jpg",
 		slideImage: "/timeline/techsmith.jpg",
 		shouldDrawLine: true,
@@ -245,7 +244,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "BI & Analytics Intern - Corning Inc",
+		title:
+			"BI & Analytics Intern - <a class='' href='https://www.corning.com/worldwide/en.html' target='_blank' rel='noopener noreferrer'>Corning Inc</a>",
 		size: ItemSize.SMALL,
 		subtitle:
 			"BI & Analytics intern @Global Supply Chain Team, focusing on Logistic cost Analysis and Warehouse’s Location optimization",
@@ -263,30 +263,13 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "Product Management Intern - Stealth Startup",
+		title:
+			"Product Management Intern - <a class='' href='https://en.wikipedia.org/wiki/Stealth_startup' target='_blank' rel='noopener noreferrer'>Stealth Startup</a>",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Product Management @Payment Team, focusing on cryptocurrency payments",
 		image: "/timeline/Stealth1.jpg",
 		slideImage: "/timeline/Stealth.jpg",
-		shouldDrawLine: true,
-		alignment: Branch.LEFT,
-	},
-	{
-		type: NodeTypes.CHECKPOINT,
-		title: "May 2022",
-		size: ItemSize.LARGE,
-		shouldDrawLine: false,
-		alignment: Branch.LEFT,
-	},
-	{
-		type: NodeTypes.CHECKPOINT,
-		title: "Data Analyst intern - KPIM Consulting",
-		size: ItemSize.SMALL,
-		subtitle:
-			"Data Analyst @ BI team, focusing on creating ad-hoc report and dashboards for the Sales team",
-		image: "/timeline/KPIM1.jpg",
-		slideImage: "/timeline/KPIM.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},
@@ -299,7 +282,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "Data Analyst intern - NAPAS Vietnam",
+		title:
+			"Data Analyst intern - <a class='' href='https://en.napas.com.vn/' target='_blank' rel='noopener noreferrer'>NAPAS Vietnam</a>",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Data Analyst @ IT team, focusing on data warehouse modeling and data visualization",
@@ -308,6 +292,27 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "May 2022",
+		size: ItemSize.LARGE,
+		shouldDrawLine: false,
+		alignment: Branch.LEFT,
+	},
+
+	{
+		type: NodeTypes.CHECKPOINT,
+		title:
+			"Data Analyst intern - <a class='' href='https://kpim.vn/' target='_blank' rel='noopener noreferrer'>KPIM Consulting</a>",
+		size: ItemSize.SMALL,
+		subtitle:
+			"Data Analyst @BI team, focusing on creating ad-hoc report and dashboards for the Sales team",
+		image: "/timeline/KPIM1.jpg",
+		slideImage: "/timeline/KPIM.jpg",
+		shouldDrawLine: true,
+		alignment: Branch.LEFT,
+	},
+
 	{
 		type: NodeTypes.CHECKPOINT,
 		title: "May 2020",
