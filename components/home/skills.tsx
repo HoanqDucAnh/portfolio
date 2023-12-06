@@ -212,31 +212,28 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 			>
 				<div className="flex flex-col skills-wrapper">
 					{renderSectionTitle()}
-					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-2">
-						<div className="col-span-1">
+					<div className="grid lg:grid-cols-4 md:grid-cols-1 mt-10 gap-2">
+						<div className="col-span-2">
 							{renderSkillColumn("Visualization", SKILLS.visualization)}
 						</div>
 						<div className=" col-span-2">
 							{renderSkillColumn("Technical", SKILLS.technical)}
 						</div>
 					</div>
-					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-2">
-						<div className="col-span-1">
-							{renderSkillColumn("Statistics & Data Science", SKILLS.statistic)}
+					<div className="grid lg:grid-cols-4 md:grid-cols-1 mt-10 gap-2">
+						<div className="col-span-2">
+							{renderSkillColumn("Framework", COURSES.sysplan)}
 						</div>
 						<div className=" col-span-2">
 							{renderSkillColumn("Other tools", SKILLS.other)}
 						</div>
 					</div>
 					<div className="mt-10">
-						{renderSkillColumn("Framework", COURSES.sysplan)}
-					</div>
-					<div className="mt-10">
 						{renderSkillColumn("Clouds", SKILLS.clouds)}
 					</div>
 					<div className="flex flex-col mt-10">
-						<p className="section-title-sm seq">Stats</p>
-						<h1 className="section-heading seq mt-2">My stats</h1>
+						{/* <p className="section-title-sm seq">Stats</p>
+						<h1 className="section-heading seq mt-2">My stats</h1> */}
 						{/* <div className=" seq mt-2" style={{ width: "70%" }}>
 							<p className="text-sm ">
 								SQL problem-solver tackling real-world challenges for 2+ years.

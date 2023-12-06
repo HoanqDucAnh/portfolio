@@ -132,17 +132,22 @@ export const PROJECTS: IProject[] = [
 
 export const SKILLS = {
 	technical: [
+		"Python",
 		"MySQL",
 		"PostgreSQL",
 		"MongoDB",
 		"Microsoft SQL Server",
 		"NumPy",
 		"Pandas",
+	],
+	visualization: [
+		"Quicksight",
+		"Tableau",
+		"PowerBI",
+		"GCP Looker",
 		"Matplotlib",
 		"Seaborn",
 	],
-	statistic: ["Excel", "Jupyter Notebook", "Python"],
-	visualization: ["Quicksight", "Tableau", "PowerBI", "GCP Looker"],
 	clouds: [
 		"AWS S3",
 		"AWS EC2",
@@ -155,7 +160,7 @@ export const SKILLS = {
 		"GCP Bigquery",
 		"Google Cloud",
 	],
-	other: ["Alteryx", "Snowflake", "Databricks", "Mage AI", "SAP ERP"],
+	other: ["Alteryx", "Snowflake", "Databricks", "Mage AI", "SAP ERP", "Excel"],
 
 	certified: [
 		"Certified Scrum Product Owner",
@@ -297,7 +302,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		title: "Data Analyst intern - NAPAS Vietnam",
 		size: ItemSize.SMALL,
 		subtitle:
-			"Data Analyst @ IT team, focusing on data house modeling and data visualization",
+			"Data Analyst @ IT team, focusing on data warehouse modeling and data visualization",
 		image: "/timeline/NAPAS1.png",
 		slideImage: "/timeline/NAPAS.jpg",
 		shouldDrawLine: true,
