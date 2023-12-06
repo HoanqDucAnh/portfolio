@@ -226,7 +226,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	{
 		type: NodeTypes.CHECKPOINT,
 		title:
-			"Incoming BI & Analytics intern - <a class='underline underline-offset-2' href='https://www.techsmith.com/' target='_blank' rel='noopener noreferrer'>Techsmith</a>",
+			"Incoming BI & Analytics intern - <a class='underline underline-offset-2' href='https://www.techsmith.com/' target='_blank' rel='noopener noreferrer'><u>Techsmith</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
 			"BI & Analytics intern @Marketing/Sales teams, focusing on ROI/Revenue report and prediction",
@@ -245,7 +245,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	{
 		type: NodeTypes.CHECKPOINT,
 		title:
-			"BI & Analytics Intern - <a class='' href='https://www.corning.com/worldwide/en.html' target='_blank' rel='noopener noreferrer'>Corning Inc</a>",
+			"BI & Analytics Intern - <a class='' href='https://www.corning.com/worldwide/en.html' target='_blank' rel='noopener noreferrer'><u>Corning Inc</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
 			"BI & Analytics intern @Global Supply Chain Team, focusing on Logistic cost Analysis and Warehouse’s Location optimization",
@@ -264,7 +264,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	{
 		type: NodeTypes.CHECKPOINT,
 		title:
-			"Product Management Intern - <a class='' href='https://en.wikipedia.org/wiki/Stealth_startup' target='_blank' rel='noopener noreferrer'>Stealth Startup</a>",
+			"Product Management Intern - <a class='' href='https://en.wikipedia.org/wiki/Stealth_startup' target='_blank' rel='noopener noreferrer'><u>Stealth Startup</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Product Management @Payment Team, focusing on cryptocurrency payments",
@@ -283,7 +283,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	{
 		type: NodeTypes.CHECKPOINT,
 		title:
-			"Data Analyst intern - <a class='' href='https://en.napas.com.vn/' target='_blank' rel='noopener noreferrer'>NAPAS Vietnam</a>",
+			"Data Analyst intern - <a class='' href='https://en.napas.com.vn/' target='_blank' rel='noopener noreferrer'><u>NAPAS Vietnam</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Data Analyst @ IT team, focusing on data warehouse modeling and data visualization",
@@ -303,7 +303,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	{
 		type: NodeTypes.CHECKPOINT,
 		title:
-			"Data Analyst intern - <a class='' href='https://kpim.vn/' target='_blank' rel='noopener noreferrer'>KPIM Consulting</a>",
+			"Data Analyst intern - <a class='' href='https://kpim.vn/' target='_blank' rel='noopener noreferrer'><u>KPIM Consulting</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Data Analyst @BI team, focusing on creating ad-hoc report and dashboards for the Sales team",
