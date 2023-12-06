@@ -263,8 +263,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title:
-			"Product Management Intern - <a class='' href='https://en.wikipedia.org/wiki/Stealth_startup' target='_blank' rel='noopener noreferrer'><u>Stealth Startup</u></a>",
+		title: "Product Management Intern - Stealth",
 		size: ItemSize.SMALL,
 		subtitle:
 			"Product Management @Payment Team, focusing on cryptocurrency payments",
