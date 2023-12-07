@@ -86,7 +86,7 @@ export default function PassionComponent() {
 						</div>
 					</div>
 				</div>
-				<div className="text-md mt-2">
+				{/* <div className="text-md mt-2">
 					<ul className="list-disc ">
 						My journey to mastering the art of cooking steak has unveiled a few
 						key secrets that consistently result in a mouthwatering dish:
@@ -114,37 +114,39 @@ export default function PassionComponent() {
 							this step should not be rushed.
 						</li>
 					</ul>
+				</div> */}
+				<div className="grid grid-cols-2 mt-2">
+					<div className="col-span-1 text-center">
+						<Image
+							src={`/about/passion/steak2.jpeg`}
+							width={500}
+							height={500}
+							loading="lazy"
+							alt="steak1"
+							className="rounded-xl m-auto"
+						/>
+						<p className="text-xs opacity-75 italic">
+							Dried Aged Rib eye with Rosemary, Thyme and Garlic Butter
+						</p>
+					</div>
+					<div className="col-span-1 text-center">
+						<Image
+							src={`/about/passion/steak3.jpg`}
+							width={500}
+							height={500}
+							loading="lazy"
+							alt="steak1"
+							className="rounded-xl m-auto"
+						/>
+						<p className="text-xs opacity-75 italic">
+							Seared Lamb rack with Rosemary, Thyme and Garlic Butter
+						</p>
+					</div>
 				</div>
-				<div className="mt-2 text-center">
-					<Image
-						src={`/about/passion/steak2.jpeg`}
-						width={500}
-						height={500}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl m-auto"
-					/>
-					<p className="text-xs opacity-75 italic">
-						Dried Aged Rib eye with Rosemary, Thyme and Garlic Butter
-					</p>
-				</div>
-				<div className="text-md mt-1">
+				<div className="text-md mt-2">
 					Having mastered the art of cooking steak, I ventured into the realm of
 					a more challenging ingredient: a rack of lamb. Despite the added
 					complexity, the satisfaction of mastering lamb was truly rewarding
-				</div>
-				<div className="mt-2 text-center">
-					<Image
-						src={`/about/passion/steak3.jpg`}
-						width={500}
-						height={500}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl m-auto"
-					/>
-					<p className="text-xs opacity-75 italic">
-						Seared Lamb rack with Rosemary, Thyme and Garlic Butter
-					</p>
 				</div>
 				<div className="text-3xl text-[#f27d0d] mt-5">Italian Food</div>
 				<div className="text-md mt-1 mb-2">
