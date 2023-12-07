@@ -17,17 +17,9 @@ export default function PassionComponent() {
 					$300 could get me a PlayStation4, a pair of Nike Air Jordans, or the
 					latest iPod. Despite the allure of consumerism, I ended up trading
 					$300 for a red cart, a second-hand bike, rosemary, ketchup, spices,
-					and a small grill. They have been my companion ever since.
+					and a small grill.
 				</p>
 				<br />
-				<p className="text-md pl-5">
-					That was far from my first trade-off. To my parents' bewilderment, I
-					never hesitated to sacrifice Lego blocks, Tamagochi, or Spider-Man
-					action figures for a cast iron pan. That passion never left me; it
-					only grew stronger with time, as I discovered the joy of building
-					meals and crafting memories that would last far longer than any toy or
-					gadget ever could.
-				</p>
 			</div>
 			<div className="text-justify mt-5">
 				<div className="text-3xl text-[#f27d0d]">
