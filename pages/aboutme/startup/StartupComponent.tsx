@@ -37,16 +37,11 @@ export default function StartupComponent() {
 					/>
 				</div>
 				<div className="text-md mt-2">
-					I am an eloquent person who is hungry for innovative ideas and loves
-					to delve into the intrinsic values of everything. "Do what you love,
-					and love what you do." I live to this quote. I would sacrifice myself
-					for something I belong to or have nothing; there is no in-between.
-					Once it is meant to be, I fight for it. It has become my priority and
-					my strength. I give 100% of my effort and time to the position I love.
-					Resilience runs in my blood, as I always try to overcome difficulties
-					in the best way possible. No matter what I do and how I do it, I
-					always promise to be a wise person who empowers people and endeavors
-					to inspire devotion in others.
+					I am an eloquent individual driven by innovative ideas, passionately
+					embodying the philosophy of 'Do what you love, and love what you do.'
+					Committed to giving 100%, I prioritize and dedicate myself to my
+					pursuits, demonstrating resilience and a commitment to empowering and
+					inspiring others.
 				</div>
 				<div className="mt-2 text-center">
 					<Image
@@ -59,20 +54,12 @@ export default function StartupComponent() {
 					/>
 				</div>
 				<div className="text-md mt-2">
-					The Coconut Consulting Academy (TCCA) is my first startup built on the
-					mission of helping worldwide students apply to American universities.
-					With a dedicated three-member board of committee, we recruit and lead
-					employees from Ivy Leagues to supervise students with their
-					application process. Our model is simple yet effective: We will assign
-					each student with a group of “advisors” who guide them through every
-					step of the United States race: the essays, recommendation letters,
-					school lists, etc. Throughout the process, we ask for feedback from
-					our clients to ensure the best and most satisfying. Coconut Consulting
-					Academy has been working and operating since May 2021, received more
-					than 10,000 in revenue, and had 1000+ reaches on social media
-					platforms. Still, the start-up is constantly developing and adapting
-					to fulfill the needs of high school students to study abroad in the
-					United States.
+					Launched in May 2021, Coconut Consulting Academy (TCCA) is my
+					inaugural startup dedicated to assisting global students in applying
+					to American universities. With a simple and effective model, we've
+					garnered over $10,000 in revenue and reached 1000+ individuals on
+					social media, continually evolving to meet the needs of high school
+					students pursuing education in the United States.
 				</div>
 				<div className="text-3xl text-[#f27d0d] mt-5">Coconut's team</div>
 				<div className="mt-2 text-center">
@@ -87,14 +74,11 @@ export default function StartupComponent() {
 				</div>
 				<div className="text-md mt-2">
 					<ul className="list-disc ">
-						For us, having a team of high-quality essay writers is essential.
-						Essays have become the 'heart and soul' of every application package
-						sent to university admissions committees. Guiding, advising, and
-						providing thoughtful feedback on each primary and supplemental essay
-						is crucial in ensuring that Dừa's students are exceptionally
-						well-prepared for their application journeys. This success story
-						could not have been achieved without the invaluable contributions of
-						our dedicated team members:
+						For us, a team of high-quality essay writers is indispensable as
+						essays constitute the 'heart and soul' of every university
+						application. The success of our students' application journeys is
+						attributed to the guidance, advice, and thoughtful feedback provided
+						by our dedicated team members.
 						<li className="ml-7 my-1">
 							<span className="text-[#f27d0d]">Linh Nguyen </span> (Washington
 							and Lee University, 1550 SAT)

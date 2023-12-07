@@ -107,7 +107,7 @@ export default function PassionComponent() {
 						</li>
 					</ul>
 				</div> */}
-				<div className="grid grid-cols-2 mt-2">
+				<div className="grid grid-cols-2 gap-5 mt-2">
 					<div className="col-span-1 text-center">
 						<Image
 							src={`/about/passion/steak2.jpeg`}
