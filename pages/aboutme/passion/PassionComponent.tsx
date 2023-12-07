@@ -35,11 +35,11 @@ export default function PassionComponent() {
 				</div>
 				<div className="text-md mt-5">
 					My Favorite Dish for Family Rituals and Anniversaries
-					<br /> "I have a special dish that I love to prepare for family
-					gatherings and anniversaries. This dish features traditional
-					Vietnamese ingredients like quail eggs and char siu pork, which evoke
-					memories of old Vietnamese cuisine. What makes it even more remarkable
-					is the deep sense of connection it brings.
+					<br /> For family gatherings and anniversaries, I usually prepare a
+					special Vietnamese dish with quail eggs and char siu pork, embodying
+					nostalgic flavors. The magic lies in the profound connection it
+					fosters, merging my love for cooking with the joy it brings to my
+					family."
 				</div>
 				<div className="mt-2 text-center">
 					<Image
@@ -55,13 +55,7 @@ export default function PassionComponent() {
 						Quail Eggs and Bok Choy
 					</p>
 				</div>
-				<div className="text-md mt-2">
-					It's truly magical how my passion for cooking and my love for my
-					family come together when I make this dish. Nothing quite like the
-					happiness that fills the room when I serve a simple plate of noodles
-					with quail eggs, char siu, and bok choy. I cherish how my food
-					strengthens the emotional bonds between me and my loved ones."
-				</div>
+
 				<div className="text-3xl text-[#f27d0d] mt-5">
 					My Favorite Dish - Steak
 				</div>
@@ -81,17 +75,14 @@ export default function PassionComponent() {
 					</div>
 					<div className="col-span-6 justify-center align-middle">
 						<div className="text-md">
-							My first steak, as my mom remarked, was burnt on the outside,
-							under-seasoned, and tasted like rubber, and my second try was not
-							much better - still bland and undercooked. What I love about
-							cooking steak is that, even though it’s a simple ingredient,
-							taking it to another level involves many factors. From the
-							temperature of the cast iron pan, seasoning on the crust, and
-							basting techniques, everything has to be “perfect.”I always try
-							putting my heart on the plate, and after trying hundreds of times,
-							I eventually achieved what I perceived as a sensational steak.
-							Nothing tastes better than a well-seared, medium rare,
-							rosemary-thyme butter-basting dried age ribeye.
+							My early attempts at cooking steak were less than stellar,
+							described by my mom as burnt, under-seasoned, and rubbery. The
+							journey to mastering the art of steak involves meticulous factors,
+							from pan temperature to seasoning and basting techniques. After
+							numerous tries, I achieved the pinnacle of my efforts – a
+							sensational, well-seared, medium rare, rosemary-thyme
+							butter-basted dry-aged ribeye that truly reflects my passion and
+							dedication
 						</div>
 					</div>
 				</div>
@@ -138,16 +129,9 @@ export default function PassionComponent() {
 					</p>
 				</div>
 				<div className="text-md mt-1">
-					After mastering the art of cooking steak, I decided to take on a more
-					challenging ingredient: a rack of lamb. While I applied the same
-					principles of seasoning, searing, and basting, I soon realized that
-					lamb presented unique difficulties. Unlike steak, lamb's tender
-					texture made achieving a perfect crust trickier. It was also easier to
-					overcook, demanding precise timing. The thick fat cap on the top side
-					was a particular challenge, requiring careful rendering to achieve a
-					crispy texture without compromising the meat beneath. Despite the
-					added complexity, the satisfaction of mastering lamb was well worth
-					the effort.
+					Having mastered the art of cooking steak, I ventured into the realm of
+					a more challenging ingredient: a rack of lamb. Despite the added
+					complexity, the satisfaction of mastering lamb was truly rewarding
 				</div>
 				<div className="mt-2 text-center">
 					<Image
@@ -196,11 +180,11 @@ export default function PassionComponent() {
 							Spaghetti Con ill to tonno
 						</div>
 						<div className="text-md mt-1 mb-4">
-							Spaghetti con il tonno, another Italian classic, which is a dish
-							that I adore creating. This simple yet delightful dish features al
-							dente spaghetti tossed with tender tuna flakes, aromatic garlic,
-							and olive oil. The marriage of these ingredients results in a
-							light, flavorful, satisfying, and comforting pasta.
+							Spaghetti con il tonno, another Italian classic, is a dish that I
+							adore creating. This simple yet delightful dish features al dente
+							spaghetti tossed with tender tuna flakes, aromatic garlic, and
+							olive oil. The marriage of these ingredients results in a light,
+							flavorful, satisfying, and comforting pasta.
 						</div>
 						<Image
 							src={`/about/passion/sphagheti2.jpg`}
@@ -217,13 +201,12 @@ export default function PassionComponent() {
 				</div>
 				<div className="text-3xl text-[#f27d0d] mt-5">Seafood Carbonara</div>
 				<div className="text-md mt-1">
-					Then there's Seafood Carbonara, a heavenly concoction combining
-					carbonara sauce's richness with the ocean's bounty. There’s no cream
-					in carbonara, so the richness has to come from the Parmigiano Reggiano
-					and the egg itself. The creamy, egg-based sauce envelops a medley of
-					succulent seafood, including plump shrimp and tender pieces of crab or
-					lobster. When served over perfectly cooked pasta, it creates a
-					symphony of textures and tastes that's nothing short of divine.
+					Seafood Carbonara is a heavenly fusion, blending the richness of
+					carbonara sauce with a medley of succulent seafood, including plump
+					shrimp and tender crab or lobster. The creamy, egg-based sauce,
+					enriched with Parmigiano Reggiano, elevates the dish to a divine
+					symphony of textures and tastes when served over perfectly cooked
+					pasta.
 				</div>
 				<div className="mt-2 text-center">
 					<Image
@@ -242,15 +225,11 @@ export default function PassionComponent() {
 					Crispy Skin Salmon (with asparagus and garlic chips)
 				</div>
 				<div className="text-md mt-1">
-					Imagine savoring a plate of Crispy Skin Salmon, a delightful dance of
-					textures and flavors. The salmon steals the show with its perfectly
-					crispy skin and tender, buttery flesh. Alongside it, you'll find
-					fresh, crunchy asparagus, adding a burst of color and earthy goodness.
-					But the real magic? Those garlic chips! Thinly sliced and crisped to
-					perfection, they bring a delightful hint of garlicky goodness to the
-					party. This dish isn't just a treat for the taste buds; it's a
-					celebration of simple ingredients coming together to create culinary
-					magic. Give it a try, and let your taste buds thank you later!
+					Indulge in the delightful experience of Crispy Skin Salmon—a perfect
+					harmony of textures and flavors. With its perfectly crispy skin,
+					buttery flesh, fresh asparagus, and magical garlic chips, this dish is
+					a celebration of simple ingredients creating culinary magic that will
+					leave your taste buds thanking you
 				</div>
 				<div className="mt-2 text-center">
 					<Image

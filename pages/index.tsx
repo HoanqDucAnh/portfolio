@@ -84,7 +84,6 @@ export default function Home() {
 					<AboutSection />
 					<ProjectsSection isDesktop={isDesktop} />
 					<QuoteSection />
-
 					<SkillsSection isDesktop={isDesktop} />
 					<ArticleSection />
 					<TimelineSection isDesktop={isDesktop} />
