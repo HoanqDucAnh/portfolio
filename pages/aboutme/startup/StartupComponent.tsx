@@ -126,16 +126,17 @@ export default function StartupComponent() {
 				</div>
 				<div className="text-md mt-1 mb-2">
 					<p>
-						At our company, we take immense pride in helping our clients achieve
-						their dreams of studying abroad, and today, we are thrilled to share
-						the remarkable success story of Mr. Vũ Bảo Tín. When Tín first
-						approached us in July, he carried a heart full of passion and
-						unwavering determination to set foot on American soil and pursue his
-						higher education dreams. His journey with TCCA began with
-						apprehension and uncertainty, but he never let go of his
-						aspirations.
+						At our company, we take immense pride in sharing the remarkable
+						success story of Mr. Vũ Bảo Tín, who approached TCCA in July with a
+						determination to pursue higher education in the United States. Tín
+						has secured acceptance letters and substantial scholarships from
+						four prestigious American universities, with annual awards ranging
+						from $37,500 to $45,500, showcasing his commendable achievement. We
+						extend our warmest congratulations to Tín and eagerly anticipate his
+						continued success, proud to have played a role in his educational
+						journey at our company.
 					</p>
-					<br />
+					{/* <br />
 					<p>
 						Tín has received acceptance letters and, to our utmost delight,
 						substantial scholarships from four prestigious American
@@ -156,7 +157,7 @@ export default function StartupComponent() {
 						growth and achievements. Together, we will continue to help our
 						clients achieve their dreams of attending renowned institutions like
 						Augustana University in the United States and beyond.
-					</p>
+					</p> */}
 				</div>
 			</div>
 		</div>
