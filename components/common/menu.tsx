@@ -38,6 +38,32 @@ const Menu = ({
 								</a>
 							</li>
 						))}
+						<li
+							className="p-0 m-6 text-2xl block"
+							key="passion"
+							role="menuitem"
+						>
+							<a
+								className="link relative inline font-bold text-5xl duration-300 hover:no-underline"
+								href="/aboutme/passion"
+								onClick={setmenuVisible.bind(null, false)}
+							>
+								My Passion
+							</a>
+						</li>
+						<li
+							className="p-0 m-6 text-2xl block"
+							key="startup"
+							role="menuitem"
+						>
+							<a
+								className="link relative inline font-bold text-5xl duration-300 hover:no-underline"
+								href="/aboutme/startup"
+								onClick={setmenuVisible.bind(null, false)}
+							>
+								My Startup
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>

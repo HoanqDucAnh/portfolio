@@ -66,7 +66,7 @@ export default function PassionComponent() {
 						</div>
 					</div>
 					<div className="col-span-6 justify-center align-middle">
-						<div className="text-md">
+						<div className="text-xl">
 							My early attempts at cooking steak were less than stellar,
 							described by my mom as burnt, under-seasoned, and rubbery. The
 							journey to mastering the art of steak involves meticulous factors,
