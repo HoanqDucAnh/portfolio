@@ -225,10 +225,10 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "CEO, Founder - The Coconut Consulting Academy",
+		title: "BI & Engineering intern - Lazard",
 		size: ItemSize.SMALL,
 		subtitle:
-			"BI & Engineering intern - Lazard",
+			"BI & Engineering intern @FABT team, focusing on data engineering and ETL pipelines",
 		image: "/timeline/lazard.jpg",
 		slideImage: "/timeline/lazard.jpg",
 		shouldDrawLine: true,
