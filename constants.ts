@@ -218,6 +218,24 @@ export enum ItemSize {
 export const TIMELINE: Array<TimelineNodeV2> = [
 	{
 		type: NodeTypes.CHECKPOINT,
+		title: "June 2024",
+		size: ItemSize.LARGE,
+		shouldDrawLine: false,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "CEO, Founder - The Coconut Consulting Academy",
+		size: ItemSize.SMALL,
+		subtitle:
+			"BI & Engineering intern - Lazard",
+		image: "/timeline/lazard.jpg",
+		slideImage: "/timeline/lazard.jpg",
+		shouldDrawLine: true,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
 		title: "Janurary 2024",
 		size: ItemSize.LARGE,
 		shouldDrawLine: false,
@@ -330,6 +348,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},
+	
 ];
 
 export type TimelineNodeV2 = CheckpointNode | BranchNode;
