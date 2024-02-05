@@ -229,8 +229,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		size: ItemSize.SMALL,
 		subtitle:
 			"BI & Engineering intern @FABT team, focusing on data engineering and ETL pipelines",
-		image: "/timeline/lazard.jpg",
-		slideImage: "/timeline/lazard.jpg",
+		image: "/timeline/lazard.png",
+		slideImage: "/timeline/lazard.png",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},
