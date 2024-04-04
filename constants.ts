@@ -82,6 +82,15 @@ export interface IProject {
 
 export const PROJECTS: IProject[] = [
 	{
+		name: "British Airway Review",
+		image: "/projects/brit_airway_review.png",
+		blurImage: "/projects/brit_airway_review.png",
+		description: "End-to-end Analytics Project for British Airway",
+		gradient: ["#1b1b1b", "#d8d8d8"],
+		url: "https://github.com/MarkPhamm/British-Airway",
+		tech: ["python", "PowerBI", "Lambda", "Microsoft SQL Server"],
+	},
+	{
 		name: "Sample Sales Dashboard",
 		image: "/projects/samplesale.png",
 		blurImage: "/projects/samplesale.png",
@@ -127,15 +136,7 @@ export const PROJECTS: IProject[] = [
 		url: "https://github.com/MarkPhamm/Python-Segment-Shopping-Customers",
 		tech: ["python", "numpy", "Pandas", "Matplotlib"],
 	},
-	{
-		name: "British Airway Review",
-		image: "/projects/brit_airway_review.png",
-		blurImage: "/projects/brit_airway_review.png",
-		description: "End-to-end Analytics Project for British Airway",
-		gradient: ["#1b1b1b", "#d8d8d8"],
-		url: "https://github.com/MarkPhamm/British-Airway",
-		tech: ["python", "PowerBI", "Lambda", "mysql"],
-	}
+	
 ];
 
 export const SKILLS = {
