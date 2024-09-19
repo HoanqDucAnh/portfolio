@@ -29,9 +29,9 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		useState(false);
 	const options = [
 		{ value: "All", label: "All" },
-		{ value: ProjectTypes.ENDTOEND, label: "End to End" },
-		{ value: ProjectTypes.BIDASHBOARDVIZ, label: "BI Dashboard & Viz" },
-		{ value: ProjectTypes.STATISTICSML, label: "Statistics & ML" },
+		{ value: ProjectTypes.STATISTICSML, label: "Statistics - ML&AI" },
+		{ value: ProjectTypes.BIDASHBOARDVIZ, label: "Interactive BI Dashboard" },
+		{ value: ProjectTypes.ENDTOEND, label: "End-to-End Analytics" },
 	];
 
 	const scrollLeft = () => {
