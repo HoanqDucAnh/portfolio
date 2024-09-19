@@ -72,6 +72,7 @@ export const SOCIAL_LINKS = {
 
 export interface IProject {
 	name: string;
+	category: string;
 	image: string;
 	blurImage: string;
 	description: string;
@@ -80,9 +81,16 @@ export interface IProject {
 	tech: string[];
 }
 
+export const ProjectTypes = {
+	ENDTOEND: "End-to-End data analytics",
+	BIDASHBOARDVIZ: "BI - Dashboard - Visualization",
+	STATISTICSML: "Statistics - ML - AL project",
+}
+
 export const PROJECTS: IProject[] = [
 	{
 		name: "British Airway Review",
+		category: ProjectTypes.ENDTOEND,
 		image: "/projects/brit_airway_review.png",
 		blurImage: "/projects/brit_airway_review.png",
 		description: "End-to-end Analytics Project for British Airway",
@@ -92,6 +100,7 @@ export const PROJECTS: IProject[] = [
 	},
 	{
 		name: "Sample Sales Dashboard",
+		category: ProjectTypes.BIDASHBOARDVIZ,
 		image: "/projects/samplesale.png",
 		blurImage: "/projects/samplesale.png",
 		description: "Sales Dashboard with key metrics for Global Superstore",
@@ -101,6 +110,7 @@ export const PROJECTS: IProject[] = [
 	},
 	{
 		name: "AdventureWorks Analytics",
+		category: ProjectTypes.ENDTOEND,
 		image: "/projects/adventure-analytics.png",
 		blurImage: "/projects/comingsoon.jpg",
 		description: "AdventureWorks Analytics",
@@ -110,6 +120,7 @@ export const PROJECTS: IProject[] = [
 	},
 	{
 		name: "Uber Analytics (GCP)",
+		category: ProjectTypes.ENDTOEND,
 		image: "/projects/gcpuber.png",
 		blurImage: "/projects/gcpuber.png",
 		description: "End-to-end ETL data pipeline integrating Uber data",
@@ -119,6 +130,7 @@ export const PROJECTS: IProject[] = [
 	},
 	{
 		name: "Spotify Analytics (AWS)",
+		category: ProjectTypes.ENDTOEND,
 		image: "/projects/awsspoti.png",
 		blurImage: "/projects/awsspoti.png",
 		description:
@@ -129,6 +141,7 @@ export const PROJECTS: IProject[] = [
 	},
 	{
 		name: "Segment Shopping Customers",
+		category: ProjectTypes.STATISTICSML,
 		image: "/projects/segment.png",
 		blurImage: "/projects/segment.png",
 		description: "K-Means Clustering Algorithm for Market Segmentation",
@@ -136,7 +149,46 @@ export const PROJECTS: IProject[] = [
 		url: "https://github.com/MarkPhamm/Python-Segment-Shopping-Customers",
 		tech: ["python", "numpy", "Pandas", "Matplotlib"],
 	},
-	
+	{
+		name: "Statistics Calculator",
+		category: ProjectTypes.STATISTICSML,
+		image: "/projects/StatCal.jpg",
+		blurImage: "/projects/StatCal.jpg",
+		description: "Statistical Calculator for A/B testing and T-test",
+		gradient: ["#191414", "#f5f5f5"],
+		url: "https://github.com/MarkPhamm/Stats-Calculator",
+		tech: ["python", "streamlit", "normalDis"],
+	},
+	{
+		name: "Marketing Campaign Analysis",
+		category: ProjectTypes.BIDASHBOARDVIZ,
+		image: "/projects/marketing.jpg",
+		blurImage: "/projects/marketing.jpg",
+		description: "Marketing Campaign Analysis for a retail company",
+		gradient: ["#167187", "#09091a"],
+		url: "https://mavenanalytics.io/project/19447",
+		tech: ["PowerBI", "Excel"],
+	},
+	{
+		name: "EaseMyTrip Airline Dashboard",
+		category: ProjectTypes.BIDASHBOARDVIZ,
+		image: "/projects/easeMyTrip.jpg",
+		blurImage: "/projects/easeMyTrip.jpg",
+		description: "Airline Dashboard for EaseMyTrip",
+		gradient: ["#ffddaa", "#49789d"],
+		url: "https://mavenanalytics.io/project/19418",
+		tech: ["PowerBI", "Excel"],
+	},
+	{
+		name: "United Ways Tax Advisor Chatbot",
+		category: ProjectTypes.STATISTICSML,
+		image: "/projects/comingsoon.jpg",
+		blurImage: "/projects/comingsoon.jpg",
+		description: "Tax Advisor Chatbot using NLP and Machine Learning",
+		gradient: ["#49789d", "#191414"],
+		url: "",
+		tech: ["python", "langchain", "openai"],
+	}
 ];
 
 export const SKILLS = {

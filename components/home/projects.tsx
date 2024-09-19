@@ -5,121 +5,46 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
-import { MENULINKS, PROJECTS } from "../../constants";
+import { MENULINKS, PROJECTS, ProjectTypes } from "../../constants";
 import ProjectTile from "../common/project-tile";
-import { gsap, Linear } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { IDesktop, NO_MOTION_PREFERENCE_QUERY } from "pages";
+import { IDesktop } from "pages";
+import Select from "react-select";
+import Control from "react-select/dist/declarations/src/components/Control";
 
 const PROJECT_STYLES = {
 	SECTION:
 		"w-full relative select-none section-container flex-col flex py-8 justify-center",
-	PROJECTS_WRAPPER:
-		"tall:mt-12 mt-6 grid grid-flow-col auto-cols-max md:gap-10 gap-6 project-wrapper w-fit seq snap-x scroll-pl-6 snap-mandatory",
+	PROJECTS_WRAPPER: "tall:mt-8 mt- md:gap-10 gap-6 seq snap-x snap-mandatory",
 };
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {
 	const targetSectionRef: MutableRefObject<HTMLDivElement> = useRef(null);
+	const projectWrapperRef = useRef(null);
 	const sectionTitleElementRef: MutableRefObject<HTMLDivElement> = useRef(null);
 
+	const [projectCategory, setprojectCategory] = useState("All");
+	let renderedPrjectsNumber = PROJECTS.length;
 	const [willChange, setwillChange] = useState(false);
 	const [horizontalAnimationEnabled, sethorizontalAnimationEnabled] =
 		useState(false);
+	const options = [
+		{ value: "All", label: "All" },
+		{ value: ProjectTypes.ENDTOEND, label: "End to End" },
+		{ value: ProjectTypes.BIDASHBOARDVIZ, label: "BI Dashboard & Viz" },
+		{ value: ProjectTypes.STATISTICSML, label: "Statistics & ML" },
+	];
 
-	const initRevealAnimation = (
-		targetSectionRef: MutableRefObject<HTMLDivElement>
-	): [GSAPTimeline, ScrollTrigger] => {
-		const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-		revealTl.from(
-			targetSectionRef.current.querySelectorAll(".seq"),
-			{ opacity: 0, duration: 0.5, stagger: 0.5 },
-			"<"
-		);
-
-		const scrollTrigger = ScrollTrigger.create({
-			trigger: targetSectionRef.current,
-			start: "top bottom",
-			end: "bottom bottom",
-			scrub: 0,
-			animation: revealTl,
-		});
-
-		return [revealTl, scrollTrigger];
+	const scrollLeft = () => {
+		const projectWrapper = projectWrapperRef.current;
+		const projectWidth = projectWrapper.children[0].offsetWidth;
+		projectWrapper.scrollBy({ left: -projectWidth, behavior: "smooth" });
 	};
 
-	const initProjectsAnimation = (
-		targetSectionRef: MutableRefObject<HTMLDivElement>,
-		sectionTitleElementRef: MutableRefObject<HTMLDivElement>
-	): [GSAPTimeline, ScrollTrigger] => {
-		const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-		const sidePadding =
-			document.body.clientWidth -
-			targetSectionRef.current.querySelector(".inner-container").clientWidth;
-		const elementWidth =
-			sidePadding +
-			targetSectionRef.current.querySelector(".project-wrapper").clientWidth;
-		targetSectionRef.current.style.width = `${elementWidth}px`;
-		const width = window.innerWidth - elementWidth;
-		const duration = `${(elementWidth / window.innerHeight) * 100}%`;
-		timeline
-			.to(targetSectionRef.current, { x: width })
-			.to(sectionTitleElementRef.current, { x: -width }, "<");
-
-		const scrollTrigger = ScrollTrigger.create({
-			trigger: targetSectionRef.current,
-			start: "top top",
-			end: duration,
-			scrub: 0,
-			pin: true,
-			animation: timeline,
-			pinSpacing: "margin",
-			onToggle: (self) => setwillChange(self.isActive),
-		});
-
-		return [timeline, scrollTrigger];
+	const scrollRight = () => {
+		const projectWrapper = projectWrapperRef.current;
+		const projectWidth = projectWrapper.children[0].offsetWidth;
+		projectWrapper.scrollBy({ left: projectWidth, behavior: "smooth" });
 	};
-
-	useEffect(() => {
-		let projectsScrollTrigger: ScrollTrigger | undefined;
-		let projectsTimeline: GSAPTimeline | undefined;
-
-		const { matches } = window.matchMedia(NO_MOTION_PREFERENCE_QUERY);
-
-		sethorizontalAnimationEnabled(isDesktop && matches);
-
-		if (isDesktop && matches) {
-			[projectsTimeline, projectsScrollTrigger] = initProjectsAnimation(
-				targetSectionRef,
-				sectionTitleElementRef
-			);
-		} else {
-			const projectWrapper = targetSectionRef.current.querySelector(
-				".project-wrapper"
-			) as HTMLDivElement;
-			const parentPadding = window
-				.getComputedStyle(targetSectionRef.current)
-				.getPropertyValue("padding-left");
-
-			targetSectionRef.current.style.setProperty("width", "100%");
-			projectWrapper.classList.add("overflow-x-auto");
-			projectWrapper.style.setProperty("width", `calc(100vw)`);
-			projectWrapper.style.setProperty("padding", `0 ${parentPadding}`);
-			projectWrapper.style.setProperty(
-				"transform",
-				`translateX(-${parentPadding})`
-			);
-		}
-
-		const [revealTimeline, revealScrollTrigger] =
-			initRevealAnimation(targetSectionRef);
-
-		return () => {
-			projectsScrollTrigger && projectsScrollTrigger.kill();
-			projectsTimeline && projectsTimeline.kill();
-			revealScrollTrigger && revealScrollTrigger.kill();
-			revealTimeline && revealTimeline.progress(1);
-		};
-	}, [targetSectionRef, sectionTitleElementRef, isDesktop]);
 
 	const renderSectionTitle = (): React.ReactNode => (
 		<div
@@ -135,19 +60,58 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 				ETL, SQL, Python, and Data Visualization, aiming to drive impactful
 				insights in the field of business intelligence and analytics
 			</h2>
+			<Select
+				options={options}
+				unstyled={true}
+				styles={{
+					control: (baseStyles, state) => ({
+						...baseStyles,
+						opacity: 1,
+						borderRadius: "0.5rem",
+						textAlign: "left",
+					}),
+					option: (baseStyles, state) => ({
+						...baseStyles,
+						backgroundColor: state.isFocused ? "#e5e7eb" : "#111827",
+						color: state.isFocused ? "#111827" : "#d1d5db",
+						padding: "0.5rem",
+					}),
+				}}
+				className="w-1/2 mt-4 article-title-sm bg-gray-900 text-gray-200"
+				onChange={(option) => setprojectCategory(option.value)}
+				placeholder="Check out my projects' categories"
+			/>
 		</div>
 	);
 
-	const renderProjectTiles = (): React.ReactNode =>
-		PROJECTS.map((project) => (
-			<ProjectTile
-				project={project}
-				key={project.name}
-				animationEnabled={horizontalAnimationEnabled}
-			></ProjectTile>
-		));
-
+	const renderProjectTiles = (): React.ReactNode => {
+		let projectLength = PROJECTS.filter(
+			(project) => project.category === projectCategory
+		).length;
+		renderedPrjectsNumber = projectLength;
+		return (
+			<div
+				ref={projectWrapperRef}
+				className={`${PROJECT_STYLES.PROJECTS_WRAPPER} flex overflow-x-auto ${
+					renderedPrjectsNumber === 1 && "w-fit"
+				}`}
+			>
+				{PROJECTS.map((project) => {
+					if (projectCategory !== "All" && project.category !== projectCategory)
+						return;
+					return (
+						<ProjectTile
+							project={project}
+							key={project.name}
+							animationEnabled={horizontalAnimationEnabled}
+						></ProjectTile>
+					);
+				})}
+			</div>
+		);
+	};
 	const { ref: projectsSectionRef } = MENULINKS[1];
+
 	return (
 		<section
 			ref={targetSectionRef}
@@ -155,9 +119,38 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 			id={projectsSectionRef}
 		>
 			{renderSectionTitle()}
-			<div className={PROJECT_STYLES.PROJECTS_WRAPPER}>
+
+			<div className="relative">
+				<button
+					onClick={scrollLeft}
+					className="hover:text-gray-200 hover:bg-gray-900 absolute text-lg font-bold text-gray-900 px-4 mx-2 left-0 top-1/2 transform -translate-y-1/2 bg-secondary-color p-2 rounded-full z-10"
+				>
+					&lt;
+				</button>
 				{renderProjectTiles()}
+				<button
+					onClick={scrollRight}
+					className="hover:text-gray-200 hover:bg-gray-900 absolute text-lg font-bold text-gray-900 px-4 mx-2 right-0 top-1/2 transform -translate-y-1/2 bg-secondary-color p-2 rounded-full z-10"
+				>
+					&gt;
+				</button>
 			</div>
+			{/* <div className={PROJECT_STYLES.PROJECTS_WRAPPER}> */}
+			{/* <div className={`tall:mt-12 mt-6 md:gap-10 gap-6 w-full flex overflow-x-auto space-x-4`}>
+				{renderProjectTiles()}
+			</div> */}
+			{/* <Carousel
+				containerClass={`tall:mt-12 mt-6 md:gap-10 gap-6 flex overflow-x-auto space-x-4`}
+				autoPlay={true}
+				swipeable={false}
+				draggable={false}
+				showDots={false}
+				infinite={true}
+				partialVisible={false}
+				itemClass="pr-5 rounded-sm"
+			>
+				{renderProjectTiles()}
+			</Carousel> */}
 		</section>
 	);
 };
