@@ -99,6 +99,26 @@ export const PROJECTS: IProject[] = [
 		tech: ["python", "PowerBI", "Lambda", "Microsoft SQL Server"],
 	},
 	{
+		name: "Marketing Campaign Analysis",
+		category: ProjectTypes.BIDASHBOARDVIZ,
+		image: "/projects/marketing.jpg",
+		blurImage: "/projects/marketing.jpg",
+		description: "Marketing Campaign Analysis for a retail company",
+		gradient: ["#f2ece4", "#09091a"],
+		url: "https://mavenanalytics.io/project/19447",
+		tech: ["PowerBI", "alteryx", "Excel", "powerquery"],
+	},
+	{
+		name: "Streamlit Statistics App",
+		category: ProjectTypes.STATISTICSML,
+		image: "/projects/StatCal.jpg",
+		blurImage: "/projects/StatCal.jpg",
+		description: "Statistical Calculator for A/B testing and T-test",
+		gradient: ["#191414", "#f5f5f5"],
+		url: "https://github.com/MarkPhamm/Stats-Calculator",
+		tech: ["python", "streamlit", "normalDis"],
+	},
+	{
 		name: "Sample Sales Dashboard",
 		category: ProjectTypes.BIDASHBOARDVIZ,
 		image: "/projects/samplesale.png",
@@ -139,16 +159,7 @@ export const PROJECTS: IProject[] = [
 		url: "https://github.com/MarkPhamm/Spotify-BI-Engineering-Project",
 		tech: ["Lambda", "amazons3", "Athena", "Glue", "aws"],
 	},
-	{
-		name: "Streamlit Statistics App",
-		category: ProjectTypes.STATISTICSML,
-		image: "/projects/StatCal.jpg",
-		blurImage: "/projects/StatCal.jpg",
-		description: "Statistical Calculator for A/B testing and T-test",
-		gradient: ["#191414", "#f5f5f5"],
-		url: "https://github.com/MarkPhamm/Stats-Calculator",
-		tech: ["python", "streamlit", "normalDis"],
-	},
+	
 	{
 		name: "Segment Shopping Customers",
 		category: ProjectTypes.STATISTICSML,
@@ -159,16 +170,7 @@ export const PROJECTS: IProject[] = [
 		url: "https://github.com/MarkPhamm/Python-Segment-Shopping-Customers",
 		tech: ["python", "numpy", "Pandas", "Matplotlib"],
 	},
-	{
-		name: "Marketing Campaign Analysis",
-		category: ProjectTypes.BIDASHBOARDVIZ,
-		image: "/projects/marketing.jpg",
-		blurImage: "/projects/marketing.jpg",
-		description: "Marketing Campaign Analysis for a retail company",
-		gradient: ["#f2ece4", "#09091a"],
-		url: "https://mavenanalytics.io/project/19447",
-		tech: ["PowerBI", "Excel", "powerquery"],
-	},
+	
 	{
 		name: "EaseMyTrip Airline Dashboard",
 		category: ProjectTypes.BIDASHBOARDVIZ,
@@ -177,7 +179,7 @@ export const PROJECTS: IProject[] = [
 		description: "Airline Dashboard for EaseMyTrip",
 		gradient: ["#167187", "#49789d"],
 		url: "https://mavenanalytics.io/project/19418",
-		tech: ["PowerBI", "Excel", "powerquery"],
+		tech: ["PowerBI", "alteryx", "Excel", "powerquery"],
 	},
 	{
 		name: "United Ways Tax Advisor Chatbot",
