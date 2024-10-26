@@ -109,6 +109,16 @@ export const PROJECTS: IProject[] = [
 		tech: ["PowerBI", "alteryx", "Excel", "powerquery"],
 	},
 	{
+		name: "Alcon financial assistant",
+		category: ProjectTypes.STATISTICSML,
+		image: "/projects/alcon.jpg",
+		blurImage: "/projects/alcon.jpg",
+		description: "Financial Assistant for Alcon",
+		gradient: ["#167187", "#09091a"],
+		url: "https://github.com/MarkPhamm/Alcon-Financial-Assistant",
+		tech: ["python", "Pandas", "streamlit", "langchain", "openai"],
+	},
+	{
 		name: "Streamlit Statistics App",
 		category: ProjectTypes.STATISTICSML,
 		image: "/projects/StatCal.jpg",
