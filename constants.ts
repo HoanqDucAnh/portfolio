@@ -299,7 +299,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "BI & Engineering intern - Lazard",
+		title: "BI & Engineering intern - <a class='underline underline-offset-2' href='https://www.lazard.com/' target='_blank' rel='noopener noreferrer'><u>Lazard</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
 			"BI & Engineering intern @FABT team, focusing on data engineering and ETL pipelines",
@@ -413,7 +413,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "CEO, Founder - The Coconut Consulting Academy",
+		title: "CEO, Founder - <a class='underline underline-offset-2' href='https://www.facebook.com/thecoconut.vn/' target='_blank' rel='noopener noreferrer'><u>The Coconut Consulting Academy</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
 			"CEO, Founder @The Coconut consulting Academy, managed team of 10 consultants to generate 10000$ in yearly revenue",

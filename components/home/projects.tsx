@@ -8,8 +8,10 @@ import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import { MENULINKS, PROJECTS, ProjectTypes } from "../../constants";
 import ProjectTile from "../common/project-tile";
 import { IDesktop } from "pages";
-import Select from "react-select";
+import Select, { components, DropdownIndicatorProps } from "react-select";
 import Control from "react-select/dist/declarations/src/components/Control";
+import { FaChevronDown, FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { DropdownIndicator } from "react-select/dist/declarations/src/components/indicators";
 
 const PROJECT_STYLES = {
 	SECTION:
@@ -46,6 +48,19 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		projectWrapper.scrollBy({ left: projectWidth, behavior: "smooth" });
 	};
 
+	const customComponents = {
+		DropdownIndicator: (): JSX.Element | null => null,
+		// Option: (props: any) => {
+		// 	return (
+		// 		<components.Option {...props}>
+		// 			<div style={{ display: "flex", alignItems: "center" }}>
+		// 				{props.children} <FaChevronDown style={{ marginLeft: "8px" }} />
+		// 			</div>
+		// 		</components.Option>
+		// 	);
+		// },
+	};
+
 	const renderSectionTitle = (): React.ReactNode => (
 		<div
 			className={`flex flex-col inner-container  ${
@@ -63,23 +78,37 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 			<Select
 				options={options}
 				unstyled={true}
+				components={customComponents}
 				styles={{
 					control: (baseStyles, state) => ({
 						...baseStyles,
 						opacity: 1,
 						borderRadius: "0.5rem",
 						textAlign: "left",
+						width: "auto",
+						minWidth: "200px",
+						maxWidth: "100%",
 					}),
 					option: (baseStyles, state) => ({
 						...baseStyles,
 						backgroundColor: state.isFocused ? "#e5e7eb" : "#111827",
 						color: state.isFocused ? "#111827" : "#d1d5db",
-						padding: "0.5rem",
+						// padding: "0.5rem",
+					}),
+					dropdownIndicator: (baseStyles, state) => ({
+						...baseStyles,
+						padding: "0",
+						marginLeft: "auto",
 					}),
 				}}
 				className="w-1/2 mt-4 article-title-sm bg-gray-900 text-gray-200"
 				onChange={(option) => setprojectCategory(option.value)}
-				placeholder="Check out my projects' categories"
+				placeholder={
+					<div style={{ display: "flex", alignItems: "center" }}>
+						Check out my projects' categories{" "}
+						<FaChevronDown style={{ marginLeft: "8px" }} />
+					</div>
+				}
 			/>
 		</div>
 	);
@@ -123,16 +152,16 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 			<div className="relative">
 				<button
 					onClick={scrollLeft}
-					className="hover:text-gray-200 hover:bg-gray-900 absolute text-lg font-bold text-gray-900 px-4 mx-2 left-0 top-1/2 transform -translate-y-1/2 bg-secondary-color p-2 rounded-full z-10"
+					className="hover:text-gray-200 hover:bg-gray-900 absolute text-lg font-bold text-gray-900 mx-2 left-0 top-1/2 transform -translate-y-1/2 bg-secondary-color p-4 rounded-full z-10"
 				>
-					&lt;
+					<FaArrowLeft />
 				</button>
 				{renderProjectTiles()}
 				<button
 					onClick={scrollRight}
-					className="hover:text-gray-200 hover:bg-gray-900 absolute text-lg font-bold text-gray-900 px-4 mx-2 right-0 top-1/2 transform -translate-y-1/2 bg-secondary-color p-2 rounded-full z-10"
+					className="hover:text-gray-200 hover:bg-gray-900 absolute text-lg font-bold text-gray-900 mx-2 right-0 top-1/2 transform -translate-y-1/2 bg-secondary-color p-4 rounded-full z-10"
 				>
-					&gt;
+					<FaArrowRight />
 				</button>
 			</div>
 			{/* <div className={PROJECT_STYLES.PROJECTS_WRAPPER}> */}
