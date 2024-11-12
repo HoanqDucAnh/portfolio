@@ -1,25 +1,90 @@
-// Copyright Ayush Singh 2021,2022. All Rights Reserved.
-// Project: folio
-// Author contact: https://www.linkedin.com/in/alphaayush/
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
 import Script from "next/script";
-import React from "react";
-import { GTAG } from "../../constants";
+import React, { useEffect, useState } from "react";
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, get, child, set, onValue } from "firebase/database";
 
-const Scripts = React.memo(() => {
+const firebaseConfig = {
+	apiKey: "AIzaSyC7Bd9cOnlhZFTrxMZVbVzaRa9opnSnc4k",
+	authDomain: "bminh-porfolio-view-counter.firebaseapp.com",
+	projectId: "bminh-porfolio-view-counter",
+	storageBucket: "bminh-porfolio-view-counter.firebasestorage.app",
+	messagingSenderId: "352556857178",
+	appId: "1:352556857178:web:e0671a9649fa0cbd4c6563",
+	measurementId: "G-6T2HTBS4WQ",
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+interface IpInfo {
+	ip: string;
+	country: string;
+	city: string;
+}
+
+interface UserDetails {
+	ip: string;
+}
+
+const countview = async (
+	setViewCount: React.Dispatch<React.SetStateAction<number>>
+): Promise<void> => {
+	try {
+		const ipinfo: IpInfo = await fetch("https://api.ipify.org?format=json", {
+			method: "GET",
+		}).then((response) => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+			return response.json();
+		});
+		const { ip: userIp } = ipinfo;
+		const userIpString = userIp.replace(/\./g, "x");
+
+		const viewsRef = ref(database, "views");
+		const snapshot = await get(viewsRef);
+
+		setViewCount(snapshot.size);
+
+		if (snapshot.hasChild(userIpString)) {
+			console.log("View Will Not Count, This is a returning user");
+		} else {
+			const userDetails: UserDetails = { ip: userIp };
+			await set(child(viewsRef, userIpString), userDetails);
+			console.log("View counted, looks like a new user.");
+		}
+	} catch (error) {
+		console.error(
+			"Error fetching user data or interacting with Firebase:",
+			error
+		);
+	}
+};
+
+const Scripts: React.FC = () => {
+	const [viewCount, setViewCount] = useState(0);
+
+	useEffect(() => {
+		const viewsRef = ref(database, "views");
+		const unsubscribe = onValue(viewsRef, (snapshot) => {
+			setViewCount(snapshot.size);
+		});
+
+		countview(setViewCount);
+
+		return () => unsubscribe();
+	}, []);
+
 	const handleJumpToFirst = () => {
-		// Logic to jump to the first section
-		// You can use scrollIntoView or any other method to achieve this
 		window.scrollTo(0, 0);
 	};
 
 	return (
-		<>
+		<div className="fixed right-5 bottom-5 flex items-center space-x-4">
+			<div className="text-3xl text-[#f27d0d]">Total Views: {viewCount}</div>
 			<button
 				onClick={handleJumpToFirst}
-				className="fixed right-5 bottom-5 display: flex items-center flex-col border-l-indigo-50 rounded-3xl"
+				className="flex items-center flex-col border-l-indigo-50 rounded-3xl"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -34,9 +99,9 @@ const Scripts = React.memo(() => {
 				</svg>
 				Go to top
 			</button>
-		</>
+		</div>
 	);
-});
+};
 
 Scripts.displayName = "Scripts";
 
