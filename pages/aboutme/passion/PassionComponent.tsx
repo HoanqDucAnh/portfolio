@@ -53,13 +53,13 @@ export default function PassionComponent() {
 				<div className="text-2xl text-[#f27d0d] text-opacity-80">
 					The Art of Steaks
 				</div>
-				<div className="grid grid-cols-4 mt-5">
-					<div className="col-span-2">
+				<div className="grid grid-cols-8 mt-5">
+					<div className="col-span-4 pr-2">
 						<div className="text-center">
 							<Image
 								src={`/about/passion/steak1.jpg`}
-								width={220}
-								height={250}
+								width={450}
+								height={450}
 								loading="lazy"
 								alt="steak1"
 								className="rounded-xl"
@@ -67,11 +67,11 @@ export default function PassionComponent() {
 							<p className="text-xs opacity-75 italic">Medium rare ribeye</p>
 						</div>
 					</div>
-					<div className="col-span-2 text-center">
+					<div className="col-span-4 pl-2 text-center">
 						<Image
 							src={`/about/passion/steak2.jpeg`}
-							width={250}
-							height={250}
+							width={450}
+							height={450}
 							loading="lazy"
 							alt="steak1"
 							className="rounded-xl m-auto"
@@ -138,36 +138,38 @@ export default function PassionComponent() {
 					bread strips for some extra texture. It’s a warm, hearty plate that
 					feels like a hug in every bite.
 				</div>
-				<div className="mt-2 text-center">
-					<Image
-						src={`/about/passion/seafood1.jpg`}
-						width={500}
-						height={450}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl"
-					/>
-					{/* <p className="text-xs opacity-75 italic">
-						Xa Xiu Noodles with Xa Xiu Pork, Steam and Fried Dumpling, Shrimp,
-						Quail Eggs and Bok Choy
-					</p> */}
+				<div className="grid grid-cols-8 mt-5 mb-5">
+					<div className="col-span-4 pr-2">
+						<div className="text-center">
+							<Image
+								src={`/about/passion/seafood1.jpg`}
+								width={450}
+								height={450}
+								loading="lazy"
+								alt="steak1"
+								className="rounded-xl"
+							/>
+							<p className="text-xs opacity-75 italic">
+								Pan-seared Salmon with mushrooms and asparagus spears
+							</p>
+						</div>
+					</div>
+					<div className="col-span-4 pl-2 text-center">
+						<Image
+							src={`/about/passion/seafood2.jpg`}
+							width={450}
+							height={450}
+							loading="lazy"
+							alt="steak1"
+							className="rounded-xl m-auto"
+						/>
+						<p className="text-xs opacity-75 italic">
+							Herb-Crusted Salmon, with Rice, Sunny Egg, and Sautéed Veggies
+						</p>
+					</div>
 				</div>
 				<div className="text-2xl text-[#f27d0d] text-opacity-80">
 					Herb-Crusted Salmon, with <i>Rice, Sunny Egg, and Sautéed Veggies</i>
-				</div>
-				<div className="mt-2 text-center">
-					<Image
-						src={`/about/passion/seafood2.jpg`}
-						width={500}
-						height={450}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl"
-					/>
-					{/* <p className="text-xs opacity-75 italic">
-						Xa Xiu Noodles with Xa Xiu Pork, Steam and Fried Dumpling, Shrimp,
-						Quail Eggs and Bok Choy
-					</p> */}
 				</div>
 				<div className="text-md mt-1 mb-2">
 					This dish is my idea of a feel-good, satisfying meal. Here, I’ve taken
@@ -269,7 +271,7 @@ export default function PassionComponent() {
 				</div>
 				<div className="mt-2 text-center">
 					<Image
-						src={`/about/passion/carbo.jpg`}
+						src={`/about/passion/carbo.png`}
 						width={500}
 						height={400}
 						loading="lazy"

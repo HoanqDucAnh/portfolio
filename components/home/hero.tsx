@@ -5,13 +5,83 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import { EMAIL, MENULINKS, SOCIAL_LINKS, TYPED_STRINGS } from "../../constants";
-import React, { MutableRefObject, useEffect, useRef } from "react";
+import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
 import Image from "next/image";
 import { gsap, Linear } from "gsap";
 import Button, { ButtonTypes } from "../common/button";
 import HeroImage from "./hero-image";
 import Link from "next/link";
+
+import { initializeApp } from "firebase/app";
+import {
+	getFirestore,
+	doc,
+	getDoc,
+	setDoc,
+	collection,
+	getDocs,
+} from "firebase/firestore";
+
+const firebaseConfig = {
+	apiKey: "AIzaSyC7Bd9cOnlhZFTrxMZVbVzaRa9opnSnc4k",
+	authDomain: "bminh-porfolio-view-counter.firebaseapp.com",
+	projectId: "bminh-porfolio-view-counter",
+	storageBucket: "bminh-porfolio-view-counter.firebasestorage.app",
+	messagingSenderId: "352556857178",
+	appId: "1:352556857178:web:e0671a9649fa0cbd4c6563",
+	measurementId: "G-6T2HTBS4WQ",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+interface IpInfo {
+	ip: string;
+	country: string;
+	city: string;
+}
+
+const countview = async (
+	setViewCount: React.Dispatch<React.SetStateAction<number>>
+): Promise<void> => {
+	try {
+		const ipinfo: IpInfo = await fetch("https://api.ipify.org?format=json", {
+			method: "GET",
+		}).then((response) => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+			return response.json();
+		});
+		const { ip: userIp } = ipinfo;
+		const userIpString = userIp.replace(/\./g, "x");
+
+		const viewsDocRef = doc(db, "views", userIpString);
+		const docSnap = await getDoc(viewsDocRef);
+
+		if (docSnap.exists()) {
+			console.log(
+				"View Will Not Count, welcome back! Hope you are enjoying my portfolio!"
+			);
+		} else {
+			await setDoc(viewsDocRef, { ip: userIp });
+			console.log(
+				"View counted, hi new user! Welcome to my portfolio, hope you like it!"
+			);
+		}
+
+		const viewsCollectionRef = collection(db, "views");
+		const viewsSnapshot = await getDocs(viewsCollectionRef);
+		console.log("Total views:", viewsSnapshot.size);
+		setViewCount(viewsSnapshot.size);
+	} catch (error) {
+		console.error(
+			"Error fetching user data or interacting with Firestore:",
+			error
+		);
+	}
+};
 
 const HERO_STYLES = {
 	SECTION:
@@ -24,6 +94,12 @@ const HERO_STYLES = {
 };
 
 const HeroSection = React.memo(() => {
+	const [viewCount, setViewCount] = useState(0);
+
+	useEffect(() => {
+		countview(setViewCount);
+	}, []);
+
 	const typedSpanElement: MutableRefObject<HTMLSpanElement> = useRef(null);
 	const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
 
@@ -85,6 +161,7 @@ const HeroSection = React.memo(() => {
 			<div className="md:mb-4 mb-2">
 				<h2 className="text-4xl seq">Hello 👋🏻</h2>
 				<h1 className="text-3xl seq">I’m Minh (Mark) Pham</h1>
+				<div className="text-3xl text-[#f27d0d]">Total Views: {viewCount}</div>
 			</div>
 			<p className="mb-4">
 				<span className={HERO_STYLES.TYPED_SPAN} ref={typedSpanElement}></span>
