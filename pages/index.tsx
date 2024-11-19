@@ -25,6 +25,7 @@ import TimelineSection from "@/components/home/timeline";
 import Scripts from "@/components/common/scripts";
 import AboutSection from "@/components/home/about";
 import ArticleSection from "@/components/home/article";
+import CommentSection from "@/components/home/comment";
 
 const DEBOUNCE_TIME = 100;
 
@@ -81,6 +82,7 @@ export default function Home() {
 				<main className="flex-col flex">
 					{renderBackdrop()}
 					<HeroSection />
+					<CommentSection isDesktop={isDesktop} />
 					<AboutSection />
 					<ProjectsSection isDesktop={isDesktop} />
 					<QuoteSection />

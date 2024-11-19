@@ -4,6 +4,8 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
+import { avatar } from "@material-tailwind/react";
+
 export const METADATA = {
 	title: "Portfolio | Mark Pham",
 	description: "I bridge the gap between data and actionable insights",
@@ -62,18 +64,21 @@ export const COMMENTS = [
 		author: "Josef, Cohen",
 		position: "Associate Data Engineer",
 		recomendationType: "college",
+		avatar: "/person/josef.jpg",
 	},
 	{
 		comment: "Hi. How are you doing?? I was out with covid last week and misses your last day in the office.I'd have to say that you were the best intern ever! Willingness to learn and more than enthusiastic to get dropped into anything we could come up with. Hell, you got code and queries into PRD. Nice work!! Hope to see you again in the spring.",
 		author: "Tom, Kinch",
 		position: "Senior Data Engineer",
 		recomendationType: "college",
+		avatar: "/person/default.jpg",
 	},
 	{
 		comment: "Hey Mark, you did a great job overall! The work linking the models to Snowflake and PowerBI are both big improvements in the overall process. The presentation to Joe also went well and I appreciated the preperation and work you put in for that!",
 		author: "Luo, Hubert",
 		position: "Senior Data Scientist",
 		recomendationType: "college",
+		avatar: "/person/hubert.jpg",
 	}
 
 ]
