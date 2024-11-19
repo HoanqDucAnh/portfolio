@@ -74,6 +74,7 @@ const CommentSection = ({ isDesktop }: IDesktop) => {
 						href="https://drive.google.com/file/d/1EyMtIZU1_ohN9i2lJ7sGvAiPnxX7vVAv/view?usp=sharing"
 						className="text-[#f27d0d] text-md underline hover:text-white"
 						target="_blank"
+						rel="noreferrer"
 					>
 						Learn more &rarr;
 					</a>
