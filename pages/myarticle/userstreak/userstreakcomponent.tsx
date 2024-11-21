@@ -15,7 +15,7 @@ import Inforarticle from "@/components/common/inforarticle";
 
 export default function UserStreakComponent() {
 	return (
-		<div className="grid grid-cols-5 mt-24 ">
+		<div className="grid grid-cols-5 mt-24">
 			<div className="col-span-1  mt-10 hidden lg:block pl-9 self-start ">
 				<div className="fixed">
 					<h6 className="text-3xl">Table content</h6>
@@ -166,8 +166,9 @@ export default function UserStreakComponent() {
 										offset={-80}
 										duration={50}
 										activeClass="scroll-active "
+										className="whitespace-pre-line"
 									>
-										Step 5: Find each player longest Streak and find top 3
+										Step 5: Find each player longest Streak{"\n"}and find top 3
 										longest streak
 									</Link>
 								</li>
