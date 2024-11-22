@@ -56,7 +56,7 @@ const CommentSection = ({ isDesktop }: IDesktop) => {
 				}`}
 				ref={sectionTitleElementRef}
 			>
-				<h2 className="section-heading seq mb-12">What Others Say About</h2>
+				<h2 className="section-heading seq mb-12">What Others Say</h2>
 				<div className="flex flex-row justify-center">
 					{COMMENTS.map((comment, index) => (
 						<CommentTile
