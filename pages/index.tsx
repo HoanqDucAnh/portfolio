@@ -83,7 +83,7 @@ export default function Home() {
 					{renderBackdrop()}
 					<HeroSection />
 					<CommentSection isDesktop={isDesktop} />
-					<AboutSection />
+					{/* <AboutSection /> */}
 					<ProjectsSection isDesktop={isDesktop} />
 					<QuoteSection />
 					<SkillsSection isDesktop={isDesktop} />
