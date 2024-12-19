@@ -90,7 +90,7 @@ const HERO_STYLES = {
 	SOCIAL_LINK: "link hover:opacity-80 duration-300 md:mr-4 mr-2",
 	BG_WRAPPER:
 		"absolute hero-bg right-0 md:bottom-0 bottom-8 -z-1 md:w-3/4 w-full scale-125 sm:scale-100 flex items-end",
-	TYPED_SPAN: "text-lg sm:text-2xl md:text-4xl seq",
+	TYPED_SPAN: "text-xl sm:text-2xl md:text-3xl seq",
 };
 
 const HeroSection = React.memo(() => {
