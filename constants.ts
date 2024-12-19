@@ -84,7 +84,7 @@ export const COMMENTS = [
 ]
 
 export const TYPED_STRINGS = [
-	"900+ SQL questions solved",
+	"1000+ SQL questions solved",
 	"BI & Analytics Enthusiast",
 	"TCU Math & MIS class of 2025",
 	"Certified Scrum Product Owner",
@@ -330,8 +330,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		size: ItemSize.SMALL,
 		subtitle:
 			"BI & Engineering intern @FABT team, focusing on data engineering and ETL pipelines",
-		image: "/timeline/lazard.png",
-		slideImage: "/timeline/lazard.png",
+		image: "/timeline/lazard.jpg",
+		slideImage: "/timeline/lazard.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},

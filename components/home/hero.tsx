@@ -90,7 +90,7 @@ const HERO_STYLES = {
 	SOCIAL_LINK: "link hover:opacity-80 duration-300 md:mr-4 mr-2",
 	BG_WRAPPER:
 		"absolute hero-bg right-0 md:bottom-0 bottom-8 -z-1 md:w-3/4 w-full scale-125 sm:scale-100 flex items-end",
-	TYPED_SPAN: "text-xl sm:text-2xl md:text-4xl seq",
+	TYPED_SPAN: "text-lg sm:text-2xl md:text-4xl seq",
 };
 
 const HeroSection = React.memo(() => {
@@ -160,7 +160,7 @@ const HeroSection = React.memo(() => {
 		<div className={HERO_STYLES.CONTENT}>
 			<div className="md:mb-4 mb-2">
 				<h2 className="text-4xl seq">Hello 👋🏻</h2>
-				<h1 className="text-3xl seq">I’m Minh (Mark) Pham</h1>
+				<h1 className="text-3xl seq">I'm Minh (Mark) Pham</h1>
 				<div className="text-3xl text-[#f27d0d]">Total Views: {viewCount}</div>
 			</div>
 			<p className="mb-4">
@@ -177,16 +177,6 @@ const HeroSection = React.memo(() => {
 					}}
 					href="https://markphamm.github.io/resume_website/"
 				></Button>
-				{/* <Button
-					classes=""
-					type={ButtonTypes.PRIMARY}
-					name="Contact me!"
-					href=""
-					otherProps={{
-						target: "_blank",
-						rel: "noreferrer",
-					}}
-				></Button> */}
 				<Link href="https://www.linkedin.com/in/minhbphamm/">
 					<a
 						target="_blank"
