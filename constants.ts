@@ -85,8 +85,8 @@ export const COMMENTS = [
 
 export const TYPED_STRINGS = [
 	"1000+ SQL questions solved",
-	"BI & Analytics Enthusiast",
-	"TCU Math & MIS class of 2025",
+	"BI & Analytics Engineer",
+	"TCU MIS class of 2025",
 	"Certified Scrum Product Owner",
 ];
 

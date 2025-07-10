@@ -167,7 +167,7 @@ const HeroSection = React.memo(() => {
 				<span className={HERO_STYLES.TYPED_SPAN} ref={typedSpanElement}></span>
 			</p>
 			<div className="flex seq">
-				<Button
+				{/* <Button
 					classes="mr-3"
 					type={ButtonTypes.OUTLINE}
 					name="Resume"
@@ -176,7 +176,7 @@ const HeroSection = React.memo(() => {
 						rel: "noreferrer",
 					}}
 					href="https://markphamm.github.io/resume_website/"
-				></Button>
+				></Button> */}
 				<Link href="https://www.linkedin.com/in/minhbphamm/">
 					<a
 						target="_blank"
