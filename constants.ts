@@ -319,6 +319,24 @@ export enum ItemSize {
 export const TIMELINE: Array<TimelineNodeV2> = [
 	{
 		type: NodeTypes.CHECKPOINT,
+		title: "June 2025",
+		size: ItemSize.LARGE,
+		shouldDrawLine: false,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "Analytics Engineer - <a class='underline underline-offset-2' href='https://insurify.com' target='_blank' rel='noopener noreferrer'><u>Insurify</u></a>",
+		size: ItemSize.SMALL,
+		subtitle:
+			"Analytics Engineer @Insurify, Marketing Tech, Networks + Core Analytics",
+		image: "/timeline/insurify.jpg",
+		slideImage: "/timeline/insurify.jpg",
+		shouldDrawLine: true,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
 		title: "June 2024",
 		size: ItemSize.LARGE,
 		shouldDrawLine: false,
@@ -326,10 +344,10 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "BI & Engineering intern - <a class='underline underline-offset-2' href='https://www.lazard.com/' target='_blank' rel='noopener noreferrer'><u>Lazard</u></a>",
+		title: "Data Engineering Intern - <a class='underline underline-offset-2' href='https://www.lazard.com/' target='_blank' rel='noopener noreferrer'><u>Lazard</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"BI & Engineering intern @FABT team, focusing on data engineering and ETL pipelines",
+			"Data Engineering Intern @FABT team, focusing on data engineering and ETL pipelines",
 		image: "/timeline/lazard.jpg",
 		slideImage: "/timeline/lazard.jpg",
 		shouldDrawLine: true,
@@ -345,10 +363,10 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	{
 		type: NodeTypes.CHECKPOINT,
 		title:
-			"Incoming BI & Analytics intern - <a class='underline underline-offset-2' href='https://www.techsmith.com/' target='_blank' rel='noopener noreferrer'><u>Techsmith</u></a>",
+			"BI Engineering Intern - <a class='underline underline-offset-2' href='https://www.techsmith.com/' target='_blank' rel='noopener noreferrer'><u>Techsmith</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"BI & Analytics intern @Marketing/Sales teams, focusing on ROI/Revenue report and prediction",
+			"BI Engineering Intern @Marketing/Sales teams, focusing on ROI/Revenue report and prediction",
 		image: "/timeline/techsmith.jpg",
 		slideImage: "/timeline/techsmith.jpg",
 		shouldDrawLine: true,
@@ -364,10 +382,10 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	{
 		type: NodeTypes.CHECKPOINT,
 		title:
-			"BI & Analytics Intern - <a class='' href='https://www.corning.com/worldwide/en.html' target='_blank' rel='noopener noreferrer'><u>Corning Inc</u></a>",
+			"Data Analyst Intern - <a class='' href='https://www.corning.com/worldwide/en.html' target='_blank' rel='noopener noreferrer'><u>Corning Inc</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"BI & Analytics intern @Global Supply Chain Team, focusing on Logistic cost Analysis and Warehouse’s Location optimization",
+			"Data Analyst intern @Global Supply Chain Team, focusing on Logistic cost Analysis and Warehouse’s Location optimization",
 		image: "/timeline/Corning.png",
 		slideImage: "/timeline/Corning.jpg",
 		shouldDrawLine: true,
