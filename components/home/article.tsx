@@ -55,7 +55,7 @@ const ArticleSection = () => {
 				Check out my newest blogs!{" "}
 			</h2>
 			<div className=" seq mt-2" style={{ width: "70%" }}>
-				<p className="text-sm ">
+				<p className="text-base md:text-lg">
 					Unlock the world of SQL with my insightful and practical blogs. Dive
 					into comprehensive guides, tips, and best practices that simplify
 					complex concepts and empower you to harness the full potential of SQL
