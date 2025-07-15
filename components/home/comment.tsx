@@ -19,7 +19,7 @@ const CommentTile = (props: {
 				/>
 			</div>
 			<div className="mt-12 flex-grow">
-				<p className="text-lg font-semibold text-center">{props.text}</p>
+				<p className="text-lg font-semibold text-justify">{props.text}</p>
 			</div>
 			<div className="mt-6 flex justify-center">
 				<div className="text-center">

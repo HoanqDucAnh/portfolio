@@ -60,7 +60,7 @@ export const MENULINKS = [
 
 export const COMMENTS = [
 	{
-		comment: "Minh's exceptional documentation skills stood out significantly. He meticulously documented every process and project he worked on, ensuring that his contributions would continue to benefit the team long after his internship concluded. His proactive approach and willingness to go above and beyond what was expected of his position truly set him apart.",
+		comment: "Minh's exceptional documentation skills stood out significantly. He always meticulously documented every process and project he worked on, ensuring that his contributions would continue to benefit the team long after his internship concluded. His proactive approach and willingness to go above and beyond what was expected of his position truly set him apart.",
 		author: "Josef, Cohen",
 		position: "Associate Data Engineer",
 		recomendationType: "college",
@@ -85,9 +85,8 @@ export const COMMENTS = [
 
 export const TYPED_STRINGS = [
 	"1000+ SQL questions solved",
-	"BI & Analytics Engineer",
+	"Analytics Engineer @Insurify",
 	"TCU MIS class of 2025",
-	"Certified Scrum Product Owner",
 ];
 
 export const EMAIL = "minh.b.pham@tcu.edu@gmail.com";
@@ -330,8 +329,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		size: ItemSize.SMALL,
 		subtitle:
 			"Analytics Engineer @Insurify, Marketing Tech, Networks + Core Analytics",
-		image: "/timeline/insurify.jpg",
-		slideImage: "/timeline/insurify.jpg",
+		image: "/timeline/insurify.png",
+		slideImage: "/timeline/insurify.png",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},
