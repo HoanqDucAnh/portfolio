@@ -86,7 +86,8 @@ export const COMMENTS = [
 export const TYPED_STRINGS = [
 	"1000+ SQL questions solved",
 	"Analytics Engineer @Insurify",
-	"TCU MIS class of 2025",
+	"TCU class of 2025",
+	'Boston, MA'
 ];
 
 export const EMAIL = "minh.b.pham@tcu.edu@gmail.com";
