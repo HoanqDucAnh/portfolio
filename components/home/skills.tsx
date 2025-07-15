@@ -6,55 +6,25 @@
 
 import { MENULINKS, SKILLS, COURSES } from "../../constants";
 import Image from "next/image";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
-import { gsap, Linear } from "gsap";
+import { MutableRefObject, useEffect, useRef, useState, useCallback, memo } from "react";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import CountUp from "react-countup";
 import { IDesktop } from "pages";
-import { stat } from "fs";
-import styled from "styled-components";
-import Link from "next/link";
 
-const TooltipContainer = styled.div`
-	position: relative;
-	display: inline-block;
-`;
-
-const TooltipText = styled.span`
-	visibility: hidden;
-	width: 150px;
-	background-color: #fff;
-	color: #101827;
-	text-align: center;
-	border-radius: 6px;
-	padding: 5px;
-	position: absolute;
-	z-index: 1;
-	bottom: 125%;
-	left: 50%;
-	margin-left: -60px;
-	opacity: 0;
-	transition: opacity 0.3s;
-
-	${TooltipContainer}:hover & {
-		visibility: visible;
-		opacity: 1;
-	}
-`;
-
-interface TooltipProps {
-	text: string;
-	children: React.ReactNode;
-}
-
-const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
+// Optimized CSS-based tooltip component
+const Tooltip = memo(({ text, children }: { text: string; children: React.ReactNode }) => {
 	return (
-		<TooltipContainer>
+		<div className="group relative inline-block">
 			{children}
-			<TooltipText>{text}</TooltipText>
-		</TooltipContainer>
+			<div className="absolute invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-300 bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 text-sm bg-white text-gray-800 rounded-lg shadow-lg whitespace-nowrap z-10">
+				{text}
+				<div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+			</div>
+		</div>
 	);
-};
+});
+
+Tooltip.displayName = 'Tooltip';
 
 const SKILL_STYLES = {
 	SECTION:
@@ -64,60 +34,41 @@ const SKILL_STYLES = {
 
 const SkillsSection = ({ isDesktop }: IDesktop) => {
 	const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
-	const [willChange, setwillChange] = useState(false);
+	const [isVisible, setIsVisible] = useState(false);
 
-	const initRevealAnimation = (
-		targetSection: MutableRefObject<HTMLDivElement>
-	): ScrollTrigger => {
-		const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-		revealTl.from(
-			targetSection.current.querySelectorAll(".seq"),
-			{ opacity: 0, duration: 0.5, stagger: 0.5 },
-			"<"
-		);
+	// Simplified and more performant animation
+	const initRevealAnimation = useCallback(() => {
+		if (!targetSection.current) return;
 
 		return ScrollTrigger.create({
-			trigger: targetSection.current.querySelector(".skills-wrapper"),
-			start: "100px bottom",
-			end: `center center`,
-			animation: revealTl,
-			scrub: 0,
-			onToggle: (self) => setwillChange(self.isActive),
+			trigger: targetSection.current,
+			start: "top 80%",
+			end: "bottom 20%",
+			onEnter: () => setIsVisible(true),
+			onLeave: () => setIsVisible(false),
+			onEnterBack: () => setIsVisible(true),
+			onLeaveBack: () => setIsVisible(false),
 		});
-	};
+	}, []);
 
 	useEffect(() => {
-		const revealAnimationRef = initRevealAnimation(targetSection);
+		const revealAnimationRef = initRevealAnimation();
+		return () => revealAnimationRef?.kill();
+	}, [initRevealAnimation]);
 
-		return revealAnimationRef.kill;
-	}, [targetSection]);
-
-	const renderSectionTitle = (): React.ReactNode => (
+	const renderSectionTitle = useCallback((): React.ReactNode => (
 		<div className="flex flex-col">
-			<p className="section-title-sm seq">SKILLS</p>
-			<h1 className="section-heading seq mt-2">My Skills</h1>
-			{/* <h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
-				I like to take responsibility to craft aesthetic user experience using
-				modern frontend architecture.{" "}
-			</h2> */}
+			<p className="section-title-sm">SKILLS</p>
+			<h1 className="section-heading mt-2">My Skills</h1>
+			<h2 className="text-2xl md:max-w-2xl w-full mt-2">
+				Technical skills and tools I use to deliver data-driven solutions
+			</h2>
 		</div>
-	);
+	), []);
 
-	const render2ndSectionTitle = (title: string): React.ReactNode => (
-		<div className="flex flex-col">
-			<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">{title}</h2>
-			{/* <div className=" seq mt-2" style={{ width: "70%" }}>
-				<p className="text-sm ">
-					Certified Scrum Product Owner (CSPO) equipped with an Alteryx Core
-					Designer proficiency and advanced Hackkerank SQL certification. Ready
-					to employ my comprehensive skill set to drive effective project
-					management and data-driven solutions.
-				</p>
-			</div> */}
-		</div>
-	);
 
-	const renderBackgroundPattern = (): React.ReactNode => (
+
+	const renderBackgroundPattern = useCallback((): React.ReactNode => (
 		<>
 			<div className="absolute right-0 -bottom-1/3 w-1/5 max-w-xs md:flex hidden justify-end">
 				<Image
@@ -126,6 +77,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					height={700}
 					width={320}
 					alt="pattern"
+					priority={false}
 				/>
 			</div>
 			<div className="absolute left-0 -bottom-3.5 w-1/12 max-w-xs md:block hidden">
@@ -135,72 +87,45 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					height={335}
 					width={140}
 					alt="pattern"
+					priority={false}
 				/>
 			</div>
 		</>
-	);
+	), []);
 
-	const renderSkillColumn = (
+	// Memoized skill column render for better performance
+	const renderSkillColumn = useCallback((
 		title: string,
 		skills: string[]
 	): React.ReactNode => (
-		<>
+		<div key={title} className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
 			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
-			<div
-				className={`flex flex-wrap seq ${
-					willChange ? "will-change-opacity" : ""
-				}`}
-			>
-				{skills.map((skill) => (
-					<Tooltip key={skill} text={skill}>
-						<Image
-							key={skill}
-							src={`/skills/1st/${skill}.svg`}
-							alt={skill}
-							width={76}
-							height={76}
-							className="skill"
-						/>
-					</Tooltip>
-				))}
-				{/* {skills.map((skill) => (
-					<Image
+			<div className="flex flex-wrap gap-3">
+				{skills.map((skill, index) => (
+					<div 
 						key={skill}
-						src={`/skills/1st/${skill}.svg`}
-						alt={skill}
-						width={76}
-						height={76}
-						className="skill"
-					/>
-				))} */}
+						className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
+						style={{ transitionDelay: `${index * 50}ms` }}
+					>
+						<Tooltip text={skill}>
+							<Image
+								src={`/skills/1st/${skill}.svg`}
+								alt={skill}
+								width={76}
+								height={76}
+								className="skill hover:scale-110 transition-transform duration-200"
+								loading="lazy"
+								placeholder="blur"
+								blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzYiIGhlaWdodD0iNzYiIHZpZXdCb3g9IjAgMCA3NiA3NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijc2IiBoZWlnaHQ9Ijc2IiBmaWxsPSIjZjNmNGY2Ii8+Cjwvc3ZnPgo="
+							/>
+						</Tooltip>
+					</div>
+				))}
 			</div>
-		</>
-	);
+		</div>
+	), [isVisible]);
 
-	const renderCertified = (skill: string): React.ReactNode => (
-		<>
-			<div
-				className={`flex flex-col seq ${
-					willChange ? "will-change-opacity" : ""
-				}`}
-			>
-				{/* <Image
-					key={skill}
-					src={`/skills/3rd/${skill}.png`}
-					alt={skill}
-					width={431}
-					height={323}
-					className="skill"
-				/> */}
-				<div
-					style={{ height: "310px" }}
-					className="flex align-middle justify-center "
-				>
-					<img src={`/skills/3rd/${skill}.png`} />
-				</div>
-			</div>
-		</>
-	);
+
 
 	return (
 		<section className="relative">
@@ -210,165 +135,24 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 				id={MENULINKS[2].ref}
 				ref={targetSection}
 			>
-				<div className="flex flex-col skills-wrapper">
-					{renderSectionTitle()}
-					<div className="grid lg:grid-cols-4 md:grid-cols-1 mt-10 gap-2">
-						<div className="col-span-2">
-							{renderSkillColumn("Visualization", SKILLS.visualization)}
-						</div>
-						<div className=" col-span-2">
-							{renderSkillColumn("Technical", SKILLS.technical)}
-						</div>
+				<div className="flex flex-col">
+					<div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+						{renderSectionTitle()}
 					</div>
-					<div className="grid lg:grid-cols-4 md:grid-cols-1 mt-10 gap-2">
-						<div className="col-span-2">
-							{renderSkillColumn("Framework", COURSES.sysplan)}
-						</div>
-						<div className=" col-span-2">
-							{renderSkillColumn("Other tools", SKILLS.other)}
-						</div>
+					
+					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
+						{renderSkillColumn("Visualization", SKILLS.visualization)}
+						{renderSkillColumn("Technical", SKILLS.technical)}
 					</div>
+					
+					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
+						{renderSkillColumn("Framework", COURSES.sysplan)}
+						{renderSkillColumn("Other tools", SKILLS.other)}
+					</div>
+					
 					<div className="mt-10">
 						{renderSkillColumn("Clouds", SKILLS.clouds)}
 					</div>
-					<div className="flex flex-col mt-10">
-						{/* <p className="section-title-sm seq">Stats</p>
-						<h1 className="section-heading seq mt-2">My stats</h1> */}
-						{/* <div className=" seq mt-2" style={{ width: "70%" }}>
-							<p className="text-sm ">
-								SQL problem-solver tackling real-world challenges for 2+ years.
-								With a daily goal of 2-3 problem resolutions, I've conquered 738
-								queries on platforms like Stratascratch, LeetCode, and
-								HackerRank. Eager to apply my expertise to drive data-driven
-								solutions.
-							</p>
-						</div> */}
-					</div>
-
-					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-2">
-						{/* <div className="col-span-1">
-							<Image
-								key="stat"
-								src={`/skills/2nd/stats.png`}
-								alt="stat"
-								width={700}
-								height={350}
-								className="skill"
-							/>
-						</div>{" "} */}
-						<div className="col-span-1 justify-center">
-							<div
-								className={`flex flex-col seq ${
-									willChange ? "will-change-opacity" : ""
-								}`}
-							>
-								{/* <div className="stats-number ">
-									<p className="text-4xl">
-										<span className="text-[#f27d0d] ">603</span> SQL questions
-										solved
-									</p>
-									<p className="text-4xl">
-										<span className="text-[#f27d0d]">268</span> Leetcode
-										problems solved
-									</p>
-									<p className="text-4xl">
-										<span className="text-[#f27d0d]">45</span> Hackerrank
-										problems solved
-									</p>
-									<a
-										href={
-											"https://platform.stratascratch.com/user/SmartPersonality1862 "
-										}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<p className="text-4xl">
-											Clicked to visit my stratascratch!
-										</p>
-									</a>
-								</div> */}
-							</div>
-						</div>
-						{/* <div className="col-span-1">
-							<Image
-								key="stat1"
-								src={`/skills/2nd/strata.png`}
-								alt="stat1"
-								width={350}
-								height={350}
-								className="skill"
-							/>
-						</div>
-						<div className="col-span-1">
-							<Image
-								key="stat2"
-								src={`/skills/2nd/hackerrank.png`}
-								alt="stat2"
-								width={350}
-								height={350}
-								className="skill"
-							/>
-						</div>
-						<div className="col-span-1">
-							<Image
-								key="stat3"
-								src={`/skills/2nd/leetcode.png`}
-								alt="stat3"
-								width={350}
-								height={350}
-								className="skill"
-							/>
-						</div> */}
-					</div>
-					{/* {render2ndSectionTitle("Certifications")} */}
-					<div className="flex flex-col mt-10">
-						<p className="section-title-sm seq">Certifications</p>
-						<h1 className="section-heading seq mt-2">My certifications</h1>
-						{/* <div className=" seq mt-2" style={{ width: "70%" }}>
-							<p className="text-sm ">
-								SQL problem-solver tackling real-world challenges for 2+ years.
-								With a daily goal of 2-3 problem resolutions, I've conquered 738
-								queries on platforms like Stratascratch, LeetCode, and
-								HackerRank. Eager to apply my expertise to drive data-driven
-								solutions.
-							</p>
-						</div> */}
-					</div>
-					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-5">
-						<div className="col-span-1 text-center">
-							<Tooltip text="Alteryx Core Designer">
-								{renderCertified(SKILLS.alteryx)}
-							</Tooltip>
-						</div>
-						<div className="col-span-1 text-center">
-							<Tooltip text="HackerRank SQL Advanced">
-								{renderCertified(SKILLS.hackerank)}
-							</Tooltip>
-						</div>
-						<div className="col-span-1 text-center">
-							<Tooltip text="Certified Scrum Product Owner">
-								{renderCertified(SKILLS.scrum)}
-							</Tooltip>
-						</div>
-					</div>
-
-					{/* {render2ndSectionTitle("Relevant courseworks")}
-					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-2">
-						<div className="col-span-1">
-							{renderSkillColumn("Business Intelligence", COURSES.bi)}
-						</div>
-						<div className=" col-span-2">
-							{renderSkillColumn("Database Management System", COURSES.dbms)}
-						</div>
-					</div>
-					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-2">
-						<div className="col-span-1">
-							{renderSkillColumn("Statistical Modelling", COURSES.stats)}
-						</div>
-						<div className=" col-span-2">
-							{renderSkillColumn("System planning", COURSES.sysplan)}
-						</div>
-					</div> */}
 				</div>
 			</div>
 		</section>

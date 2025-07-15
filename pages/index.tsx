@@ -26,6 +26,7 @@ import Scripts from "@/components/common/scripts";
 import AboutSection from "@/components/home/about";
 import ArticleSection from "@/components/home/article";
 import CommentSection from "@/components/home/comment";
+import CertificateSection from "@/components/home/certificate";
 
 const DEBOUNCE_TIME = 100;
 
@@ -83,12 +84,13 @@ export default function Home() {
 					{renderBackdrop()}
 					<HeroSection />
 					<CommentSection isDesktop={isDesktop} />
+					<TimelineSection isDesktop={isDesktop} />
 					{/* <AboutSection /> */}
 					<ProjectsSection isDesktop={isDesktop} />
 					<QuoteSection />
 					<SkillsSection isDesktop={isDesktop} />
 					<ArticleSection />
-					<TimelineSection isDesktop={isDesktop} />
+					<CertificateSection isDesktop={isDesktop} />
 					<CollaborationSection />
 					<Footer />
 				</main>
