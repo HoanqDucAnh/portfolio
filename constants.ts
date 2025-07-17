@@ -231,35 +231,41 @@ export const PROJECTS: IProject[] = [
 ];
 
 export const SKILLS = {
-	technical: [
-		"Python",
-		"NumPy",
-		"Pandas",
-		"MySQL",
-		"Microsoft SQL Server",
-		"MongoDB",
-	],
-	visualization: [
-		"Quicksight",
-		"Tableau",
+	"Business Intelligence": [
 		"PowerBI",
-		"GCP Looker",
-		"Matplotlib",
-		"Seaborn",
+		"Tableau",
+		"MODE Analytics",
+		"Hex"
 	],
-	clouds: [
-		"AWS S3",
-		"AWS EC2",
-		"AWS Cloudwatch",
-		"AWS Glue",
-		"AWS Athena",
-		"AWS Lambda",
+	"Data Warehouse": [
+		"Snowflake",
 		"AWS Redshift",
-		"GCP Mage compute engine",
-		"GCP Bigquery",
-		"Google Cloud",
+		"Google Bigquery"
 	],
-	other: ["Alteryx", "Snowflake", "Databricks", "Mage AI", "SAP ERP", "Excel"],
+	"Data Integration": [
+		"Airbyte"
+	],
+	"Orchestration": [
+		"Apache Airflow",
+		"Dagster",
+		"MageAI"
+	],
+	"Data Engineering & Processing": [
+		"Alteryx",
+		"Databricks",
+		"Spark",
+		"Kafka"
+	],
+	"Infrastructure as Code": [
+		"Terraform",
+	],
+	"Version Control": [
+		"Git",
+		"GitHub",
+		"GitLab",
+	],
+	// "Data Transformation": [
+	// ],
 
 	certified: [
 		"Certified Scrum Product Owner",

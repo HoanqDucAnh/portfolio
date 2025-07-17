@@ -141,18 +141,31 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					</div>
 					
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
-						{renderSkillColumn("Visualization", SKILLS.visualization)}
-						{renderSkillColumn("Technical", SKILLS.technical)}
+						{renderSkillColumn("Visualization", SKILLS["Business Intelligence"])}
+						{renderSkillColumn("Technical", SKILLS["Data Warehouse"])}
+					</div>
+
+					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
+						{renderSkillColumn("Data Engineering & Processing", SKILLS["Data Engineering & Processing"])}
+						{renderSkillColumn("Orchestration", SKILLS["Orchestration"])}
+					</div>
+					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
+						{renderSkillColumn("Data Integration", SKILLS["Data Integration"])}
+						{renderSkillColumn("Infrastructure as Code", SKILLS["Infrastructure as Code"])}
+					</div>
+
+					<div className="mt-10">
+						{renderSkillColumn("Version Control", SKILLS["Version Control"])}
 					</div>
 					
-					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
+					{/* <div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
 						{renderSkillColumn("Framework", COURSES.sysplan)}
 						{renderSkillColumn("Other tools", SKILLS.other)}
 					</div>
 					
 					<div className="mt-10">
 						{renderSkillColumn("Clouds", SKILLS.clouds)}
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</section>
