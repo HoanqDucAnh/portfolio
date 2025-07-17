@@ -95,6 +95,7 @@ export const EMAIL = "minh.b.pham@tcu.edu@gmail.com";
 export const SOCIAL_LINKS = {
 	linkedin: "https://www.linkedin.com/in/minhbphamm/",
 	github: "https://github.com/MarkPhamm",
+	gmail: "mailto:minh.pham@insurify.com",
 };
 
 export interface IProject {

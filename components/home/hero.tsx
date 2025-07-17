@@ -170,27 +170,8 @@ const HeroSection = React.memo(() => {
 			<p className="mb-4">
 				<span className={HERO_STYLES.TYPED_SPAN} ref={typedSpanElement}></span>
 			</p>
-			<div className="flex seq">
-				{/* <Button
-					classes="mr-3"
-					type={ButtonTypes.OUTLINE}
-					name="Resume"
-					otherProps={{
-						target: "_blank",
-						rel: "noreferrer",
-					}}
-					href="https://markphamm.github.io/resume_website/"
-				></Button> */}
-				<Link href="https://www.linkedin.com/in/minhbphamm/">
-					<a
-						target="_blank"
-						rel="noreferrer"
-						href="https://www.linkedin.com/in/minhbphamm/"
-						className="cus-btn py-2 px-7 font-medium rounded text-base md:text-xl tracking-wide link duration-300 flex items-center "
-					>
-						Contact me!
-					</a>
-				</Link>
+			<div className="flex seq gap-4">
+				{renderSocialLinks()}
 			</div>
 		</div>
 	);
