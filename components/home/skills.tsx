@@ -93,6 +93,12 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 		</>
 	), []);
 
+	// Helper function to get the correct file extension for each skill
+	const getSkillImagePath = useCallback((skill: string): string => {
+		// All skills now use SVG format
+		return `/skills/1st/${skill}.svg`;
+	}, []);
+
 	// Memoized skill column render for better performance
 	const renderSkillColumn = useCallback((
 		title: string,
@@ -109,7 +115,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					>
 						<Tooltip text={skill}>
 							<Image
-								src={`/skills/1st/${skill}.svg`}
+								src={getSkillImagePath(skill)}
 								alt={skill}
 								width={76}
 								height={76}
@@ -123,7 +129,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 				))}
 			</div>
 		</div>
-	), [isVisible]);
+	), [isVisible, getSkillImagePath]);
 
 
 
@@ -141,21 +147,17 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					</div>
 					
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
-						{renderSkillColumn("Visualization", SKILLS["Business Intelligence"])}
-						{renderSkillColumn("Technical", SKILLS["Data Warehouse"])}
+						{renderSkillColumn("Business Intelligence", SKILLS["Business Intelligence"])}
+						{renderSkillColumn("Data Warehousing", SKILLS["Data Warehousing"])}
 					</div>
 
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
-						{renderSkillColumn("Data Engineering & Processing", SKILLS["Data Engineering & Processing"])}
+						{renderSkillColumn("Data Processing", SKILLS["Data Processing"])}
 						{renderSkillColumn("Orchestration", SKILLS["Orchestration"])}
 					</div>
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
 						{renderSkillColumn("Data Integration", SKILLS["Data Integration"])}
-						{renderSkillColumn("Infrastructure as Code", SKILLS["Infrastructure as Code"])}
-					</div>
-
-					<div className="mt-10">
-						{renderSkillColumn("Version Control", SKILLS["Version Control"])}
+						{renderSkillColumn("Version Control and IaC", SKILLS["Version Control and IaC"])}
 					</div>
 					
 					{/* <div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">

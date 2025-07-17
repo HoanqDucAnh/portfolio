@@ -234,38 +234,39 @@ export const SKILLS = {
 	"Business Intelligence": [
 		"PowerBI",
 		"Tableau",
-		"MODE Analytics",
+		"Mode",
 		"Hex"
 	],
-	"Data Warehouse": [
+	"Data Warehousing": [
 		"Snowflake",
 		"AWS Redshift",
-		"Google Bigquery"
+		"Google Bigquery",
+		"Databricks"
 	],
 	"Data Integration": [
-		"Airbyte"
+		"Airbyte",
+		"Dlt",
+		"Fivetran",
+		"Stich"
 	],
 	"Orchestration": [
 		"Apache Airflow",
 		"Dagster",
-		"MageAI"
+		"MageAI",
+		"Orchestra"
 	],
-	"Data Engineering & Processing": [
+	"Data Processing": [
 		"Alteryx",
-		"Databricks",
 		"Spark",
-		"Kafka"
+		"Kafka",
+		"Astronomer"
 	],
-	"Infrastructure as Code": [
-		"Terraform",
-	],
-	"Version Control": [
+	"Version Control and IaC": [
 		"Git",
-		"GitHub",
-		"GitLab",
+		"Github",
+		"Gitlab",
+		"Terraform"
 	],
-	// "Data Transformation": [
-	// ],
 
 	certified: [
 		"Certified Scrum Product Owner",
