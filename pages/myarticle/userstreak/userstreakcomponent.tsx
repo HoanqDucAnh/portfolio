@@ -11,7 +11,7 @@ import {
 import React from "react";
 import SqlTable from "@/components/common/tabledata";
 import { Link } from "react-scroll";
-import Inforarticle from "@/components/common/inforarticle";
+
 
 export default function UserStreakComponent() {
 	return (
@@ -543,11 +543,7 @@ export default function UserStreakComponent() {
 					</section>
 				</div>
 			</div>
-			<div className="col-span-1">
-				<div className="fixed">
-					<Inforarticle />
-				</div>
-			</div>
+
 		</div>
 	);
 }

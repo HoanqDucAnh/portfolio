@@ -1,41 +1,80 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function inforarticle() {
+export default function InfoArticle() {
 	return (
-		<div className="">
-			<h6>Follow me!</h6>
-			<section id="social">
-				<div>
+		<div className="sticky-follow">
+			<h6 className="text-lg font-semibold mb-4">Follow me!</h6>
+			<section id="social" className="mb-6">
+				<div className="mb-2">
 					<a
 						href="https://www.linkedin.com/in/minhbphamm/"
 						target="_blank"
 						rel="noreferrer"
+						className="flex items-center hover:text-[#f27d0d] transition-colors duration-300"
 					>
-						<i className="bi bi-linkedin"> LinkedIn</i>
+						<Image 
+							src="/social/linkedin.svg" 
+							alt="LinkedIn" 
+							width={20} 
+							height={20} 
+							className="mr-2"
+						/>
+						LinkedIn
 					</a>
 				</div>
-				<div>
+				<div className="mb-2">
 					<a
 						href="https://github.com/MarkPhamm"
 						target="_blank"
 						rel="noreferrer"
+						className="flex items-center hover:text-[#f27d0d] transition-colors duration-300"
 					>
-						<i className="bi bi-github"> Github</i>
+						<Image 
+							src="/social/github.svg" 
+							alt="GitHub" 
+							width={20} 
+							height={20} 
+							className="mr-2"
+						/>
+						GitHub
 					</a>
 				</div>
 			</section>
-			<hr></hr>
+			<hr className="border-gray-300 mb-4" />
 			<section>
-				<h6>Read more</h6>
-				{/* <Tooltip text="First Day Retention Rate">
-        <a href="userstreak">User Streak</a>
-      </Tooltip>
-      <Tooltip text="First Day Retention Rate">
-        <a href="retention">First Day Retention Rate</a>
-      </Tooltip>
-      <Tooltip text="Time between two events">
-        <a href="timebetween">Time between two events</a>
-      </Tooltip> */}
+				<h6 className="text-lg font-semibold mb-3">Read more</h6>
+				<div className="space-y-2">
+					<div>
+						<Link href="/myarticle/userstreak">
+							<a className="block hover:text-[#f27d0d] transition-colors duration-300 text-sm">
+								User Streak (Gaps and Islands)
+							</a>
+						</Link>
+					</div>
+					<div>
+						<Link href="/myarticle/retention">
+							<a className="block hover:text-[#f27d0d] transition-colors duration-300 text-sm">
+								First Day Retention Rate
+							</a>
+						</Link>
+					</div>
+					<div>
+						<Link href="/myarticle/time">
+							<a className="block hover:text-[#f27d0d] transition-colors duration-300 text-sm">
+								Time Between Two Events
+							</a>
+						</Link>
+					</div>
+					<div>
+						<Link href="/myarticle/marketcamp">
+							<a className="block hover:text-[#f27d0d] transition-colors duration-300 text-sm">
+								Marketing Campaign Analysis
+							</a>
+						</Link>
+					</div>
+				</div>
 			</section>
 		</div>
 	);
