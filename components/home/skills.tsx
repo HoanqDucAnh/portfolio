@@ -157,7 +157,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					</div>
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
 						{renderSkillColumn("Data Integration", SKILLS["Data Integration"])}
-						{renderSkillColumn("Version Control and IaC", SKILLS["Version Control and IaC"])}
+						{renderSkillColumn("DevOps", SKILLS["DevOps"])}
 					</div>
 					
 					{/* <div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">

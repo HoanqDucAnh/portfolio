@@ -261,10 +261,10 @@ export const SKILLS = {
 		"Kafka",
 		"Astronomer"
 	],
-	"Version Control and IaC": [
-		"Git",
+	"DevOps": [
+		"Docker",
+		"Kubernetes",
 		"Github",
-		"Gitlab",
 		"Terraform"
 	],
 
