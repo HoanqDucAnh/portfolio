@@ -2,98 +2,94 @@ export const sqlCode = {
 	code1: `SELECT * FROM user_streaks
 ORDER BY 1,2`,
 
-	code2: `WITH CTE1 as 
-(
-  SELECT DISTINCT user_id, date_visited FROM user_streaks
+	code2: `WITH distinct_visits AS (
+  SELECT DISTINCT user_id, date_visited 
+  FROM user_streaks
   WHERE date_visited <= '2022-08-10'
-  ORDER BY 1,2
+  ORDER BY 1, 2
 )
-SELECT * FROM CTE1`,
+SELECT * FROM distinct_visits`,
 
-	code3: `CTE2 as
-(
-  SELECT row_number() over(order by user_id, date_visited) id,
-  user_id,
-  date_visited date
-  FROM CTE1
+	code3: `visits_with_id AS (
+  SELECT 
+    ROW_NUMBER() OVER (ORDER BY user_id, date_visited) AS id,
+    user_id,
+    date_visited AS date
+  FROM distinct_visits
 )`,
 
-	code4: `CTE3 as
-(
+	code4: `visits_with_prev_date AS (
   SELECT *, 
-  LAG(date) OVER(PARTITION BY user_id ORDER BY date) AS prev_date 
-  FROM CTE2
+    LAG(date) OVER (PARTITION BY user_id ORDER BY date) AS prev_date 
+  FROM visits_with_id
 )
-SELECT * FROM CTE3`,
+SELECT * FROM visits_with_prev_date`,
 
-	code5: `CASE WHEN DATEDIFF(date, prev_date) != 1 or prev_date is null THEN 1 ELSE 0 END AS start_id`,
+	code5: `CASE WHEN DATEDIFF(date, prev_date) != 1 OR prev_date IS NULL THEN 1 ELSE 0 END AS start_id`,
 
-	code6: `SUM(CASE WHEN DATEDIFF(date, prev_date) != 1 or prev_date is null 
-THEN 1 ELSE 0 END) over(PARTITION by user_id ORDER BY id) as Streak_ID`,
+	code6: `SUM(CASE WHEN DATEDIFF(date, prev_date) != 1 OR prev_date IS NULL 
+THEN 1 ELSE 0 END) OVER (PARTITION BY user_id ORDER BY id) AS streak_id`,
 
 	code7: `SELECT 
   user_id, 
-  SUM(CASE WHEN DATEDIFF(date, prev_date) != 1 or prev_date is null 
-THEN 1 ELSE 0 END) over(PARTITION by user_id ORDER BY id) as Streak_ID
-from CTE3`,
+  SUM(CASE WHEN DATEDIFF(date, prev_date) != 1 OR prev_date IS NULL 
+THEN 1 ELSE 0 END) OVER (PARTITION BY user_id ORDER BY id) AS streak_id
+FROM visits_with_prev_date`,
 
-	code8: `CTE5 as
-(
+	code8: `streak_rankings AS (
   SELECT 
-  user_id, 
-  streak_id, 
-  COUNT(streak_id) as streak_length,
-  rank() over(partition by user_id order by count(streak_id) desc) ranking 
-  FROM CTE4
-  GROUP by 1,2
+    user_id, 
+    streak_id, 
+    COUNT(streak_id) AS streak_length,
+    RANK() OVER (PARTITION BY user_id ORDER BY COUNT(streak_id) DESC) AS ranking 
+  FROM visits_with_streaks
+  GROUP BY 1, 2
 )
-SELECT user_id, streak_length FROM CTE5
+SELECT user_id, streak_length 
+FROM streak_rankings
 WHERE ranking = 1
-ORDER BY 2 desc 
+ORDER BY 2 DESC 
 LIMIT 3`,
 
-	code9: `WITH CTE1 as 
-(
-  SELECT DISTINCT user_id, date_visited FROM user_streaks
-  Where date_visited <= '2022-08-10'
+	code9: `WITH distinct_visits AS (
+  SELECT DISTINCT user_id, date_visited 
+  FROM user_streaks
+  WHERE date_visited <= '2022-08-10'
   ORDER BY 1, 2
-    
 ),
-CTE2 as
-(
-  SELECT row_number() over(order by user_id, date_visited) id,
-  user_id,
-  date_visited date
-  FROM CTE1
-),
-CTE3 as
-(
-  SELECT *, 
-  LAG(date) OVER(PARTITION BY user_id ORDER BY date) AS prev_date 
-  FROM CTE2
-),
-CTE4 as
-(
-SELECT 
-  user_id, 
-  SUM(CASE WHEN DATEDIFF(date, prev_date) != 1 or prev_date is null THEN 1 ELSE 0 END) over(PARTITION by user_id ORDER BY id) as Streak_ID
-from CTE3
-),
-CTE5 as
-(
+visits_with_id AS (
   SELECT 
-  user_id, 
-  streak_id, 
-  COUNT(streak_id) as streak_length,
-  rank() over(partition by user_id order by count(streak_id) desc) ranking 
-  FROM CTE4
-  GROUP by 1,2
+    ROW_NUMBER() OVER (ORDER BY user_id, date_visited) AS id,
+    user_id,
+    date_visited AS date
+  FROM distinct_visits
+),
+visits_with_prev_date AS (
+  SELECT *, 
+    LAG(date) OVER (PARTITION BY user_id ORDER BY date) AS prev_date 
+  FROM visits_with_id
+),
+visits_with_streaks AS (
+  SELECT 
+    user_id, 
+    SUM(CASE WHEN DATEDIFF(date, prev_date) != 1 OR prev_date IS NULL 
+    THEN 1 ELSE 0 END) OVER (PARTITION BY user_id ORDER BY id) AS streak_id
+  FROM visits_with_prev_date
+),
+streak_rankings AS (
+  SELECT 
+    user_id, 
+    streak_id, 
+    COUNT(streak_id) AS streak_length,
+    RANK() OVER (PARTITION BY user_id ORDER BY COUNT(streak_id) DESC) AS ranking 
+  FROM visits_with_streaks
+  GROUP BY 1, 2
 )
-SELECT user_id, streak_length FROM CTE5
+SELECT user_id, streak_length 
+FROM streak_rankings
 WHERE ranking = 1
-ORDER BY 2 desc 
-LIMIT 3
-`,
+ORDER BY 2 DESC 
+LIMIT 3`,
 
 	code10: `-- Insert data into the user_streaks table
 INSERT INTO user_streaks (user_id, date_visited) VALUES
@@ -663,6 +659,8 @@ export const Table5 = {
 		[{ user_id: "u004" }, { Streak_ID: 1 }],
 		[{ user_id: "u004" }, { Streak_ID: 1 }],
 		[{ user_id: "u004" }, { Streak_ID: 1 }],
+		[{ user_id: "u004" }, { Streak_ID: 1 }],
+		[{ user_id: "u005" }, { Streak_ID: 1 }],
 		[{ user_id: "u005" }, { Streak_ID: 1 }],
 		[{ user_id: "u005" }, { Streak_ID: 1 }],
 		[{ user_id: "u005" }, { Streak_ID: 1 }],

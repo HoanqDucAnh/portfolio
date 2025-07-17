@@ -2,77 +2,98 @@ export const sqlCode = {
 	code1: `SELECT * FROM facebook_web_log
 ORDER BY 1,2`,
 
-	code2: `WITH cte AS
-(
-SELECT * FROM facebook_web_log
-WHERE action in ('page_load','scroll_down')
-ORDER BY 1,2
+	code2: `WITH filtered_actions AS (
+  SELECT * 
+  FROM facebook_web_log
+  WHERE action IN ('page_load', 'scroll_down')
+  ORDER BY 1, 2
 ) 
-SELECT * FROM cte
-`,
+SELECT * FROM filtered_actions`,
 
-	code3: `cte2 as
-(
-SELECT *,
-LEAD(timestamp) OVER(PARTITION BY user_id ORDER BY timestamp) as next_timestamp,
-LEAD(action) OVER(PARTITION BY user_id ORDER BY timestamp) as next_action
-FROM cte
+	code3: `actions_with_next AS (
+  SELECT *,
+    LEAD(timestamp) OVER (PARTITION BY user_id ORDER BY timestamp) AS next_timestamp,
+    LEAD(action) OVER (PARTITION BY user_id ORDER BY timestamp) AS next_action
+  FROM filtered_actions
 )`,
 
-	code4: `SELECT user_id, timestamp as page_load_time, next_timestamp as scroll_down_time,
-TIMESTAMPDIFF(SECOND,timestamp, next_timestamp) as 	time_diff,
-RANK() OVER(ORDER BY TIMESTAMPDIFF(SECOND,timestamp, next_timestamp)) ranking
-FROM cte2
-WHERE action = 'page_load' and next_action = 'scroll_down'`,
+	code4: `SELECT 
+  user_id, 
+  timestamp AS page_load_time, 
+  next_timestamp AS scroll_down_time,
+  TIMESTAMPDIFF(SECOND, timestamp, next_timestamp) AS time_diff,
+  RANK() OVER (ORDER BY TIMESTAMPDIFF(SECOND, timestamp, next_timestamp)) AS ranking
+FROM actions_with_next
+WHERE action = 'page_load' 
+  AND next_action = 'scroll_down'`,
 
-	code5: `SELECT user_id, page_load_time, scroll_down_time, time_diff FROM 
-(
-SELECT user_id, timestamp as page_load_time, next_timestamp as scroll_down_time,
-TIMESTAMPDIFF(SECOND,timestamp, next_timestamp) as 	time_diff,
-RANK() OVER(ORDER BY TIMESTAMPDIFF(SECOND,timestamp, next_timestamp)) ranking
-FROM cte2
-WHERE action = 'page_load' and next_action = 'scroll_down'
-) a
-WHERE ranking = 1
-`,
-
-	code6: `SELECT user_id, page_load_time, scroll_down_time, 
-TIME_FORMAT(SEC_TO_TIME(time_diff),'%H:%i:%s') as time_diff FROM 
-(
-SELECT user_id, timestamp as page_load_time, next_timestamp as scroll_down_time,
-TIMESTAMPDIFF(SECOND,timestamp, next_timestamp) as 	time_diff,
-RANK() OVER(ORDER BY TIMESTAMPDIFF(SECOND,timestamp, next_timestamp)) ranking
-FROM cte2
-WHERE action = 'page_load' and next_action = 'scroll_down'
-) a
+	code5: `SELECT 
+  user_id, 
+  page_load_time, 
+  scroll_down_time, 
+  time_diff 
+FROM (
+  SELECT 
+    user_id, 
+    timestamp AS page_load_time, 
+    next_timestamp AS scroll_down_time,
+    TIMESTAMPDIFF(SECOND, timestamp, next_timestamp) AS time_diff,
+    RANK() OVER (ORDER BY TIMESTAMPDIFF(SECOND, timestamp, next_timestamp)) AS ranking
+  FROM actions_with_next
+  WHERE action = 'page_load' 
+    AND next_action = 'scroll_down'
+) ranked_results
 WHERE ranking = 1`,
 
-	code7: `WITH cte AS
-(
-SELECT * FROM facebook_web_log
-WHERE action in ('page_load','scroll_down')
-ORDER BY 1,2
+	code6: `SELECT 
+  user_id, 
+  page_load_time, 
+  scroll_down_time, 
+  TIME_FORMAT(SEC_TO_TIME(time_diff), '%H:%i:%s') AS time_diff 
+FROM (
+  SELECT 
+    user_id, 
+    timestamp AS page_load_time, 
+    next_timestamp AS scroll_down_time,
+    TIMESTAMPDIFF(SECOND, timestamp, next_timestamp) AS time_diff,
+    RANK() OVER (ORDER BY TIMESTAMPDIFF(SECOND, timestamp, next_timestamp)) AS ranking
+  FROM actions_with_next
+  WHERE action = 'page_load' 
+    AND next_action = 'scroll_down'
+) ranked_results
+WHERE ranking = 1`,
+
+	code7: `WITH filtered_actions AS (
+  SELECT * 
+  FROM facebook_web_log
+  WHERE action IN ('page_load', 'scroll_down')
+  ORDER BY 1, 2
 ),
 
-cte2 as
-(
-SELECT *,
-LEAD(timestamp) OVER(PARTITION BY user_id ORDER BY timestamp) as next_timestamp,
-LEAD(action) OVER(PARTITION BY user_id ORDER BY timestamp) as next_action
-FROM cte
+actions_with_next AS (
+  SELECT *,
+    LEAD(timestamp) OVER (PARTITION BY user_id ORDER BY timestamp) AS next_timestamp,
+    LEAD(action) OVER (PARTITION BY user_id ORDER BY timestamp) AS next_action
+  FROM filtered_actions
 )
 
-SELECT user_id, page_load_time, scroll_down_time, 
-TIME_FORMAT(SEC_TO_TIME(time_diff),'%H:%i:%s') as time_diff FROM 
-(
-SELECT user_id, timestamp as page_load_time, next_timestamp as scroll_down_time,
-TIMESTAMPDIFF(SECOND,timestamp, next_timestamp) as time_diff,
-RANK() OVER(ORDER BY TIMESTAMPDIFF(SECOND,timestamp, next_timestamp)) ranking
-FROM cte2
-WHERE action = 'page_load' and next_action = 'scroll_down'
-) a
-WHERE ranking = 1
-`,
+SELECT 
+  user_id, 
+  page_load_time, 
+  scroll_down_time, 
+  TIME_FORMAT(SEC_TO_TIME(time_diff), '%H:%i:%s') AS time_diff 
+FROM (
+  SELECT 
+    user_id, 
+    timestamp AS page_load_time, 
+    next_timestamp AS scroll_down_time,
+    TIMESTAMPDIFF(SECOND, timestamp, next_timestamp) AS time_diff,
+    RANK() OVER (ORDER BY TIMESTAMPDIFF(SECOND, timestamp, next_timestamp)) AS ranking
+  FROM actions_with_next
+  WHERE action = 'page_load' 
+    AND next_action = 'scroll_down'
+) ranked_results
+WHERE ranking = 1`,
 
 	code8: `CREATE TABLE facebook_web_log (
   user_id INT,

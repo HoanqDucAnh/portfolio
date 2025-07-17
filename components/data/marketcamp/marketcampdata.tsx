@@ -5,172 +5,190 @@ ORDER BY 1,2`,
 	code2: `SELECT user_id
 FROM marketing_campaign
 GROUP BY user_id
-HAVING COUNT(DISTINCT created_at = 1)`,
+HAVING COUNT(DISTINCT created_at) = 1`,
 
-	code3: `SELECT user_id,
+	code3: `SELECT 
+	user_id,
 	created_at,
 	product_id,
-	rank() over(PARTITION BY user_id
-		ORDER BY created_at) ranking
+	RANK() OVER (PARTITION BY user_id ORDER BY created_at) AS ranking
 FROM marketing_campaign
-WHERE user_id not in
-	(SELECT user_id
+WHERE user_id NOT IN (
+	SELECT user_id
 	FROM marketing_campaign
 	GROUP BY user_id
-	HAVING count(DISTINCT created_at) = 1)
-`,
+	HAVING COUNT(DISTINCT created_at) = 1
+)`,
 
-	code4: `WITH cte1 AS
-  (SELECT user_id,
-  	created_at,
-  	product_id,
-  	rank() over(PARTITION BY user_id
-    		ORDER BY created_at) ranking
-   FROM marketing_campaign
-   WHERE user_id not in
-    (SELECT user_id
-    FROM marketing_campaign
-    GROUP BY user_id
-    HAVING count(DISTINCT created_at) = 1))
-SELECT * FROM cte1
-`,
+	code4: `WITH ranked_purchases AS (
+	SELECT 
+		user_id,
+		created_at,
+		product_id,
+		RANK() OVER (PARTITION BY user_id ORDER BY created_at) AS ranking
+	FROM marketing_campaign
+	WHERE user_id NOT IN (
+		SELECT user_id
+		FROM marketing_campaign
+		GROUP BY user_id
+		HAVING COUNT(DISTINCT created_at) = 1
+	)
+)
+SELECT * FROM ranked_purchases`,
 
-	code5: `WITH cte1 AS
-(SELECT user_id,
-	created_at,
-	product_id,
-	rank() over(PARTITION BY user_id
-		ORDER BY created_at) ranking
+	code5: `WITH ranked_purchases AS (
+	SELECT 
+		user_id,
+		created_at,
+		product_id,
+		RANK() OVER (PARTITION BY user_id ORDER BY created_at) AS ranking
+	FROM marketing_campaign
+	WHERE user_id NOT IN (
+		SELECT user_id
+		FROM marketing_campaign
+		GROUP BY user_id
+		HAVING COUNT(DISTINCT created_at) = 1
+	)
+)
+SELECT * FROM ranked_purchases`,
+
+	code6: `WITH ranked_purchases AS (
+	SELECT 
+		user_id,
+		created_at,
+		product_id,
+		RANK() OVER (PARTITION BY user_id ORDER BY created_at) AS ranking
+	FROM marketing_campaign
+	WHERE user_id NOT IN (
+		SELECT user_id
+		FROM marketing_campaign
+		GROUP BY user_id
+		HAVING COUNT(DISTINCT created_at) = 1
+	)
+),
+first_day_purchases AS (
+	SELECT *
+	FROM ranked_purchases
+	WHERE ranking = 1
+)
+SELECT * FROM first_day_purchases`,
+
+	code7: `other_day_purchases AS (
+	SELECT *
+	FROM ranked_purchases
+	WHERE ranking != 1 
+)
+SELECT * FROM other_day_purchases`,
+
+	code8: `WITH ranked_purchases AS (
+	SELECT 
+		user_id, 
+		created_at, 
+		product_id, 
+		RANK() OVER (PARTITION BY user_id ORDER BY created_at) AS ranking
+	FROM marketing_campaign
+	WHERE user_id NOT IN (
+		SELECT user_id
+		FROM marketing_campaign
+		GROUP BY user_id
+		HAVING COUNT(DISTINCT created_at) = 1
+	)
+), 
+
+first_day_purchases AS (
+	SELECT *
+	FROM ranked_purchases
+	WHERE ranking = 1 
+),
+
+other_day_purchases AS (
+	SELECT *
+	FROM ranked_purchases
+	WHERE ranking != 1 
+)
+
+SELECT 
+	other_day_purchases.user_id,
+	other_day_purchases.product_id AS others_purchase,
+	first_day_purchases.product_id AS first_day_purchase
+FROM other_day_purchases
+LEFT JOIN first_day_purchases ON other_day_purchases.user_id = first_day_purchases.user_id
+	AND other_day_purchases.product_id = first_day_purchases.product_id`,
+
+	code9: `SELECT COUNT(DISTINCT(other_day_purchases.user_id)) AS total_users
+FROM other_day_purchases
+LEFT JOIN first_day_purchases ON other_day_purchases.user_id = first_day_purchases.user_id
+	AND other_day_purchases.product_id = first_day_purchases.product_id
+WHERE first_day_purchases.product_id IS NULL`,
+
+	code10: `WITH ranked_purchases AS (
+	SELECT 
+		user_id, 
+		created_at, 
+		product_id, 
+		RANK() OVER (PARTITION BY user_id ORDER BY created_at) AS ranking
+	FROM marketing_campaign
+	WHERE user_id NOT IN (
+		SELECT user_id
+		FROM marketing_campaign
+		GROUP BY user_id
+		HAVING COUNT(DISTINCT created_at) = 1
+	)
+), 
+
+first_day_purchases AS (
+	SELECT *
+	FROM ranked_purchases
+	WHERE ranking = 1 
+),
+
+other_day_purchases AS (
+	SELECT *
+	FROM ranked_purchases
+	WHERE ranking != 1 
+)
+
+SELECT COUNT(DISTINCT(other_day_purchases.user_id)) AS total_users
+FROM other_day_purchases
+LEFT JOIN first_day_purchases ON other_day_purchases.user_id = first_day_purchases.user_id
+	AND other_day_purchases.product_id = first_day_purchases.product_id
+WHERE first_day_purchases.product_id IS NULL`,
+
+	code11: `SELECT COUNT(DISTINCT user_id)
 FROM marketing_campaign
-WHERE user_id not in
-	(SELECT user_id
-	 FROM marketing_campaign
-	 GROUP BY user_id
-	 HAVING count(DISTINCT created_at) = 1))
-SELECT * FROM cte1`,
-
-	code6: `WITH cte1 AS
-(SELECT user_id,
-	created_at,
-	product_id,
-	rank() over(PARTITION BY user_id
-		ORDER BY created_at) ranking
-FROM marketing_campaign
-WHERE user_id not in
-	(SELECT user_id
+WHERE user_id IN (
+	SELECT user_id
 	FROM marketing_campaign
 	GROUP BY user_id
-	HAVING count(DISTINCT created_at) = 1)),
-first AS
-(SELECT *
- FROM cte1
- WHERE ranking = 1)
-SELECT * FROM first
-`,
-
-	code7: `others AS
-(SELECT *
- FROM cte1
- WHERE ranking != 1 )
-SELECT * FROM others`,
-
-	code8: `WITH cte1 as
-(
-SELECT user_id, created_at, product_id, rank() over(partition by user_id order by created_at) ranking
-FROM marketing_campaign
-WHERE user_id not in
-  (SELECT user_id
-  FROM marketing_campaign
-  GROUP BY user_id
-  HAVING count(DISTINCT created_at) = 1)), 
-
-first AS
-  (SELECT *
-  FROM cte1
-  WHERE ranking = 1 ),
-
-others AS
-  (SELECT *
-  FROM cte1
-  WHERE ranking != 1 )
-
-SELECT others.user_id,
-  others.product_id AS others_purchase,
-  first.product_id AS first_day_purchase
-FROM others
-LEFT JOIN first ON others.user_id = first.user_id
-AND others.product_id = first.product_id
-`,
-
-	code9: `SELECT COUNT(DISTINCT(others.user_id)) as total_users
-FROM others
-LEFT JOIN first ON others.user_id = first.user_id
-AND others.product_id = first.product_id
-WHERE first.product_id is null
-`,
-
-	code10: `WITH cte1 as
-(
-SELECT user_id, created_at, product_id, rank() over(partition by user_id order by created_at) ranking
-FROM marketing_campaign
-WHERE user_id not in
-    (SELECT user_id
-    FROM marketing_campaign
-    GROUP BY user_id
-    HAVING count(DISTINCT created_at) = 1)), 
-
-first AS
-  (SELECT *
-   FROM cte1
-   WHERE ranking = 1 ),
-
-others AS
-  (SELECT *
-   FROM cte1
-   WHERE ranking != 1 )
-
-SELECT COUNT(DISTINCT(others.user_id)) as total_users
-FROM others
-LEFT JOIN first ON others.user_id = first.user_id
-AND others.product_id = first.product_id
-WHERE first.product_id is null
-`,
-
-	code11: `SELECT count(DISTINCT user_id)
-FROM marketing_campaign
-WHERE user_id in
-  (SELECT user_id
-  FROM marketing_campaign
-  GROUP BY user_id
-  HAVING count(DISTINCT created_at) >1
-  AND count(DISTINCT product_id) >1)
+	HAVING COUNT(DISTINCT created_at) > 1
+		AND COUNT(DISTINCT product_id) > 1
+)
   
-AND concat((user_id),'_', (product_id)) not in
-  (SELECT concat(user_id,'_', product_id) AS user_product
-  FROM
-  (SELECT *,
-    rank() over(PARTITION BY user_id
-      ORDER BY created_at) AS rn
-    FROM marketing_campaign) x
-	WHERE rn = 1 )
-`,
+AND CONCAT(user_id, '_', product_id) NOT IN (
+	SELECT CONCAT(user_id, '_', product_id) AS user_product
+	FROM (
+		SELECT *,
+			RANK() OVER (PARTITION BY user_id ORDER BY created_at) AS rn
+		FROM marketing_campaign
+	) ranked_data
+	WHERE rn = 1 
+)`,
 
 	code12: `SELECT user_id
 FROM marketing_campaign
-ROUP BY user_id
-HAVING count(DISTINCT created_at) >1
-AND count(DISTINCT product_id) >1
-`,
+GROUP BY user_id
+HAVING COUNT(DISTINCT created_at) > 1
+	AND COUNT(DISTINCT product_id) > 1`,
 
-	code13: `AND concat((user_id),'_', (product_id)) not in
-(SELECT concat(user_id,'_', product_id) AS user_product
- FROM
-	(SELECT *,
-	rank() over(PARTITION BY user_id
-		 ORDER BY created_at) AS rn
-	FROM marketing_campaign) x
-WHERE rn = 1 )
-`,
+	code13: `AND CONCAT(user_id, '_', product_id) NOT IN (
+	SELECT CONCAT(user_id, '_', product_id) AS user_product
+	FROM (
+		SELECT *,
+			RANK() OVER (PARTITION BY user_id ORDER BY created_at) AS rn
+		FROM marketing_campaign
+	) ranked_data
+	WHERE rn = 1 
+)`,
 
 	code14: `CREATE TABLE marketing_campaign (
 	user_id INT,
@@ -761,16 +779,16 @@ export const Table1 = {
 		[
 			{ user_id: 49 },
 			{ created_at: "2019-02-18" },
-			{ product_id: 114 },
-			{ quantity: 1 },
-			{ price: 248 },
+			{ product_id: 106 },
+			{ quantity: 2 },
+			{ price: 123 },
 		],
 		[
 			{ user_id: 49 },
 			{ created_at: "2019-02-18" },
-			{ product_id: 116 },
+			{ product_id: 114 },
 			{ quantity: 1 },
-			{ price: 499 },
+			{ price: 248 },
 		],
 		[
 			{ user_id: 49 },
@@ -782,9 +800,9 @@ export const Table1 = {
 		[
 			{ user_id: 49 },
 			{ created_at: "2019-02-18" },
-			{ product_id: 106 },
-			{ quantity: 2 },
-			{ price: 123 },
+			{ product_id: 116 },
+			{ quantity: 1 },
+			{ price: 499 },
 		],
 		[
 			{ user_id: 50 },

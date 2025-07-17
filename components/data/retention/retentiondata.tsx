@@ -335,103 +335,118 @@ export const sqlCode = {
 	code0: `SELECT * FROM players_logins`,
 
 	code1: `SELECT *,
-	DENSE_RANK() OVER (PARTITION BY player_id
-			ORDER BY login_date) ranking
+	DENSE_RANK() OVER (PARTITION BY player_id ORDER BY login_date) AS ranking
 FROM player_logins`,
 
-	code2: `WITH cte AS
-	(SELECT *,
-		DENSE_RANK() OVER(PARTITION BY player_id
-			ORDER BY login_date) ranking
-	FROM players_logins)`,
+	code2: `WITH player_login_ranking AS (
+	SELECT *,
+		DENSE_RANK() OVER (PARTITION BY player_id ORDER BY login_date) AS ranking
+	FROM players_logins
+)`,
 
-	code3: `SELECT DISTINCT a.player_id,
-		a.login_date AS first_login_date,
-		b.login_date AS second_login_date
-FROM cte a
-LEFT JOIN cte b ON a.player_id = b.player_id
-AND a.ranking = b.ranking - 1
-AND DATEDIFF(b.login_date, a.login_date) = 1
+	code3: `SELECT DISTINCT 
+	a.player_id,
+	a.login_date AS first_login_date,
+	b.login_date AS second_login_date
+FROM player_login_ranking a
+LEFT JOIN player_login_ranking b ON a.player_id = b.player_id
+	AND a.ranking = b.ranking - 1
+	AND DATEDIFF(b.login_date, a.login_date) = 1
 WHERE a.ranking = 1`,
 
-	code4: `SELECT Concat(ROUND(COUNT(second_login_date) / 
-COUNT(first_login_date), 2) * 100 , '%') AS 'First Day Retention Rate'
-FROM
-	(SELECT DISTINCT a.player_id,
-			 a.login_date AS first_login_date,
-			 b.login_date AS second_login_date
-	FROM cte1 a
-	LEFT JOIN cte1 b ON a.player_id = b.player_id
-	AND a.ranking = b.ranking - 1
-	AND DATEDIFF(b.login_date, a.login_date) = 1
-	WHERE a.ranking = 1) a`,
+	code4: `SELECT CONCAT(
+	ROUND(COUNT(second_login_date) / COUNT(first_login_date), 2) * 100, 
+	'%'
+) AS 'First Day Retention Rate'
+FROM (
+	SELECT DISTINCT 
+		a.player_id,
+		a.login_date AS first_login_date,
+		b.login_date AS second_login_date
+	FROM player_login_ranking a
+	LEFT JOIN player_login_ranking b ON a.player_id = b.player_id
+		AND a.ranking = b.ranking - 1
+		AND DATEDIFF(b.login_date, a.login_date) = 1
+	WHERE a.ranking = 1
+) retention_data`,
 
-	code5: `WITH cte AS
- (SELECT *,
-	DENSE_RANK() OVER(PARTITION BY player_id
-		ORDER BY login_date) ranking
- FROM players_logins)
+	code5: `WITH player_login_ranking AS (
+	SELECT *,
+		DENSE_RANK() OVER (PARTITION BY player_id ORDER BY login_date) AS ranking
+	FROM players_logins
+)
 SELECT 
-Concat(ROUND(COUNT(second_login_date)
-/ COUNT(first_login_date), 2) * 100,'%') AS 'First Day Retention Rate'
-FROM
-	(SELECT DISTINCT a.player_id,
-			 a.login_date AS first_login_date,
-			 b.login_date AS second_login_date
-	FROM cte a
-	LEFT JOIN cte b ON a.player_id = b.player_id
-	AND a.ranking = b.ranking - 1
-	AND DATEDIFF(b.login_date, a.login_date) = 1
-	WHERE a.ranking = 1) a`,
+	CONCAT(
+		ROUND(COUNT(second_login_date) / COUNT(first_login_date), 2) * 100,
+		'%'
+	) AS 'First Day Retention Rate'
+FROM (
+	SELECT DISTINCT 
+		a.player_id,
+		a.login_date AS first_login_date,
+		b.login_date AS second_login_date
+	FROM player_login_ranking a
+	LEFT JOIN player_login_ranking b ON a.player_id = b.player_id
+		AND a.ranking = b.ranking - 1
+		AND DATEDIFF(b.login_date, a.login_date) = 1
+	WHERE a.ranking = 1
+) retention_data`,
 
-	code6: `SELECT player_id,
-		login_date,
-		LEAD(login_date) OVER(PARTITION BY player_id
-					ORDER BY ranking) AS next_login_date
-FROM cte`,
+	code6: `SELECT 
+	player_id,
+	login_date,
+	LEAD(login_date) OVER (PARTITION BY player_id ORDER BY ranking) AS next_login_date
+FROM player_login_ranking`,
 
 	code7: `SELECT *
-FROM
- (SELECT DISTINCT player_id,
-		  login_date AS first_login_date,
-		  LEAD(login_date) OVER(PARTITION BY player_id
-				  ORDER BY ranking) AS second_login_date,
-		  ranking
-FROM cte) a
+FROM (
+	SELECT DISTINCT 
+		player_id,
+		login_date AS first_login_date,
+		LEAD(login_date) OVER (PARTITION BY player_id ORDER BY ranking) AS second_login_date,
+		ranking
+	FROM player_login_ranking
+) ranked_logins
 WHERE ranking = 1
-ORDER BY 1,2
-`,
+ORDER BY 1, 2`,
 
-	code8: `WITH cte AS
-	(SELECT *,
-		DENSE_RANK() OVER(PARTITION BY player_id
-				ORDER BY login_date) ranking
-	FROM players_logins)
-SELECT (COUNT(DISTINCT(CASE WHEN DATEDIFF(second_login_date, 
-first_login_date) = 1 THEN player_id ELSE NULL END)))*100 
-/COUNT(distinct(player_id)) as "First Day Retention Rate"
-FROM
-	(SELECT DISTINCT player_id,
-			login_date AS first_login_date,
-			LEAD(login_date) OVER(PARTITION BY player_id
-					ORDER BY ranking) AS second_login_date,`,
-
-	code9: `WITH cte AS
-	(SELECT *,
-		DENSE_RANK() OVER(PARTITION BY player_id
-				ORDER BY login_date) ranking
-	FROM players_logins)
+	code8: `WITH player_login_ranking AS (
+	SELECT *,
+		DENSE_RANK() OVER (PARTITION BY player_id ORDER BY login_date) AS ranking
+	FROM players_logins
+)
 SELECT 
-Concat((COUNT(DISTINCT(CASE WHEN DATEDIFF(second_login_date, 
-first_login_date) = 1 THEN player_id ELSE NULL END)))*100
-/COUNT(distinct(player_id)),'%') as "First Day Retention Rate"
-FROM
- (SELECT DISTINCT player_id,
-	 	  login_date AS first_login_date,
-	 	  LEAD(login_date) OVER(PARTITION BY player_id
-				   ORDER BY ranking) AS second_login_date,
-	 	  ranking
- FROM cte) a
+	(COUNT(DISTINCT(CASE WHEN DATEDIFF(second_login_date, first_login_date) = 1 
+	THEN player_id ELSE NULL END)) * 100) / COUNT(DISTINCT(player_id)) AS "First Day Retention Rate"
+FROM (
+	SELECT DISTINCT 
+		player_id,
+		login_date AS first_login_date,
+		LEAD(login_date) OVER (PARTITION BY player_id ORDER BY ranking) AS second_login_date,
+		ranking
+	FROM player_login_ranking
+) ranked_logins
+WHERE ranking = 1`,
+
+	code9: `WITH player_login_ranking AS (
+	SELECT *,
+		DENSE_RANK() OVER (PARTITION BY player_id ORDER BY login_date) AS ranking
+	FROM players_logins
+)
+SELECT 
+	CONCAT(
+		(COUNT(DISTINCT(CASE WHEN DATEDIFF(second_login_date, first_login_date) = 1 
+		THEN player_id ELSE NULL END)) * 100) / COUNT(DISTINCT(player_id)),
+		'%'
+	) AS "First Day Retention Rate"
+FROM (
+	SELECT DISTINCT 
+		player_id,
+		login_date AS first_login_date,
+		LEAD(login_date) OVER (PARTITION BY player_id ORDER BY ranking) AS second_login_date,
+		ranking
+	FROM player_login_ranking
+) ranked_logins
 WHERE ranking = 1`,
 
 	code10: `CREATE TABLE 'players_logins' (
