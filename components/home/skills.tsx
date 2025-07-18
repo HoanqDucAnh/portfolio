@@ -106,7 +106,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 	): React.ReactNode => (
 		<div key={title} className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
 			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
-			<div className="flex flex-wrap gap-3">
+			<div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-5 xl:gap-6 2xl:gap-8">
 				{skills.map((skill, index) => (
 					<div 
 						key={skill}
@@ -119,7 +119,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 								alt={skill}
 								width={76}
 								height={76}
-								className="skill hover:scale-110 transition-transform duration-200"
+								className="skill hover:scale-110 transition-transform duration-200 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32"
 								loading="lazy"
 								placeholder="blur"
 								blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzYiIGhlaWdodD0iNzYiIHZpZXdCb3g9IjAgMCA3NiA3NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijc2IiBoZWlnaHQ9Ijc2IiBmaWxsPSIjZjNmNGY2Ii8+Cjwvc3ZnPgo="
@@ -146,16 +146,16 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						{renderSectionTitle()}
 					</div>
 					
-					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
+					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8 xl:gap-12 2xl:gap-16">
 						{renderSkillColumn("Business Intelligence", SKILLS["Business Intelligence"])}
 						{renderSkillColumn("Data Warehousing", SKILLS["Data Warehousing"])}
 					</div>
 
-					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
+					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8 xl:gap-12 2xl:gap-16">
 						{renderSkillColumn("Data Processing", SKILLS["Data Processing"])}
 						{renderSkillColumn("Orchestration", SKILLS["Orchestration"])}
 					</div>
-					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
+					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8 xl:gap-12 2xl:gap-16">
 						{renderSkillColumn("Data Integration", SKILLS["Data Integration"])}
 						{renderSkillColumn("DevOps", SKILLS["DevOps"])}
 					</div>

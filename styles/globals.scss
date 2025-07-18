@@ -213,7 +213,16 @@ html {
 }
 
 .section-container {
-	@apply 2xl:container xl:px-20 md:px-12 px-4 mx-auto;
+	@apply xl:px-20 md:px-12 px-4 mx-auto;
+	max-width: 90vw;
+	
+	@media (min-width: 1536px) {
+		max-width: 85vw;
+	}
+	
+	@media (min-width: 1800px) {
+		max-width: 80vw;
+	}
 }
 
 a {
