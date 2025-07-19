@@ -69,7 +69,7 @@ const AboutSection = () => {
 					willChange ? "will-change-opacity" : ""
 				}`}
 			>
-				As an business intelligence & analytics enthusiast, I aim to connect
+				As an analytics engineering enthusiast, I aim to connect
 				complex data to strategic insights,
 				<span className="text-[#f27d0d]">
 					{" "}

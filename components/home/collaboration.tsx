@@ -100,7 +100,7 @@ const CollaborationSection = () => {
 		>
 			Interested in{" "}
 			<span className="text-strong font-bold">
-				Business Intelligence - Analytics
+				Analytics Engineering
 			</span>
 			?
 		</h1>
@@ -108,12 +108,12 @@ const CollaborationSection = () => {
 
 	return (
 		<section className={COLLABORATION_STYLE.SECTION} ref={targetSection}>
-			{renderSlidingText(" PowerBI - SQL - Python -  ", "ui-left")}
+			{renderSlidingText(" dbt - Airflow - Snowflake -  ", "ui-left")}
 
 			{renderTitle()}
 
 			{renderSlidingText(
-				" PowerBI - SQL - Python -  ",
+				" dbt - Airflow - Snowflake -  ",
 				"mt-6 md:mt-8 ui-right"
 			)}
 		</section>

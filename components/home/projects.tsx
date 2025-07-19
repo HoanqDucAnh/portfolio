@@ -73,7 +73,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 			<h2 className="text-2xl md:max-w-3xl w-full seq max-w-sm mt-2">
 				Engaged in 10+ projects, I have honed fundamental knowledge in Clouds,
 				ETL, SQL, Python, and Data Visualization, aiming to drive impactful
-				insights in the field of business intelligence and analytics
+				insights in the field of analytics engineering
 			</h2>
 			<Select
 				options={options}
