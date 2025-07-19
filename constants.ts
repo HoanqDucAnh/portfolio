@@ -18,16 +18,16 @@ export const NAVBARITEMS = [
 		ref: "home",
 	},
 	{
+		name: "Skillset",
+		ref: "skills",
+	},
+	{
 		name: "Experience",
 		ref: "timeline",
 	},
 	{
 		name: "Projects",
 		ref: "works",
-	},
-	{
-		name: "Skillset",
-		ref: "skills",
 	},
 	{
 		name: "Articles",
