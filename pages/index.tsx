@@ -63,8 +63,16 @@ export default function Home() {
 		debouncedDimensionCalculator();
 
 		window.addEventListener("resize", debouncedDimensionCalculator);
-		return () =>
+		
+		// Refresh ScrollTrigger after initial load to prevent first-visit bugs
+		const refreshTimer = setTimeout(() => {
+			ScrollTrigger.refresh();
+		}, 500);
+
+		return () => {
 			window.removeEventListener("resize", debouncedDimensionCalculator);
+			clearTimeout(refreshTimer);
+		};
 	}, [timer]);
 
 	const renderBackdrop = (): React.ReactNode => (

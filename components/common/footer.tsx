@@ -31,17 +31,6 @@ const Footer = () => {
 
 			<div className="flex mt-8">
 				<Button
-					classes="mr-3"
-					type={ButtonTypes.OUTLINE}
-					name="Resume"
-					otherProps={{
-						target: "_blank",
-						rel: "noreferrer",
-					}}
-					href="/Minh_Pham_Resume.pdf"
-				></Button>
-				<Button
-					classes="ml-3"
 					type={ButtonTypes.WHITE}
 					name="Let's Talk"
 					href="https://www.linkedin.com/in/minhbphamm/"
