@@ -39,34 +39,7 @@ const Menu = ({
 								</a>
 							</li>
 						))}
-						<li
-							className="p-0 m-6 text-2xl block"
-							key="passion"
-							role="menuitem"
-						>
-							<Link href="/aboutme/passion">
-								<a
-									className="link relative inline font-bold text-5xl duration-300 hover:no-underline"
-									onClick={setmenuVisible.bind(null, false)}
-								>
-									My Passion
-								</a>
-							</Link>
-						</li>
-						<li
-							className="p-0 m-6 text-2xl block"
-							key="startup"
-							role="menuitem"
-						>
-							<Link href="/aboutme/startup">
-								<a
-									className="link relative inline font-bold text-5xl duration-300 hover:no-underline"
-									onClick={setmenuVisible.bind(null, false)}
-								>
-									My Startup
-								</a>
-							</Link>
-						</li>
+
 					</ul>
 				</div>
 			</div>

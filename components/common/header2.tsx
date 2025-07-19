@@ -23,16 +23,10 @@ const Header = () => {
 				</Link>
 				<div className="hidden md:flex items-center justify-center">
 					{NAVBARITEMS.map((item: any) => (
-						<Link href={`/#${item.ref}`} key={item.name}>
+						<Link href={item.ref.startsWith('/') ? item.ref : `/#${item.ref}`} key={item.name}>
 							<a className="link px-3">{item.name}</a>
 						</Link>
 					))}
-					<Link href="/aboutme/passion">
-						<a className="link px-3">My Passion</a>
-					</Link>
-					<Link href="/aboutme/startup">
-						<a className="link px-3">My Startup</a>
-					</Link>
 				</div>
 				<nav className={`outer-menu ${menuVisible ? "menu-visible" : ""}`}>
 					<button

@@ -18,6 +18,10 @@ export const NAVBARITEMS = [
 		ref: "home",
 	},
 	{
+		name: "Experience",
+		ref: "timeline",
+	},
+	{
 		name: "Projects",
 		ref: "works",
 	},
@@ -30,8 +34,12 @@ export const NAVBARITEMS = [
 		ref: "articles",
 	},
 	{
-		name: "Experience",
-		ref: "timeline",
+		name: "Passion",
+		ref: "/aboutme/passion",
+	},
+	{
+		name: "Start-up",
+		ref: "/aboutme/startup",
 	},
 ];
 
