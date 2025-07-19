@@ -256,8 +256,8 @@ export const SKILLS = {
 		"MageAI",
 		"Orchestra"
 	],
-	"Data Processing": [
-		"Alteryx",
+	"Data Processing and Transformation": [
+		"dbt",
 		"Spark",
 		"Kafka",
 		"Astronomer"
