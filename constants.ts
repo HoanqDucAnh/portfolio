@@ -295,7 +295,7 @@ export const SKILLS = {
 	],
 	alteryx: "Alteryx",
 	hackerank: "HackerRank",
-	scrum: "Scrum",
+	airflow: "Airflow",
 };
 
 export const SQLCode = {

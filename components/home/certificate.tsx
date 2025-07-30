@@ -133,8 +133,8 @@ const CertificateSection = ({ isDesktop }: IDesktop) => {
 							</Tooltip>
 						</div>
 						<div className="col-span-1 text-center">
-							<Tooltip text="Certified Scrum Product Owner">
-								{renderCertified(SKILLS.scrum)}
+							<Tooltip text="Astronomer Apache Airflow Certified">
+								{renderCertified(SKILLS.airflow)}
 							</Tooltip>
 						</div>
 					</div>
