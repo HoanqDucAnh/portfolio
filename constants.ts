@@ -142,7 +142,7 @@ export const PROJECTS: IProject[] = [
 		description: "Marketing Campaign Analysis for a Retail Company",
 		gradient: ["#f2ece4", "#09091a"],
 		url: "https://mavenshowcase.com/project/19447",
-		tech: ["PowerBI", "Alteryx", "Excel", "PowerQuery"],
+		tech: ["PowerBI", "Alteryx", "Excel", "PowerQuery", "Microsoft SQL Server"],
 	},
 	{
 		name: "Streamlit Statistics App",
@@ -152,7 +152,7 @@ export const PROJECTS: IProject[] = [
 		description: "Streamlit Statistics Calculator for Fellow Student",
 		gradient: ["#191414", "#f5f5f5"],
 		url: "https://github.com/MarkPhamm/Stats-Calculator",
-		tech: ["Python", "Streamlit", "NormalDis"],
+		tech: ["Python", "Streamlit", "NormalDis", "Pandas", "Matplotlib"],
 	},
 	{
 		name: "Alcon Competitors Analysis",
@@ -172,7 +172,7 @@ export const PROJECTS: IProject[] = [
 		description: "Sales Dashboard with Key Metrics for Global Superstore",
 		gradient: ["#ffddaa", "#49789d"],
 		url: "https://public.tableau.com/app/profile/minh.pham1154/viz/GlobalSuperstoreSalesDashboard_16962776044380/SalesDashboard",
-		tech: ["Excel", "Alteryx", "Tableau"],
+		tech: ["Excel", "Alteryx", "Tableau", "PowerQuery", "Microsoft SQL Server"],
 	},
 	{
 		name: "AdventureWorks Analytics",
@@ -182,29 +182,29 @@ export const PROJECTS: IProject[] = [
 		description: "AdventureWorks Revenue Analysis: Interactive, Dynamic, Data-Driven Insights",
 		gradient: ["#003052", "#167187"],
 		url: "https://github.com/MarkPhamm/Adventureworks-Analytics",
-		tech: ["Python", "Microsoft SQL Server", "PowerBI", "Azure"],
+		tech: ["Python", "Microsoft SQL Server", "PowerBI", "Azure", "Git"],
 	},
-	{
-		name: "Uber Analytics (GCP)",
-		category: ProjectTypes.ENDTOEND,
-		image: "/projects/gcpuber.png",
-		blurImage: "/projects/gcpuber.png",
-		description: "End-to-End ETL Data Pipeline Integrating Uber Data",
-		gradient: ["#1fbad6", "#09091a"],
-		url: "https://github.com/MarkPhamm/Uber-BI-Engineering-Project",
-		tech: ["Python", "GCP", "BigQuery", "Compute Engine"],
-	},
-	{
-		name: "Spotify Analytics (AWS)",
-		category: ProjectTypes.ENDTOEND,
-		image: "/projects/awsspoti.png",
-		blurImage: "/projects/awsspoti.png",
-		description:
-			"Automated ETL Pipeline Integrating Spotify Data via Spotify API",
-		gradient: ["#1DB954", "#191414"],
-		url: "https://github.com/MarkPhamm/Spotify-BI-Engineering-Project",
-		tech: ["Lambda", "Amazon S3", "Athena", "Glue", "AWS"],
-	},
+	// {
+	// 	name: "Uber Analytics (GCP)",
+	// 	category: ProjectTypes.ENDTOEND,
+	// 	image: "/projects/gcpuber.png",
+	// 	blurImage: "/projects/gcpuber.png",
+	// 	description: "End-to-End ETL Data Pipeline Integrating Uber Data",
+	// 	gradient: ["#1fbad6", "#09091a"],
+	// 	url: "https://github.com/MarkPhamm/Uber-BI-Engineering-Project",
+	// 	tech: ["Python", "GCP", "BigQuery", "Compute Engine", "Docker"],
+	// },
+	// {
+	// 	name: "Spotify Analytics (AWS)",
+	// 	category: ProjectTypes.ENDTOEND,
+	// 	image: "/projects/awsspoti.png",
+	// 	blurImage: "/projects/awsspoti.png",
+	// 	description:
+	// 		"Automated ETL Pipeline Integrating Spotify Data via Spotify API",
+	// 	gradient: ["#1DB954", "#191414"],
+	// 	url: "https://github.com/MarkPhamm/Spotify-BI-Engineering-Project",
+	// 	tech: ["Python", "Lambda", "Amazon S3", "Athena", "AWS"],
+	// },
 
 	{
 		name: "Segment Shopping Customers",
@@ -214,7 +214,7 @@ export const PROJECTS: IProject[] = [
 		description: "K-Means Clustering Algorithm for Market Segmentation",
 		gradient: ["#ccb08f", "#f2ece4"],
 		url: "https://github.com/MarkPhamm/Python-Segment-Shopping-Customers",
-		tech: ["Python", "NumPy", "Pandas", "Matplotlib"],
+		tech: ["Python", "NumPy", "Pandas", "Matplotlib", "Git"],
 	},
 
 	{
@@ -225,7 +225,7 @@ export const PROJECTS: IProject[] = [
 		description: "Airline Dashboard for EaseMyTrip",
 		gradient: ["#167187", "#49789d"],
 		url: "https://mavenshowcase.com/project/19418",
-		tech: ["PowerBI", "Alteryx", "Excel", "PowerQuery"],
+		tech: ["PowerBI", "Alteryx", "Excel", "PowerQuery", "Microsoft SQL Server"],
 	},
 	{
 		name: "United Ways Tax Advisor Chatbot",
@@ -235,7 +235,7 @@ export const PROJECTS: IProject[] = [
 		description: "Tax Advisor Chatbot using NLP and Machine Learning",
 		gradient: ["#49789d", "#ffddaa"],
 		url: "",
-		tech: ["Python", "Langchain", "OpenAI"],
+		tech: ["Python", "Langchain", "OpenAI", "Streamlit", "Github"],
 	}
 ];
 
