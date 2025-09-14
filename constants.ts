@@ -118,9 +118,9 @@ export interface IProject {
 }
 
 export const ProjectTypes = {
-	ENDTOEND: "End-to-End data analytics",
+	ENDTOEND: "End-to-End Data Analytics",
 	BIDASHBOARDVIZ: "BI - Dashboard - Visualization",
-	STATISTICSML: "Statistics - ML - AL project",
+	STATISTICSML: "Statistics - ML - AI Project",
 }
 
 export const PROJECTS: IProject[] = [
@@ -129,20 +129,20 @@ export const PROJECTS: IProject[] = [
 		category: ProjectTypes.ENDTOEND,
 		image: "/projects/brit_airway_review.png",
 		blurImage: "/projects/brit_airway_review.png",
-		description: "Analyzing British Airways Customer's review",
+		description: "Analyzing British Airways Customer's Review",
 		gradient: ["#1b1b1b", "#d8d8d8"],
 		url: "https://github.com/MarkPhamm/British-Airway",
-		tech: ["python", "PowerBI", "Lambda", "Microsoft SQL Server"],
+		tech: ["Python", "PowerBI", "Lambda", "Microsoft SQL Server"],
 	},
 	{
 		name: "Marketing Campaign Analysis",
 		category: ProjectTypes.BIDASHBOARDVIZ,
 		image: "/projects/marketing.jpg",
 		blurImage: "/projects/marketing.jpg",
-		description: "Marketing Campaign Analysis for a retail company",
+		description: "Marketing Campaign Analysis for a Retail Company",
 		gradient: ["#f2ece4", "#09091a"],
-		url: "https://mavenanalytics.io/project/19447",
-		tech: ["PowerBI", "alteryx", "Excel", "powerquery"],
+		url: "https://mavenshowcase.com/project/19447",
+		tech: ["PowerBI", "Alteryx", "Excel", "PowerQuery"],
 	},
 	{
 		name: "Alcon Competitors Analysis",
@@ -152,47 +152,47 @@ export const PROJECTS: IProject[] = [
 		description: "Competitor Analysis Dashboard and Chatbot for Alcon",
 		gradient: ["#167187", "#09091a"],
 		url: "https://github.com/MarkPhamm/Alcon-Financial-Assistant",
-		tech: ["python", "Pandas", "streamlit", "langchain", "openai"],
+		tech: ["Python", "Pandas", "Streamlit", "Langchain", "OpenAI"],
 	},
 	{
 		name: "Streamlit Statistics App",
 		category: ProjectTypes.STATISTICSML,
 		image: "/projects/StatCal.jpg",
 		blurImage: "/projects/StatCal.jpg",
-		description: "Streamlit Statistics Calculator for fellow student",
+		description: "Streamlit Statistics Calculator for Fellow Student",
 		gradient: ["#191414", "#f5f5f5"],
 		url: "https://github.com/MarkPhamm/Stats-Calculator",
-		tech: ["python", "streamlit", "normalDis"],
+		tech: ["Python", "Streamlit", "NormalDis"],
 	},
 	{
 		name: "Sample Sales Dashboard",
 		category: ProjectTypes.BIDASHBOARDVIZ,
 		image: "/projects/samplesale.png",
 		blurImage: "/projects/samplesale.png",
-		description: "Sales Dashboard with key metrics for Global Superstore",
+		description: "Sales Dashboard with Key Metrics for Global Superstore",
 		gradient: ["#ffddaa", "#49789d"],
 		url: "https://public.tableau.com/app/profile/minh.pham1154/viz/GlobalSuperstoreSalesDashboard_16962776044380/SalesDashboard",
-		tech: ["excel", "alteryx", "tableau-software"],
+		tech: ["Excel", "Alteryx", "Tableau"],
 	},
 	{
 		name: "AdventureWorks Analytics",
 		category: ProjectTypes.ENDTOEND,
 		image: "/projects/adventure-analytics.png",
 		blurImage: "/projects/comingsoon.jpg",
-		description: "AdventureWorks revenue analysis: interactive, dynamic, data-driven insights",
+		description: "AdventureWorks Revenue Analysis: Interactive, Dynamic, Data-Driven Insights",
 		gradient: ["#003052", "#167187"],
 		url: "https://github.com/MarkPhamm/Adventureworks-Analytics",
-		tech: ["python", "Microsoft SQL Server", "PowerBI", "azure"],
+		tech: ["Python", "Microsoft SQL Server", "PowerBI", "Azure"],
 	},
 	{
 		name: "Uber Analytics (GCP)",
 		category: ProjectTypes.ENDTOEND,
 		image: "/projects/gcpuber.png",
 		blurImage: "/projects/gcpuber.png",
-		description: "End-to-end ETL data pipeline integrating Uber data",
+		description: "End-to-End ETL Data Pipeline Integrating Uber Data",
 		gradient: ["#1fbad6", "#09091a"],
 		url: "https://github.com/MarkPhamm/Uber-BI-Engineering-Project",
-		tech: ["python", "gcp", "bigquery", "compute_engine"],
+		tech: ["Python", "GCP", "BigQuery", "Compute Engine"],
 	},
 	{
 		name: "Spotify Analytics (AWS)",
@@ -200,12 +200,12 @@ export const PROJECTS: IProject[] = [
 		image: "/projects/awsspoti.png",
 		blurImage: "/projects/awsspoti.png",
 		description:
-			"Automated ETL pipeline integrating Spotify data via Spotify API",
+			"Automated ETL Pipeline Integrating Spotify Data via Spotify API",
 		gradient: ["#1DB954", "#191414"],
 		url: "https://github.com/MarkPhamm/Spotify-BI-Engineering-Project",
-		tech: ["Lambda", "amazons3", "Athena", "Glue", "aws"],
+		tech: ["Lambda", "Amazon S3", "Athena", "Glue", "AWS"],
 	},
-	
+
 	{
 		name: "Segment Shopping Customers",
 		category: ProjectTypes.STATISTICSML,
@@ -214,9 +214,9 @@ export const PROJECTS: IProject[] = [
 		description: "K-Means Clustering Algorithm for Market Segmentation",
 		gradient: ["#ccb08f", "#f2ece4"],
 		url: "https://github.com/MarkPhamm/Python-Segment-Shopping-Customers",
-		tech: ["python", "numpy", "Pandas", "Matplotlib"],
+		tech: ["Python", "NumPy", "Pandas", "Matplotlib"],
 	},
-	
+
 	{
 		name: "EaseMyTrip Airline Dashboard",
 		category: ProjectTypes.BIDASHBOARDVIZ,
@@ -224,8 +224,8 @@ export const PROJECTS: IProject[] = [
 		blurImage: "/projects/easeMyTrip.jpg",
 		description: "Airline Dashboard for EaseMyTrip",
 		gradient: ["#167187", "#49789d"],
-		url: "https://mavenanalytics.io/project/19418",
-		tech: ["PowerBI", "alteryx", "Excel", "powerquery"],
+		url: "https://mavenshowcase.com/project/19418",
+		tech: ["PowerBI", "Alteryx", "Excel", "PowerQuery"],
 	},
 	{
 		name: "United Ways Tax Advisor Chatbot",
@@ -235,7 +235,7 @@ export const PROJECTS: IProject[] = [
 		description: "Tax Advisor Chatbot using NLP and Machine Learning",
 		gradient: ["#49789d", "#ffddaa"],
 		url: "",
-		tech: ["python", "langchain", "openai"],
+		tech: ["Python", "Langchain", "OpenAI"],
 	}
 ];
 
@@ -483,7 +483,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 	},
-	
+
 ];
 
 export type TimelineNodeV2 = CheckpointNode | BranchNode;
