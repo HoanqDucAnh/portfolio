@@ -125,14 +125,14 @@ export const ProjectTypes = {
 
 export const PROJECTS: IProject[] = [
 	{
-		name: "British Airways Review",
+		name: "Skytrax Airways Review Project",
 		category: ProjectTypes.ENDTOEND,
 		image: "/projects/brit_airway_review.png",
 		blurImage: "/projects/brit_airway_review.png",
 		description: "Analyzing British Airways Customer's Review",
 		gradient: ["#1b1b1b", "#d8d8d8"],
 		url: "https://github.com/MarkPhamm/British-Airway",
-		tech: ["Python", "PowerBI", "Lambda", "Microsoft SQL Server"],
+		tech: ["Python", "Snowflake", "dbt", "Mode Reporting", "Apache Airflow"],
 	},
 	{
 		name: "Marketing Campaign Analysis",
@@ -145,16 +145,6 @@ export const PROJECTS: IProject[] = [
 		tech: ["PowerBI", "Alteryx", "Excel", "PowerQuery"],
 	},
 	{
-		name: "Alcon Competitors Analysis",
-		category: ProjectTypes.STATISTICSML,
-		image: "/projects/alcon.jpg",
-		blurImage: "/projects/alcon.jpg",
-		description: "Competitor Analysis Dashboard and Chatbot for Alcon",
-		gradient: ["#167187", "#09091a"],
-		url: "https://github.com/MarkPhamm/Alcon-Financial-Assistant",
-		tech: ["Python", "Pandas", "Streamlit", "Langchain", "OpenAI"],
-	},
-	{
 		name: "Streamlit Statistics App",
 		category: ProjectTypes.STATISTICSML,
 		image: "/projects/StatCal.jpg",
@@ -163,6 +153,16 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#191414", "#f5f5f5"],
 		url: "https://github.com/MarkPhamm/Stats-Calculator",
 		tech: ["Python", "Streamlit", "NormalDis"],
+	},
+	{
+		name: "Alcon Competitors Analysis",
+		category: ProjectTypes.STATISTICSML,
+		image: "/projects/alcon.jpg",
+		blurImage: "/projects/alcon.jpg",
+		description: "Competitor Analysis Dashboard and Chatbot for Alcon",
+		gradient: ["#167187", "#09091a"],
+		url: "https://github.com/MarkPhamm/Alcon-Financial-Assistant",
+		tech: ["Python", "Pandas", "Streamlit", "Langchain", "OpenAI"],
 	},
 	{
 		name: "Sample Sales Dashboard",
