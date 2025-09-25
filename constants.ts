@@ -70,21 +70,21 @@ export const COMMENTS = [
 	{
 		comment: "Minh's exceptional documentation skills stood out significantly. He always meticulously documented every process and project he worked on, ensuring that his contributions would continue to benefit the team long after his internship concluded. His proactive approach and willingness to go above and beyond what was expected of his position truly set him apart.",
 		author: "Josef, Cohen",
-		position: "Associate Data Engineer",
+		position: "Associate Data Engineer - Meta (Ex-Lazard)",
 		recomendationType: "college",
 		avatar: "/person/josef.jpg",
 	},
 	{
 		comment: "Hi. How are you doing?? I was out with covid last week and misses your last day in the office.I'd have to say that you were the best intern ever! Willingness to learn and more than enthusiastic to get dropped into anything we could come up with. Hell, you got code and queries into PRD. Nice work!! Hope to see you again in the spring.",
 		author: "Tom, Kinch",
-		position: "Senior Data Engineer",
+		position: "Senior Data Engineer - Lazard",
 		recomendationType: "college",
 		avatar: "/person/default.jpg",
 	},
 	{
 		comment: "Hey Mark, you did a great job overall! The work linking the models to Snowflake and PowerBI are both big improvements in the overall process. The presentation to Joe also went well and I appreciated the preperation and work you put in for that!",
 		author: "Luo, Hubert",
-		position: "Senior Data Scientist",
+		position: "Data Analytic Vice President - Lazard",
 		recomendationType: "college",
 		avatar: "/person/hubert.jpg",
 	}

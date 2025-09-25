@@ -100,13 +100,17 @@ const CertificateSection = ({ isDesktop }: IDesktop) => {
 	const renderCertified = (skill: string): React.ReactNode => (
 		<div
 			className={`flex flex-col seq ${willChange ? "will-change-opacity" : ""
-				}`}
+				} group cursor-pointer`}
 		>
 			<div
 				style={{ height: "310px" }}
-				className="flex align-middle justify-center "
+				className="flex align-middle justify-center p-4 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 shadow-xl hover:shadow-2xl hover:bg-gray-800/70 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2"
 			>
-				<img src={`/skills/3rd/${skill}.png`} alt={skill} />
+				<img
+					src={`/skills/3rd/${skill}.png`}
+					alt={skill}
+					className="object-contain max-w-full max-h-full rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+				/>
 			</div>
 		</div>
 	);
@@ -120,7 +124,7 @@ const CertificateSection = ({ isDesktop }: IDesktop) => {
 			>
 				<div className="flex flex-col certificate-wrapper">
 					{renderSectionTitle()}
-					<div className="grid lg:grid-cols-3 md:grid-cols-1 mt-10 gap-5">
+					<div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-10 gap-8 lg:gap-10">
 						<div className="col-span-1 text-center">
 							<Tooltip text="Alteryx Core Designer">
 								{renderCertified(SKILLS.alteryx)}
