@@ -28,7 +28,7 @@ Tooltip.displayName = 'Tooltip';
 
 const SKILL_STYLES = {
 	SECTION:
-		"w-full relative select-none mb-12 section-container py-12 flex flex-col justify-center",
+		"w-full relative select-none mb-6 section-container py-4 flex flex-col justify-center",
 	SKILL_TITLE: "section-title-sm mb-4 seq",
 };
 
@@ -108,7 +108,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
 			<div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-5 xl:gap-6 2xl:gap-8">
 				{skills.map((skill, index) => (
-					<div 
+					<div
 						key={skill}
 						className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
 						style={{ transitionDelay: `${index * 50}ms` }}
@@ -145,7 +145,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					<div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 						{renderSectionTitle()}
 					</div>
-					
+
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8 xl:gap-12 2xl:gap-16">
 						{renderSkillColumn("Business Intelligence", SKILLS["Business Intelligence"])}
 						{renderSkillColumn("Data Warehousing", SKILLS["Data Warehousing"])}
@@ -159,7 +159,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						{renderSkillColumn("Data Integration", SKILLS["Data Integration"])}
 						{renderSkillColumn("DevOps", SKILLS["DevOps"])}
 					</div>
-					
+
 					{/* <div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
 						{renderSkillColumn("Framework", COURSES.sysplan)}
 						{renderSkillColumn("Other tools", SKILLS.other)}

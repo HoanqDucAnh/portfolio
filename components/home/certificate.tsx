@@ -54,7 +54,7 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
 
 const CERTIFICATE_STYLES = {
 	SECTION:
-		"w-full relative select-none mb-12 section-container py-12 flex flex-col justify-center",
+		"w-full relative select-none mb-12 section-container py-6 flex flex-col justify-center",
 };
 
 const CertificateSection = ({ isDesktop }: IDesktop) => {
@@ -99,9 +99,8 @@ const CertificateSection = ({ isDesktop }: IDesktop) => {
 
 	const renderCertified = (skill: string): React.ReactNode => (
 		<div
-			className={`flex flex-col seq ${
-				willChange ? "will-change-opacity" : ""
-			}`}
+			className={`flex flex-col seq ${willChange ? "will-change-opacity" : ""
+				}`}
 		>
 			<div
 				style={{ height: "310px" }}

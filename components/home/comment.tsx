@@ -34,7 +34,7 @@ const CommentTile = (props: {
 const CommentSection = ({ isDesktop }: IDesktop) => {
 	const PROJECT_STYLES = {
 		SECTION:
-			"w-full relative select-none section-container flex-col flex py-6 justify-center",
+			"w-full relative select-none section-container flex-col flex py-2 justify-center",
 	};
 	const [willChange, setwillChange] = useState(false);
 	const [horizontalAnimationEnabled, sethorizontalAnimationEnabled] =
@@ -51,9 +51,8 @@ const CommentSection = ({ isDesktop }: IDesktop) => {
 			id={"comments"}
 		>
 			<div
-				className={`flex flex-col inner-container  ${
-					willChange ? "will-change-transform" : ""
-				}`}
+				className={`flex flex-col inner-container  ${willChange ? "will-change-transform" : ""
+					}`}
 				ref={sectionTitleElementRef}
 			>
 				<h2 className="section-heading seq mb-12">What Others Say</h2>

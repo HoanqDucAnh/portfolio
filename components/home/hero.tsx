@@ -85,7 +85,7 @@ const countview = async (
 
 const HERO_STYLES = {
 	SECTION:
-		"w-full flex md:items-center py-8 section-container min-h-screen relative mb-24",
+		"w-full flex md:items-center py-8 section-container min-h-screen relative mb-12",
 	CONTENT: "font-medium flex flex-col pt-32 md:pt-0 select-none",
 	SOCIAL_LINK: "link hover:opacity-80 duration-300 md:mr-4 mr-2",
 	BG_WRAPPER:

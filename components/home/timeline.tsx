@@ -117,11 +117,9 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 	};
 
 	const getDotString = (x: number, y: number) => {
-		return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${
-			x - dotSize / 2
-		} y=${
-			y - dotSize / 2
-		} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='dot' ></circle>`;
+		return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2
+			} y=${y - dotSize / 2
+			} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='dot' ></circle>`;
 	};
 
 	const drawDot = (
@@ -219,43 +217,28 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
 		switch (type) {
 			case NodeTypes.DIVERGE:
-				return `<path class='str' d='M ${leftBranchX} ${y} C ${leftBranchX} ${
-					y + curveLength / 2
-				} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${
-					y + curveLength
-				}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${
-					y + curveLength
-				} x2=${rightBranchX} y2=${
-					y + separation
-				} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${leftBranchX} ${y} C ${leftBranchX} ${
-					y + curveLength / 2
-				} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${
-					y + curveLength
-				}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${
-					y + curveLength
-				} x2=${rightBranchX} y2=${y + separation} stroke=${animColor} />`;
+				return `<path class='str' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2
+					} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength
+					}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y + curveLength
+					} x2=${rightBranchX} y2=${y + separation
+					} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2
+					} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength
+					}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y + curveLength
+					} x2=${rightBranchX} y2=${y + separation} stroke=${animColor} />`;
 			case NodeTypes.CONVERGE:
-				return `<path class='str' d='M ${rightBranchX} ${
-					y + separation - curveLength
-				} C ${rightBranchX} ${
-					y + separation - curveLength + curveLength / 2
-				} ${leftBranchX} ${
-					y + separation - curveLength + curveLength / 2
-				} ${leftBranchX} ${
-					y + separation
-				}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(
-					y + separation - curveLength
-				)} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${rightBranchX} ${
-					y + separation - curveLength
-				} C ${rightBranchX} ${
-					y + separation - curveLength + curveLength / 2
-				} ${leftBranchX} ${
-					y + separation - curveLength + curveLength / 2
-				} ${leftBranchX} ${
-					y + separation
-				}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(
-					y + separation - curveLength
-				)} stroke=${animColor} />`;
+				return `<path class='str' d='M ${rightBranchX} ${y + separation - curveLength
+					} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2
+					} ${leftBranchX} ${y + separation - curveLength + curveLength / 2
+					} ${leftBranchX} ${y + separation
+					}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(
+						y + separation - curveLength
+					)} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${rightBranchX} ${y + separation - curveLength
+					} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2
+					} ${leftBranchX} ${y + separation - curveLength + curveLength / 2
+					} ${leftBranchX} ${y + separation
+					}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(
+						y + separation - curveLength
+					)} stroke=${animColor} />`;
 			default:
 				return "";
 		}
@@ -475,9 +458,8 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 				<div className="absolute top-0 left-0 h-full w-full">
 					{svgCheckpointItems.map((item, index) => (
 						<Image
-							className={`w-full absolute top-0 object-cover slide-${
-								index + 1
-							}`}
+							className={`w-full absolute top-0 object-cover slide-${index + 1
+								}`}
 							src={(item as CheckpointNode).slideImage || ""}
 							key={`${(item as CheckpointNode).title}-${index}`}
 							alt="Timeline"
@@ -511,7 +493,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
 	return (
 		<section
-			className="w-full relative select-none section-container py-16 flex flex-col"
+			className="w-full relative select-none section-container py-8 flex flex-col"
 			id={MENULINKS[4].ref}
 		>
 			{renderSectionTitle()}

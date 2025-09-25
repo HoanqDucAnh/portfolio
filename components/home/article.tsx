@@ -13,7 +13,7 @@ import Link from "next/link";
 
 const SKILL_STYLES = {
 	SECTION:
-		"w-full relative select-none mb-12 section-container py-12 flex flex-col justify-center",
+		"w-full relative select-none mb-12 section-container py-6 flex flex-col justify-center",
 	SKILL_TITLE: "section-title-sm mb-4 seq",
 };
 

@@ -15,7 +15,7 @@ import { DropdownIndicator } from "react-select/dist/declarations/src/components
 
 const PROJECT_STYLES = {
 	SECTION:
-		"w-full relative select-none section-container flex-col flex py-8 justify-center",
+		"w-full relative select-none section-container flex-col flex py-4 justify-center",
 	PROJECTS_WRAPPER: "tall:mt-8 mt- md:gap-10 gap-6 seq snap-x snap-mandatory",
 };
 
@@ -63,9 +63,8 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 
 	const renderSectionTitle = (): React.ReactNode => (
 		<div
-			className={`flex flex-col inner-container  ${
-				willChange ? "will-change-transform" : ""
-			}`}
+			className={`flex flex-col inner-container  ${willChange ? "will-change-transform" : ""
+				}`}
 			ref={sectionTitleElementRef}
 		>
 			<p className="section-title-sm seq">PROJECTS</p>
@@ -121,9 +120,8 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		return (
 			<div
 				ref={projectWrapperRef}
-				className={`${PROJECT_STYLES.PROJECTS_WRAPPER} flex overflow-x-auto ${
-					renderedPrjectsNumber === 1 && "w-fit"
-				}`}
+				className={`${PROJECT_STYLES.PROJECTS_WRAPPER} flex overflow-x-auto ${renderedPrjectsNumber === 1 && "w-fit"
+					}`}
 			>
 				{PROJECTS.map((project) => {
 					if (projectCategory !== "All" && project.category !== projectCategory)
