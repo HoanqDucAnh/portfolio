@@ -129,7 +129,7 @@ export const PROJECTS: IProject[] = [
 		category: ProjectTypes.ENDTOEND,
 		image: "/projects/brit_airway_review.png",
 		blurImage: "/projects/brit_airway_review.png",
-		description: "Analyzing British Airways Customer's Review",
+		description: "Analyzing Skytrax Airways Customer's Review",
 		gradient: ["#1b1b1b", "#d8d8d8"],
 		url: "https://github.com/MarkPhamm/British-Airway",
 		tech: ["Python", "Snowflake", "dbt", "Mode Reporting", "Apache Airflow"],
