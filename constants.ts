@@ -103,6 +103,7 @@ export const EMAIL = "minh.b.pham@tcu.edu@gmail.com";
 export const SOCIAL_LINKS = {
 	linkedin: "https://www.linkedin.com/in/minhbphamm/",
 	github: "https://github.com/MarkPhamm",
+	leetcode: "https://leetcode.com/u/markphammm/",
 	gmail: "mailto:minh.pham@insurify.com",
 };
 
