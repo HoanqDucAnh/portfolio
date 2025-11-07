@@ -126,6 +126,16 @@ export const ProjectTypes = {
 
 export const PROJECTS: IProject[] = [
 	{
+		name: "Local ELT Pipeline",
+		category: ProjectTypes.ENDTOEND,
+		image: "/projects/local_elt.png",
+		blurImage: "/projects/local_elt.png",
+		description: "",
+		gradient: ["#1e3a8a", "#3b82f6"],
+		url: "https://github.com/MarkPhamm/local_elt_pipeline",
+		tech: ["Dbt", "prefect", "duckdb", "dlt", "Github"],
+	},
+	{
 		name: "Consumer Complaint Pipeline",
 		category: ProjectTypes.ENDTOEND,
 		image: "/projects/consumer_complaint.png",
