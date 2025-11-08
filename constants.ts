@@ -22,12 +22,12 @@ export const NAVBARITEMS = [
 		ref: "skills",
 	},
 	{
-		name: "Experience",
-		ref: "timeline",
-	},
-	{
 		name: "Projects",
 		ref: "works",
+	},
+	{
+		name: "Experience",
+		ref: "timeline",
 	},
 	{
 		name: "Articles",
@@ -49,20 +49,20 @@ export const MENULINKS = [
 		ref: "home",
 	},
 	{
-		name: "Projects",
-		ref: "works",
-	},
-	{
 		name: "Skillset",
 		ref: "skills",
 	},
 	{
-		name: "Articles",
-		ref: "https://substack.com/@markphammm",
+		name: "Projects",
+		ref: "works",
 	},
 	{
 		name: "Experience",
 		ref: "timeline",
+	},
+	{
+		name: "Articles",
+		ref: "https://substack.com/@markphammm",
 	},
 ];
 
