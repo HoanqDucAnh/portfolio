@@ -24,7 +24,6 @@ import Footer from "@/components/common/footer";
 import TimelineSection from "@/components/home/timeline";
 import Scripts from "@/components/common/scripts";
 import AboutSection from "@/components/home/about";
-import ArticleSection from "@/components/home/article";
 import CommentSection from "@/components/home/comment";
 import CertificateSection from "@/components/home/certificate";
 
@@ -93,11 +92,10 @@ export default function Home() {
 					<HeroSection />
 					<CommentSection isDesktop={isDesktop} />
 					<SkillsSection isDesktop={isDesktop} />
+					<ProjectsSection isDesktop={isDesktop} />
 					<TimelineSection isDesktop={isDesktop} />
 					{/* <AboutSection /> */}
-					<ProjectsSection isDesktop={isDesktop} />
 					<QuoteSection />
-					<ArticleSection />
 					<CertificateSection isDesktop={isDesktop} />
 					<CollaborationSection />
 					<Footer />

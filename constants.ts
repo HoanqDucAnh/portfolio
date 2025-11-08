@@ -31,7 +31,7 @@ export const NAVBARITEMS = [
 	},
 	{
 		name: "Articles",
-		ref: "articles",
+		ref: "https://substack.com/@markphammm",
 	},
 	{
 		name: "Passion",
@@ -58,7 +58,7 @@ export const MENULINKS = [
 	},
 	{
 		name: "Articles",
-		ref: "articles",
+		ref: "https://substack.com/@markphammm",
 	},
 	{
 		name: "Experience",
@@ -103,6 +103,7 @@ export const EMAIL = "minh.b.pham@tcu.edu@gmail.com";
 export const SOCIAL_LINKS = {
 	linkedin: "https://www.linkedin.com/in/minhbphamm/",
 	github: "https://github.com/MarkPhamm",
+	wakatime: "https://wakatime.com/@MarkPham",
 	leetcode: "https://leetcode.com/u/markphammm/",
 	gmail: "mailto:minh.pham@insurify.com",
 };

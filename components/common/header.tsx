@@ -21,7 +21,13 @@ const Header = () => {
 				</a>
 				<div className="hidden md:flex items-center justify-center">
 					{NAVBARITEMS.map((item: any) => (
-						<a key={item.name} href={item.ref.startsWith('/') ? item.ref : `#${item.ref}`} className="link px-3">
+						<a
+							key={item.name}
+							href={item.ref.startsWith('http') ? item.ref : (item.ref.startsWith('/') ? item.ref : `#${item.ref}`)}
+							className="link px-3"
+							target={item.ref.startsWith('http') ? "_blank" : undefined}
+							rel={item.ref.startsWith('http') ? "noopener noreferrer" : undefined}
+						>
 							{item.name}
 						</a>
 					))}

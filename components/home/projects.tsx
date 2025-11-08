@@ -69,10 +69,9 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		>
 			<p className="section-title-sm seq">PROJECTS</p>
 			<h1 className="section-heading seq mt-2">My Works</h1>
-			<h2 className="text-2xl md:max-w-3xl w-full seq max-w-sm mt-2">
-				Engaged in 10+ projects, I have honed fundamental knowledge in Clouds,
-				ETL, SQL, Python, and Data Visualization, aiming to drive impactful
-				insights in the field of analytics engineering
+			<h2 className="text-2xl md:max-w-3xl w-full seq mt-2">
+				My Friday nights? Debugging ETL pipelines at 2 AM and arguing with SQL queries.
+				Some call it sad, I call it living the dream
 			</h2>
 			<Select
 				options={options}
