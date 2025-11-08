@@ -354,7 +354,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		title: "Analytics Engineer - <a class='underline underline-offset-2' href='https://insurify.com' target='_blank' rel='noopener noreferrer'><u>Insurify</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"Analytics Engineer @Insurify, Marketing Tech, Networks + Core Analytics, Boston",
+			"Analytics Engineer @Insurify, Marketing Tech, Growth Tech, Networks, and Core Analytics, Boston",
 		image: "/timeline/insurify.png",
 		slideImage: "/timeline/insurify.png",
 		shouldDrawLine: true,

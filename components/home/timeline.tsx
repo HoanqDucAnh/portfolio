@@ -29,7 +29,7 @@ const curveLength = 150;
 const dotSize = 26;
 
 const TimelineSection = ({ isDesktop }: IDesktop) => {
-	const [svgWidth, setSvgWidth] = useState(400);
+	const [svgWidth, setSvgWidth] = useState(600);
 	const [rightBranchX, setRightBranchX] = useState(109);
 
 	const svgCheckpointItems = TIMELINE.filter(
@@ -159,15 +159,15 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 		const offset = isDiverged ? rightBranchX : 10;
 		const foreignObjectX = dotSize / 2 + 10 + offset;
 		const foreignObjectY = y - dotSize / 2;
-		const foreignObjectWidth = svgWidth - (dotSize / 2 + 10 + offset);
+		const foreignObjectWidth = svgWidth * 2;
 
-		const titleSizeClass = size === ItemSize.LARGE ? "text-6xl whitespace-nowrap" : "text-2xl";
+		const titleSizeClass = size === ItemSize.LARGE ? "text-6xl whitespace-nowrap" : "text-2xl whitespace-nowrap";
 		// const logoString = image
 		// 	? `<img src='${image}' class='h-8 mb-2' loading='lazy' width='100' height='32' alt='${image}' />`
 		// 	: "";
 		const logoString = "";
 		const subtitleString = subtitle
-			? `<p class='lg:text-xl 2xl:text-sm mt-2 text-gray-200 font-medium tracking-wide'>${subtitle}</p>`
+			? `<p class='lg:text-xl 2xl:text-sm mt-2 text-gray-200 font-medium tracking-wide whitespace-normal' style='max-width: ${svgWidth - 100}px;'>${subtitle}</p>`
 			: "";
 
 		return `<foreignObject x=${foreignObjectX} y=${foreignObjectY} width=${foreignObjectWidth}
