@@ -67,15 +67,14 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 				}`}
 			ref={sectionTitleElementRef}
 		>
-			<p className="section-title-sm seq">PROJECTS</p>
-			<h1 className="section-heading seq mt-2">My Works</h1>
+			<h1 className="section-heading seq">My Works</h1>
 			<h2 className="text-2xl md:max-w-3xl w-full seq mt-2">
 				My Friday nights? Debugging ETL pipelines at 2 AM and arguing with SQL queries.
 				Some call it sad, I call it living the dream
 			</h2>
 
 			<div className="w-full my-8 seq">
-				<h3 className="text-xl font-semibold text-gray-200 mb-4">TLDR: how hard I work</h3>
+				<h2 className="text-xl font-semibold text-gray-200 mb-4">TLDR: How hard I work, probably need to touch more grass</h2>
 				<a
 					href="https://github.com/MarkPhamm"
 					target="_blank"

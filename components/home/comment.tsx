@@ -47,7 +47,7 @@ const CommentSection = ({ isDesktop }: IDesktop) => {
 	return (
 		<section
 			ref={targetSectionRef}
-			className={`${isDesktop && "min-h-screen"} ${PROJECT_STYLES.SECTION}`}
+			className={`${PROJECT_STYLES.SECTION}`}
 			id={"comments"}
 		>
 			<div

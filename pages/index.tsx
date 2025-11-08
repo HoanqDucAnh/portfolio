@@ -89,12 +89,12 @@ export default function Home() {
 				<main className="flex-col flex">
 					{renderBackdrop()}
 					<HeroSection />
+					<QuoteSection />
 					<CommentSection isDesktop={isDesktop} />
 					<SkillsSection isDesktop={isDesktop} />
 					<ProjectsSection isDesktop={isDesktop} />
 					<TimelineSection isDesktop={isDesktop} />
 					{/* <AboutSection /> */}
-					<QuoteSection />
 					<CertificateSection isDesktop={isDesktop} />
 					<CollaborationSection />
 					<Footer />

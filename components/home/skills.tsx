@@ -28,7 +28,7 @@ Tooltip.displayName = 'Tooltip';
 
 const SKILL_STYLES = {
 	SECTION:
-		"w-full relative select-none mb-6 section-container py-4 flex flex-col justify-center",
+		"w-full relative select-none mb-6 section-container pt-8 pb-4 flex flex-col justify-center",
 	SKILL_TITLE: "section-title-sm mb-4 seq",
 };
 
@@ -58,10 +58,9 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 
 	const renderSectionTitle = useCallback((): React.ReactNode => (
 		<div className="flex flex-col">
-			<p className="section-title-sm">SKILLS</p>
-			<h1 className="section-heading mt-2">My Skills</h1>
+			<h1 className="section-heading">My Skills</h1>
 			<h2 className="text-2xl md:max-w-2xl w-full mt-2">
-				Technical skills and tools I use to deliver data-driven solutions
+				Technical skills & tools I use to deliver data-driven solutions
 			</h2>
 		</div>
 	), []);
