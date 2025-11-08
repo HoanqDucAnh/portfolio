@@ -73,6 +73,23 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 				My Friday nights? Debugging ETL pipelines at 2 AM and arguing with SQL queries.
 				Some call it sad, I call it living the dream
 			</h2>
+
+			<div className="w-full my-8 seq">
+				<h3 className="text-xl font-semibold text-gray-200 mb-4">TLDR: how hard I work</h3>
+				<a
+					href="https://github.com/MarkPhamm"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="block w-full bg-gray-900 rounded-lg p-6 overflow-hidden cursor-pointer hover:bg-gray-800 transition-colors duration-200"
+				>
+					<img
+						src="https://ghchart.rshah.org/39d353/MarkPhamm"
+						alt="GitHub Contribution Calendar"
+						className="w-full h-auto"
+					/>
+				</a>
+			</div>
+
 			<Select
 				options={options}
 				unstyled={true}
