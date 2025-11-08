@@ -4,7 +4,7 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState, useCallback } from "react";
 import {
 	Branch,
 	BranchNode,
@@ -310,7 +310,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 		return timeline;
 	};
 
-	const animateTimeline = (timeline: GSAPTimeline, duration: number): void => {
+	const animateTimeline = useCallback((timeline: GSAPTimeline, duration: number): void => {
 		let index = 0;
 
 		addNodeRefsToItems(TIMELINE).forEach((item) => {
@@ -330,9 +330,9 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 				index++;
 			}
 		});
-	};
+	}, []);
 
-	const setTimelineSvg = (
+	const setTimelineSvg = useCallback((
 		svgContainer: MutableRefObject<HTMLDivElement>,
 		timelineSvg: MutableRefObject<SVGSVGElement>
 	) => {
@@ -345,7 +345,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 		if (isSmallScreen()) {
 			setRightBranchX(70);
 		}
-	};
+	}, []);
 
 	const setSlidesAnimation = (timeline: GSAPTimeline): void => {
 		svgCheckpointItems.forEach((_, index) => {
@@ -371,7 +371,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 		});
 	};
 
-	const initScrollTrigger = (): {
+	const initScrollTrigger = useCallback((): {
 		timeline: GSAPTimeline;
 		duration: number;
 	} => {
@@ -420,7 +420,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 			animation: timeline,
 		});
 		return { timeline, duration };
-	};
+	}, [isDesktop, svgLength]);
 
 	useEffect(() => {
 		// Generate and set the timeline svg
@@ -440,6 +440,9 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 		svgCheckpointItems.length,
 		isDesktop,
 		svgLength,
+		animateTimeline,
+		initScrollTrigger,
+		setTimelineSvg,
 	]);
 
 	const renderSlides = (): React.ReactNode => (

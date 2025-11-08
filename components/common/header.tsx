@@ -25,8 +25,7 @@ const Header = () => {
 							key={item.name}
 							href={item.ref.startsWith('http') ? item.ref : (item.ref.startsWith('/') ? item.ref : `#${item.ref}`)}
 							className="link px-3"
-							target={item.ref.startsWith('http') ? "_blank" : undefined}
-							rel={item.ref.startsWith('http') ? "noopener noreferrer" : undefined}
+							{...(item.ref.startsWith('http') && { target: "_blank", rel: "noreferrer" })}
 						>
 							{item.name}
 						</a>

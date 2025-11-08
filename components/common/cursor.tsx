@@ -5,7 +5,7 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import styles from "./Cursor.module.scss";
-import { MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, useEffect, useRef, useCallback } from "react";
 import { gsap, Linear } from "gsap";
 import { IDesktop, isSmallScreen } from "pages";
 
@@ -55,7 +55,7 @@ const Cursor = ({ isDesktop }: IDesktop) => {
     });
   };
 
-  const initCursorAnimation = () => {
+  const initCursorAnimation = useCallback(() => {
     follower.current.classList.remove("hidden");
     cursor.current.classList.remove("hidden");
 
@@ -65,13 +65,13 @@ const Cursor = ({ isDesktop }: IDesktop) => {
       el.addEventListener("mouseenter", onHover);
       el.addEventListener("mouseleave", onUnhover);
     });
-  };
+  }, []);
 
   useEffect(() => {
     if (isDesktop && !isSmallScreen()) {
       initCursorAnimation();
     }
-  }, [cursor, follower, isDesktop]);
+  }, [cursor, follower, isDesktop, initCursorAnimation]);
 
   return (
     <>

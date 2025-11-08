@@ -79,10 +79,12 @@ const ArticleSection = () => {
 							<div className="grid grid-cols-7">
 								<div className="col-span-3 seq">
 									<div>
-										<Link href="/myarticle/retention">
-											<h3 className="article-title-sm mb-4 seq">
-												First Day Retention Rate
-											</h3>
+										<Link href="/myarticle/retention" passHref>
+											<a>
+												<h3 className="article-title-sm mb-4 seq">
+													First Day Retention Rate
+												</h3>
+											</a>
 										</Link>
 										<p className="article-text-sm seq">
 											Calculate the first-day retention rate of video game
@@ -94,14 +96,16 @@ const ArticleSection = () => {
 									</div>
 								</div>
 								<div className="col-start-4 col-span-2 hidden lg:grid m-auto seq">
-									<Link href="/myarticle/retention">
-										<Image
-											src="/article/firstday.jpg"
-											alt="React"
-											width={300}
-											height={170}
-											className="img-cus"
-										/>
+									<Link href="/myarticle/retention" passHref>
+										<a>
+											<Image
+												src="/article/firstday.jpg"
+												alt="React"
+												width={300}
+												height={170}
+												className="img-cus"
+											/>
+										</a>
 									</Link>
 								</div>
 							</div>
@@ -112,10 +116,12 @@ const ArticleSection = () => {
 							<div className="grid grid-cols-7">
 								<div className="col-start-2 col-span-3 seq">
 									<div>
-										<Link href="/myarticle/marketcamp">
-											<h3 className="article-title-sm mb-4 seq">
-												Marketing Campaign Success
-											</h3>
+										<Link href="/myarticle/marketcamp" passHref>
+											<a>
+												<h3 className="article-title-sm mb-4 seq">
+													Marketing Campaign Success
+												</h3>
+											</a>
 										</Link>
 										<p className="article-text-sm seq">
 											Find the number of users that made additional in-app
@@ -128,14 +134,16 @@ const ArticleSection = () => {
 									</div>
 								</div>
 								<div className="col-start-5 col-span-2 hidden lg:grid m-auto seq">
-									<Link href="/myarticle/marketcamp">
-										<Image
-											src="/article/marketing.jpg"
-											alt="React"
-											width={300}
-											height={170}
-											className="img-cus"
-										/>
+									<Link href="/myarticle/marketcamp" passHref>
+										<a>
+											<Image
+												src="/article/marketing.jpg"
+												alt="React"
+												width={300}
+												height={170}
+												className="img-cus"
+											/>
+										</a>
 									</Link>
 								</div>
 							</div>
@@ -146,10 +154,12 @@ const ArticleSection = () => {
 							<div className="grid grid-cols-7">
 								<div className="col-span-3 seq">
 									<div>
-										<Link href="/myarticle/userstreak">
-											<h3 className="article-title-sm mb-4 seq">
-												User Streaks (Classis Gaps and Islands)
-											</h3>
+										<Link href="/myarticle/userstreak" passHref>
+											<a>
+												<h3 className="article-title-sm mb-4 seq">
+													User Streaks (Classis Gaps and Islands)
+												</h3>
+											</a>
 										</Link>
 										<p className="article-text-sm seq">
 											Find the top 3 users with the longest continuous streak of
@@ -161,14 +171,16 @@ const ArticleSection = () => {
 									</div>
 								</div>
 								<div className="col-start-4 col-span-2 hidden lg:grid m-auto seq">
-									<Link href="/myarticle/userstreak">
-										<Image
-											src="/article/streak.jpg"
-											alt="React"
-											width={300}
-											height={170}
-											className="img-cus"
-										/>
+									<Link href="/myarticle/userstreak" passHref>
+										<a>
+											<Image
+												src="/article/streak.jpg"
+												alt="React"
+												width={300}
+												height={170}
+												className="img-cus"
+											/>
+										</a>
 									</Link>
 								</div>
 							</div>
@@ -179,10 +191,12 @@ const ArticleSection = () => {
 							<div className="grid grid-cols-7">
 								<div className="col-start-2 col-span-3 seq">
 									<div>
-										<Link href="/myarticle/time">
-											<h3 className="article-title-sm mb-4 seq">
-												Time Between Two Events
-											</h3>
+										<Link href="/myarticle/time" passHref>
+											<a>
+												<h3 className="article-title-sm mb-4 seq">
+													Time Between Two Events
+												</h3>
+											</a>
 										</Link>
 										<p className="article-text-sm seq">
 											Find the Facebook's user with the least time between page
@@ -194,14 +208,16 @@ const ArticleSection = () => {
 									</div>
 								</div>
 								<div className="col-start-5 col-span-2 hidden lg:grid m-auto seq">
-									<Link href="/myarticle/time">
-										<Image
-											src="/article/time.jpg"
-											alt="React"
-											width={300}
-											height={170}
-											className="img-cus"
-										/>
+									<Link href="/myarticle/time" passHref>
+										<a>
+											<Image
+												src="/article/time.jpg"
+												alt="React"
+												width={300}
+												height={170}
+												className="img-cus"
+											/>
+										</a>
 									</Link>
 								</div>
 							</div>
