@@ -79,12 +79,13 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 					href="https://github.com/MarkPhamm"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="block w-full bg-gray-900 rounded-lg p-6 overflow-hidden cursor-pointer hover:bg-gray-800 transition-colors duration-200"
+					className="block w-full bg-gray-950 rounded-lg p-6 overflow-hidden cursor-pointer hover:bg-gray-900 transition-colors duration-200"
 				>
 					<img
 						src="https://ghchart.rshah.org/39d353/MarkPhamm"
 						alt="GitHub Contribution Calendar"
 						className="w-full h-auto"
+						style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
 					/>
 				</a>
 			</div>
