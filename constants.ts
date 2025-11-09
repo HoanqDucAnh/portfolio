@@ -49,12 +49,12 @@ export const MENULINKS = [
 		ref: "home",
 	},
 	{
-		name: "Skillset",
-		ref: "skills",
-	},
-	{
 		name: "Projects",
 		ref: "works",
+	},
+	{
+		name: "Skillset",
+		ref: "skills",
 	},
 	{
 		name: "Experience",

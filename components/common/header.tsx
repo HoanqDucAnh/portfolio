@@ -16,14 +16,14 @@ const Header = () => {
 	return (
 		<header className="w-full fixed top-0 py-8 select-none z-50 bg-gradient-to-b from-gray-900 to-transparent">
 			<div className="flex justify-between section-container">
-				<a href="#home" className="link">
+				<a href="/#home" className="link">
 					<Image src="/logo.svg" alt="Logo" width={22} height={22} />
 				</a>
 				<div className="hidden md:flex items-center justify-center">
 					{NAVBARITEMS.map((item: any) => (
 						<a
 							key={item.name}
-							href={item.ref.startsWith('http') ? item.ref : (item.ref.startsWith('/') ? item.ref : `#${item.ref}`)}
+							href={item.ref.startsWith('http') ? item.ref : (item.ref.startsWith('/') ? item.ref : `/#${item.ref}`)}
 							className="link px-3"
 							{...(item.ref.startsWith('http') && { target: "_blank", rel: "noreferrer" })}
 						>
