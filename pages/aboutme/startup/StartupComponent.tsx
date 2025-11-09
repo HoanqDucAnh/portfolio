@@ -20,40 +20,40 @@ export default function StartupComponent() {
 				/>
 			</div>
 			<div className="text-justify mt-5">
-				<div className="text-3xl text-[#f27d0d]">Founder Core Value</div>
-				<div className="text-md italic border border-white p-6 mt-5">
+				<div className="text-3xl text-[#f27d0d] max-w-[900px] mx-auto">Founder Core Value</div>
+				<div className="text-md italic border border-white p-6 mt-5 max-w-[900px] mx-auto">
 					"There is no more noble occupation in the world than to assist another
-					human being - to help someone succeed.”- Alan Loy McGinnis.
+					human being - to help someone succeed."- Alan Loy McGinnis.
 				</div>
-				<div className="text-3xl text-[#f27d0d] mt-5">Founder's words</div>
+				<div className="text-3xl text-[#f27d0d] mt-5 max-w-[900px] mx-auto">Founder's words</div>
 				<div className="mt-2 text-center">
 					<Image
 						src={`/about/startup/2.png`}
-						width={650}
-						height={650}
+						width={900}
+						height={900}
 						loading="lazy"
 						alt="steak1"
 						className="rounded-xl"
 					/>
 				</div>
-				<div className="text-md mt-2">
+				<div className="text-lg mt-5 leading-relaxed max-w-[900px] mx-auto">
 					I am an eloquent individual driven by innovative ideas, passionately
 					embodying the philosophy of 'Do what you love, and love what you do.'
 					Committed to giving 100%, I prioritize and dedicate myself to my
 					pursuits, demonstrating resilience and a commitment to empowering and
 					inspiring others.
 				</div>
-				<div className="mt-2 text-center">
+				<div className="mt-8 text-center">
 					<Image
 						src={`/about/startup/3.png`}
-						width={650}
-						height={650}
+						width={900}
+						height={900}
 						loading="lazy"
 						alt="steak1"
 						className="rounded-xl"
 					/>
 				</div>
-				<div className="text-md mt-2">
+				<div className="text-lg mt-5 leading-relaxed max-w-[900px] mx-auto">
 					Launched in May 2021, Coconut Consulting Academy (TCCA) is my
 					inaugural startup dedicated to assisting global students in applying
 					to American universities. With a simple and effective model, we've
@@ -61,18 +61,18 @@ export default function StartupComponent() {
 					social media, continually evolving to meet the needs of high school
 					students pursuing education in the United States.
 				</div>
-				<div className="text-3xl text-[#f27d0d] mt-5">Coconut's team</div>
+				<div className="text-3xl text-[#f27d0d] mt-5 max-w-[900px] mx-auto">Coconut's team</div>
 				<div className="mt-2 text-center">
 					<Image
 						src={`/about/startup/4.png`}
-						width={650}
-						height={650}
+						width={900}
+						height={900}
 						loading="lazy"
 						alt="steak1"
 						className="rounded-xl"
 					/>
 				</div>
-				<div className="text-md mt-2">
+				<div className="text-lg mt-5 leading-relaxed max-w-[900px] mx-auto">
 					<ul className="list-disc ">
 						For us, a team of high-quality essay writers is indispensable as
 						essays constitute the 'heart and soul' of every university
@@ -105,7 +105,7 @@ export default function StartupComponent() {
 						</li>
 					</ul>
 				</div>
-				<div className="text-md mt-1">
+				<div className="text-lg mt-5 leading-relaxed max-w-[900px] mx-auto">
 					These exceptional individuals have played an integral role in helping
 					our clients reach their academic goals. Their expertise in crafting
 					compelling and persuasive essays has made all the difference. We
@@ -113,18 +113,18 @@ export default function StartupComponent() {
 					we are deeply grateful for their unwavering dedication and commitment
 					to excellence.
 				</div>
-				<div className="text-3xl text-[#f27d0d] mt-5">Succesful Case</div>
+				<div className="text-3xl text-[#f27d0d] mt-5 max-w-[900px] mx-auto">Succesful Case</div>
 				<div className="mt-2 text-center">
 					<Image
 						src={`/about/startup/5.png`}
-						width={650}
-						height={650}
+						width={900}
+						height={900}
 						loading="lazy"
 						alt="steak1"
 						className="rounded-xl"
 					/>
 				</div>
-				<div className="text-md mt-1 mb-2">
+				<div className="text-lg mt-5 mb-10 leading-relaxed max-w-[900px] mx-auto">
 					<p>
 						At our company, we take immense pride in sharing the remarkable
 						success story of Mr. Vũ Bảo Tín, who approached TCCA in July with a

@@ -4,33 +4,23 @@ import React from "react";
 export default function PassionComponent() {
 	return (
 		<div className="w-[60%] m-auto mt-24 pt-2 ">
-			<p className="text-5xl text-center">My passion</p>
-			<p className="text-4xl text-center mt-10 text-[#f27d0d]">Cuisine</p>
-			<div className="text-center mt-10">
-				<em className="text-2xl">
-					“If you are a chef, no matter how good a chef you are, it's not good
-					cooking for yourself; the joy is in cooking for others.” - Will.i.am
+			<p className="text-4xl text-center">My Passion - <span className="text-[#f27d0d]">Cuisine</span></p>
+			<div className="text-center mt-10 max-w-[900px] mx-auto">
+				<em className="text-lg">
+					"If you are a chef, no matter how good a chef you are, it's not good
+					cooking for yourself; the joy is in cooking for others." - Will.i.am
 				</em>
 			</div>
-			<div className="text-justify mt-5 border-l-2 border-l-white">
-				<p className="text-lg pl-5">
-					$300 could get me a PlayStation4, a pair of Nike Air Jordans, or the
-					latest iPod. Despite the allure of consumerism, I ended up trading
-					$300 for a red cart, a second-hand bike, rosemary, ketchup, spices,
-					and a small grill.
-				</p>
-				<br />
-			</div>
 			<div className="text-justify mt-5">
-				<div className="text-3xl text-[#f27d0d]">Family Dish</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80">
+				<div className="text-3xl text-[#f27d0d] max-w-[900px] mx-auto">Family Dish</div>
+				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
 					Xa Xiu noodles - A Special Dish for Family Celebrations
 				</div>
-				<div className="mt-2 text-center">
+				<div className="mt-2 text-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/xaxiu.jpg`}
-						width={1200}
-						height={800}
+						width={900}
+						height={600}
 						quality={100}
 						loading="lazy"
 						alt="steak1"
@@ -41,7 +31,7 @@ export default function PassionComponent() {
 						Quail Eggs and Bok Choy
 					</p>
 				</div>
-				<div className="text-lg mt-5">
+				<div className="text-lg mt-5 leading-relaxed max-w-[900px] mx-auto">
 					One of my favorite dishes to prepare at family gatherings and
 					anniversaries is <strong>Xa Xiu noodles</strong>. This traditional
 					Vietnamese dish, made with egg noodles, tender char siu pork, and
@@ -50,15 +40,15 @@ export default function PassionComponent() {
 					connections, and cherishing our traditions.
 				</div>
 
-				<div className="text-3xl text-[#f27d0d] mt-5">Feature Dish - Steak</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80">
+				<div className="text-3xl text-[#f27d0d] mt-5 max-w-[900px] mx-auto">Feature Dish - Steak</div>
+				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
 					Dried Aged Rib eye with Rosemary, Thyme and Garlic Butter
 				</div>
-				<div className="mt-2 text-center">
+				<div className="mt-2 text-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/steak2.jpeg`}
-						width={1200}
-						height={800}
+						width={900}
+						height={600}
 						quality={100}
 						loading="lazy"
 						alt="steak1"
@@ -68,26 +58,30 @@ export default function PassionComponent() {
 						Dried Aged Rib eye with Rosemary, Thyme and Garlic Butter
 					</p>
 				</div>
-				<div className="text-lg my-5">
-					My journey with steak started humbly - a bit comically even. My early
-					attempts were, let's say, less than perfect. As Mom described, they
-					were burnt, under-seasoned, and rubbery. <br />
-					<i>"Tenaciously"</i>, I threw myself into mastering the art of cooking
-					steak. <br />
-					After countless attempts, testing every little detail: the pan
-					temperature, the timing, the seasoning, basting it with butter and
-					fresh herbs, I finally nailed it: a perfectly seared, medium-rare,
-					dry-aged ribeye, basted in rosemary-thyme butter that was tender,
-					juicy, and packed with flavor.
-					<br />
-					The dish became a symbol of my dedication and growth as a cook, and
-					the commitment I bring to my culinary creations.
+				<div className="text-lg my-5 leading-relaxed max-w-[900px] mx-auto">
+					<p className="mb-4">
+						My journey with steak started humbly - a bit comically even. My early
+						attempts were, let's say, less than perfect. As Mom described, they
+						were burnt, under-seasoned, and rubbery.
+					</p>
+					<p className="mb-4">
+						<i>"Tenaciously"</i>, I threw myself into mastering the art of cooking
+						steak. After countless attempts, testing every little detail: the pan
+						temperature, the timing, the seasoning, basting it with butter and
+						fresh herbs, I finally nailed it: a perfectly seared, medium-rare,
+						dry-aged ribeye, basted in rosemary-thyme butter that was tender,
+						juicy, and packed with flavor.
+					</p>
+					<p>
+						The dish became a symbol of my dedication and growth as a cook, and
+						the commitment I bring to my culinary creations.
+					</p>
 				</div>
-				<div className="col-span-1 text-center mt-5 justify-center">
+				<div className="col-span-1 text-center mt-5 justify-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/steak3.jpg`}
-						width={1200}
-						height={800}
+						width={900}
+						height={600}
 						quality={100}
 						loading="lazy"
 						alt="steak1"
@@ -98,28 +92,30 @@ export default function PassionComponent() {
 					</p>
 				</div>
 
-				<div className="text-lg mt-2">
-					After mastering steak, I felt ready to take on an even more
-					challenging ingredient - a rack of lamb. <br />
-					Cooking lamb requires a higher level of precision and care, from the
-					seasoning to the sear to ensuring it's cooked to the perfect level of
-					doneness. <br />
-					But Alex Hormozi once said,{" "}
-					<i className="text-red-500">
-						"The greater the payoff, the greater the hardship."
-					</i>{" "}
-					Despite the added complexity, achieving that delicate, tender meat
-					with a crispy herb-crusted exterior was incredibly rewarding to me.
+				<div className="text-lg mt-2 leading-relaxed max-w-[900px] mx-auto">
+					<p className="mb-4">
+						After mastering steak, I felt ready to take on an even more
+						challenging ingredient - a rack of lamb. Cooking lamb requires a higher level of precision and care, from the
+						seasoning to the sear to ensuring it's cooked to the perfect level of
+						doneness.
+					</p>
+					<p className="mb-4 italic text-gray-300 border-l-4 border-red-500 pl-4">
+						"The greater the payoff, the greater the hardship." - Alex Hormozi
+					</p>
+					<p>
+						Despite the added complexity, achieving that delicate, tender meat
+						with a crispy herb-crusted exterior was incredibly rewarding to me.
+					</p>
 				</div>
-				<div className="text-3xl text-[#f27d0d] mt-5">Seafood Sensations</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80">
+				<div className="text-3xl text-[#f27d0d] mt-5 max-w-[900px] mx-auto">Seafood Sensations</div>
+				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
 					Pan-Seared Salmon, with <i>mushrooms and asparagus spears</i>
 				</div>
-				<div className="mt-2 text-center">
+				<div className="mt-2 text-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/seafood1.jpg`}
-						width={1200}
-						height={800}
+						width={900}
+						height={600}
 						quality={100}
 						loading="lazy"
 						alt="steak1"
@@ -129,7 +125,7 @@ export default function PassionComponent() {
 						Pan-seared Salmon with mushrooms and asparagus spears
 					</p>
 				</div>
-				<div className="text-lg mt-2 mb-2">
+				<div className="text-lg mt-2 mb-2 leading-relaxed max-w-[900px] mx-auto">
 					Simple but delicious, this dish is all about bringing out the natural
 					flavors. Starting with a salmon fillet, I seared it just right to get
 					a crispy, golden crust while keeping the inside nice and juicy. Then,
@@ -139,14 +135,14 @@ export default function PassionComponent() {
 					bread strips for some extra texture. It's a warm, hearty plate that
 					feels like a hug in every bite.
 				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 mt-5">
+				<div className="text-2xl text-[#f27d0d] text-opacity-80 mt-5 max-w-[900px] mx-auto">
 					Herb-Crusted Salmon, with <i>Rice, Sunny Egg, and Sautéed Veggies</i>
 				</div>
-				<div className="mt-2 text-center">
+				<div className="mt-2 text-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/seafood2.jpg`}
-						width={1200}
-						height={800}
+						width={900}
+						height={600}
 						quality={100}
 						loading="lazy"
 						alt="steak1"
@@ -156,7 +152,7 @@ export default function PassionComponent() {
 						Herb-Crusted Salmon, with Rice, Sunny Egg, and Sautéed Veggies
 					</p>
 				</div>
-				<div className="text-lg mt-2 mb-2">
+				<div className="text-lg mt-2 mb-2 leading-relaxed max-w-[900px] mx-auto">
 					This dish is my idea of a feel-good, satisfying meal. Here, I've taken
 					a fillet of salmon, crusted it with herbs, and seared it until crispy,
 					pairing it with a simple sunny-side-up egg on rice for a bit of
@@ -166,14 +162,14 @@ export default function PassionComponent() {
 					everything out. It's a colorful, balanced plate that's as tasty as it
 					looks!
 				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80">
+				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
 					Crispy Skin Salmon, with <i>asparagus and garlic chips</i>
 				</div>
-				<div className="mt-2 text-center">
+				<div className="mt-2 text-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/seafood3.jpg`}
-						width={1200}
-						height={800}
+						width={900}
+						height={600}
 						quality={100}
 						loading="lazy"
 						alt="steak1"
@@ -184,15 +180,15 @@ export default function PassionComponent() {
 						Quail Eggs and Bok Choy
 					</p> */}
 				</div>
-				<div className="text-lg mt-1 mb-2">
+				<div className="text-lg mt-1 mb-2 leading-relaxed max-w-[900px] mx-auto">
 					This dish is the perfect balance of texture and flavor. The salmon's
 					skin is seared to golden perfection, adding a satisfying crunch that
 					contrasts beautifully with the tender, flaky flesh beneath. Paired
 					with freshly roasted asparagus spears and topped with crisp garlic
 					chips, this dish is a celebration of simplicity and sophistication.
 				</div>
-				<div className="text-3xl text-[#f27d0d] mt-5">Italian food</div>
-				<div className="text-lg mt-1 mb-2">
+				<div className="text-3xl text-[#f27d0d] mt-5 max-w-[900px] mx-auto">Italian food</div>
+				<div className="text-lg mt-1 mb-2 leading-relaxed max-w-[900px] mx-auto">
 					Italian cuisine has always held a special place in my heart. The
 					simplicity, yet depth of flavor in Italian cooking is like an endless
 					canvas of possibilities that never fails to excite me. From rich,
@@ -201,14 +197,14 @@ export default function PassionComponent() {
 					flavors—a combination that keeps me coming back for more, eager to
 					experiment and refine.
 				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80">
+				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
 					Spaghetti Bolognese The Classic
 				</div>
-				<div className="mt-2 text-center">
+				<div className="mt-2 text-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/sphagheti1.jpg`}
-						width={1200}
-						height={800}
+						width={900}
+						height={600}
 						quality={100}
 						loading="lazy"
 						alt="steak1"
@@ -218,7 +214,7 @@ export default function PassionComponent() {
 						Spaghetti Bolognese with a sprinkle of fresh parsley
 					</p>
 				</div>
-				<div className="text-lg mt-1 mb-2">
+				<div className="text-lg mt-1 mb-2 leading-relaxed max-w-[900px] mx-auto">
 					Spaghetti Bolognese is one of those dishes that I find myself
 					returning to time and time again. There's something incredibly
 					comforting about a bowl of al dente spaghetti topped with a rich,
@@ -228,14 +224,14 @@ export default function PassionComponent() {
 					and family warmth. It's a simple, yet powerful dish that always leaves
 					an impression.
 				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80">
+				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
 					Spaghetti Con ill to tonno
 				</div>
-				<div className="mt-2 text-center">
+				<div className="mt-2 text-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/sphagheti2.jpg`}
-						width={1200}
-						height={800}
+						width={900}
+						height={600}
 						quality={100}
 						loading="lazy"
 						alt="steak1"
@@ -245,7 +241,7 @@ export default function PassionComponent() {
 						Spaghetti Con ill to tonno
 					</p>
 				</div>
-				<div className="text-lg mt-1 mb-2">
+				<div className="text-lg mt-1 mb-2 leading-relaxed max-w-[900px] mx-auto">
 					Another Italian favorite of mine is Spaghetti con il Tonno. Such a
 					beauty of simplicity. Al dente spaghetti is tossed with tender tuna
 					flakes, sautéed garlic, a splash of olive oil, and a sprinkle of fresh
@@ -254,14 +250,14 @@ export default function PassionComponent() {
 					the versatility of Italian cuisine—how just a handful of quality
 					ingredients can create something memorable.
 				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80">
+				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
 					Seafood Carbonara
 				</div>
-				<div className="mt-2 text-center">
+				<div className="mt-2 text-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/carbo.png`}
-						width={1200}
-						height={800}
+						width={900}
+						height={600}
 						quality={100}
 						loading="lazy"
 						alt="steak1"
@@ -271,7 +267,7 @@ export default function PassionComponent() {
 						Seafood Carbonara with pan-seared asparagus
 					</p>
 				</div>
-				<div className="text-lg mt-1 mb-2">
+				<div className="text-lg mt-1 mb-2 leading-relaxed max-w-[900px] mx-auto">
 					Seafood Carbonara has become one of my go-to dishes when I want to
 					serve something special. It's a rich, ocean-inspired spin on classic
 					carbonara. Instead of the usual pancetta, I like to use fresh
