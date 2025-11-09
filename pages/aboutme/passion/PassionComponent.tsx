@@ -108,10 +108,10 @@ export default function PassionComponent() {
 					</p>
 				</div>
 				<div className="text-3xl text-[#f27d0d] mt-5 max-w-[900px] mx-auto">Seafood Sensations</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
+				<div className="text-2xl text-[#f27d0d] text-opacity-80 mt-2 max-w-[900px] mx-auto">
 					Pan-Seared Salmon, with <i>mushrooms and asparagus spears</i>
 				</div>
-				<div className="mt-2 text-center max-w-[900px] mx-auto">
+				<div className="mt-4 text-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/seafood1.jpg`}
 						width={900}
@@ -121,11 +121,11 @@ export default function PassionComponent() {
 						alt="steak1"
 						className="rounded-xl w-full h-auto"
 					/>
-					<p className="text-xs opacity-75 italic">
+					<p className="text-xs opacity-75 italic mt-2">
 						Pan-seared Salmon with mushrooms and asparagus spears
 					</p>
 				</div>
-				<div className="text-lg mt-2 mb-2 leading-relaxed max-w-[900px] mx-auto">
+				<div className="text-lg mt-5 mb-2 leading-relaxed max-w-[900px] mx-auto">
 					Simple but delicious, this dish is all about bringing out the natural
 					flavors. Starting with a salmon fillet, I seared it just right to get
 					a crispy, golden crust while keeping the inside nice and juicy. Then,
@@ -135,10 +135,10 @@ export default function PassionComponent() {
 					bread strips for some extra texture. It's a warm, hearty plate that
 					feels like a hug in every bite.
 				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 mt-5 max-w-[900px] mx-auto">
+				<div className="text-2xl text-[#f27d0d] text-opacity-80 mt-8 max-w-[900px] mx-auto">
 					Herb-Crusted Salmon, with <i>Rice, Sunny Egg, and Sautéed Veggies</i>
 				</div>
-				<div className="mt-2 text-center max-w-[900px] mx-auto">
+				<div className="mt-4 text-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/seafood2.jpg`}
 						width={900}
@@ -148,11 +148,11 @@ export default function PassionComponent() {
 						alt="steak1"
 						className="rounded-xl w-full h-auto"
 					/>
-					<p className="text-xs opacity-75 italic">
+					<p className="text-xs opacity-75 italic mt-2">
 						Herb-Crusted Salmon, with Rice, Sunny Egg, and Sautéed Veggies
 					</p>
 				</div>
-				<div className="text-lg mt-2 mb-2 leading-relaxed max-w-[900px] mx-auto">
+				<div className="text-lg mt-5 mb-2 leading-relaxed max-w-[900px] mx-auto">
 					This dish is my idea of a feel-good, satisfying meal. Here, I've taken
 					a fillet of salmon, crusted it with herbs, and seared it until crispy,
 					pairing it with a simple sunny-side-up egg on rice for a bit of
@@ -162,10 +162,10 @@ export default function PassionComponent() {
 					everything out. It's a colorful, balanced plate that's as tasty as it
 					looks!
 				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
+				<div className="text-2xl text-[#f27d0d] text-opacity-80 mt-8 max-w-[900px] mx-auto">
 					Crispy Skin Salmon, with <i>asparagus and garlic chips</i>
 				</div>
-				<div className="mt-2 text-center max-w-[900px] mx-auto">
+				<div className="mt-4 text-center max-w-[900px] mx-auto">
 					<Image
 						src={`/about/passion/seafood3.jpg`}
 						width={900}
@@ -175,12 +175,11 @@ export default function PassionComponent() {
 						alt="steak1"
 						className="rounded-xl w-full h-auto"
 					/>
-					{/* <p className="text-xs opacity-75 italic">
-						Xa Xiu Noodles with Xa Xiu Pork, Steam and Fried Dumpling, Shrimp,
-						Quail Eggs and Bok Choy
-					</p> */}
+					<p className="text-xs opacity-75 italic mt-2">
+						Crispy Skin Salmon with asparagus and garlic chips
+					</p>
 				</div>
-				<div className="text-lg mt-1 mb-2 leading-relaxed max-w-[900px] mx-auto">
+				<div className="text-lg mt-5 mb-2 leading-relaxed max-w-[900px] mx-auto">
 					This dish is the perfect balance of texture and flavor. The salmon's
 					skin is seared to golden perfection, adding a satisfying crunch that
 					contrasts beautifully with the tender, flaky flesh beneath. Paired
