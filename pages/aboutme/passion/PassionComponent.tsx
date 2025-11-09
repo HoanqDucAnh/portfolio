@@ -122,7 +122,7 @@ export default function PassionComponent() {
 						className="rounded-xl w-full h-auto"
 					/>
 					<p className="text-xs opacity-75 italic mt-2">
-						Pan-seared Salmon with mushrooms and asparagus spears
+						Herb-Crusted Salmon, with Rice, Sunny Egg, and Sautéed Veggies
 					</p>
 				</div>
 				<div className="text-lg mt-5 mb-2 leading-relaxed max-w-[900px] mx-auto">
@@ -149,7 +149,7 @@ export default function PassionComponent() {
 						className="rounded-xl w-full h-auto"
 					/>
 					<p className="text-xs opacity-75 italic mt-2">
-						Herb-Crusted Salmon, with Rice, Sunny Egg, and Sautéed Veggies
+						Pan-seared Salmon with mushrooms and asparagus spears
 					</p>
 				</div>
 				<div className="text-lg mt-5 mb-2 leading-relaxed max-w-[900px] mx-auto">
