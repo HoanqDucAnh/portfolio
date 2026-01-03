@@ -12,6 +12,7 @@ import Select, { components, DropdownIndicatorProps } from "react-select";
 import Control from "react-select/dist/declarations/src/components/Control";
 import { FaChevronDown, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { DropdownIndicator } from "react-select/dist/declarations/src/components/indicators";
+import GitHubStats from "./github-stats";
 
 const PROJECT_STYLES = {
 	SECTION:
@@ -75,19 +76,28 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 
 			<div className="w-full my-8 seq">
 				<h2 className="text-xl font-semibold text-gray-200 mb-4">TLDR: How hard I work, probably need to touch more grass</h2>
-				<a
-					href="https://github.com/MarkPhamm"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="block w-full bg-gray-950 rounded-lg p-6 overflow-hidden cursor-pointer hover:bg-gray-900 transition-colors duration-200"
-				>
-					<img
-						src="https://ghchart.rshah.org/39d353/MarkPhamm"
-						alt="GitHub Contribution Calendar"
-						className="w-full h-auto"
-						style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
-					/>
-				</a>
+
+				{/* GitHub Stats and Contribution Chart - Stacked Layout */}
+				<div className="flex flex-col gap-6">
+					{/* GitHub Stats Component */}
+					<GitHubStats />
+
+					{/* Contribution Chart */}
+					<a
+						href="https://github.com/MarkPhamm"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="block w-full bg-gray-950 rounded-lg p-6 overflow-hidden cursor-pointer hover:bg-gray-900/50 transition-colors duration-200"
+					>
+						<h4 className="text-xl font-semibold text-gray-300 mb-4">Contribution Activity</h4>
+						<img
+							src="https://ghchart.rshah.org/39d353/MarkPhamm"
+							alt="GitHub Contribution Calendar"
+							className="w-full h-auto"
+							style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+						/>
+					</a>
+				</div>
 			</div>
 
 			<Select
