@@ -167,7 +167,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 		// 	: "";
 		const logoString = "";
 		const subtitleString = subtitle
-			? `<p class='lg:text-xl 2xl:text-sm mt-2 text-gray-200 font-medium tracking-wide whitespace-normal' style='max-width: ${svgWidth - 100}px;'>${subtitle}</p>`
+			? `<p class='lg:text-xl 2xl:text-sm mt-2 text-gray-200 font-medium tracking-wide whitespace-normal' style='max-width: ${svgWidth}px;'>${subtitle}</p>`
 			: "";
 
 		return `<foreignObject x=${foreignObjectX} y=${foreignObjectY} width=${foreignObjectWidth}
@@ -495,15 +495,17 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
 	return (
 		<section
-			className="w-full relative select-none section-container py-8 flex flex-col"
+			className="w-full relative select-none section-container py-8 flex flex-col overflow-hidden"
 			id={MENULINKS[3].ref}
 		>
-			{renderSectionTitle()}
+			<div className="relative z-10">
+				{renderSectionTitle()}
+			</div>
 			<div className="grid grid-cols-12 gap-4 xl:gap-6 2xl:gap-8 mt-20">
-				<div className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-5 2xl:col-span-5 line-svg" ref={svgContainer}>
+				<div className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-5 2xl:col-span-5 line-svg relative z-10" ref={svgContainer}>
 					{renderSVG()}
 				</div>
-				<div className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-7 2xl:col-span-7 md:flex hidden overflow-hidden">
+				<div className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-7 2xl:col-span-7 md:flex hidden">
 					{renderSlides()}
 				</div>
 			</div>
