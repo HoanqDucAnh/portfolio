@@ -447,7 +447,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
 	const renderSlides = (): React.ReactNode => (
 		<div
-			className="w-full h-96 shadow-xl bg-gray-800 rounded-2xl overflow-hidden lg:block hidden"
+			className="w-full h-96 shadow-xl bg-gray-800 rounded-2xl overflow-hidden lg:block hidden relative"
 			ref={screenContainer}
 		>
 			<Image
@@ -503,7 +503,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 				<div className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-5 2xl:col-span-5 line-svg" ref={svgContainer}>
 					{renderSVG()}
 				</div>
-				<div className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-7 2xl:col-span-7 md:flex hidden">
+				<div className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-7 2xl:col-span-7 md:flex hidden overflow-hidden">
 					{renderSlides()}
 				</div>
 			</div>
