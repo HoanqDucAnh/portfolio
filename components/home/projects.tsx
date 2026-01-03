@@ -13,6 +13,7 @@ import Control from "react-select/dist/declarations/src/components/Control";
 import { FaChevronDown, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { DropdownIndicator } from "react-select/dist/declarations/src/components/indicators";
 import GitHubStats from "./github-stats";
+import WakatimeStats from "./wakatime-stats";
 
 const PROJECT_STYLES = {
 	SECTION:
@@ -77,10 +78,13 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 			<div className="w-full my-8 seq">
 				<h2 className="text-xl font-semibold text-gray-200 mb-4">TLDR: How hard I work, probably need to touch more grass</h2>
 
-				{/* GitHub Stats and Contribution Chart - Stacked Layout */}
+				{/* GitHub Stats, Wakatime Stats, and Contribution Chart - Stacked Layout */}
 				<div className="flex flex-col gap-6">
 					{/* GitHub Stats Component */}
 					<GitHubStats />
+
+					{/* Wakatime Stats Component */}
+					<WakatimeStats />
 
 					{/* Contribution Chart */}
 					<a
