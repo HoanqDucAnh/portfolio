@@ -15,8 +15,8 @@ const CommentTile = (props: {
 		<div
 			className={`absolute inset-0 transition-all duration-500 ease-in-out ${
 				props.isActive
-					? "opacity-100 translate-x-0"
-					: "opacity-0 translate-x-8 pointer-events-none"
+					? "opacity-100 translate-x-0 visible"
+					: "opacity-0 translate-x-8 pointer-events-none invisible"
 			}`}
 		>
 			<div className="relative p-8 md:p-10 mx-auto max-w-3xl bg-gray-900 rounded-2xl border border-gray-800">
@@ -85,7 +85,7 @@ const CommentSection = ({}: IDesktop) => {
 
 				{/* Carousel Container */}
 				<div
-					className="relative min-h-[400px] md:min-h-[350px]"
+					className="relative min-h-[400px] md:min-h-[350px] overflow-hidden"
 					onMouseEnter={() => setIsPaused(true)}
 					onMouseLeave={() => setIsPaused(false)}
 				>
