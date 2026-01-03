@@ -40,34 +40,25 @@ const WakatimeStats = memo(() => {
 					</div>
 				</div>
 
-				{/* Wakatime Embed Charts */}
-				<div className="space-y-4">
-					{/* Coding Activity Chart */}
-					<div className="bg-gray-800/30 rounded-lg p-4">
-						<h4 className="text-sm font-medium text-gray-400 mb-3">Weekly Coding Activity</h4>
+				{/* Wakatime Badge and Stats */}
+				<div className="bg-gray-800/30 rounded-lg p-4">
+					<h4 className="text-sm font-medium text-gray-400 mb-4">Total Coding Time</h4>
+					<a
+						href={`https://wakatime.com/@${WAKATIME_USERNAME}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-block"
+					>
 						<img
-							src={`https://github-readme-stats.vercel.app/api/wakatime?username=${WAKATIME_USERNAME}&layout=compact&theme=transparent&hide_border=true&text_color=9ca3af&title_color=d1d5db&bg_color=00000000`}
-							alt="Wakatime Stats"
-							className="w-full h-auto"
+							src={`https://wakatime.com/badge/user/894cf02a-9974-42d0-acde-603cdd98fe17.svg?style=for-the-badge`}
+							alt="Wakatime Total Coding Time"
+							className="h-10"
 							loading="lazy"
 						/>
-					</div>
-
-					{/* Badge */}
-					<div className="flex items-center gap-4 flex-wrap">
-						<a
-							href={`https://wakatime.com/@${WAKATIME_USERNAME}`}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<img
-								src={`https://wakatime.com/badge/user/894cf02a-9974-42d0-acde-603cdd98fe17.svg?style=for-the-badge`}
-								alt="Wakatime Total Coding Time"
-								className="h-8"
-								loading="lazy"
-							/>
-						</a>
-					</div>
+					</a>
+					<p className="text-xs text-gray-500 mt-3">
+						Tracked across all IDEs and projects
+					</p>
 				</div>
 			</div>
 		</div>
