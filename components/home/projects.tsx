@@ -76,7 +76,6 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 			</h2>
 
 			<div className="w-full my-8 seq">
-				<h2 className="text-xl font-semibold text-gray-200 mb-4">TLDR: How hard I work, probably need to touch more grass</h2>
 
 				{/* GitHub Stats, Wakatime Stats, and Contribution Chart - Stacked Layout */}
 				<div className="flex flex-col gap-6">

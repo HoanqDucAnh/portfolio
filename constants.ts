@@ -75,6 +75,13 @@ export const COMMENTS = [
 		avatar: "/person/josef.jpg",
 	},
 	{
+		comment: "He would often visit me during office hours asking questions that demonstrated his commitment to extending his understanding of neural nets, boosting models, feature engineering, and more. Of course, this knowledge grows stale quickly; the point is that Minh has not only \"learned to learn\" but done so under his own initiative. I am certain he will take this work ethic and curiosity forward to his professional opportunities.",
+		author: "Kelly, Slaughter",
+		position: "BIS Program Director - Texas Christian University",
+		recomendationType: "college",
+		avatar: "/person/slaughter.jpeg",
+	},
+	{
 		comment: "Hi. How are you doing?? I was out with covid last week and misses your last day in the office.I'd have to say that you were the best intern ever! Willingness to learn and more than enthusiastic to get dropped into anything we could come up with. Hell, you got code and queries into PRD. Nice work!! Hope to see you again in the spring.",
 		author: "Tom, Kinch",
 		position: "Senior Data Engineer - Lazard",
@@ -82,25 +89,18 @@ export const COMMENTS = [
 		avatar: "/person/default.jpg",
 	},
 	{
+		comment: "Minh is persistent, asks questions, knows when to stop, remembers, and can apply what is said. He only asks once. He is at the top of my class. His maturity level is advanced for his age compared to peers. He will code up more than one solution for insight even though the effort is not tied to his grade.",
+		author: "Gary, Klinger",
+		position: "Python for Data Analytics Professor - Texas Christian University",
+		recomendationType: "college",
+		avatar: "/person/klinger.jpg",
+	},
+	{
 		comment: "Hey Mark, you did a great job overall! The work linking the models to Snowflake and PowerBI are both big improvements in the overall process. The presentation to Joe also went well and I appreciated the preperation and work you put in for that!",
 		author: "Luo, Hubert",
 		position: "Data Analytic Vice President - Lazard",
 		recomendationType: "college",
 		avatar: "/person/hubert.jpg",
-	},
-	{
-		comment: "Minh is persistent, asks questions, knows when to stop, remembers, and can apply what is said. He only asks once. He is at the top of my class. His maturity level is advanced for his age compared to peers. He will code up more than one solution for insight even though the effort is not tied to his grade.",
-		author: "Gary, Klinger",
-		position: "Professor - Texas Christian University",
-		recomendationType: "college",
-		avatar: "/person/klinger.jpg",
-	},
-	{
-		comment: "He would often visit me during office hours asking questions that demonstrated his commitment to extending his understanding of neural nets, boosting models, feature engineering, and more. Of course, this knowledge grows stale quickly; the point is that Minh has not only \"learned to learn\" but done so under his own initiative. I am certain he will take this work ethic and curiosity forward to his professional opportunities.",
-		author: "Kelly, Slaughter",
-		position: "Professor - Texas Christian University",
-		recomendationType: "college",
-		avatar: "/person/slaughter.jpeg",
 	}
 ]
 
