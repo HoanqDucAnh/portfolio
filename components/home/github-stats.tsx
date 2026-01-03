@@ -127,9 +127,8 @@ const GitHubStats = memo(() => {
 
 	const StatCard = ({ icon, label, value, delay }: { icon: React.ReactNode; label: string; value: number; delay: number }) => (
 		<div
-			className={`flex flex-col items-center justify-center p-4 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-all duration-500 ${
-				isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-			}`}
+			className={`flex flex-col items-center justify-center p-4 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+				}`}
 			style={{ transitionDelay: `${delay}ms` }}
 		>
 			<div className="text-2xl mb-2 text-gray-400">{icon}</div>
@@ -165,9 +164,8 @@ const GitHubStats = memo(() => {
 
 	return (
 		<div
-			className={`w-full bg-gray-950 rounded-lg p-6 hover:bg-gray-900/50 transition-all duration-500 ${
-				isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-			}`}
+			className={`w-full bg-gray-950 rounded-lg p-6 hover:bg-gray-900/50 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+				}`}
 		>
 			<a
 				href={`https://github.com/${GITHUB_USERNAME}`}
@@ -192,9 +190,8 @@ const GitHubStats = memo(() => {
 
 			{/* Language Stats */}
 			<div
-				className={`mt-4 transition-all duration-500 ${
-					isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-				}`}
+				className={`mt-4 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+					}`}
 				style={{ transitionDelay: '500ms' }}
 			>
 				<h4 className="text-sm font-medium text-gray-400 mb-3">Most Used Languages</h4>
@@ -202,9 +199,8 @@ const GitHubStats = memo(() => {
 					{stats.languages.map((lang, index) => (
 						<div
 							key={lang.name}
-							className={`group transition-all duration-500 ${
-								isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
-							}`}
+							className={`group transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+								}`}
 							style={{ transitionDelay: `${600 + index * 100}ms` }}
 						>
 							<div className="flex justify-between items-center mb-1">

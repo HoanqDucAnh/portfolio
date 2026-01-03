@@ -101,14 +101,16 @@ const ProjectTile = ({
 		blurImage: string,
 		name: string
 	): React.ReactNode => (
-		<Image
-			placeholder="blur"
-			blurDataURL={blurImage}
-			src={image}
-			alt={name}
-			layout="fill"
-			className={`${styles.ProjectImg} z-0`}
-		/>
+		<div className={`${styles.ProjectImgContainer} z-0`}>
+			<Image
+				placeholder="blur"
+				blurDataURL={blurImage}
+				src={image}
+				alt={name}
+				layout="fill"
+				className={`${styles.ProjectImg}`}
+			/>
+		</div>
 	);
 
 	return (
@@ -116,36 +118,44 @@ const ProjectTile = ({
 			href={project.url}
 			target="_blank"
 			rel="noreferrer"
-			className="link overflow-hidden rounded-3xl snap-start"
+			className="link snap-start"
 			style={{
 				maxWidth: animationEnabled
 					? "calc(100vw - 1rem)"
 					: "calc(100vw - 4rem)",
 				flex: "1 0 auto",
-				WebkitMaskImage: "-webkit-radial-gradient(white, black)",
 			}}
 		>
 			<div
-				ref={projectCard}
-				className={`
-          ${styles.ProjectTile}
-           rounded-3xl relative p-6 flex-col flex justify-between max-w-full
-        `}
+				className="rounded-3xl overflow-hidden relative"
 				style={{
-					background: `linear-gradient(90deg, ${stop1} 0%, ${stop2} 100%)`,
+					transform: "translateZ(0)",
+					isolation: "isolate",
+					contain: "layout style paint"
 				}}
 			>
-				<Image
-					src="/project-bg.svg"
-					alt="Project"
-					layout="fill"
-					className="absolute w-full h-full top-0 left-0 opacity-20"
-				/>
-				{renderProjectImage(image, blurImage, name)}
-				{renderTopBottomGradient(stop1)}
-				{renderProjectName(name)}
-				{renderTechIcons(tech)}
-				{renderDescription(description)}
+				<div
+					ref={projectCard}
+					className={`
+            ${styles.ProjectTile}
+             rounded-3xl relative p-6 flex-col flex justify-between max-w-full
+          `}
+					style={{
+						background: `linear-gradient(90deg, ${stop1} 0%, ${stop2} 100%)`,
+					}}
+				>
+					<Image
+						src="/project-bg.svg"
+						alt="Project"
+						layout="fill"
+						className="absolute w-full h-full top-0 left-0 opacity-20"
+					/>
+					{renderProjectImage(image, blurImage, name)}
+					{renderTopBottomGradient(stop1)}
+					{renderProjectName(name)}
+					{renderTechIcons(tech)}
+					{renderDescription(description)}
+				</div>
 			</div>
 		</a>
 	);
