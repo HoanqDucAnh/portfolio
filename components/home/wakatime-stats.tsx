@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { FaClock, FaCode } from "react-icons/fa";
+import { FaClock, FaCode, FaChartBar, FaLaptopCode } from "react-icons/fa";
 import { SiWakatime } from "react-icons/si";
 
 const WAKATIME_USERNAME = "MarkPham";
@@ -23,7 +23,7 @@ const WakatimeStats = memo(() => {
 			{/* Wakatime Coding Activity */}
 			<div className="space-y-6">
 				{/* Stats Cards */}
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 					<div className="flex items-center gap-4 p-4 bg-gray-800/50 rounded-lg">
 						<FaClock className="text-3xl text-blue-400" />
 						<div>
@@ -38,27 +38,77 @@ const WakatimeStats = memo(() => {
 							<p className="text-lg font-semibold text-white">All Projects</p>
 						</div>
 					</div>
+					<div className="flex items-center gap-4 p-4 bg-gray-800/50 rounded-lg">
+						<FaChartBar className="text-3xl text-purple-400" />
+						<div>
+							<p className="text-sm text-gray-400">Daily Goal</p>
+							<p className="text-lg font-semibold text-white">2+ Hours</p>
+						</div>
+					</div>
+					<div className="flex items-center gap-4 p-4 bg-gray-800/50 rounded-lg">
+						<FaLaptopCode className="text-3xl text-orange-400" />
+						<div>
+							<p className="text-sm text-gray-400">Main Editor</p>
+							<p className="text-lg font-semibold text-white">Cursor</p>
+						</div>
+					</div>
 				</div>
 
-				{/* Wakatime Badge and Stats */}
+				{/* Languages & Categories Charts */}
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+					{/* Languages Chart */}
+					<div className="bg-gray-800/30 rounded-lg p-4">
+						<h4 className="text-sm font-medium text-gray-400 mb-4">Languages</h4>
+						<a
+							href={`https://wakatime.com/@${WAKATIME_USERNAME}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="block"
+						>
+							<img
+								src="https://wakatime.com/share/@MarkPham/cc271ab9-a8ef-4c9b-ab6c-cd6d722a47e4.svg"
+								alt="Languages Chart"
+								className="w-full h-auto"
+								loading="lazy"
+							/>
+						</a>
+					</div>
+
+					{/* Categories Chart */}
+					<div className="bg-gray-800/30 rounded-lg p-4">
+						<h4 className="text-sm font-medium text-gray-400 mb-4">Categories</h4>
+						<a
+							href={`https://wakatime.com/@${WAKATIME_USERNAME}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="block"
+						>
+							<img
+								src="https://wakatime.com/share/@MarkPham/40277f04-b1e2-42ad-a86a-8e30e14d076a.svg"
+								alt="Categories Chart"
+								className="w-full h-auto"
+								loading="lazy"
+							/>
+						</a>
+					</div>
+				</div>
+
+				{/* Activity Heatmap */}
 				<div className="bg-gray-800/30 rounded-lg p-4">
-					<h4 className="text-sm font-medium text-gray-400 mb-4">Total Coding Time</h4>
+					<h4 className="text-sm font-medium text-gray-400 mb-4">Daily Activity</h4>
 					<a
 						href={`https://wakatime.com/@${WAKATIME_USERNAME}`}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="inline-block"
+						className="block overflow-x-auto"
 					>
 						<img
-							src={`https://wakatime.com/badge/user/894cf02a-9974-42d0-acde-603cdd98fe17.svg?style=for-the-badge`}
-							alt="Wakatime Total Coding Time"
-							className="h-10"
+							src="https://wakatime.com/share/@MarkPham/50a82451-30d4-4552-a78e-2b7ed8f7083b.svg"
+							alt="Daily Activity Heatmap"
+							className="w-full h-auto min-w-[600px]"
 							loading="lazy"
 						/>
 					</a>
-					<p className="text-xs text-gray-500 mt-3">
-						Tracked across all IDEs and projects
-					</p>
 				</div>
 			</div>
 		</div>

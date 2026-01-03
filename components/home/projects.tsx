@@ -77,29 +77,13 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 
 			<div className="w-full my-8 seq">
 
-				{/* GitHub Stats, Wakatime Stats, and Contribution Chart - Stacked Layout */}
+				{/* GitHub Stats and Wakatime Stats - Stacked Layout */}
 				<div className="flex flex-col gap-6">
 					{/* GitHub Stats Component */}
 					<GitHubStats />
 
 					{/* Wakatime Stats Component */}
 					<WakatimeStats />
-
-					{/* Contribution Chart */}
-					<a
-						href="https://github.com/MarkPhamm"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="block w-full bg-gray-950 rounded-lg p-6 overflow-hidden cursor-pointer hover:bg-gray-900/50 transition-colors duration-200"
-					>
-						<h4 className="text-xl font-semibold text-gray-300 mb-4">Contribution Activity</h4>
-						<img
-							src="https://ghchart.rshah.org/39d353/MarkPhamm"
-							alt="GitHub Contribution Calendar"
-							className="w-full h-auto"
-							style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
-						/>
-					</a>
 				</div>
 			</div>
 

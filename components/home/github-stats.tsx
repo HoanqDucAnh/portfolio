@@ -231,6 +231,18 @@ const GitHubStats = memo(() => {
 					))}
 				</div>
 			</div>
+
+			{/* Contribution Activity */}
+			<div className="mt-6 pt-6 border-t border-gray-800">
+				<h4 className="text-sm font-medium text-gray-400 mb-4">Contribution Activity</h4>
+				<img
+					src={`https://ghchart.rshah.org/39d353/${GITHUB_USERNAME}`}
+					alt="GitHub Contribution Calendar"
+					className="w-full h-auto"
+					style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+					loading="lazy"
+				/>
+			</div>
 		</div>
 	);
 });
