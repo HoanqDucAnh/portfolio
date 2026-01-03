@@ -156,7 +156,7 @@ const HeroSection = React.memo(() => {
 				rel="noreferrer"
 				target="_blank"
 			>
-				<Image src={`/social/${el}.svg`} alt={el} width={40} height={40} />
+				<Image src={`/social/${el}.svg`} alt={el} width={40} height={40} priority />
 			</a>
 		));
 

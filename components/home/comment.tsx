@@ -2,6 +2,7 @@ import { COMMENTS } from "../../constants";
 import React, { useEffect, useState, useCallback } from "react";
 import { IDesktop } from "pages";
 import { FaChevronLeft, FaChevronRight, FaQuoteLeft } from "react-icons/fa";
+import Image from "next/image";
 
 const CommentTile = (props: {
 	text: string;
@@ -22,10 +23,13 @@ const CommentTile = (props: {
 				<FaQuoteLeft className="absolute top-6 left-6 text-4xl text-gray-700 opacity-50" />
 
 				<div className="flex flex-col items-center text-center">
-					<img
+					<Image
 						src={props.avatar}
 						alt={props.authorName}
-						className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-gray-700 shadow-lg mb-6"
+						width={96}
+						height={96}
+						className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-gray-700 shadow-lg mb-6 object-cover"
+						loading="lazy"
 					/>
 
 					<p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 italic">
