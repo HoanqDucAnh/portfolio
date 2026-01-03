@@ -22,21 +22,23 @@ const CommentTile = (props: {
 			<div className="relative p-8 md:p-10 mx-auto max-w-3xl bg-gray-900 rounded-2xl border border-gray-800">
 				<FaQuoteLeft className="absolute top-6 left-6 text-4xl text-gray-700 opacity-50" />
 
-				<div className="flex flex-col items-center text-center">
-					<Image
-						src={props.avatar}
-						alt={props.authorName}
-						width={96}
-						height={96}
-						className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-gray-700 shadow-lg mb-6 object-cover"
-						loading="lazy"
-					/>
+				<div className="flex flex-col">
+					<div className="flex justify-center mb-6">
+						<Image
+							src={props.avatar}
+							alt={props.authorName}
+							width={96}
+							height={96}
+							className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-gray-700 shadow-lg object-cover"
+							loading="lazy"
+						/>
+					</div>
 
-					<p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 italic">
+					<p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 italic text-left">
 						"{props.text}"
 					</p>
 
-					<div>
+					<div className="text-right self-end">
 						<p className="text-lg font-bold text-white">{props.authorName}</p>
 						<p className="text-sm text-gray-400">{props.currentPosition}</p>
 					</div>
@@ -83,25 +85,13 @@ const CommentSection = ({}: IDesktop) => {
 			<div className="flex flex-col inner-container">
 				<h2 className="section-heading seq mb-8">What Others Say</h2>
 
-				{/* Carousel Container */}
+				{/* Carousel Container with Navigation */}
 				<div
-					className="relative min-h-[400px] md:min-h-[350px] overflow-hidden"
+					className="relative"
 					onMouseEnter={() => setIsPaused(true)}
 					onMouseLeave={() => setIsPaused(false)}
 				>
-					{/* Slides */}
-					{COMMENTS.map((comment, index) => (
-						<CommentTile
-							key={index}
-							text={comment.comment}
-							authorName={comment.author}
-							currentPosition={comment.position}
-							avatar={comment.avatar}
-							isActive={index === currentIndex}
-						/>
-					))}
-
-					{/* Navigation Arrows */}
+					{/* Navigation Arrows - Outside overflow container */}
 					<button
 						onClick={goToPrev}
 						className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-6 z-10 p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-200 shadow-lg"
@@ -117,6 +107,20 @@ const CommentSection = ({}: IDesktop) => {
 					>
 						<FaChevronRight className="text-lg" />
 					</button>
+
+					{/* Slides Container */}
+					<div className="relative min-h-[500px] md:min-h-[450px]">
+						{COMMENTS.map((comment, index) => (
+							<CommentTile
+								key={index}
+								text={comment.comment}
+								authorName={comment.author}
+								currentPosition={comment.position}
+								avatar={comment.avatar}
+								isActive={index === currentIndex}
+							/>
+						))}
+					</div>
 				</div>
 
 				{/* Navigation Dots */}
