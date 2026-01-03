@@ -61,7 +61,7 @@ const GitHubStats = memo(() => {
 	const [stats, setStats] = useState<GitHubStatsData | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
-	const [isVisible, setIsVisible] = useState(true);
+	const [isVisible] = useState(true);
 
 	const fetchGitHubStats = useCallback(async () => {
 		try {

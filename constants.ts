@@ -87,8 +87,21 @@ export const COMMENTS = [
 		position: "Data Analytic Vice President - Lazard",
 		recomendationType: "college",
 		avatar: "/person/hubert.jpg",
+	},
+	{
+		comment: "Minh is persistent, asks questions, knows when to stop, remembers, and can apply what is said. He only asks once. He is at the top of my class. His maturity level is advanced for his age compared to peers. He will code up more than one solution for insight even though the effort is not tied to his grade.",
+		author: "Gary, Klinger",
+		position: "Professor - Texas Christian University",
+		recomendationType: "college",
+		avatar: "/person/klinger.jpg",
+	},
+	{
+		comment: "More importantly was Minh's curiosity and passion for our field. He continued to work on projects after the due date to extend his knowledge outside what was taught in class. He would often visit me during office hours asking questions that demonstrated his commitment to extending his understanding of neural nets, boosting models, feature engineering, and more. Of course, this knowledge grows stale quickly; the point is that Minh has not only \"learned to learn\" but done so under his own initiative. I am certain he will take this work ethic and curiosity forward to his professional opportunities.",
+		author: "Kelly, Slaughter",
+		position: "Professor - Texas Christian University",
+		recomendationType: "college",
+		avatar: "/person/slaughter.jpeg",
 	}
-
 ]
 
 export const TYPED_STRINGS = [
