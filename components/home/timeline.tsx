@@ -349,16 +349,14 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
 	const setSlidesAnimation = (timeline: GSAPTimeline): void => {
 		svgCheckpointItems.forEach((_, index) => {
-			// all except the first slide
-			if (index !== 0) {
-				timeline.fromTo(
-					screenContainer.current.querySelector(`.slide-${index + 1}`),
-					{ opacity: 0 },
-					{ opacity: 1 }
-				);
-			}
+			// Fade in each slide (including the first one now)
+			timeline.fromTo(
+				screenContainer.current.querySelector(`.slide-${index + 1}`),
+				{ opacity: 0 },
+				{ opacity: 1 }
+			);
 
-			// all except the last slide
+			// all except the last slide - fade out
 			if (index !== svgCheckpointItems.length - 1) {
 				timeline.to(
 					screenContainer.current.querySelector(`.slide-${index + 1}`),
@@ -400,10 +398,20 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 				pin: true,
 				pinSpacing: true,
 				onEnter: () => {
-					gsap.set(screenContainer.current, { opacity: 1, visibility: "visible" });
+					gsap.set(screenContainer.current, {
+						opacity: 1,
+						visibility: "visible",
+						clipPath: "inset(0%)",
+						zIndex: 1
+					});
 				},
 				onLeaveBack: () => {
-					gsap.set(screenContainer.current, { opacity: 0, visibility: "hidden" });
+					gsap.set(screenContainer.current, {
+						opacity: 0,
+						visibility: "hidden",
+						clipPath: "inset(100%)",
+						zIndex: -1
+					});
 				},
 			};
 			duration = timeline.totalDuration() / svgCheckpointItems.length;
@@ -435,6 +443,16 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 		const { timeline, duration }: { timeline: GSAPTimeline; duration: number } =
 			initScrollTrigger();
 
+		// Ensure slides are hidden after ScrollTrigger setup (prevents early visibility)
+		if (isDesktop && !isSmallScreen() && screenContainer.current) {
+			gsap.set(screenContainer.current, {
+				opacity: 0,
+				visibility: "hidden",
+				clipPath: "inset(100%)",
+				zIndex: -1
+			});
+		}
+
 		// Animation for Timeline SVG
 		animateTimeline(timeline, duration);
 	}, [
@@ -453,9 +471,14 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
 	const renderSlides = (): React.ReactNode => (
 		<div
-			className="w-full h-96 shadow-xl bg-gray-800 rounded-2xl overflow-hidden lg:block hidden relative"
+			className="w-full h-96 shadow-xl bg-gray-800 rounded-2xl overflow-hidden lg:block hidden relative timeline-slides-container"
 			ref={screenContainer}
-			style={{ opacity: 0, visibility: "hidden" }}
+			style={{
+				opacity: 0,
+				visibility: "hidden",
+				clipPath: "inset(100%)",
+				zIndex: -1
+			}}
 		>
 			<Image
 				className="w-full h-8"
@@ -473,7 +496,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 							key={`${(item as CheckpointNode).title}-${index}`}
 							alt="Timeline"
 							layout="fill"
-							style={{ opacity: index === 0 ? 1 : 0 }}
+							style={{ opacity: 0 }}
 						/>
 					))}
 				</div>
