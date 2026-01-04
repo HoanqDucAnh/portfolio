@@ -395,10 +395,16 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 
 			trigger = screenContainer.current;
 			start = `top ${(window.innerHeight - platformHeight) / 2}`;
-			end = `+=${svgLength - platformHeight}`;
+			end = `+=${svgLength}`;
 			additionalConfig = {
 				pin: true,
 				pinSpacing: true,
+				onEnter: () => {
+					gsap.set(screenContainer.current, { opacity: 1, visibility: "visible" });
+				},
+				onLeaveBack: () => {
+					gsap.set(screenContainer.current, { opacity: 0, visibility: "hidden" });
+				},
 			};
 			duration = timeline.totalDuration() / svgCheckpointItems.length;
 		} else {
@@ -449,6 +455,7 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 		<div
 			className="w-full h-96 shadow-xl bg-gray-800 rounded-2xl overflow-hidden lg:block hidden relative"
 			ref={screenContainer}
+			style={{ opacity: 0, visibility: "hidden" }}
 		>
 			<Image
 				className="w-full h-8"
@@ -461,12 +468,12 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 				<div className="absolute top-0 left-0 h-full w-full">
 					{svgCheckpointItems.map((item, index) => (
 						<Image
-							className={`w-full absolute top-0 object-cover slide-${index + 1
-								}`}
+							className={`w-full absolute top-0 object-cover slide-${index + 1}`}
 							src={(item as CheckpointNode).slideImage || ""}
 							key={`${(item as CheckpointNode).title}-${index}`}
 							alt="Timeline"
 							layout="fill"
+							style={{ opacity: index === 0 ? 1 : 0 }}
 						/>
 					))}
 				</div>
@@ -497,6 +504,11 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 		<section
 			className="w-full relative select-none section-container py-8 flex flex-col overflow-hidden"
 			id={MENULINKS[3].ref}
+			style={{
+				position: "relative",
+				zIndex: 5,
+				isolation: "isolate"
+			}}
 		>
 			<div className="relative z-10">
 				{renderSectionTitle()}

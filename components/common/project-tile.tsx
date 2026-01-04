@@ -13,9 +13,11 @@ import { IProject } from "../../constants";
 const ProjectTile = ({
 	project,
 	animationEnabled,
+	zIndex = 1,
 }: {
 	project: IProject;
 	animationEnabled: boolean;
+	zIndex?: number;
 }) => {
 	const projectCard: MutableRefObject<HTMLDivElement> = useRef(null);
 	const {
@@ -109,6 +111,8 @@ const ProjectTile = ({
 				alt={name}
 				layout="fill"
 				className={`${styles.ProjectImg}`}
+				unoptimized={true}
+				priority={false}
 			/>
 		</div>
 	);
@@ -124,13 +128,14 @@ const ProjectTile = ({
 					? "calc(100vw - 1rem)"
 					: "calc(100vw - 4rem)",
 				flex: "1 0 auto",
+				position: "relative",
+				zIndex: zIndex,
 			}}
 		>
 			<div
 				className="rounded-3xl overflow-hidden relative"
 				style={{
 					transform: "translateZ(0)",
-					isolation: "isolate",
 					contain: "layout style paint"
 				}}
 			>
@@ -149,6 +154,7 @@ const ProjectTile = ({
 						alt="Project"
 						layout="fill"
 						className="absolute w-full h-full top-0 left-0 opacity-20"
+						unoptimized={true}
 					/>
 					{renderProjectImage(image, blurImage, name)}
 					{renderTopBottomGradient(stop1)}

@@ -75,7 +75,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 				Some call it sad, I call it living the dream
 			</h2>
 
-			<div className="w-full my-8 seq">
+			<div className="w-full my-8 seq relative z-10">
 
 				{/* GitHub Stats and Wakatime Stats - Stacked Layout */}
 				<div className="flex flex-col gap-6">
@@ -126,9 +126,10 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 	);
 
 	const renderProjectTiles = (): React.ReactNode => {
-		let projectLength = PROJECTS.filter(
-			(project) => project.category === projectCategory
-		).length;
+		const filteredProjects = PROJECTS.filter(
+			(project) => projectCategory === "All" || project.category === projectCategory
+		);
+		let projectLength = filteredProjects.length;
 		renderedPrjectsNumber = projectLength;
 		return (
 			<div
@@ -136,14 +137,13 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 				className={`${PROJECT_STYLES.PROJECTS_WRAPPER} flex overflow-x-auto ${renderedPrjectsNumber === 1 && "w-fit"
 					}`}
 			>
-				{PROJECTS.map((project) => {
-					if (projectCategory !== "All" && project.category !== projectCategory)
-						return;
+				{filteredProjects.map((project, index) => {
 					return (
 						<ProjectTile
 							project={project}
-							key={project.name}
+							key={`${project.name}-${index}-${projectCategory}`}
 							animationEnabled={horizontalAnimationEnabled}
+							zIndex={index + 1}
 						></ProjectTile>
 					);
 				})}
@@ -155,12 +155,16 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 	return (
 		<section
 			ref={targetSectionRef}
-			className={`${isDesktop && "min-h-screen"} ${PROJECT_STYLES.SECTION}`}
+			className={`${isDesktop && "min-h-screen"} ${PROJECT_STYLES.SECTION} relative`}
 			id={projectsSectionRef}
+			style={{
+				zIndex: 10,
+				isolation: "isolate"
+			}}
 		>
 			{renderSectionTitle()}
 
-			<div className="relative">
+			<div className="relative overflow-hidden" style={{ isolation: "isolate" }}>
 				<button
 					onClick={scrollLeft}
 					className="hover:text-gray-200 hover:bg-gray-900 absolute text-lg font-bold text-gray-900 mx-2 left-0 top-1/2 transform -translate-y-1/2 bg-secondary-color p-4 rounded-full z-10"
