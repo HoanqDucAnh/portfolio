@@ -4,518 +4,100 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import { MutableRefObject, useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-	Branch,
-	BranchNode,
-	CheckpointNode,
-	ItemSize,
 	MENULINKS,
 	NodeTypes,
 	TIMELINE,
-	TimelineNodeV2,
+	CheckpointNode,
+	ItemSize,
 } from "../../constants";
 import Image from "next/image";
-import { gsap, Linear } from "gsap";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { IDesktop, isSmallScreen } from "pages";
+import { IDesktop } from "pages";
 
-const svgColor = "#9CA3AF";
-const animColor = "#FCD34D";
-const separation = 450;
-const strokeWidth = 2;
-const leftBranchX = 13;
-const curveLength = 150;
-const dotSize = 26;
+interface ExperienceItem {
+	date: string;
+	title: string;
+	subtitle: string;
+	image: string;
+	slideImage: string;
+}
 
-const TimelineSection = ({ isDesktop }: IDesktop) => {
-	const [svgWidth, setSvgWidth] = useState(600);
-	const [rightBranchX, setRightBranchX] = useState(109);
+// Process TIMELINE data to extract experiences with their dates
+const processTimelineData = (): ExperienceItem[] => {
+	const experiences: ExperienceItem[] = [];
+	let currentDate = "";
 
-	const svgCheckpointItems = TIMELINE.filter(
-		(item) => item.type === NodeTypes.CHECKPOINT && item.shouldDrawLine
-	);
-
-	const svgLength = svgCheckpointItems?.length * separation;
-
-	const timelineSvg: MutableRefObject<SVGSVGElement> = useRef(null);
-	const svgContainer: MutableRefObject<HTMLDivElement> = useRef(null);
-	const screenContainer: MutableRefObject<HTMLDivElement> = useRef(null);
-
-	const addNodeRefsToItems = (
-		timeline: Array<TimelineNodeV2>
-	): Array<LinkedTimelineNode> => {
-		return timeline.map((node, idx) => ({
-			...node,
-			next: timeline[idx + 1],
-			prev: timeline[idx - 1],
-		}));
-	};
-
-	const generateTimelineSvg = (timeline: Array<TimelineNodeV2>): string => {
-		let index = 1;
-		let y = dotSize / 2;
-		const timelineStyle = `<style>.str, .dot{stroke-width: ${strokeWidth}px}.anim-branch{stroke-dasharray: 186}</style>`;
-		let isDiverged = false;
-
-		const timelineSvg = addNodeRefsToItems(timeline).reduce(
-			(svg: string, node: LinkedTimelineNode) => {
-				const { type, next } = node;
-				let lineY = y;
-				let dotY = y + separation / 2;
-
-				switch (type) {
-					case NodeTypes.CHECKPOINT:
-						{
-							const { shouldDrawLine } = node;
-
-							// special handling for last checkpoint
-							if (!next) {
-								lineY = y - separation / 2;
-							}
-
-							// special handling for dot without line
-							if (!shouldDrawLine) {
-								dotY = y;
-							}
-
-							if (shouldDrawLine) {
-								// TO DO fix syntax
-								svg = shouldDrawLine
-									? `${drawLine(node, lineY, index, isDiverged)}${svg}`
-									: svg;
-								y = y + separation;
-								index++;
-							}
-
-							svg = svg.concat(drawDot(node, dotY, isDiverged));
-						}
-						break;
-					case NodeTypes.DIVERGE:
-						{
-							isDiverged = true;
-
-							svg = `${drawBranch(node, y, index)}${svg}`;
-						}
-						break;
-					case NodeTypes.CONVERGE:
-						{
-							isDiverged = false;
-
-							// Drawing CONVERGE branch with previous line and index
-							svg = `${drawBranch(node, y - separation, index - 1)}${svg}`;
-						}
-						break;
-				}
-
-				return svg;
-			},
-			timelineStyle
-		);
-
-		return timelineSvg;
-	};
-
-	const getDotString = (x: number, y: number) => {
-		return `<rect class='dot' width=${dotSize} height=${dotSize} fill='#111827' x=${x - dotSize / 2
-			} y=${y - dotSize / 2
-			} ></rect><circle cx=${x} cy=${y} r='7' stroke=${svgColor} class='dot' ></circle>`;
-	};
-
-	const drawDot = (
-		timelineNode: LinkedCheckpointNode,
-		y: number,
-		isDiverged: boolean
-	) => {
-		const { next, alignment } = timelineNode as LinkedCheckpointNode;
-
-		// Diverging
-		if (next && next.type === NodeTypes.DIVERGE) {
-			y = y - curveLength + 6 * dotSize;
-		}
-
-		// Converging
-		if (next && next.type === NodeTypes.CONVERGE) {
-			y = y + curveLength - 6 * dotSize;
-		}
-
-		const dotString = getDotString(
-			alignment === Branch.LEFT ? leftBranchX : rightBranchX,
-			y
-		);
-
-		const textString = addText(timelineNode, y, isDiverged);
-
-		return `${textString}${dotString}`;
-	};
-
-	const addText = (
-		timelineNode: LinkedCheckpointNode,
-		y: number,
-		isDiverged: boolean
-	) => {
-		const { title, subtitle, size, image } = timelineNode;
-
-		const offset = isDiverged ? rightBranchX : 10;
-		const foreignObjectX = dotSize / 2 + 10 + offset;
-		const foreignObjectY = y - dotSize / 2;
-		const foreignObjectWidth = svgWidth * 2;
-
-		const titleSizeClass = size === ItemSize.LARGE ? "text-6xl whitespace-nowrap" : "text-2xl whitespace-nowrap";
-		// const logoString = image
-		// 	? `<img src='${image}' class='h-8 mb-2' loading='lazy' width='100' height='32' alt='${image}' />`
-		// 	: "";
-		const logoString = "";
-		const subtitleString = subtitle
-			? `<p class='lg:text-xl 2xl:text-sm mt-2 text-gray-200 font-medium tracking-wide whitespace-normal' style='max-width: ${svgWidth}px;'>${subtitle}</p>`
-			: "";
-
-		return `<foreignObject x=${foreignObjectX} y=${foreignObjectY} width=${foreignObjectWidth}
-        height=${separation}>${logoString}<p class='${titleSizeClass}'>${title}</p>${subtitleString}</foreignObject>`;
-	};
-
-	const drawLine = (
-		timelineNode: LinkedCheckpointNode,
-		y: number,
-		i: number,
-		isDiverged: boolean
-	) => {
-		const { alignment, prev, next } = timelineNode as LinkedCheckpointNode;
-
-		const isPrevDiverge = prev && prev.type === NodeTypes.DIVERGE;
-		const isNextConverge = next && next.type === NodeTypes.CONVERGE;
-
-		const lineY = Math.abs(y + separation);
-
-		// Smaller line for Diverging
-		if (isPrevDiverge) {
-			return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`;
-		}
-
-		// Smaller line for Converging
-		if (isNextConverge) {
-			return `<line class='str' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${leftBranchX} y1=${y} x2=${leftBranchX} y2=${lineY} stroke=${animColor} />`;
-		}
-
-		const lineX = alignment === Branch.LEFT ? leftBranchX : rightBranchX;
-
-		let str = `<line class='str' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${lineX} y1=${y} x2=${lineX} y2=${lineY} stroke=${animColor} />`;
-
-		// If already diverged, draw parallel line to the existing line
-		if (isDiverged) {
-			const divergedLineX =
-				alignment === Branch.LEFT ? rightBranchX : leftBranchX;
-			str = str.concat(
-				`<line class='str' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${svgColor} /><line class='str line-${i}' x1=${divergedLineX} y1=${y} x2=${divergedLineX} y2=${lineY} stroke=${animColor} />`
-			);
-		}
-		return str;
-	};
-
-	const drawBranch = (timelineNode: LinkedBranchNode, y: number, i: number) => {
-		const { type } = timelineNode;
-
-		switch (type) {
-			case NodeTypes.DIVERGE:
-				return `<path class='str' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2
-					} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength
-					}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y + curveLength
-					} x2=${rightBranchX} y2=${y + separation
-					} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${leftBranchX} ${y} C ${leftBranchX} ${y + curveLength / 2
-					} ${rightBranchX} ${y + curveLength / 2} ${rightBranchX} ${y + curveLength
-					}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y + curveLength
-					} x2=${rightBranchX} y2=${y + separation} stroke=${animColor} />`;
-			case NodeTypes.CONVERGE:
-				return `<path class='str' d='M ${rightBranchX} ${y + separation - curveLength
-					} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2
-					} ${leftBranchX} ${y + separation - curveLength + curveLength / 2
-					} ${leftBranchX} ${y + separation
-					}' stroke=${svgColor} /><line class='str' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(
-						y + separation - curveLength
-					)} stroke=${svgColor} /><path class='str anim-branch branch-${i}' d='M ${rightBranchX} ${y + separation - curveLength
-					} C ${rightBranchX} ${y + separation - curveLength + curveLength / 2
-					} ${leftBranchX} ${y + separation - curveLength + curveLength / 2
-					} ${leftBranchX} ${y + separation
-					}' stroke=${animColor} /><line class='str branch-line-${i}' x1=${rightBranchX} y1=${y} x2=${rightBranchX} y2=${Math.abs(
-						y + separation - curveLength
-					)} stroke=${animColor} />`;
-			default:
-				return "";
-		}
-	};
-
-	const addLineSvgAnimation = (
-		timeline: GSAPTimeline,
-		duration: number,
-		index: number
-	): GSAPTimeline => {
-		const startTime = `start+=${duration * index}`;
-
-		timeline.from(
-			svgContainer.current.querySelectorAll(`.line-${index + 1}`),
-			{ scaleY: 0, duration },
-			startTime
-		);
-
-		return timeline;
-	};
-
-	const addDivergingBranchLineAnimation = (
-		timeline: GSAPTimeline,
-		duration: number,
-		index: number
-	): GSAPTimeline => {
-		timeline
-			.from(
-				svgContainer.current.querySelector(`.line-${index + 1}`),
-				{ scaleY: 0, duration },
-				`start+=${duration * index}`
-			)
-			.from(
-				svgContainer.current.querySelector(`.branch-${index + 1}`),
-				{ strokeDashoffset: 186, duration: duration - 2 },
-				`start+=${duration * index}`
-			)
-			.from(
-				svgContainer.current.querySelector(`.branch-line-${index + 1}`),
-				{ scaleY: 0, duration: duration - 1 },
-				`start+=${duration * (index + 1) - 2}`
-			);
-
-		return timeline;
-	};
-
-	const addConvergingBranchLineAnimation = (
-		timeline: GSAPTimeline,
-		duration: number,
-		index: number
-	): GSAPTimeline => {
-		timeline
-			.from(
-				svgContainer.current.querySelector(`.line-${index + 1}`),
-				{ scaleY: 0, duration },
-				`start+=${duration * index}`
-			)
-			.from(
-				svgContainer.current.querySelector(`.branch-line-${index + 1}`),
-				{ scaleY: 0, duration: duration - 1 },
-				`start+=${duration * index}`
-			)
-			.from(
-				svgContainer.current.querySelector(`.branch-${index + 1}`),
-				{ strokeDashoffset: 186, duration: duration - 2 },
-				`start+=${duration * (index + 1) - 1}`
-			);
-
-		return timeline;
-	};
-
-	const animateTimeline = useCallback((timeline: GSAPTimeline, duration: number): void => {
-		let index = 0;
-
-		addNodeRefsToItems(TIMELINE).forEach((item) => {
-			const { type } = item;
-
-			if (type === NodeTypes.CHECKPOINT && item.shouldDrawLine) {
-				const { next, prev } = item;
-
-				if (prev?.type === NodeTypes.DIVERGE) {
-					addDivergingBranchLineAnimation(timeline, duration, index);
-				} else if (next?.type === NodeTypes.CONVERGE) {
-					addConvergingBranchLineAnimation(timeline, duration, index);
-				} else {
-					addLineSvgAnimation(timeline, duration, index);
-				}
-
-				index++;
+	TIMELINE.forEach((item) => {
+		if (item.type === NodeTypes.CHECKPOINT) {
+			const checkpoint = item as CheckpointNode;
+			if (checkpoint.size === ItemSize.LARGE && !checkpoint.shouldDrawLine) {
+				// This is a date entry
+				currentDate = checkpoint.title;
+			} else if (checkpoint.shouldDrawLine && checkpoint.slideImage) {
+				// This is an experience entry
+				experiences.push({
+					date: currentDate,
+					title: checkpoint.title,
+					subtitle: checkpoint.subtitle || "",
+					image: checkpoint.image || "",
+					slideImage: checkpoint.slideImage,
+				});
 			}
-		});
-	}, []);
-
-	const setTimelineSvg = useCallback((
-		svgContainer: MutableRefObject<HTMLDivElement>,
-		timelineSvg: MutableRefObject<SVGSVGElement>
-	) => {
-		const containerWidth = svgContainer.current.clientWidth;
-		setSvgWidth(containerWidth);
-
-		const resultSvgString = generateTimelineSvg(TIMELINE);
-		timelineSvg.current.innerHTML = resultSvgString;
-
-		if (isSmallScreen()) {
-			setRightBranchX(70);
 		}
-	}, []);
+	});
 
-	const setSlidesAnimation = (timeline: GSAPTimeline): void => {
-		svgCheckpointItems.forEach((_, index) => {
-			// Fade in each slide (including the first one now)
-			timeline.fromTo(
-				screenContainer.current.querySelector(`.slide-${index + 1}`),
-				{ opacity: 0 },
-				{ opacity: 1 }
-			);
+	return experiences;
+};
 
-			// all except the last slide - fade out
-			if (index !== svgCheckpointItems.length - 1) {
-				timeline.to(
-					screenContainer.current.querySelector(`.slide-${index + 1}`),
-					{
-						opacity: 0,
-						delay: 2.35,
-					}
-				);
-			}
-		});
-	};
+const TimelineSection = (_props: IDesktop) => {
+	const [isMounted, setIsMounted] = useState(false);
+	const sectionRef = useRef<HTMLElement>(null);
+	const experiencesRef = useRef<(HTMLDivElement | null)[]>([]);
 
-	const initScrollTrigger = useCallback((): {
-		timeline: GSAPTimeline;
-		duration: number;
-	} => {
-		const timeline = gsap
-			.timeline({ defaults: { ease: Linear.easeNone, duration: 0.44 } })
-			.addLabel("start");
-
-		let duration: number;
-		let trigger: HTMLDivElement;
-		let start: string;
-		let end: string;
-		let additionalConfig = {};
-
-		// Slide as a trigger for Desktop
-		if (isDesktop && !isSmallScreen()) {
-			// Animation for right side slides
-			setSlidesAnimation(timeline);
-
-			const platformHeight =
-				screenContainer.current.getBoundingClientRect().height;
-
-			trigger = screenContainer.current;
-			start = `top ${(window.innerHeight - platformHeight) / 2}`;
-			end = `+=${svgLength}`;
-			additionalConfig = {
-				pin: true,
-				pinSpacing: true,
-				onEnter: () => {
-					gsap.set(screenContainer.current, {
-						opacity: 1,
-						visibility: "visible",
-						clipPath: "inset(0%)",
-						zIndex: 1
-					});
-				},
-				onLeaveBack: () => {
-					gsap.set(screenContainer.current, {
-						opacity: 0,
-						visibility: "hidden",
-						clipPath: "inset(100%)",
-						zIndex: -1
-					});
-				},
-			};
-			duration = timeline.totalDuration() / svgCheckpointItems.length;
-		} else {
-			// Clearing out the right side on mobile devices
-			screenContainer.current.innerHTML = "";
-
-			trigger = svgContainer.current;
-			start = "top center";
-			end = `+=${svgLength}`;
-			duration = 3;
-		}
-
-		ScrollTrigger.create({
-			...additionalConfig,
-			trigger,
-			start,
-			end,
-			scrub: 0,
-			animation: timeline,
-		});
-		return { timeline, duration };
-	}, [isDesktop, svgLength]);
+	const experiences = processTimelineData();
 
 	useEffect(() => {
-		// Generate and set the timeline svg
-		setTimelineSvg(svgContainer, timelineSvg);
+		setIsMounted(true);
+	}, []);
 
-		const { timeline, duration }: { timeline: GSAPTimeline; duration: number } =
-			initScrollTrigger();
+	// Animate experience cards on scroll
+	useEffect(() => {
+		if (!isMounted || !sectionRef.current) return;
 
-		// Ensure slides are hidden after ScrollTrigger setup (prevents early visibility)
-		if (isDesktop && !isSmallScreen() && screenContainer.current) {
-			gsap.set(screenContainer.current, {
-				opacity: 0,
-				visibility: "hidden",
-				clipPath: "inset(100%)",
-				zIndex: -1
+		const triggers: ScrollTrigger[] = [];
+
+		experiencesRef.current.forEach((el) => {
+			if (!el) return;
+
+			const trigger = ScrollTrigger.create({
+				trigger: el,
+				start: "top 85%",
+				onEnter: () => {
+					gsap.to(el, {
+						opacity: 1,
+						y: 0,
+						duration: 0.6,
+						ease: "power2.out",
+					});
+				},
+				once: true,
 			});
-		}
+			triggers.push(trigger);
 
-		// Animation for Timeline SVG
-		animateTimeline(timeline, duration);
-	}, [
-		timelineSvg,
-		svgContainer,
-		svgWidth,
-		rightBranchX,
-		screenContainer,
-		svgCheckpointItems.length,
-		isDesktop,
-		svgLength,
-		animateTimeline,
-		initScrollTrigger,
-		setTimelineSvg,
-	]);
+			// Set initial state
+			gsap.set(el, { opacity: 0, y: 50 });
+		});
 
-	const renderSlides = (): React.ReactNode => (
-		<div
-			className="w-full h-96 shadow-xl bg-gray-800 rounded-2xl overflow-hidden lg:block hidden relative timeline-slides-container"
-			ref={screenContainer}
-			style={{
-				opacity: 0,
-				visibility: "hidden",
-				clipPath: "inset(100%)",
-				zIndex: -1
-			}}
-		>
-			<Image
-				className="w-full h-8"
-				src="/timeline/title-bar.svg"
-				alt="Title bar"
-				width={644}
-				height={34}
-			/>
-			<div className="relative h-full w-full -mt-2">
-				<div className="absolute top-0 left-0 h-full w-full">
-					{svgCheckpointItems.map((item, index) => (
-						<Image
-							className={`w-full absolute top-0 object-cover slide-${index + 1}`}
-							src={(item as CheckpointNode).slideImage || ""}
-							key={`${(item as CheckpointNode).title}-${index}`}
-							alt="Timeline"
-							layout="fill"
-							style={{ opacity: 0 }}
-						/>
-					))}
-				</div>
-			</div>
-		</div>
-	);
-
-	const renderSVG = (): React.ReactNode => (
-		<svg
-			width={svgWidth}
-			height={svgLength}
-			viewBox={`0 0 ${svgWidth} ${svgLength}`}
-			fill="none"
-			ref={timelineSvg}
-		></svg>
-	);
+		return () => {
+			triggers.forEach((t) => t.kill());
+		};
+	}, [isMounted, experiences.length]);
 
 	const renderSectionTitle = (): React.ReactNode => (
-		<div className="flex flex-col">
+		<div className="flex flex-col mb-16">
 			<h1 className="section-heading seq">Timeline</h1>
 			<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
 				A quick recap of proud moments
@@ -523,25 +105,95 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 		</div>
 	);
 
+	const renderExperienceCard = (
+		experience: ExperienceItem,
+		index: number
+	): React.ReactNode => {
+		const isEven = index % 2 === 0;
+
+		return (
+			<div
+				key={`exp-${index}`}
+				ref={(el) => (experiencesRef.current[index] = el)}
+				className="relative mb-16 last:mb-0"
+			>
+				{/* Timeline connector */}
+				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gray-700 transform md:-translate-x-1/2">
+					{/* Dot */}
+					<div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 border-2 border-yellow-400 rounded-full z-10"></div>
+				</div>
+
+				{/* Content wrapper */}
+				<div
+					className={`flex flex-col md:flex-row items-start gap-8 ${isEven ? "md:flex-row" : "md:flex-row-reverse"
+						}`}
+				>
+					{/* Date and Info side */}
+					<div
+						className={`w-full md:w-1/2 ${isEven ? "md:pr-12 md:text-right" : "md:pl-12 md:text-left"
+							} pl-8 md:pl-0`}
+					>
+						<span className="inline-block text-yellow-400 text-lg font-semibold mb-2">
+							{experience.date}
+						</span>
+						<h3
+							className="text-xl md:text-2xl font-bold text-white mb-3"
+							dangerouslySetInnerHTML={{ __html: experience.title }}
+						/>
+						<p className="text-gray-300 text-base leading-relaxed">
+							{experience.subtitle}
+						</p>
+					</div>
+
+					{/* Image side */}
+					<div
+						className={`w-full md:w-1/2 ${isEven ? "md:pl-12" : "md:pr-12"
+							} pl-8 md:pl-0`}
+					>
+						<div className="relative group">
+							<div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-transform duration-300 group-hover:scale-[1.02]">
+								<Image
+									src={experience.slideImage}
+									alt={experience.title.replace(/<[^>]*>/g, "")}
+									layout="fill"
+									objectFit="cover"
+									className="transition-transform duration-500 group-hover:scale-105"
+									priority={index < 2}
+								/>
+								{/* Overlay gradient */}
+								<div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+							</div>
+							{/* Decorative border */}
+							<div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-yellow-600/20 rounded-xl blur-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	};
+
 	return (
 		<section
-			className="w-full relative select-none section-container py-8 flex flex-col overflow-hidden"
+			ref={sectionRef}
+			className="w-full relative select-none section-container py-8 flex flex-col"
 			id={MENULINKS[3].ref}
-			style={{
-				position: "relative",
-				zIndex: 5,
-				isolation: "isolate"
-			}}
 		>
-			<div className="relative z-10">
-				{renderSectionTitle()}
-			</div>
-			<div className="grid grid-cols-12 gap-4 xl:gap-6 2xl:gap-8 mt-20">
-				<div className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-5 2xl:col-span-5 line-svg relative z-10" ref={svgContainer}>
-					{renderSVG()}
+			{renderSectionTitle()}
+
+			<div className="relative">
+				{/* Main timeline line */}
+				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-yellow-400/50 via-gray-700 to-gray-700/50 transform md:-translate-x-1/2"></div>
+
+				{/* Experience cards */}
+				<div className="relative">
+					{experiences.map((experience, index) =>
+						renderExperienceCard(experience, index)
+					)}
 				</div>
-				<div className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-7 2xl:col-span-7 md:flex hidden">
-					{renderSlides()}
+
+				{/* End dot */}
+				<div className="absolute left-0 md:left-1/2 bottom-0 transform md:-translate-x-1/2">
+					<div className="w-4 h-4 bg-gray-900 border-2 border-gray-600 rounded-full"></div>
 				</div>
 			</div>
 		</section>
@@ -549,14 +201,3 @@ const TimelineSection = ({ isDesktop }: IDesktop) => {
 };
 
 export default TimelineSection;
-
-type LinkedTimelineNode = LinkedCheckpointNode | LinkedBranchNode;
-
-type LinkedCheckpointNode = LinkNode & CheckpointNode;
-
-type LinkedBranchNode = LinkNode & BranchNode;
-
-interface LinkNode {
-	next?: LinkedTimelineNode;
-	prev?: LinkedTimelineNode;
-}
