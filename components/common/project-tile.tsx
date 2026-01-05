@@ -102,7 +102,7 @@ const ProjectTile = ({
 
 	const renderProjectImage = (
 		image: string,
-		blurImage: string,
+		_blurImage: string,
 		name: string
 	): React.ReactNode => (
 		<div className={`${styles.ProjectImgContainer} z-0`}>
