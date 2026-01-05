@@ -54,6 +54,8 @@ const ProjectTile = ({
 							height={50}
 							objectFit="contain"
 							width={50}
+							priority
+							unoptimized
 						/>
 					</div>
 				))}
@@ -105,14 +107,12 @@ const ProjectTile = ({
 	): React.ReactNode => (
 		<div className={`${styles.ProjectImgContainer} z-0`}>
 			<Image
-				placeholder="blur"
-				blurDataURL={blurImage}
 				src={image}
 				alt={name}
 				layout="fill"
 				className={`${styles.ProjectImg}`}
-				unoptimized={true}
-				priority={false}
+				unoptimized
+				priority
 			/>
 		</div>
 	);
@@ -154,7 +154,8 @@ const ProjectTile = ({
 						alt="Project"
 						layout="fill"
 						className="absolute w-full h-full top-0 left-0 opacity-20"
-						unoptimized={true}
+						unoptimized
+						priority
 					/>
 					{renderProjectImage(image, blurImage, name)}
 					{renderTopBottomGradient(stop1)}

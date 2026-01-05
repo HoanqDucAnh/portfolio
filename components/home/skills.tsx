@@ -72,21 +72,21 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 			<div className="absolute right-0 -bottom-1/3 w-1/5 max-w-xs md:flex hidden justify-end">
 				<Image
 					src="/pattern-r.svg"
-					loading="lazy"
 					height={700}
 					width={320}
 					alt="pattern"
-					priority={false}
+					priority
+					unoptimized
 				/>
 			</div>
 			<div className="absolute left-0 -bottom-3.5 w-1/12 max-w-xs md:block hidden">
 				<Image
 					src="/pattern-l.svg"
-					loading="lazy"
 					height={335}
 					width={140}
 					alt="pattern"
-					priority={false}
+					priority
+					unoptimized
 				/>
 			</div>
 		</>
@@ -152,12 +152,12 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					</div>
 
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8 xl:gap-12 2xl:gap-16">
-						{renderSkillColumn("Data Processing and Transformation", SKILLS["Data Processing and Transformation"])}
-						{renderSkillColumn("Orchestration", SKILLS["Orchestration"])}
+						{renderSkillColumn("Data Processing and Transformation", SKILLS["Data Processing and Transformation"], true)}
+						{renderSkillColumn("Orchestration", SKILLS["Orchestration"], true)}
 					</div>
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8 xl:gap-12 2xl:gap-16">
-						{renderSkillColumn("Data Integration", SKILLS["Data Integration"])}
-						{renderSkillColumn("DevOps", SKILLS["DevOps"])}
+						{renderSkillColumn("Data Integration", SKILLS["Data Integration"], true)}
+						{renderSkillColumn("DevOps", SKILLS["DevOps"], true)}
 					</div>
 
 					{/* <div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8">
