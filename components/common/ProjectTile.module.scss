@@ -26,10 +26,8 @@
 
 .ProjectImgContainer {
   position: absolute;
-  width: 10rem;
-  height: 10rem;
-  max-width: 10rem;
-  max-height: 65%;
+  width: 14rem;
+  height: 18rem;
   right: 2rem;
   top: 50%;
   transform: translateY(-50%) rotate(-22.5deg);
@@ -40,10 +38,8 @@
   pointer-events: none;
 
   @media (min-width: 768px) {
-    width: 12rem;
-    height: 12rem;
-    max-width: 12rem;
-    max-height: 70%;
+    width: 20rem;
+    height: 25rem;
   }
 }
 
