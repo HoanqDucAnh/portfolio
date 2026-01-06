@@ -173,6 +173,23 @@ const HeroSection = React.memo(() => {
 			<div className="flex seq gap-4">
 				{renderSocialLinks()}
 			</div>
+			<a
+				href="https://calendly.com/minh-pham-insurify/30min"
+				target="_blank"
+				rel="noreferrer"
+				className="seq mt-6 inline-flex items-center gap-3 px-5 py-3 border-2 border-white/80 hover:border-white bg-white/5 hover:bg-white/10 text-white text-base font-medium rounded-full transition-all duration-300 w-fit"
+			>
+				<div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+					<svg className="w-4 h-4 text-gray-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+						<path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+						<path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
+						<line x1="6" y1="2" x2="6" y2="4"/>
+						<line x1="10" y1="2" x2="10" y2="4"/>
+						<line x1="14" y1="2" x2="14" y2="4"/>
+					</svg>
+				</div>
+				<span>Book a coffee chat (free)</span>
+			</a>
 		</div>
 	);
 
