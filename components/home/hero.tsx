@@ -36,6 +36,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+const VIEW_COUNT_CACHE_KEY = "portfolio_view_count";
+
+const getCachedViewCount = (): number | null => {
+	if (typeof window === "undefined") return null;
+	const cached = localStorage.getItem(VIEW_COUNT_CACHE_KEY);
+	return cached ? parseInt(cached, 10) : null;
+};
+
+const setCachedViewCount = (count: number): void => {
+	if (typeof window === "undefined") return;
+	localStorage.setItem(VIEW_COUNT_CACHE_KEY, count.toString());
+};
+
 interface IpInfo {
 	ip: string;
 	country: string;
@@ -43,7 +56,7 @@ interface IpInfo {
 }
 
 const countview = async (
-	setViewCount: React.Dispatch<React.SetStateAction<number>>
+	setViewCount: React.Dispatch<React.SetStateAction<number | null>>
 ): Promise<void> => {
 	try {
 		const ipinfo: IpInfo = await fetch("https://api.ipify.org?format=json", {
@@ -75,6 +88,7 @@ const countview = async (
 		const viewsSnapshot = await getDocs(viewsCollectionRef);
 		console.log("Total views:", viewsSnapshot.size);
 		setViewCount(viewsSnapshot.size);
+		setCachedViewCount(viewsSnapshot.size);
 	} catch (error) {
 		console.error(
 			"Error fetching user data or interacting with Firestore:",
@@ -94,9 +108,15 @@ const HERO_STYLES = {
 };
 
 const HeroSection = React.memo(() => {
-	const [viewCount, setViewCount] = useState(0);
+	const [viewCount, setViewCount] = useState<number | null>(null);
 
 	useEffect(() => {
+		// Load cached count immediately for instant display
+		const cached = getCachedViewCount();
+		if (cached !== null) {
+			setViewCount(cached);
+		}
+		// Then fetch the real count
 		countview(setViewCount);
 	}, []);
 
@@ -165,7 +185,9 @@ const HeroSection = React.memo(() => {
 			<div className="md:mb-4 mb-2">
 				<h2 className="text-4xl seq">Hello 👋🏻</h2>
 				<h1 className="text-3xl seq">I'm Minh (Mark) Pham</h1>
-				<div className="text-3xl text-[#f27d0d]">Total Views: {viewCount}</div>
+				{viewCount !== null && (
+					<div className="text-3xl text-[#f27d0d]">Total Views: {viewCount}</div>
+				)}
 			</div>
 			<p className="mb-4">
 				<span className={HERO_STYLES.TYPED_SPAN} ref={typedSpanElement}></span>
