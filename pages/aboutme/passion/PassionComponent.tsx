@@ -1,374 +1,366 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+
+interface DishCardProps {
+	image: string;
+	title: string;
+	subtitle?: string;
+	caption: string;
+	description: React.ReactNode;
+	reverse?: boolean;
+}
+
+const DishCard = ({ image, title, subtitle, caption, description, reverse = false }: DishCardProps) => (
+	<div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 items-center`}>
+		<div className="lg:w-1/2 w-full group">
+			<div className="relative overflow-hidden rounded-2xl shadow-2xl">
+				<Image
+					src={image}
+					width={600}
+					height={400}
+					quality={100}
+					loading="lazy"
+					alt={title}
+					className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+				/>
+				<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+			</div>
+			<p className="text-sm text-gray-400 italic text-center mt-3">{caption}</p>
+		</div>
+		<div className="lg:w-1/2 w-full">
+			{subtitle && (
+				<span className="inline-block px-3 py-1 bg-[#f27d0d]/20 text-[#f27d0d] text-sm font-medium rounded-full mb-3">
+					{subtitle}
+				</span>
+			)}
+			<h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{title}</h3>
+			<div className="text-gray-300 leading-relaxed space-y-4">
+				{description}
+			</div>
+		</div>
+	</div>
+);
+
+interface CategoryTabProps {
+	categories: string[];
+	activeCategory: string;
+	onSelect: (category: string) => void;
+}
+
+const CategoryTabs = ({ categories, activeCategory, onSelect }: CategoryTabProps) => (
+	<div className="flex flex-wrap justify-center gap-3 mb-12">
+		{categories.map((category) => (
+			<button
+				key={category}
+				onClick={() => onSelect(category)}
+				className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+					activeCategory === category
+						? 'bg-[#f27d0d] text-white shadow-lg shadow-[#f27d0d]/30'
+						: 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
+				}`}
+			>
+				{category}
+			</button>
+		))}
+	</div>
+);
+
+const SectionDivider = ({ title }: { title: string }) => (
+	<div className="flex items-center gap-4 my-16">
+		<div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent" />
+		<h2 className="text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
+			<span className="text-[#f27d0d]">/</span>
+			{title}
+		</h2>
+		<div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent" />
+	</div>
+);
 
 export default function PassionComponent() {
+	const [activeCategory, setActiveCategory] = useState("All");
+	const categories = ["All", "Family", "Steak & Meat", "Seafood", "Italian"];
+
+	const shouldShow = (category: string) => activeCategory === "All" || activeCategory === category;
+
 	return (
-		<div className="w-[60%] m-auto mt-24 pt-2 ">
-			<p className="text-4xl text-center">My Passion - <span className="text-[#f27d0d]">Cuisine</span></p>
-			<div className="text-center mt-10 max-w-[900px] mx-auto">
-				<em className="text-lg">
-					"If you are a chef, no matter how good a chef you are, it's not good
-					cooking for yourself; the joy is in cooking for others." - Will.i.am
-				</em>
+		<div className="min-h-screen">
+			{/* Hero Section */}
+			<div className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+				<div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-900/70 to-gray-900 z-10" />
+				<div className="absolute inset-0">
+					<Image
+						src="/about/passion/steak2.jpeg"
+						layout="fill"
+						objectFit="cover"
+						alt="Culinary background"
+						priority
+					/>
+				</div>
+				<div className="relative z-20 text-center px-4">
+					<p className="text-[#f27d0d] text-lg md:text-xl font-medium tracking-wider uppercase mb-4">
+						Beyond the Code
+					</p>
+					<h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+						My Passion for <span className="text-[#f27d0d]">Cuisine</span>
+					</h1>
+					<div className="max-w-2xl mx-auto">
+						<blockquote className="text-xl md:text-2xl text-gray-200 italic">
+							"If you are a chef, no matter how good a chef you are, it's not good
+							cooking for yourself; the joy is in cooking for others."
+						</blockquote>
+						<p className="text-gray-400 mt-3">— Will.i.am</p>
+					</div>
+				</div>
+				<div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent z-10" />
 			</div>
-			<div className="text-justify mt-5">
-				<div className="text-3xl text-[#f27d0d] max-w-[900px] mx-auto">Family Dish</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
-					Xa Xiu noodles - A Special Dish for Family Celebrations
-				</div>
-				<div className="mt-2 text-center max-w-[900px] mx-auto">
-					<Image
-						src={`/about/passion/xaxiu.jpg`}
-						width={900}
-						height={600}
-						quality={100}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl w-full h-auto"
-					/>
-					<p className="text-xs opacity-75 italic">
-						Xa Xiu Noodles with Xa Xiu Pork, Steam and Fried Dumpling, Shrimp,
-						Quail Eggs and Bok Choy
-					</p>
-				</div>
-				<div className="text-lg mt-5 leading-relaxed max-w-[900px] mx-auto">
-					One of my favorite dishes to prepare at family gatherings and
-					anniversaries is <strong>Xa Xiu noodles</strong>. This traditional
-					Vietnamese dish, made with egg noodles, tender char siu pork, and
-					quail eggs, embodies a world of nostalgic flavors. More than just
-					food, preparing meals is a way of showing my love, honoring family
-					connections, and cherishing our traditions.
-				</div>
 
-				<div className="text-3xl text-[#f27d0d] mt-5 max-w-[900px] mx-auto">Feature Dish - Steak</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
-					Dried Aged Rib eye with Rosemary, Thyme and Garlic Butter
-				</div>
-				<div className="mt-2 text-center max-w-[900px] mx-auto">
-					<Image
-						src={`/about/passion/steak2.jpeg`}
-						width={900}
-						height={600}
-						quality={100}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl w-full h-auto"
-					/>
-					<p className="text-xs opacity-75 italic">
-						Dried Aged Rib eye with Rosemary, Thyme and Garlic Butter
-					</p>
-				</div>
-				<div className="text-lg my-5 leading-relaxed max-w-[900px] mx-auto">
-					<p className="mb-4">
-						My journey with steak started humbly - a bit comically even. My early
-						attempts were, let's say, less than perfect. As Mom described, they
-						were burnt, under-seasoned, and rubbery.
-					</p>
-					<p className="mb-4">
-						<i>"Tenaciously"</i>, I threw myself into mastering the art of cooking
-						steak. After countless attempts, testing every little detail: the pan
-						temperature, the timing, the seasoning, basting it with butter and
-						fresh herbs, I finally nailed it: a perfectly seared, medium-rare,
-						dry-aged ribeye, basted in rosemary-thyme butter that was tender,
-						juicy, and packed with flavor.
-					</p>
-					<p>
-						The dish became a symbol of my dedication and growth as a cook, and
-						the commitment I bring to my culinary creations.
-					</p>
-				</div>
-				<div className="col-span-1 text-center mt-5 justify-center max-w-[900px] mx-auto">
-					<Image
-						src={`/about/passion/steak3.jpg`}
-						width={900}
-						height={600}
-						quality={100}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl w-full h-auto"
-					/>
-					<p className="text-xs opacity-75 italic">
-						Seared Lamb rack with Rosemary, Thyme and Garlic Butter
-					</p>
-				</div>
+			{/* Main Content */}
+			<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+				{/* Category Navigation */}
+				<CategoryTabs
+					categories={categories}
+					activeCategory={activeCategory}
+					onSelect={setActiveCategory}
+				/>
 
-				<div className="text-lg mt-2 leading-relaxed max-w-[900px] mx-auto">
-					<p className="mb-4">
-						After mastering steak, I felt ready to take on an even more
-						challenging ingredient - a rack of lamb. Cooking lamb requires a higher level of precision and care, from the
-						seasoning to the sear to ensuring it's cooked to the perfect level of
-						doneness.
-					</p>
-					<p className="mb-4 italic text-gray-300 border-l-4 border-red-500 pl-4">
-						"The greater the payoff, the greater the hardship." - Alex Hormozi
-					</p>
-					<p>
-						Despite the added complexity, achieving that delicate, tender meat
-						with a crispy herb-crusted exterior was incredibly rewarding to me.
-					</p>
-				</div>
-				<div className="text-3xl text-[#f27d0d] mt-5 max-w-[900px] mx-auto">Seafood Sensations</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 mt-2 max-w-[900px] mx-auto">
-					Pan-Seared Salmon, with <i>mushrooms and asparagus spears</i>
-				</div>
-				<div className="mt-4 text-center max-w-[900px] mx-auto">
-					<Image
-						src={`/about/passion/seafood1.jpg`}
-						width={900}
-						height={600}
-						quality={100}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl w-full h-auto"
-					/>
-					<p className="text-xs opacity-75 italic mt-2">
-						Herb-Crusted Salmon, with Rice, Sunny Egg, and Sautéed Veggies
-					</p>
-				</div>
-				<div className="text-lg mt-5 mb-2 leading-relaxed max-w-[900px] mx-auto">
-					Simple but delicious, this dish is all about bringing out the natural
-					flavors. Starting with a salmon fillet, I seared it just right to get
-					a crispy, golden crust while keeping the inside nice and juicy. Then,
-					I pile on some mushrooms sautéed in garlic—those mushrooms soak up all
-					the flavor and add a nice, rich taste to the dish. I love adding
-					asparagus for that little crunch a pop of green, and a few crispy
-					bread strips for some extra texture. It's a warm, hearty plate that
-					feels like a hug in every bite.
-				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 mt-8 max-w-[900px] mx-auto">
-					Herb-Crusted Salmon, with <i>Rice, Sunny Egg, and Sautéed Veggies</i>
-				</div>
-				<div className="mt-4 text-center max-w-[900px] mx-auto">
-					<Image
-						src={`/about/passion/seafood2.jpg`}
-						width={900}
-						height={600}
-						quality={100}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl w-full h-auto"
-					/>
-					<p className="text-xs opacity-75 italic mt-2">
-						Pan-seared Salmon with mushrooms and asparagus spears
-					</p>
-				</div>
-				<div className="text-lg mt-5 mb-2 leading-relaxed max-w-[900px] mx-auto">
-					This dish is my idea of a feel-good, satisfying meal. Here, I've taken
-					a fillet of salmon, crusted it with herbs, and seared it until crispy,
-					pairing it with a simple sunny-side-up egg on rice for a bit of
-					comfort. The sautéed veggies—peas, mushrooms, and herbs—bring some
-					freshness and texture. A slice of orange and a lemon wedge brighten up
-					the whole dish, adding a little zest and freshness to balance
-					everything out. It's a colorful, balanced plate that's as tasty as it
-					looks!
-				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 mt-8 max-w-[900px] mx-auto">
-					Crispy Skin Salmon, with <i>asparagus and garlic chips</i>
-				</div>
-				<div className="mt-4 text-center max-w-[900px] mx-auto">
-					<Image
-						src={`/about/passion/seafood3.jpg`}
-						width={900}
-						height={600}
-						quality={100}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl w-full h-auto"
-					/>
-					<p className="text-xs opacity-75 italic mt-2">
-						Crispy Skin Salmon with asparagus and garlic chips
-					</p>
-				</div>
-				<div className="text-lg mt-5 mb-2 leading-relaxed max-w-[900px] mx-auto">
-					This dish is the perfect balance of texture and flavor. The salmon's
-					skin is seared to golden perfection, adding a satisfying crunch that
-					contrasts beautifully with the tender, flaky flesh beneath. Paired
-					with freshly roasted asparagus spears and topped with crisp garlic
-					chips, this dish is a celebration of simplicity and sophistication.
-				</div>
-				<div className="text-3xl text-[#f27d0d] mt-5 max-w-[900px] mx-auto">Italian food</div>
-				<div className="text-lg mt-1 mb-2 leading-relaxed max-w-[900px] mx-auto">
-					Italian cuisine has always held a special place in my heart. The
-					simplicity, yet depth of flavor in Italian cooking is like an endless
-					canvas of possibilities that never fails to excite me. From rich,
-					hearty sauces to delicate pasta dishes, Italy has a cuisine that
-					celebrates fresh ingredients, thoughtful preparation, and bold
-					flavors—a combination that keeps me coming back for more, eager to
-					experiment and refine.
-				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
-					Spaghetti Bolognese The Classic
-				</div>
-				<div className="mt-2 text-center max-w-[900px] mx-auto">
-					<Image
-						src={`/about/passion/sphagheti1.jpg`}
-						width={900}
-						height={600}
-						quality={100}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl w-full h-auto"
-					/>
-					<p className="text-xs opacity-75 italic">
-						Spaghetti Bolognese with a sprinkle of fresh parsley
-					</p>
-				</div>
-				<div className="text-lg mt-1 mb-2 leading-relaxed max-w-[900px] mx-auto">
-					Spaghetti Bolognese is one of those dishes that I find myself
-					returning to time and time again. There's something incredibly
-					comforting about a bowl of al dente spaghetti topped with a rich,
-					savory Bolognese sauce. I make mine with tender minced meat, slowly
-					simmered in a tomato-based sauce and hints of garlic, onion, and
-					herbs. The flavors meld beautifully, creating a symphony of richness
-					and family warmth. It's a simple, yet powerful dish that always leaves
-					an impression.
-				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
-					Spaghetti Con ill to tonno
-				</div>
-				<div className="mt-2 text-center max-w-[900px] mx-auto">
-					<Image
-						src={`/about/passion/sphagheti2.jpg`}
-						width={900}
-						height={600}
-						quality={100}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl w-full h-auto"
-					/>
-					<p className="text-xs opacity-75 italic">
-						Spaghetti Con ill to tonno
-					</p>
-				</div>
-				<div className="text-lg mt-1 mb-2 leading-relaxed max-w-[900px] mx-auto">
-					Another Italian favorite of mine is Spaghetti con il Tonno. Such a
-					beauty of simplicity. Al dente spaghetti is tossed with tender tuna
-					flakes, sautéed garlic, a splash of olive oil, and a sprinkle of fresh
-					parsley. The result is light yet satisfying, a dish that's as
-					comforting as it is flavorful. Spaghetti con il Tonno reminds me of
-					the versatility of Italian cuisine—how just a handful of quality
-					ingredients can create something memorable.
-				</div>
-				<div className="text-2xl text-[#f27d0d] text-opacity-80 max-w-[900px] mx-auto">
-					Seafood Carbonara
-				</div>
-				<div className="mt-2 text-center max-w-[900px] mx-auto">
-					<Image
-						src={`/about/passion/carbo.png`}
-						width={900}
-						height={600}
-						quality={100}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl w-full h-auto"
-					/>
-					<p className="text-xs opacity-75 italic">
-						Seafood Carbonara with pan-seared asparagus
-					</p>
-				</div>
-				<div className="text-lg mt-1 mb-2 leading-relaxed max-w-[900px] mx-auto">
-					Seafood Carbonara has become one of my go-to dishes when I want to
-					serve something special. It's a rich, ocean-inspired spin on classic
-					carbonara. Instead of the usual pancetta, I like to use fresh
-					seafood—plump shrimp, sweet crab, or, if I feel indulgent enough, a
-					touch of lobster. The creamy, egg-based sauce, blended with Parmigiano
-					Reggiano, coats the pasta perfectly, while the seafood brings in a
-					burst of briny flavor that takes the whole dish up a notch. It's a
-					comforting yet elevated fusion of textures and tastes, capturing the
-					versatility and elegance of Italian cuisine.
-				</div>
-				{/* <div className="grid grid-cols-1 md:grid-cols-2 mt-2 gap-10">
-					<div className="col-span-1">
-						<div className="text-2xl text-[#f27d0d]">Spaghetti Bolognese</div>
-						<div className="text-md mt-1 mb-4">
-							Spaghetti Bolognese holds a special place in my heart among the
-							many delectable dishes I love preparing. The hearty combination of
-							tender minced meat simmered in a savory tomato sauce, generously
-							ladled over perfectly cooked spaghetti, is a symphony of flavors
-							that never fails to delight.
-						</div>
-						<Image
-							src={`/about/passion/sphagheti1.jpg`}
-							width={500}
-							height={350}
-							loading="lazy"
-							alt="steak1"
-							className="rounded-xl m-auto"
+				{/* Family Dish Section */}
+				{shouldShow("Family") && (
+					<section className="mb-20">
+						<SectionDivider title="Family Dish" />
+						<DishCard
+							image="/about/passion/xaxiu.jpg"
+							title="Xa Xiu Noodles"
+							subtitle="A Special Dish for Family Celebrations"
+							caption="Xa Xiu Noodles with Xa Xiu Pork, Steam and Fried Dumpling, Shrimp, Quail Eggs and Bok Choy"
+							description={
+								<p>
+									One of my favorite dishes to prepare at family gatherings and
+									anniversaries is <strong className="text-[#f27d0d]">Xa Xiu noodles</strong>. This traditional
+									Vietnamese dish, made with egg noodles, tender char siu pork, and
+									quail eggs, embodies a world of nostalgic flavors. More than just
+									food, preparing meals is a way of showing my love, honoring family
+									connections, and cherishing our traditions.
+								</p>
+							}
 						/>
-						<p className="text-xs opacity-75 italic text-center">
-							Spaghetti Bolognese
-						</p>
-					</div>
-					<div className="col-span-1">
-						<div className="text-2xl text-[#f27d0d]">
-							Spaghetti Con ill to tonno
-						</div>
-						<div className="text-md mt-1 mb-4">
-							Spaghetti con il tonno, another Italian classic, is a dish that I
-							adore creating. This simple yet delightful dish features al dente
-							spaghetti tossed with tender tuna flakes, aromatic garlic, and
-							olive oil. The marriage of these ingredients results in a light,
-							flavorful, satisfying, and comforting pasta.
-						</div>
-						<Image
-							src={`/about/passion/sphagheti2.jpg`}
-							width={500}
-							height={350}
-							loading="lazy"
-							alt="steak1"
-							className="rounded-xl m-auto mt-2"
+					</section>
+				)}
+
+				{/* Steak Section */}
+				{shouldShow("Steak & Meat") && (
+					<section className="mb-20">
+						<SectionDivider title="Feature Dish - Steak" />
+
+						<DishCard
+							image="/about/passion/steak2.jpeg"
+							title="Dry-Aged Ribeye"
+							subtitle="Rosemary, Thyme & Garlic Butter"
+							caption="Dry-Aged Ribeye with Rosemary, Thyme and Garlic Butter"
+							description={
+								<>
+									<p>
+										My journey with steak started humbly - a bit comically even. My early
+										attempts were, let's say, less than perfect. As Mom described, they
+										were burnt, under-seasoned, and rubbery.
+									</p>
+									<p>
+										<em>"Tenaciously"</em>, I threw myself into mastering the art of cooking
+										steak. After countless attempts, testing every little detail: the pan
+										temperature, the timing, the seasoning, basting it with butter and
+										fresh herbs, I finally nailed it: a perfectly seared, medium-rare,
+										dry-aged ribeye, basted in rosemary-thyme butter that was tender,
+										juicy, and packed with flavor.
+									</p>
+									<p>
+										The dish became a symbol of my dedication and growth as a cook, and
+										the commitment I bring to my culinary creations.
+									</p>
+								</>
+							}
+							reverse
 						/>
-						<p className="text-xs opacity-75 italic text-center">
-							Spaghetti Con ill to tonno
-						</p>
-					</div>
-				</div>
-				<div className="text-3xl text-[#f27d0d] mt-5">Seafood Carbonara</div>
-				<div className="text-md mt-1">
-					Seafood Carbonara is a heavenly fusion, blending the richness of
-					carbonara sauce with a medley of succulent seafood, including plump
-					shrimp and tender crab or lobster. The creamy, egg-based sauce,
-					enriched with Parmigiano Reggiano, elevates the dish to a divine
-					symphony of textures and tastes when served over perfectly cooked
-					pasta.
-				</div>
-				<div className="mt-2 text-center">
-					<Image
-						src={`/about/passion/carbo.png`}
-						width={600}
-						height={450}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl "
-					/>
-					<p className="text-xs opacity-75 italic text-center">
-						Seafood Carbonara served with pan-seared asparagus
+
+						<div className="mt-16">
+							<DishCard
+								image="/about/passion/steak3.jpg"
+								title="Seared Lamb Rack"
+								subtitle="The Next Challenge"
+								caption="Seared Lamb Rack with Rosemary, Thyme and Garlic Butter"
+								description={
+									<>
+										<p>
+											After mastering steak, I felt ready to take on an even more
+											challenging ingredient - a rack of lamb. Cooking lamb requires a higher level of precision and care, from the
+											seasoning to the sear to ensuring it's cooked to the perfect level of
+											doneness.
+										</p>
+										<blockquote className="border-l-4 border-[#f27d0d] pl-4 italic text-gray-400 my-4">
+											"The greater the payoff, the greater the hardship." — Alex Hormozi
+										</blockquote>
+										<p>
+											Despite the added complexity, achieving that delicate, tender meat
+											with a crispy herb-crusted exterior was incredibly rewarding to me.
+										</p>
+									</>
+								}
+							/>
+						</div>
+					</section>
+				)}
+
+				{/* Seafood Section */}
+				{shouldShow("Seafood") && (
+					<section className="mb-20">
+						<SectionDivider title="Seafood Sensations" />
+
+						{/* Seafood Gallery Grid */}
+						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+							{[
+								{
+									image: "/about/passion/seafood1.jpg",
+									title: "Pan-Seared Salmon",
+									caption: "With mushrooms and asparagus spears"
+								},
+								{
+									image: "/about/passion/seafood2.jpg",
+									title: "Herb-Crusted Salmon",
+									caption: "With rice, sunny egg, and sautéed veggies"
+								},
+								{
+									image: "/about/passion/seafood3.jpg",
+									title: "Crispy Skin Salmon",
+									caption: "With asparagus and garlic chips"
+								}
+							].map((item, index) => (
+								<div key={index} className="group relative overflow-hidden rounded-2xl bg-gray-800">
+									<div className="aspect-[4/3] overflow-hidden">
+										<Image
+											src={item.image}
+											width={400}
+											height={300}
+											quality={100}
+											loading="lazy"
+											alt={item.title}
+											className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+										/>
+									</div>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+									<div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+										<h4 className="text-lg font-bold text-white">{item.title}</h4>
+										<p className="text-sm text-gray-300">{item.caption}</p>
+									</div>
+									<div className="p-4">
+										<h4 className="text-lg font-semibold text-white">{item.title}</h4>
+										<p className="text-sm text-gray-400 italic">{item.caption}</p>
+									</div>
+								</div>
+							))}
+						</div>
+
+						<div className="bg-gray-800/50 rounded-2xl p-8 backdrop-blur-sm">
+							<h3 className="text-2xl font-bold text-white mb-4">The Art of Seafood</h3>
+							<div className="text-gray-300 leading-relaxed space-y-4">
+								<p>
+									Simple but delicious, these dishes are all about bringing out the natural
+									flavors. Starting with a salmon fillet, I sear it just right to get
+									a crispy, golden crust while keeping the inside nice and juicy. Then,
+									I pile on some mushrooms sautéed in garlic—those mushrooms soak up all
+									the flavor and add a nice, rich taste to the dish.
+								</p>
+								<p>
+									The salmon's skin is seared to golden perfection, adding a satisfying crunch that
+									contrasts beautifully with the tender, flaky flesh beneath. Paired
+									with freshly roasted asparagus spears and topped with crisp garlic
+									chips, this dish is a celebration of simplicity and sophistication.
+								</p>
+							</div>
+						</div>
+					</section>
+				)}
+
+				{/* Italian Section */}
+				{shouldShow("Italian") && (
+					<section className="mb-20">
+						<SectionDivider title="Italian Cuisine" />
+
+						<div className="bg-gradient-to-r from-[#f27d0d]/10 to-transparent rounded-2xl p-8 mb-12 border-l-4 border-[#f27d0d]">
+							<p className="text-lg text-gray-300 leading-relaxed">
+								Italian cuisine has always held a special place in my heart. The
+								simplicity, yet depth of flavor in Italian cooking is like an endless
+								canvas of possibilities that never fails to excite me. From rich,
+								hearty sauces to delicate pasta dishes, Italy has a cuisine that
+								celebrates fresh ingredients, thoughtful preparation, and bold
+								flavors—a combination that keeps me coming back for more.
+							</p>
+						</div>
+
+						<div className="space-y-16">
+							<DishCard
+								image="/about/passion/sphagheti1.jpg"
+								title="Spaghetti Bolognese"
+								subtitle="The Classic"
+								caption="Spaghetti Bolognese with a sprinkle of fresh parsley"
+								description={
+									<p>
+										Spaghetti Bolognese is one of those dishes that I find myself
+										returning to time and time again. There's something incredibly
+										comforting about a bowl of al dente spaghetti topped with a rich,
+										savory Bolognese sauce. I make mine with tender minced meat, slowly
+										simmered in a tomato-based sauce and hints of garlic, onion, and
+										herbs. The flavors meld beautifully, creating a symphony of richness
+										and family warmth.
+									</p>
+								}
+								reverse
+							/>
+
+							<DishCard
+								image="/about/passion/sphagheti2.jpg"
+								title="Spaghetti con il Tonno"
+								subtitle="Simple Elegance"
+								caption="Spaghetti con il Tonno - Tuna Pasta"
+								description={
+									<p>
+										Another Italian favorite of mine is Spaghetti con il Tonno. Such a
+										beauty of simplicity. Al dente spaghetti is tossed with tender tuna
+										flakes, sautéed garlic, a splash of olive oil, and a sprinkle of fresh
+										parsley. The result is light yet satisfying, a dish that's as
+										comforting as it is flavorful. It reminds me of
+										the versatility of Italian cuisine—how just a handful of quality
+										ingredients can create something memorable.
+									</p>
+								}
+							/>
+
+							<DishCard
+								image="/about/passion/carbo.png"
+								title="Seafood Carbonara"
+								subtitle="Ocean-Inspired Fusion"
+								caption="Seafood Carbonara with pan-seared asparagus"
+								description={
+									<p>
+										Seafood Carbonara has become one of my go-to dishes when I want to
+										serve something special. It's a rich, ocean-inspired spin on classic
+										carbonara. Instead of the usual pancetta, I like to use fresh
+										seafood—plump shrimp, sweet crab, or, if I feel indulgent enough, a
+										touch of lobster. The creamy, egg-based sauce, blended with Parmigiano
+										Reggiano, coats the pasta perfectly, while the seafood brings in a
+										burst of briny flavor that takes the whole dish up a notch.
+									</p>
+								}
+								reverse
+							/>
+						</div>
+					</section>
+				)}
+
+				{/* Closing Quote */}
+				<div className="text-center py-16 border-t border-gray-800">
+					<p className="text-2xl md:text-3xl text-gray-300 italic max-w-3xl mx-auto">
+						"Cooking is like love. It should be entered into with abandon or not at all."
 					</p>
+					<p className="text-gray-500 mt-4">— Harriet Van Horne</p>
 				</div>
-				<div className="text-3xl text-[#f27d0d] mt-5">
-					Crispy Skin Salmon (with asparagus and garlic chips)
-				</div>
-				<div className="text-md mt-1">
-					Indulge in the delightful experience of Crispy Skin Salmon—a perfect
-					harmony of textures and flavors. With its perfectly crispy skin,
-					buttery flesh, fresh asparagus, and magical garlic chips, this dish is
-					a celebration of simple ingredients creating culinary magic that will
-					leave your taste buds thanking you
-				</div>
-				<div className="mt-2 text-center">
-					<Image
-						src={`/about/passion/salmon.png`}
-						width={600}
-						height={450}
-						loading="lazy"
-						alt="steak1"
-						className="rounded-xl "
-					/>
-					<p className="text-xs opacity-75 italic text-center">
-						Rosemary infused Crispy Skin Salmon served with asparagus and garlic
-						chips
-					</p>
-				</div> */}
 			</div>
 		</div>
 	);
