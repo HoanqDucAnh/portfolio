@@ -65,14 +65,15 @@ const CategoryTabs = ({ categories, activeCategory, onSelect }: CategoryTabProps
 	</div>
 );
 
-const SectionDivider = ({ title }: { title: string }) => (
-	<div className="flex items-center gap-4 my-16">
-		<div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent" />
-		<h2 className="text-3xl md:text-4xl font-bold text-white flex items-center gap-3">
-			<span className="text-[#f27d0d]">/</span>
+const SectionDivider = ({ title, subtitle }: { title: string; subtitle?: string }) => (
+	<div className="text-center mb-12">
+		{subtitle && (
+			<span className="text-[#f27d0d] text-sm font-medium tracking-wider uppercase">{subtitle}</span>
+		)}
+		<h2 className="text-3xl md:text-5xl font-bold text-white mt-2">
 			{title}
 		</h2>
-		<div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent" />
+		<div className="w-20 h-1 bg-gradient-to-r from-[#f27d0d] to-[#ff9a3c] mx-auto mt-4 rounded-full" />
 	</div>
 );
 
@@ -126,7 +127,7 @@ export default function PassionComponent() {
 				{/* Family Dish Section */}
 				{shouldShow("Family") && (
 					<section className="mb-20">
-						<SectionDivider title="Family Dish" />
+						<SectionDivider title="Family Dish" subtitle="Heritage Recipe" />
 						<DishCard
 							image="/about/passion/xaxiu.jpg"
 							title="Xa Xiu Noodles"
@@ -149,7 +150,7 @@ export default function PassionComponent() {
 				{/* Steak Section */}
 				{shouldShow("Steak & Meat") && (
 					<section className="mb-20">
-						<SectionDivider title="Feature Dish - Steak" />
+						<SectionDivider title="Steak & Meat" subtitle="Signature Dishes" />
 
 						<DishCard
 							image="/about/passion/steak2.jpeg"
@@ -211,7 +212,7 @@ export default function PassionComponent() {
 				{/* Seafood Section */}
 				{shouldShow("Seafood") && (
 					<section className="mb-20">
-						<SectionDivider title="Seafood Sensations" />
+						<SectionDivider title="Seafood Sensations" subtitle="Ocean Flavors" />
 
 						{/* Seafood Gallery Grid */}
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -232,7 +233,7 @@ export default function PassionComponent() {
 									caption: "With asparagus and garlic chips"
 								}
 							].map((item, index) => (
-								<div key={index} className="group relative overflow-hidden rounded-2xl bg-gray-800">
+								<div key={index} className="group relative overflow-hidden rounded-2xl bg-gray-800 cursor-pointer">
 									<div className="aspect-[4/3] overflow-hidden">
 										<Image
 											src={item.image}
@@ -244,14 +245,10 @@ export default function PassionComponent() {
 											className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
 										/>
 									</div>
-									<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-									<div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-										<h4 className="text-lg font-bold text-white">{item.title}</h4>
+									<div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+									<div className="absolute bottom-0 left-0 right-0 p-5">
+										<h4 className="text-xl font-bold text-white mb-1">{item.title}</h4>
 										<p className="text-sm text-gray-300">{item.caption}</p>
-									</div>
-									<div className="p-4">
-										<h4 className="text-lg font-semibold text-white">{item.title}</h4>
-										<p className="text-sm text-gray-400 italic">{item.caption}</p>
 									</div>
 								</div>
 							))}
@@ -281,7 +278,7 @@ export default function PassionComponent() {
 				{/* Italian Section */}
 				{shouldShow("Italian") && (
 					<section className="mb-20">
-						<SectionDivider title="Italian Cuisine" />
+						<SectionDivider title="Italian Cuisine" subtitle="Pasta Perfection" />
 
 						<div className="bg-gradient-to-r from-[#f27d0d]/10 to-transparent rounded-2xl p-8 mb-12 border-l-4 border-[#f27d0d]">
 							<p className="text-lg text-gray-300 leading-relaxed">
@@ -355,11 +352,20 @@ export default function PassionComponent() {
 				)}
 
 				{/* Closing Quote */}
-				<div className="text-center py-16 border-t border-gray-800">
-					<p className="text-2xl md:text-3xl text-gray-300 italic max-w-3xl mx-auto">
-						"Cooking is like love. It should be entered into with abandon or not at all."
-					</p>
-					<p className="text-gray-500 mt-4">— Harriet Van Horne</p>
+				<div className="py-20">
+					<div className="relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-3xl p-10 md:p-14 border border-gray-700/50 max-w-4xl mx-auto">
+						<div className="absolute -top-6 left-10 text-[#f27d0d] text-8xl font-serif opacity-50">"</div>
+						<blockquote className="text-center relative z-10">
+							<p className="text-xl md:text-2xl lg:text-3xl text-gray-200 italic leading-relaxed">
+								Cooking is like love. It should be entered into with abandon or not at all.
+							</p>
+							<div className="mt-6 flex items-center justify-center gap-3">
+								<div className="w-12 h-px bg-[#f27d0d]"></div>
+								<p className="text-[#f27d0d] font-medium">Harriet Van Horne</p>
+								<div className="w-12 h-px bg-[#f27d0d]"></div>
+							</div>
+						</blockquote>
+					</div>
 				</div>
 			</div>
 		</div>

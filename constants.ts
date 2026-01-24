@@ -31,7 +31,7 @@ export const NAVBARITEMS = [
 	},
 	{
 		name: "Articles",
-		ref: "https://substack.com/@markphammm",
+		ref: "https://substack.com/@markphammm/posts",
 	},
 	{
 		name: "Passion",
@@ -62,7 +62,7 @@ export const MENULINKS = [
 	},
 	{
 		name: "Articles",
-		ref: "https://substack.com/@markphammm",
+		ref: "https://substack.com/@markphammm/posts",
 	},
 ];
 
