@@ -110,7 +110,7 @@ const CommentSection = ({}: IDesktop) => {
 					</button>
 
 					{/* Slides Container */}
-					<div className="relative min-h-[500px] md:min-h-[450px]">
+					<div className="relative min-h-[600px] md:min-h-[600px]">
 						{COMMENTS.map((comment, index) => (
 							<CommentTile
 								key={index}
