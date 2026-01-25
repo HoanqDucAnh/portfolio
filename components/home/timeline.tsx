@@ -21,6 +21,7 @@ interface ExperienceItem {
 	date: string;
 	title: string;
 	subtitle: string;
+	location: string;
 	image: string;
 	slideImage: string;
 }
@@ -42,6 +43,7 @@ const processTimelineData = (): ExperienceItem[] => {
 					date: currentDate,
 					title: checkpoint.title,
 					subtitle: checkpoint.subtitle || "",
+					location: checkpoint.location || "",
 					image: checkpoint.image || "",
 					slideImage: checkpoint.slideImage,
 				});
@@ -143,6 +145,14 @@ const TimelineSection = (_props: IDesktop) => {
 						<p className="text-gray-300 text-base leading-relaxed">
 							{experience.subtitle}
 						</p>
+						{experience.location && (
+							<span className={`inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full text-sm font-medium bg-gray-800/80 text-gray-300 border border-gray-700 ${isEven ? "md:ml-auto" : ""}`}>
+								<svg className="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+									<path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+								</svg>
+								{experience.location}
+							</span>
+						)}
 					</div>
 
 					{/* Image side */}
