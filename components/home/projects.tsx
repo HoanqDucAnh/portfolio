@@ -110,9 +110,9 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 			}}
 		>
 			{renderSectionTitle()}
-			{renderStats()}
 			{renderCategoryFilters()}
 			{renderProjectGrid()}
+			{renderStats()}
 		</section>
 	);
 };
