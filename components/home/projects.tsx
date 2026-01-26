@@ -1,200 +1,118 @@
-// Copyright Ayush Singh 2021,2022. All Rights Reserved.
-// Project: folio
-// Author contact: https://www.linkedin.com/in/alphaayush/
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import { MENULINKS, PROJECTS, ProjectTypes } from "../../constants";
 import ProjectTile from "../common/project-tile";
 import { IDesktop } from "pages";
-import Select, { components, DropdownIndicatorProps } from "react-select";
-import Control from "react-select/dist/declarations/src/components/Control";
-import { FaChevronDown, FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { DropdownIndicator } from "react-select/dist/declarations/src/components/indicators";
 import GitHubStats from "./github-stats";
 import WakatimeStats from "./wakatime-stats";
 
-const PROJECT_STYLES = {
-	SECTION:
-		"w-full relative select-none section-container flex-col flex py-4 justify-center",
-	PROJECTS_WRAPPER: "tall:mt-8 mt- md:gap-10 gap-6 seq snap-x snap-mandatory",
-};
+const CATEGORIES = [
+	{ value: "All", label: "All" },
+	{ value: ProjectTypes.ENDTOEND, label: "Data Pipeline" },
+	{ value: ProjectTypes.BIDASHBOARDVIZ, label: "BI & Dashboards" },
+	{ value: ProjectTypes.STATISTICSML, label: "ML & Statistics" },
+];
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {
 	const targetSectionRef: MutableRefObject<HTMLDivElement> = useRef(null);
-	const projectWrapperRef = useRef(null);
-	const sectionTitleElementRef: MutableRefObject<HTMLDivElement> = useRef(null);
+	const [activeCategory, setActiveCategory] = useState("All");
+	const [isAnimating, setIsAnimating] = useState(false);
 
-	const [projectCategory, setprojectCategory] = useState("All");
-	let renderedPrjectsNumber = PROJECTS.length;
-	const [willChange, setwillChange] = useState(false);
-	const [horizontalAnimationEnabled, sethorizontalAnimationEnabled] =
-		useState(false);
-	const options = [
-		{ value: "All", label: "All" },
-		{ value: ProjectTypes.STATISTICSML, label: "Statistics - ML&AI" },
-		{ value: ProjectTypes.BIDASHBOARDVIZ, label: "Interactive BI Dashboard" },
-		{ value: ProjectTypes.ENDTOEND, label: "End-to-End Analytics" },
-	];
-
-	const scrollLeft = () => {
-		const projectWrapper = projectWrapperRef.current;
-		const projectWidth = projectWrapper.children[0].offsetWidth;
-		projectWrapper.scrollBy({ left: -projectWidth, behavior: "smooth" });
+	const handleCategoryChange = (category: string) => {
+		if (category === activeCategory) return;
+		setIsAnimating(true);
+		setTimeout(() => {
+			setActiveCategory(category);
+			setIsAnimating(false);
+		}, 150);
 	};
 
-	const scrollRight = () => {
-		const projectWrapper = projectWrapperRef.current;
-		const projectWidth = projectWrapper.children[0].offsetWidth;
-		projectWrapper.scrollBy({ left: projectWidth, behavior: "smooth" });
-	};
-
-	const customComponents = {
-		DropdownIndicator: (): JSX.Element | null => null,
-		// Option: (props: any) => {
-		// 	return (
-		// 		<components.Option {...props}>
-		// 			<div style={{ display: "flex", alignItems: "center" }}>
-		// 				{props.children} <FaChevronDown style={{ marginLeft: "8px" }} />
-		// 			</div>
-		// 		</components.Option>
-		// 	);
-		// },
-	};
+	const filteredProjects = PROJECTS.filter(
+		(project) =>
+			activeCategory === "All" || project.category === activeCategory
+	);
 
 	const renderSectionTitle = (): React.ReactNode => (
-		<div
-			className={`flex flex-col inner-container  ${willChange ? "will-change-transform" : ""
-				}`}
-			ref={sectionTitleElementRef}
-		>
+		<div className="flex flex-col inner-container">
 			<h1 className="section-heading seq">My Works</h1>
-			<h2 className="text-2xl md:max-w-3xl w-full seq mt-2">
-				My Friday nights? Debugging ETL pipelines at 2 AM and arguing with SQL queries.
-				Some call it sad, I call it living the dream
+			<h2 className="text-xl md:text-2xl md:max-w-3xl w-full seq mt-2 text-gray-300">
+				My Friday nights? Debugging ETL pipelines at 2 AM and arguing with SQL
+				queries. Some call it sad, I call it living the dream
 			</h2>
-
-			<div className="w-full my-8 seq relative z-10">
-
-				{/* GitHub Stats and Wakatime Stats - Stacked Layout */}
-				<div className="flex flex-col gap-6">
-					{/* GitHub Stats Component */}
-					<GitHubStats />
-
-					{/* Wakatime Stats Component */}
-					<WakatimeStats />
-				</div>
-			</div>
-
-			<Select
-				options={options}
-				unstyled={true}
-				components={customComponents}
-				styles={{
-					control: (baseStyles, state) => ({
-						...baseStyles,
-						opacity: 1,
-						borderRadius: "0.5rem",
-						textAlign: "left",
-						width: "auto",
-						minWidth: "200px",
-						maxWidth: "100%",
-					}),
-					option: (baseStyles, state) => ({
-						...baseStyles,
-						backgroundColor: state.isFocused ? "#e5e7eb" : "#111827",
-						color: state.isFocused ? "#111827" : "#d1d5db",
-						// padding: "0.5rem",
-					}),
-					dropdownIndicator: (baseStyles, state) => ({
-						...baseStyles,
-						padding: "0",
-						marginLeft: "auto",
-					}),
-				}}
-				className="w-1/2 mt-4 article-title-sm bg-gray-900 text-gray-200"
-				onChange={(option) => setprojectCategory(option.value)}
-				placeholder={
-					<div style={{ display: "flex", alignItems: "center" }}>
-						Check out my projects' categories{" "}
-						<FaChevronDown style={{ marginLeft: "8px" }} />
-					</div>
-				}
-			/>
 		</div>
 	);
 
-	const renderProjectTiles = (): React.ReactNode => {
-		const filteredProjects = PROJECTS.filter(
-			(project) => projectCategory === "All" || project.category === projectCategory
-		);
-		let projectLength = filteredProjects.length;
-		renderedPrjectsNumber = projectLength;
-		return (
-			<div
-				ref={projectWrapperRef}
-				className={`${PROJECT_STYLES.PROJECTS_WRAPPER} flex overflow-x-auto ${renderedPrjectsNumber === 1 && "w-fit"
-					}`}
-			>
-				{filteredProjects.map((project, index) => {
-					return (
-						<ProjectTile
-							project={project}
-							key={`${project.name}-${index}-${projectCategory}`}
-							animationEnabled={horizontalAnimationEnabled}
-							zIndex={index + 1}
-						></ProjectTile>
-					);
-				})}
+	const renderStats = (): React.ReactNode => (
+		<div className="w-full my-8 seq relative z-10">
+			<div className="flex flex-col gap-6">
+				<GitHubStats />
+				<WakatimeStats />
 			</div>
-		);
-	};
+		</div>
+	);
+
+	const renderCategoryFilters = (): React.ReactNode => (
+		<div className="flex flex-wrap gap-3 mt-8 mb-10">
+			{CATEGORIES.map((category) => {
+				const count = category.value === "All"
+					? PROJECTS.length
+					: PROJECTS.filter((p) => p.category === category.value).length;
+				return (
+					<button
+						key={category.value}
+						onClick={() => handleCategoryChange(category.value)}
+						className={`
+							px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300
+							${
+								activeCategory === category.value
+									? "bg-yellow-400 text-gray-900 shadow-lg shadow-yellow-400/20"
+									: "bg-gray-800/60 text-gray-300 hover:bg-gray-700/80 hover:text-white border border-gray-700/50"
+							}
+						`}
+					>
+						{category.label}
+						<span className={`ml-2 text-xs ${activeCategory === category.value ? "opacity-80" : "opacity-60"}`}>
+							({count})
+						</span>
+					</button>
+				);
+			})}
+		</div>
+	);
+
+	const renderProjectGrid = (): React.ReactNode => (
+		<div
+			className={`
+				grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8
+				transition-opacity duration-150
+				${isAnimating ? "opacity-0" : "opacity-100"}
+			`}
+		>
+			{filteredProjects.map((project, index) => (
+				<ProjectTile
+					project={project}
+					key={`${project.name}-${activeCategory}`}
+					index={index}
+				/>
+			))}
+		</div>
+	);
+
 	const { ref: projectsSectionRef } = MENULINKS[1];
 
 	return (
 		<section
 			ref={targetSectionRef}
-			className={`${isDesktop && "min-h-screen"} ${PROJECT_STYLES.SECTION} relative`}
+			className={`${isDesktop && "min-h-screen"} w-full relative select-none section-container flex-col flex py-8 justify-center`}
 			id={projectsSectionRef}
 			style={{
 				zIndex: 10,
-				isolation: "isolate"
+				isolation: "isolate",
 			}}
 		>
 			{renderSectionTitle()}
-
-			<div className="relative overflow-hidden" style={{ isolation: "isolate" }}>
-				<button
-					onClick={scrollLeft}
-					className="hover:text-gray-200 hover:bg-gray-900 absolute text-lg font-bold text-gray-900 mx-2 left-0 top-1/2 transform -translate-y-1/2 bg-secondary-color p-4 rounded-full z-10"
-				>
-					<FaArrowLeft />
-				</button>
-				{renderProjectTiles()}
-				<button
-					onClick={scrollRight}
-					className="hover:text-gray-200 hover:bg-gray-900 absolute text-lg font-bold text-gray-900 mx-2 right-0 top-1/2 transform -translate-y-1/2 bg-secondary-color p-4 rounded-full z-10"
-				>
-					<FaArrowRight />
-				</button>
-			</div>
-			{/* <div className={PROJECT_STYLES.PROJECTS_WRAPPER}> */}
-			{/* <div className={`tall:mt-12 mt-6 md:gap-10 gap-6 w-full flex overflow-x-auto space-x-4`}>
-				{renderProjectTiles()}
-			</div> */}
-			{/* <Carousel
-				containerClass={`tall:mt-12 mt-6 md:gap-10 gap-6 flex overflow-x-auto space-x-4`}
-				autoPlay={true}
-				swipeable={false}
-				draggable={false}
-				showDots={false}
-				infinite={true}
-				partialVisible={false}
-				itemClass="pr-5 rounded-sm"
-			>
-				{renderProjectTiles()}
-			</Carousel> */}
+			{renderStats()}
+			{renderCategoryFilters()}
+			{renderProjectGrid()}
 		</section>
 	);
 };

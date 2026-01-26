@@ -1,168 +1,145 @@
-// Copyright Ayush Singh 2021,2022. All Rights Reserved.
-// Project: folio
-// Author contact: https://www.linkedin.com/in/alphaayush/
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
-import styles from "./ProjectTile.module.scss";
 import Image from "next/image";
-import React, { MutableRefObject, useEffect, useRef } from "react";
-import VanillaTilt from "vanilla-tilt";
-import { IProject } from "../../constants";
+import React from "react";
+import { IProject, ProjectTypes } from "../../constants";
+
+const getCategoryLabel = (category: string): string => {
+	switch (category) {
+		case ProjectTypes.ENDTOEND:
+			return "Data Pipeline";
+		case ProjectTypes.BIDASHBOARDVIZ:
+			return "BI & Dashboard";
+		case ProjectTypes.STATISTICSML:
+			return "ML & Statistics";
+		default:
+			return category;
+	}
+};
+
+const getCategoryColor = (category: string): string => {
+	switch (category) {
+		case ProjectTypes.ENDTOEND:
+			return "bg-blue-600 text-white";
+		case ProjectTypes.BIDASHBOARDVIZ:
+			return "bg-gray-900 text-orange-400";
+		case ProjectTypes.STATISTICSML:
+			return "bg-purple-600 text-white";
+		default:
+			return "bg-gray-600 text-white";
+	}
+};
 
 const ProjectTile = ({
 	project,
-	animationEnabled,
-	zIndex = 1,
+	index = 0,
 }: {
 	project: IProject;
-	animationEnabled: boolean;
-	zIndex?: number;
+	index?: number;
 }) => {
-	const projectCard: MutableRefObject<HTMLDivElement> = useRef(null);
 	const {
 		name,
 		tech,
 		image,
-		blurImage,
-		description,
+		category,
+		url,
 		gradient: [stop1, stop2],
 	} = project;
 
-	useEffect(() => {
-		VanillaTilt.init(projectCard.current, {
-			max: 5,
-			speed: 400,
-			glare: true,
-			"max-glare": 0.2,
-			gyroscope: false,
-		});
-	}, [projectCard]);
-
-	const renderTechIcons = (techStack: string[]): React.ReactNode => (
-		<div
-			className={`
-      ${styles.techIcons} w-1/2 h-full absolute left-24 top-0 sm:flex items-center hidden
-    `}
-		>
-			<div className="flex flex-col pb-8">
-				{techStack.map((tech, i) => (
-					<div className={`${i % 2 === 0 && "ml-16"} mb-4`} key={tech}>
-						<Image
-							src={`/projects/tech/${tech}.svg`}
-							alt={tech}
-							height={50}
-							objectFit="contain"
-							width={50}
-							priority
-							unoptimized
-						/>
-					</div>
-				))}
-			</div>
-		</div>
-	);
-
-	const renderDescription = (description: string): React.ReactNode => (
-		<h2
-			className="text-lg z-10 tracking-wide font-medium"
-			style={{
-				transform: "translateZ(0.8rem)",
-			}}
-		>
-			{description}
-		</h2>
-	);
-
-	const renderProjectName = (name: string): React.ReactNode => (
-		<h1
-			className="text-2xl sm:text-3xl z-10 pl-2"
-			style={{ transform: "translateZ(3rem)" }}
-		>
-			{name}
-		</h1>
-	);
-
-	const renderTopBottomGradient = (gradient: string): React.ReactNode => (
-		<>
-			<div
-				className="absolute top-0 left-0 w-full h-20"
-				style={{
-					background: `linear-gradient(180deg, ${gradient} 0%, rgba(0,0,0,0) 100%)`,
-				}}
-			></div>
-			<div
-				className="absolute bottom-0 left-0 w-full h-32"
-				style={{
-					background: `linear-gradient(0deg, ${gradient} 10%, rgba(0,0,0,0) 100%)`,
-				}}
-			></div>
-		</>
-	);
-
-	const renderProjectImage = (
-		image: string,
-		_blurImage: string,
-		name: string
-	): React.ReactNode => (
-		<div className={`${styles.ProjectImgContainer} z-0`}>
-			<Image
-				src={image}
-				alt={name}
-				layout="fill"
-				className={`${styles.ProjectImg}`}
-				unoptimized
-				priority
-			/>
-		</div>
-	);
-
 	return (
 		<a
-			href={project.url}
+			href={url || "#"}
 			target="_blank"
 			rel="noreferrer"
-			className="link snap-start"
+			className="group block"
 			style={{
-				maxWidth: animationEnabled
-					? "calc(100vw - 1rem)"
-					: "calc(100vw - 4rem)",
-				flex: "1 0 auto",
-				position: "relative",
-				zIndex: zIndex,
+				animationDelay: `${index * 50}ms`,
 			}}
 		>
-			<div
-				className="rounded-3xl overflow-hidden relative"
-				style={{
-					transform: "translateZ(0)",
-					contain: "layout style paint"
-				}}
-			>
-				<div
-					ref={projectCard}
-					className={`
-            ${styles.ProjectTile}
-             rounded-3xl relative p-6 flex-col flex justify-between max-w-full
-          `}
-					style={{
-						background: `linear-gradient(90deg, ${stop1} 0%, ${stop2} 100%)`,
-					}}
-				>
+			<div className="relative h-full rounded-2xl overflow-hidden bg-gray-900 border border-gray-800/50 transition-all duration-300 hover:border-gray-700 hover:shadow-2xl hover:shadow-black/20 hover:-translate-y-1">
+				{/* Image Container */}
+				<div className="relative h-48 md:h-52 overflow-hidden">
+					{/* Gradient Overlay */}
+					<div
+						className="absolute inset-0 opacity-60 z-10"
+						style={{
+							background: `linear-gradient(135deg, ${stop1}90 0%, ${stop2}90 100%)`,
+						}}
+					/>
 					<Image
-						src="/project-bg.svg"
-						alt="Project"
+						src={image}
+						alt={name}
 						layout="fill"
-						className="absolute w-full h-full top-0 left-0 opacity-20"
+						objectFit="cover"
+						className="transition-transform duration-500 group-hover:scale-110"
 						unoptimized
 						priority
 					/>
-					{renderProjectImage(image, blurImage, name)}
-					{renderTopBottomGradient(stop1)}
-					{renderProjectName(name)}
-					{renderTechIcons(tech)}
-					{renderDescription(description)}
+					{/* Category Badge */}
+					<div className="absolute top-4 left-4 z-20">
+						<span
+							className={`px-3 py-1.5 text-xs font-semibold rounded-full shadow-lg ${getCategoryColor(category)}`}
+						>
+							{getCategoryLabel(category)}
+						</span>
+					</div>
+					{/* External Link Icon */}
+					{url && (
+						<div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+							<div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
+								<svg
+									className="w-4 h-4 text-white"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth={2}
+										d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+									/>
+								</svg>
+							</div>
+						</div>
+					)}
 				</div>
+
+				{/* Content */}
+				<div className="p-5">
+					{/* Project Name */}
+					<h3 className="text-lg font-semibold text-white mb-4 group-hover:text-yellow-400 transition-colors duration-300 line-clamp-2">
+						{name}
+					</h3>
+
+					{/* Tech Stack */}
+					<div className="flex flex-wrap gap-2">
+						{tech.slice(0, 5).map((techItem) => (
+							<div
+								key={techItem}
+								className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-800/80 border border-gray-700/50"
+							>
+								<Image
+									src={`/projects/tech/${techItem}.svg`}
+									alt={techItem}
+									height={14}
+									width={14}
+									className="opacity-80"
+									unoptimized
+								/>
+								<span className="text-xs text-gray-400">
+									{techItem}
+								</span>
+							</div>
+						))}
+					</div>
+				</div>
+
+				{/* Bottom gradient line */}
+				<div
+					className="absolute bottom-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+					style={{
+						background: `linear-gradient(90deg, ${stop1} 0%, ${stop2} 100%)`,
+					}}
+				/>
 			</div>
 		</a>
 	);

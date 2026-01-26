@@ -49,9 +49,8 @@ const QuoteSection = () => {
 				className={`font-medium text-4xl md:text-5xl text-center ${willChange ? "will-change-opacity" : ""
 					}`}
 			>
-				I believe in the power of{" "}
-				<span className="text-strong font-bold">discipline</span> and always
-				deliver value regardless of the situation
+				Turning <span className="text-strong font-bold">raw data</span> into{" "}
+				<span className="text-strong font-bold">actionable insights</span>
 			</h1>
 		</div>
 	);
