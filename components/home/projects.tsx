@@ -8,8 +8,8 @@ import WakatimeStats from "./wakatime-stats";
 const CATEGORIES = [
 	{ value: "All", label: "All" },
 	{ value: ProjectTypes.ENDTOEND, label: "Data Pipeline" },
-	{ value: ProjectTypes.BIDASHBOARDVIZ, label: "BI & Dashboards" },
 	{ value: ProjectTypes.STATISTICSML, label: "ML & Statistics" },
+	{ value: ProjectTypes.BIDASHBOARDVIZ, label: "BI & Dashboards" },
 ];
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {

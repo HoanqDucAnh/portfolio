@@ -139,6 +139,7 @@ export const ProjectTypes = {
 }
 
 export const PROJECTS: IProject[] = [
+	// Data Pipeline projects
 	{
 		name: "Local ELT Pipeline",
 		category: ProjectTypes.ENDTOEND,
@@ -160,16 +161,6 @@ export const PROJECTS: IProject[] = [
 		tech: ["python", "Apache Airflow", "Dbt", "Snowflake", "Docker"],
 	},
 	{
-		name: "Housing Purchase Predictor",
-		category: ProjectTypes.STATISTICSML,
-		image: "/projects/housing.png",
-		blurImage: "/projects/housing.png",
-		description: "",
-		gradient: ["#2a5298", "#1e3a5f"],
-		url: "https://github.com/MarkPhamm/housing_purchase_predictor",
-		tech: ["python", "streamlit", "Pandas", "Matplotlib", "numpy"],
-	},
-	{
 		name: "Skytrax Review Pipeline",
 		category: ProjectTypes.ENDTOEND,
 		image: "/projects/skytrax.png",
@@ -179,16 +170,7 @@ export const PROJECTS: IProject[] = [
 		url: "https://github.com/MarkPhamm/British-Airway",
 		tech: ["python", "Snowflake", "Dbt", "Mode Reporting", "Apache Airflow"],
 	},
-	{
-		name: "Marketing Campaign Analysis",
-		category: ProjectTypes.BIDASHBOARDVIZ,
-		image: "/projects/mktg_campaign.png",
-		blurImage: "/projects/mktg_campaign.png",
-		description: "",
-		gradient: ["#f2ece4", "#09091a"],
-		url: "https://mavenshowcase.com/project/19447",
-		tech: ["PowerBI", "alteryx", "excel", "powerquery", "Microsoft SQL Server"],
-	},
+	// ML & Statistics projects
 	{
 		name: "Streamlit Statistics App",
 		category: ProjectTypes.STATISTICSML,
@@ -198,6 +180,27 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#191414", "#f5f5f5"],
 		url: "https://github.com/MarkPhamm/Stats-Calculator",
 		tech: ["python", "streamlit", "normalDis", "Pandas", "Matplotlib"],
+	},
+	{
+		name: "Housing Purchase Predictor",
+		category: ProjectTypes.STATISTICSML,
+		image: "/projects/housing.png",
+		blurImage: "/projects/housing.png",
+		description: "",
+		gradient: ["#2a5298", "#1e3a5f"],
+		url: "https://github.com/MarkPhamm/housing_purchase_predictor",
+		tech: ["python", "streamlit", "Pandas", "Matplotlib", "numpy"],
+	},
+	// BI & Dashboard projects
+	{
+		name: "Marketing Campaign Analysis",
+		category: ProjectTypes.BIDASHBOARDVIZ,
+		image: "/projects/mktg_campaign.png",
+		blurImage: "/projects/mktg_campaign.png",
+		description: "",
+		gradient: ["#f2ece4", "#09091a"],
+		url: "https://mavenshowcase.com/project/19447",
+		tech: ["PowerBI", "alteryx", "excel", "powerquery", "Microsoft SQL Server"],
 	},
 	// {
 	// 	name: "Alcon Competitors Analysis",
