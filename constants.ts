@@ -141,13 +141,13 @@ export const ProjectTypes = {
 export const PROJECTS: IProject[] = [
 	// Data Pipeline projects
 	{
-		name: "Local ELT Pipeline",
+		name: "Local Warehouse",
 		category: ProjectTypes.ENDTOEND,
 		image: "/projects/local_elt2.png",
 		blurImage: "/projects/local_elt2.png",
 		description: "",
 		gradient: ["#1e3a8a", "#3b82f6"],
-		url: "https://github.com/MarkPhamm/local_elt_pipeline",
+		url: "https://github.com/MarkPhamm/local_warehouse",
 		tech: ["Dbt", "prefect", "duckdb", "dlt", "Github"],
 	},
 	{
