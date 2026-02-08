@@ -19,8 +19,12 @@ const CommentTile = (props: {
 					: "opacity-0 translate-x-8 pointer-events-none invisible"
 			}`}
 		>
-			<div className="relative p-8 md:p-10 mx-auto max-w-3xl bg-gray-900 rounded-2xl border border-gray-800">
-				<FaQuoteLeft className="absolute top-6 left-6 text-4xl text-gray-700 opacity-50" />
+			<div className={`relative p-8 md:p-10 mx-auto max-w-3xl rounded-2xl border transition-all duration-500 ${
+				props.isActive
+					? "bg-gray-900/90 backdrop-blur-sm border-[#f27d0d]/30 shadow-lg shadow-[#f27d0d]/5"
+					: "bg-gray-900 border-gray-800"
+			}`}>
+				<FaQuoteLeft className="absolute top-4 left-6 text-6xl text-[#f27d0d] opacity-10" />
 
 				<div className="flex flex-col">
 					<div className="flex justify-center mb-6">
@@ -29,13 +33,13 @@ const CommentTile = (props: {
 							alt={props.authorName}
 							width={96}
 							height={96}
-							className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-gray-700 shadow-lg object-cover"
+							className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-[#f27d0d]/30 shadow-lg shadow-[#f27d0d]/10 object-cover"
 							priority
 							unoptimized
 						/>
 					</div>
 
-					<p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 italic text-left">
+					<p className="text-base md:text-lg text-gray-300 leading-relaxed mb-8 italic text-left">
 						"{props.text}"
 					</p>
 
@@ -110,7 +114,7 @@ const CommentSection = ({}: IDesktop) => {
 					</button>
 
 					{/* Slides Container */}
-					<div className="relative min-h-[600px] md:min-h-[600px]">
+					<div className="relative min-h-[620px]">
 						{COMMENTS.map((comment, index) => (
 							<CommentTile
 								key={index}

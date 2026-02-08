@@ -102,8 +102,7 @@ const CertificateSection = ({ isDesktop }: IDesktop) => {
 				} group cursor-pointer`}
 		>
 			<div
-				style={{ height: "310px" }}
-				className="flex align-middle justify-center p-4 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 shadow-xl hover:shadow-2xl hover:bg-gray-800/70 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2"
+				className="flex align-middle justify-center p-4 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 shadow-xl hover:shadow-2xl hover:bg-gray-800/70 hover:border-[#f27d0d]/30 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 aspect-[4/3]"
 			>
 				<img
 					src={`/skills/3rd/${skill}.png`}

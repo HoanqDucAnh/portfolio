@@ -104,7 +104,10 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 		skills: string[],
 		isPriority: boolean = false
 	): React.ReactNode => (
-		<div key={title} className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+		<div
+			key={title}
+			className={`p-6 rounded-2xl border border-gray-800/50 bg-gray-900/30 backdrop-blur-sm hover:border-gray-700/50 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+		>
 			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
 			<div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-5 xl:gap-6 2xl:gap-8">
 				{skills.map((skill, index) => (
@@ -114,16 +117,18 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						style={{ transitionDelay: `${index * 50}ms` }}
 					>
 						<Tooltip text={skill}>
-							<Image
-								src={getSkillImagePath(skill)}
-								alt={skill}
-								width={76}
-								height={76}
-								className="skill hover:scale-110 transition-transform duration-200 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32"
-								loading={isPriority ? "eager" : "lazy"}
-								priority={isPriority}
-								unoptimized
-							/>
+							<div className="rounded-xl p-2 hover:bg-gray-800/50 transition-all duration-200 hover:shadow-lg hover:shadow-[#f27d0d]/5">
+								<Image
+									src={getSkillImagePath(skill)}
+									alt={skill}
+									width={76}
+									height={76}
+									className="skill hover:scale-110 transition-transform duration-200 w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40 2xl:w-44 2xl:h-44"
+									loading={isPriority ? "eager" : "lazy"}
+									priority={isPriority}
+									unoptimized
+								/>
+							</div>
 						</Tooltip>
 					</div>
 				))}

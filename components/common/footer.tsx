@@ -29,7 +29,11 @@ const Footer = () => {
 				Connect with me on social media.
 			</h1>
 
-			<div className="flex mt-8">
+			<div className="flex mt-6 gap-3">
+				{renderSocialIcons()}
+			</div>
+
+			<div className="flex mt-6">
 				<Button
 					type={ButtonTypes.WHITE}
 					name="Let's Talk"

@@ -10,7 +10,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { isSmallScreen, NO_MOTION_PREFERENCE_QUERY } from "pages";
 
 const COLLABORATION_STYLE = {
-	SLIDING_TEXT: "opacity-20 text-5xl md:text-7xl font-bold whitespace-nowrap",
+	SLIDING_TEXT: "opacity-30 text-5xl md:text-7xl font-bold whitespace-nowrap",
 	SECTION:
 		"w-full relative select-none tall:py-18 py-24 section-container flex flex-col",
 	TITLE: "mt-6 md:mt-8 font-medium text-4xl md:text-5xl text-center",
@@ -110,6 +110,20 @@ const CollaborationSection = () => {
 			{renderSlidingText(" dbt - Airflow - Snowflake -  ", "ui-left")}
 
 			{renderTitle()}
+
+			<div className="flex justify-center mt-6">
+				<a
+					href="https://www.linkedin.com/in/minhbphamm/"
+					target="_blank"
+					rel="noreferrer"
+					className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#f27d0d] text-gray-900 font-bold text-lg hover:bg-[#e4974e] transition-all duration-300 hover:shadow-lg hover:shadow-[#f27d0d]/30 hover:-translate-y-1"
+				>
+					Let's Connect
+					<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+						<path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+					</svg>
+				</a>
+			</div>
 
 			{renderSlidingText(
 				" dbt - Airflow - Snowflake -  ",

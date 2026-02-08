@@ -54,9 +54,9 @@ const ProjectTile = ({
 				animationDelay: `${index * 50}ms`,
 			}}
 		>
-			<div className="relative h-full rounded-2xl overflow-hidden bg-gray-900 border border-gray-800/50 transition-all duration-300 hover:border-gray-700 hover:shadow-2xl hover:shadow-black/20 hover:-translate-y-1">
+			<div className="relative h-full rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-500 hover:border-gray-600 hover:shadow-2xl hover:shadow-black/30 hover:-translate-y-2">
 				{/* Image Container */}
-				<div className="relative h-48 md:h-52 overflow-hidden">
+				<div className="relative h-52 md:h-60 overflow-hidden">
 					{/* Gradient Overlay */}
 					<div
 						className="absolute inset-0 opacity-60 z-10"
@@ -106,9 +106,16 @@ const ProjectTile = ({
 				{/* Content */}
 				<div className="p-5">
 					{/* Project Name */}
-					<h3 className="text-lg font-semibold text-white mb-4 group-hover:text-yellow-400 transition-colors duration-300 line-clamp-2">
+					<h3 className="text-lg font-semibold text-white mb-2 group-hover:text-yellow-400 transition-colors duration-300 line-clamp-2">
 						{name}
 					</h3>
+
+					{/* Description */}
+					{project.description && (
+						<p className="text-sm text-gray-400 mb-3 line-clamp-2 leading-relaxed">
+							{project.description}
+						</p>
+					)}
 
 					{/* Tech Stack */}
 					<div className="flex flex-wrap gap-2">
@@ -120,8 +127,8 @@ const ProjectTile = ({
 								<Image
 									src={`/projects/tech/${techItem}.svg`}
 									alt={techItem}
-									height={14}
-									width={14}
+									height={18}
+									width={18}
 									className="opacity-80"
 									unoptimized
 								/>
@@ -135,7 +142,7 @@ const ProjectTile = ({
 
 				{/* Bottom gradient line */}
 				<div
-					className="absolute bottom-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+					className="absolute bottom-0 left-0 right-0 h-1 opacity-30 group-hover:opacity-100 transition-opacity duration-300"
 					style={{
 						background: `linear-gradient(90deg, ${stop1} 0%, ${stop2} 100%)`,
 					}}

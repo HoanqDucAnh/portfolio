@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback, memo } from "react";
 import { FaGithub, FaStar, FaCodeBranch, FaUsers, FaBook } from "react-icons/fa";
+import CountUp from "react-countup";
 
 interface GitHubUser {
 	public_repos: number;
@@ -127,12 +128,16 @@ const GitHubStats = memo(() => {
 
 	const StatCard = ({ icon, label, value, delay }: { icon: React.ReactNode; label: string; value: number; delay: number }) => (
 		<div
-			className={`flex flex-col items-center justify-center p-4 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+			className={`flex flex-col items-center justify-center p-4 rounded-lg hover:scale-105 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
 				}`}
-			style={{ transitionDelay: `${delay}ms` }}
+			style={{
+				transitionDelay: `${delay}ms`,
+				background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.9))',
+				border: '1px solid rgba(242, 125, 13, 0.15)',
+			}}
 		>
-			<div className="text-2xl mb-2 text-gray-400">{icon}</div>
-			<div className="text-2xl font-bold text-white">{value.toLocaleString()}</div>
+			<div className="text-2xl mb-2 text-[#f27d0d]">{icon}</div>
+			<div className="text-2xl font-bold text-white"><CountUp end={value} duration={2} separator="," /></div>
 			<div className="text-sm text-gray-400">{label}</div>
 		</div>
 	);
@@ -232,10 +237,10 @@ const GitHubStats = memo(() => {
 			<div className="mt-6 pt-6 border-t border-gray-800">
 				<h4 className="text-sm font-medium text-gray-400 mb-4">Contribution Activity</h4>
 				<img
-					src={`https://ghchart.rshah.org/39d353/${GITHUB_USERNAME}`}
+					src={`https://ghchart.rshah.org/f27d0d/${GITHUB_USERNAME}`}
 					alt="GitHub Contribution Calendar"
-					className="w-full h-auto"
-					style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+					className="w-full h-auto rounded-lg"
+					style={{ filter: 'invert(1) hue-rotate(180deg)', opacity: 0.85 }}
 					loading="lazy"
 				/>
 			</div>

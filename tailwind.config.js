@@ -80,6 +80,9 @@ module.exports = {
 			ping: "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite",
 			pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
 			bounce: "bounce 1s infinite",
+			float: "float 6s ease-in-out infinite",
+			"glow-pulse": "glow-pulse 4s ease-in-out infinite",
+			shimmer: "shimmer 2s linear infinite",
 		},
 		backdropBlur: (theme) => theme("blur"),
 		backdropBrightness: (theme) => theme("brightness"),
@@ -496,6 +499,18 @@ module.exports = {
 					transform: "none",
 					animationTimingFunction: "cubic-bezier(0,0,0.2,1)",
 				},
+			},
+			float: {
+				"0%, 100%": { transform: "translateY(0px)" },
+				"50%": { transform: "translateY(-20px)" },
+			},
+			"glow-pulse": {
+				"0%, 100%": { opacity: "0.3" },
+				"50%": { opacity: "0.6" },
+			},
+			shimmer: {
+				"0%": { backgroundPosition: "-200% center" },
+				"100%": { backgroundPosition: "200% center" },
 			},
 		},
 		letterSpacing: {
