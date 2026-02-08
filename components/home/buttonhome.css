@@ -1,7 +1,7 @@
 .cus-btn {
 	--tw-text-opacity: 1;
 	color: rgb(17 24 39 / var(--tw-text-opacity));
-	background: linear-gradient(90deg, #f27d0d 0%, #e4974e 50%, #f27d0d 100%),
+	background: linear-gradient(90deg, #9146FF 0%, #BF94FF 50%, #9146FF 100%),
 		linear-gradient(0deg, #ffffff, #ffffff);
 	background-size: 200% 100%;
 }

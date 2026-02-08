@@ -1,5 +1,5 @@
 .amazon-color-orange {
-	color: #ff9900;
+	color: #9146FF;
 }
 
 .amazon-color-black {
@@ -14,7 +14,7 @@
 
 .text-rounded-pill {
 	border-radius: 20px;
-	background-color: #ff9900;
+	background-color: #9146FF;
 	color: #232f3e;
 	padding: 5px, 5px;
 }
@@ -44,7 +44,7 @@
 }
 
 .sticky-follow a:hover {
-	color: #ff9900;
+	color: #9146FF;
 }
 
 ul {
@@ -58,7 +58,7 @@ ul ll {
 }
 
 .cus-nav-item:hover {
-	color: #ff9900;
+	color: #9146FF;
 	background-color: transparent;
 	font-weight: 600;
 	border-radius: 0;
@@ -74,7 +74,7 @@ ul ll {
 }
 
 .scroll-active {
-	color: #ff9900;
+	color: #9146FF;
 	background-color: transparent;
 	box-shadow: none;
 	border-left: 0.15rem solid #232f3e;
@@ -88,6 +88,6 @@ ul ll {
 .sub-header {
 	padding-top: 15px;
 	padding-bottom: 5px;
-	color: #ff9900;
+	color: #9146FF;
 	font-weight: bolder;
 }

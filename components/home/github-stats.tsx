@@ -133,10 +133,10 @@ const GitHubStats = memo(() => {
 			style={{
 				transitionDelay: `${delay}ms`,
 				background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.9))',
-				border: '1px solid rgba(242, 125, 13, 0.15)',
+				border: '1px solid rgba(145, 70, 255, 0.15)',
 			}}
 		>
-			<div className="text-2xl mb-2 text-[#f27d0d]">{icon}</div>
+			<div className="text-2xl mb-2 text-[#9146FF]">{icon}</div>
 			<div className="text-2xl font-bold text-white"><CountUp end={value} duration={2} separator="," /></div>
 			<div className="text-sm text-gray-400">{label}</div>
 		</div>
@@ -237,7 +237,7 @@ const GitHubStats = memo(() => {
 			<div className="mt-6 pt-6 border-t border-gray-800">
 				<h4 className="text-sm font-medium text-gray-400 mb-4">Contribution Activity</h4>
 				<img
-					src={`https://ghchart.rshah.org/f27d0d/${GITHUB_USERNAME}`}
+					src={`https://ghchart.rshah.org/9146FF/${GITHUB_USERNAME}`}
 					alt="GitHub Contribution Calendar"
 					className="w-full h-auto rounded-lg"
 					style={{ filter: 'invert(1) hue-rotate(180deg)', opacity: 0.85 }}

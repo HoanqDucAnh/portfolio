@@ -166,7 +166,7 @@ const HeroSection = React.memo(() => {
 			<div
 				className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full animate-glow-pulse pointer-events-none"
 				style={{
-					background: "radial-gradient(circle, rgba(242, 125, 13, 0.15) 0%, transparent 70%)",
+					background: "radial-gradient(circle, rgba(145, 70, 255, 0.15) 0%, transparent 70%)",
 					filter: "blur(60px)",
 				}}
 			/>
@@ -193,18 +193,18 @@ const HeroSection = React.memo(() => {
 				<h2 className="text-4xl seq">Hello 👋🏻</h2>
 				<h1 className="text-3xl md:text-4xl lg:text-5xl seq font-bold">
 					I'm{" "}
-					<span className="bg-gradient-to-r from-[#f27d0d] via-[#e4974e] to-[#f27d0d] bg-clip-text text-transparent">
+					<span className="bg-gradient-to-r from-[#9146FF] via-[#BF94FF] to-[#9146FF] bg-clip-text text-transparent">
 						Minh (Mark) Pham
 					</span>
 				</h1>
 				{viewCount !== null && (
 					<div className="seq mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/60 backdrop-blur-sm border border-gray-700/50">
-						<svg className="w-4 h-4 text-[#f27d0d]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+						<svg className="w-4 h-4 text-[#9146FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
 							<path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 							<path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
 						</svg>
 						<span className="text-sm font-medium text-gray-300">
-							<span className="text-[#f27d0d] font-bold">{viewCount.toLocaleString()}</span> unique visitors
+							<span className="text-[#9146FF] font-bold">{viewCount.toLocaleString()}</span> unique visitors
 						</span>
 					</div>
 				)}

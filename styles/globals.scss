@@ -34,7 +34,7 @@ body {
 }
 
 .bg-secondary-color {
-	background-color: #ff9900;
+	background-color: #9146FF;
 }
 
 .sql-table {
@@ -51,7 +51,7 @@ body {
 	font-weight: bold;
 	font-size: 20px;
 	margin-bottom: 10px;
-	color: #f27d0d;
+	color: #9146FF;
 }
 
 table {
@@ -73,7 +73,7 @@ table {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #f27d0d;
+	background: #9146FF;
 	border-radius: 5px;
 }
 
@@ -135,7 +135,7 @@ td {
 }
 
 .scrollspy-item:hover {
-	color: #ff9900;
+	color: #9146FF;
 	background-color: transparent;
 	font-weight: 600;
 	border-radius: 0;
@@ -150,7 +150,7 @@ td {
 }
 
 .scrollspy-active {
-	color: #ff9900;
+	color: #9146FF;
 	background-color: transparent;
 	box-shadow: none;
 	border-left: 0.15rem solid #232f3e;
@@ -354,7 +354,7 @@ a {
 }
 
 .text-gradient {
-	background: linear-gradient(90deg, #e4974e 0%, #f27d0d 100%);
+	background: linear-gradient(90deg, #BF94FF 0%, #9146FF 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -364,8 +364,8 @@ a {
 		90deg,
 		#ffffff 0%,
 		#ffffff 50%,
-		#e4974e 51%,
-		#f27d0d 100%
+		#BF94FF 51%,
+		#9146FF 100%
 	);
 	background-size: 200% 100%;
 	-webkit-background-clip: text;
@@ -382,12 +382,12 @@ a {
 }
 
 .img-cus {
-	border: 1px solid #f27d0d !important;
+	border: 1px solid #9146FF !important;
 	border-radius: 0.5rem !important;
 }
 
 .img-cus:hover {
-	border: 1px solid #f27d0d !important;
+	border: 1px solid #9146FF !important;
 	cursor: pointer;
 	transition: all 0.4s ease-in-out;
 	transform: scale(1.1);
@@ -400,17 +400,17 @@ a {
 }
 
 .stats-number p:hover {
-	color: #f27d0d;
+	color: #9146FF;
 }
 
 footer {
 	background: url("/footer-bg.svg"),
 		linear-gradient(
 			153.86deg,
-			#f3c11f 0%,
-			#f27d0d 15.69%,
-			#b53e03 48.9%,
-			#f27d0d 95.52%
+			#BF94FF 0%,
+			#9146FF 15.69%,
+			#6B2FBF 48.9%,
+			#9146FF 95.52%
 		);
 }
 
@@ -426,7 +426,7 @@ footer {
 	@apply uppercase tracking-widest;
 	font-size: 1.3rem;
 	line-height: 1.75rem;
-	color: #f27d0d;
+	color: #9146FF;
 }
 
 .article-title-sm:hover {
@@ -447,7 +447,7 @@ footer {
 .cus-btn {
 	--tw-text-opacity: 1;
 	color: rgb(17 24 39 / var(--tw-text-opacity));
-	background: linear-gradient(90deg, #f27d0d 0%, #e4974e 50%, #f27d0d 100%),
+	background: linear-gradient(90deg, #9146FF 0%, #BF94FF 50%, #9146FF 100%),
 		linear-gradient(0deg, #ffffff, #ffffff);
 	background-size: 200% 100%;
 }
@@ -474,7 +474,7 @@ footer {
 	inset: 0;
 	border-radius: inherit;
 	padding: 1px;
-	background: linear-gradient(135deg, #f27d0d, #e4974e, #f27d0d);
+	background: linear-gradient(135deg, #9146FF, #BF94FF, #9146FF);
 	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
 	-webkit-mask-composite: xor;
 	mask-composite: exclude;

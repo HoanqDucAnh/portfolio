@@ -117,7 +117,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						style={{ transitionDelay: `${index * 50}ms` }}
 					>
 						<Tooltip text={skill}>
-							<div className="rounded-xl p-2 hover:bg-gray-800/50 transition-all duration-200 hover:shadow-lg hover:shadow-[#f27d0d]/5">
+							<div className="rounded-xl p-2 hover:bg-gray-800/50 transition-all duration-200 hover:shadow-lg hover:shadow-[#9146FF]/5">
 								<Image
 									src={getSkillImagePath(skill)}
 									alt={skill}

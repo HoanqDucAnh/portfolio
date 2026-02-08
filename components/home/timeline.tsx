@@ -122,7 +122,7 @@ const TimelineSection = (_props: IDesktop) => {
 				{/* Timeline connector */}
 				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gray-700 transform md:-translate-x-1/2">
 					{/* Dot */}
-					<div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 border-2 border-yellow-400 rounded-full z-10"></div>
+					<div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 border-2 border-[#9146FF] rounded-full z-10"></div>
 				</div>
 
 				{/* Content wrapper */}
@@ -135,7 +135,7 @@ const TimelineSection = (_props: IDesktop) => {
 						className={`w-full md:w-1/2 ${isEven ? "md:pr-12 md:text-right" : "md:pl-12 md:text-left"
 							} pl-8 md:pl-0`}
 					>
-						<span className="inline-block text-yellow-400 text-lg font-semibold mb-2">
+						<span className="inline-block text-[#9146FF] text-lg font-semibold mb-2">
 							{experience.date}
 						</span>
 						<h3
@@ -147,7 +147,7 @@ const TimelineSection = (_props: IDesktop) => {
 						</p>
 						{experience.location && (
 							<span className={`inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full text-sm font-medium bg-gray-800/80 text-gray-300 border border-gray-700 ${isEven ? "md:ml-auto" : ""}`}>
-								<svg className="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+								<svg className="w-3.5 h-3.5 text-[#9146FF]" fill="currentColor" viewBox="0 0 20 20">
 									<path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
 								</svg>
 								{experience.location}
@@ -175,7 +175,7 @@ const TimelineSection = (_props: IDesktop) => {
 								<div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 							</div>
 							{/* Decorative border */}
-							<div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/20 to-yellow-600/20 rounded-xl blur-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+							<div className="absolute -inset-1 bg-gradient-to-r from-[#9146FF]/20 to-yellow-600/20 rounded-xl blur-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 						</div>
 					</div>
 				</div>
@@ -193,7 +193,7 @@ const TimelineSection = (_props: IDesktop) => {
 
 			<div className="relative">
 				{/* Main timeline line */}
-				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-yellow-400/50 via-gray-700 to-gray-700/50 transform md:-translate-x-1/2"></div>
+				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#9146FF]/50 via-gray-700 to-gray-700/50 transform md:-translate-x-1/2"></div>
 
 				{/* Experience cards */}
 				<div className="relative">

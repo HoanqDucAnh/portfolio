@@ -64,7 +64,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 							px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300
 							${
 								activeCategory === category.value
-									? "bg-yellow-400 text-gray-900 shadow-lg shadow-yellow-400/20"
+									? "bg-[#9146FF] text-white shadow-lg shadow-[#9146FF]/20"
 									: "bg-gray-800/60 text-gray-300 hover:bg-gray-700/80 hover:text-white border border-gray-700/50"
 							}
 						`}

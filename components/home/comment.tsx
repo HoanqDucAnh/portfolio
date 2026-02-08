@@ -21,10 +21,10 @@ const CommentTile = (props: {
 		>
 			<div className={`relative p-8 md:p-10 mx-auto max-w-3xl rounded-2xl border transition-all duration-500 ${
 				props.isActive
-					? "bg-gray-900/90 backdrop-blur-sm border-[#f27d0d]/30 shadow-lg shadow-[#f27d0d]/5"
+					? "bg-gray-900/90 backdrop-blur-sm border-[#9146FF]/30 shadow-lg shadow-[#9146FF]/5"
 					: "bg-gray-900 border-gray-800"
 			}`}>
-				<FaQuoteLeft className="absolute top-4 left-6 text-6xl text-[#f27d0d] opacity-10" />
+				<FaQuoteLeft className="absolute top-4 left-6 text-6xl text-[#9146FF] opacity-10" />
 
 				<div className="flex flex-col">
 					<div className="flex justify-center mb-6">
@@ -33,7 +33,7 @@ const CommentTile = (props: {
 							alt={props.authorName}
 							width={96}
 							height={96}
-							className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-[#f27d0d]/30 shadow-lg shadow-[#f27d0d]/10 object-cover"
+							className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-[#9146FF]/30 shadow-lg shadow-[#9146FF]/10 object-cover"
 							priority
 							unoptimized
 						/>
@@ -136,7 +136,7 @@ const CommentSection = ({}: IDesktop) => {
 							onClick={() => goToSlide(index)}
 							className={`w-3 h-3 rounded-full transition-all duration-300 ${
 								index === currentIndex
-									? "bg-[#f27d0d] w-8"
+									? "bg-[#9146FF] w-8"
 									: "bg-gray-600 hover:bg-gray-500"
 							}`}
 							aria-label={`Go to testimonial ${index + 1}`}
@@ -148,7 +148,7 @@ const CommentSection = ({}: IDesktop) => {
 				<div className="mt-4 max-w-md mx-auto w-full">
 					<div className="h-1 bg-gray-800 rounded-full overflow-hidden">
 						<div
-							className="h-full bg-[#f27d0d] transition-all duration-300"
+							className="h-full bg-[#9146FF] transition-all duration-300"
 							style={{ width: `${((currentIndex + 1) / totalSlides) * 100}%` }}
 						/>
 					</div>
@@ -157,7 +157,7 @@ const CommentSection = ({}: IDesktop) => {
 				<div className="mt-6 flex justify-center">
 					<a
 						href="https://drive.google.com/file/d/1EyMtIZU1_ohN9i2lJ7sGvAiPnxX7vVAv/view?usp=sharing"
-						className="text-[#f27d0d] text-md underline hover:text-white transition-colors"
+						className="text-[#9146FF] text-md underline hover:text-white transition-colors"
 						target="_blank"
 						rel="noreferrer"
 					>
