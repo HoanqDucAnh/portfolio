@@ -7,6 +7,19 @@
 import Head from "next/head";
 import { METADATA } from "../../constants";
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Minh (Mark) Pham",
+  url: METADATA.siteUrl,
+  jobTitle: "Analytics Engineer",
+  worksFor: { "@type": "Organization", name: "Insurify" },
+  sameAs: [
+    "https://www.linkedin.com/in/minhbphamm/",
+    "https://github.com/MarkPhamm",
+  ],
+};
+
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
@@ -27,12 +40,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <meta property="og:site_name" content={METADATA.title} />
         <meta
           property="og:image"
-          content="https://www.ayushsingh.net/preview.jpg"
+          content={`${METADATA.siteUrl}/preview.jpg`}
         />
-        <meta property="og:image:secure_url" content={METADATA.siteUrl} />
+        <meta property="og:image:secure_url" content={`${METADATA.siteUrl}/preview.jpg`} />
         <meta property="og:image:width" content="1440" />
         <meta property="og:image:height" content="800" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </Head>
       {children}
     </>

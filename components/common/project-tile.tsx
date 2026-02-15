@@ -70,7 +70,6 @@ const ProjectTile = ({
 						layout="fill"
 						objectFit="cover"
 						className="transition-transform duration-500 group-hover:scale-110"
-						unoptimized
 						priority
 					/>
 					{/* Category Badge */}
@@ -130,7 +129,6 @@ const ProjectTile = ({
 									height={18}
 									width={18}
 									className="opacity-80"
-									unoptimized
 								/>
 								<span className="text-xs text-gray-400">
 									{techItem}

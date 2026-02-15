@@ -116,8 +116,7 @@ const GitHubStats = memo(() => {
 			});
 		} catch (err) {
 			setError("Failed to load GitHub stats");
-			console.error("GitHub API error:", err);
-		} finally {
+			} finally {
 			setLoading(false);
 		}
 	}, []);

@@ -75,26 +75,17 @@ const countview = async (
 		const docSnap = await getDoc(viewsDocRef);
 
 		if (docSnap.exists()) {
-			console.log(
-				"View Will Not Count, welcome back! Hope you are enjoying my portfolio!"
-			);
+			// Returning visitor — don't count again
 		} else {
 			await setDoc(viewsDocRef, { ip: userIp });
-			console.log(
-				"View counted, hi new user! Welcome to my portfolio, hope you like it!"
-			);
 		}
 
 		const viewsCollectionRef = collection(db, "views");
 		const viewsSnapshot = await getDocs(viewsCollectionRef);
-		console.log("Total views:", viewsSnapshot.size);
 		setViewCount(viewsSnapshot.size);
 		setCachedViewCount(viewsSnapshot.size);
-	} catch (error) {
-		console.error(
-			"Error fetching user data or interacting with Firestore:",
-			error
-		);
+	} catch {
+		// Silently fail — cached count is shown as fallback
 	}
 };
 

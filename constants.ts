@@ -7,7 +7,7 @@
 export const METADATA = {
 	title: "Portfolio | Mark Pham",
 	description: "I bridge the gap between data and actionable insights",
-	siteUrl: "",
+	siteUrl: "https://minhbphamportfolio.netlify.app",
 };
 
 export const NAVBARITEMS = [
