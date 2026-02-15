@@ -6,7 +6,7 @@
 
 import { MENULINKS, SKILLS } from "../../constants";
 import Image from "next/image";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
@@ -18,12 +18,13 @@ const SKILL_STYLES = {
 };
 
 const ArticleSection = () => {
-	const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
+	const targetSection = useRef<HTMLDivElement>(null);
 	const [willChange, setwillChange] = useState(false);
 
 	const initRevealAnimation = (
-		targetSection: MutableRefObject<HTMLDivElement>
+		targetSection: React.RefObject<HTMLDivElement | null>
 	): ScrollTrigger => {
+		if (!targetSection.current) return ScrollTrigger.create({});
 		const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
 		revealTl.from(
 			targetSection.current.querySelectorAll(".seq"),

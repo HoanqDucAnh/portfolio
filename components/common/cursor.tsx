@@ -5,7 +5,7 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import styles from "./Cursor.module.scss";
-import { MutableRefObject, useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { gsap, Linear } from "gsap";
 import { IDesktop, isSmallScreen } from "pages";
 
@@ -15,8 +15,8 @@ const CURSOR_STYLES = {
 };
 
 const Cursor = ({ isDesktop }: IDesktop) => {
-  const cursor: MutableRefObject<HTMLDivElement> = useRef(null);
-  const follower: MutableRefObject<HTMLDivElement> = useRef(null);
+  const cursor = useRef<HTMLDivElement>(null);
+  const follower = useRef<HTMLDivElement>(null);
 
   const onHover = () => {
     gsap.to(cursor.current, {
@@ -56,6 +56,7 @@ const Cursor = ({ isDesktop }: IDesktop) => {
   };
 
   const initCursorAnimation = useCallback(() => {
+    if (!follower.current || !cursor.current) return;
     follower.current.classList.remove("hidden");
     cursor.current.classList.remove("hidden");
 

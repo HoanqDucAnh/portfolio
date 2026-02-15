@@ -41,7 +41,7 @@ export default function Home() {
 	const [isDesktop, setisDesktop] = useState(true);
 
 	const debouncedDimensionCalculator = useCallback(() => {
-		let timer: NodeJS.Timeout;
+		let timer: NodeJS.Timeout | undefined;
 		clearTimeout(timer);
 		timer = setTimeout(() => {
 			const isDesktopResult =

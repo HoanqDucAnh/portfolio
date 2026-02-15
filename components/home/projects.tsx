@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MENULINKS, PROJECTS, ProjectTypes } from "../../constants";
 import ProjectTile from "../common/project-tile";
 import { IDesktop } from "pages";
@@ -13,7 +13,7 @@ const CATEGORIES = [
 ];
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {
-	const targetSectionRef: MutableRefObject<HTMLDivElement> = useRef(null);
+	const targetSectionRef = useRef<HTMLDivElement>(null);
 	const [activeCategory, setActiveCategory] = useState("All");
 	const [isAnimating, setIsAnimating] = useState(false);
 

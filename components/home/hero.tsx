@@ -5,7 +5,7 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import { EMAIL, MENULINKS, SOCIAL_LINKS, TYPED_STRINGS } from "../../constants";
-import React, { MutableRefObject, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
 import Image from "next/image";
 import { gsap, Linear } from "gsap";
@@ -13,7 +13,8 @@ import Button, { ButtonTypes } from "../common/button";
 import HeroImage from "./hero-image";
 import Link from "next/link";
 
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps } from "firebase/app";
+
 import {
 	getFirestore,
 	doc,
@@ -33,7 +34,7 @@ const firebaseConfig = {
 	measurementId: "G-6T2HTBS4WQ",
 };
 
-const app = initializeApp(firebaseConfig);
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const VIEW_COUNT_CACHE_KEY = "portfolio_view_count";
@@ -120,12 +121,19 @@ const HeroSection = React.memo(() => {
 		countview(setViewCount);
 	}, []);
 
-	const typedSpanElement: MutableRefObject<HTMLSpanElement> = useRef(null);
-	const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
+	const typedSpanElement = useRef<HTMLSpanElement>(null);
+	const targetSection = useRef<HTMLDivElement>(null);
 
 	const initTypeAnimation = (
-		typedSpanElement: MutableRefObject<HTMLSpanElement>
+		typedSpanElement: React.RefObject<HTMLSpanElement | null>
 	): Typed => {
+		if (!typedSpanElement.current) return new Typed(document.createElement('span'), {
+			strings: TYPED_STRINGS,
+			typeSpeed: 50,
+			backSpeed: 50,
+			backDelay: 8000,
+			loop: true,
+		});
 		return new Typed(typedSpanElement.current, {
 			strings: TYPED_STRINGS,
 			typeSpeed: 50,
@@ -136,8 +144,9 @@ const HeroSection = React.memo(() => {
 	};
 
 	const initRevealAnimation = (
-		targetSection: MutableRefObject<HTMLDivElement>
+		targetSection: React.RefObject<HTMLDivElement | null>
 	): GSAPTimeline => {
+		if (!targetSection.current) return gsap.timeline();
 		const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
 		revealTl
 			.to(targetSection.current, { opacity: 1, duration: 2 })
@@ -175,7 +184,7 @@ const HeroSection = React.memo(() => {
 	);
 
 	const renderSocialLinks = (): React.ReactNode =>
-		Object.keys(SOCIAL_LINKS).map((el: keyof typeof SOCIAL_LINKS) => (
+		(Object.keys(SOCIAL_LINKS) as Array<keyof typeof SOCIAL_LINKS>).map((el) => (
 			<a
 				href={SOCIAL_LINKS[el]}
 				key={el}

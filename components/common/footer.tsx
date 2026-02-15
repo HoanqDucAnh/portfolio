@@ -10,7 +10,7 @@ import Button, { ButtonTypes } from "./button";
 
 const Footer = () => {
 	const renderSocialIcons = (): React.ReactNode => {
-		return Object.keys(SOCIAL_LINKS).map((el: keyof typeof SOCIAL_LINKS) => (
+		return (Object.keys(SOCIAL_LINKS) as Array<keyof typeof SOCIAL_LINKS>).map((el) => (
 			<a
 				href={SOCIAL_LINKS[el]}
 				key={el}

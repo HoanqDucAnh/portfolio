@@ -5,7 +5,7 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import { gsap, Linear } from "gsap";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { isSmallScreen, NO_MOTION_PREFERENCE_QUERY } from "pages";
 
@@ -17,14 +17,15 @@ const COLLABORATION_STYLE = {
 };
 
 const CollaborationSection = () => {
-	const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
-	const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
+	const quoteRef = useRef<HTMLDivElement>(null);
+	const targetSection = useRef<HTMLDivElement>(null);
 
 	const [willChange, setwillChange] = useState(false);
 
 	const initTextGradientAnimation = (
-		targetSection: MutableRefObject<HTMLDivElement>
+		targetSection: React.RefObject<HTMLDivElement | null>
 	): ScrollTrigger => {
+		if (!quoteRef.current || !targetSection.current) return ScrollTrigger.create({});
 		const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
 		timeline
 			.from(quoteRef.current, { opacity: 0, duration: 2 })
@@ -44,8 +45,9 @@ const CollaborationSection = () => {
 	};
 
 	const initSlidingTextAnimation = (
-		targetSection: MutableRefObject<HTMLDivElement>
+		targetSection: React.RefObject<HTMLDivElement | null>
 	) => {
+		if (!targetSection.current) return ScrollTrigger.create({});
 		const slidingTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
 
 		slidingTl

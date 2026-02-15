@@ -5,7 +5,7 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import { SKILLS } from "../../constants";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { IDesktop } from "pages";
@@ -58,12 +58,13 @@ const CERTIFICATE_STYLES = {
 };
 
 const CertificateSection = ({ isDesktop }: IDesktop) => {
-	const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
+	const targetSection = useRef<HTMLDivElement>(null);
 	const [willChange, setwillChange] = useState(false);
 
 	const initRevealAnimation = (
-		targetSection: MutableRefObject<HTMLDivElement>
+		targetSection: React.RefObject<HTMLDivElement | null>
 	): ScrollTrigger => {
+		if (!targetSection.current) return ScrollTrigger.create({});
 		const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
 		revealTl.from(
 			targetSection.current.querySelectorAll(".seq"),

@@ -4,8 +4,6 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import { avatar } from "@material-tailwind/react";
-
 export const METADATA = {
 	title: "Portfolio | Mark Pham",
 	description: "I bridge the gap between data and actionable insights",
@@ -111,7 +109,7 @@ export const TYPED_STRINGS = [
 	'Boston, MA'
 ];
 
-export const EMAIL = "minh.b.pham@tcu.edu@gmail.com";
+export const EMAIL = "minhbpham2003@gmail.com";
 
 export const SOCIAL_LINKS = {
 	linkedin: "https://www.linkedin.com/in/minhbphamm/",
@@ -398,7 +396,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
-		title: "Janurary 2024",
+		title: "January 2024",
 		size: ItemSize.LARGE,
 		shouldDrawLine: false,
 		alignment: Branch.LEFT,

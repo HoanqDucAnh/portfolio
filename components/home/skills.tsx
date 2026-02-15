@@ -6,7 +6,7 @@
 
 import { MENULINKS, SKILLS, COURSES } from "../../constants";
 import Image from "next/image";
-import { MutableRefObject, useEffect, useRef, useState, useCallback, memo } from "react";
+import { useEffect, useRef, useState, useCallback, memo } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { IDesktop } from "pages";
@@ -33,7 +33,7 @@ const SKILL_STYLES = {
 };
 
 const SkillsSection = ({ isDesktop }: IDesktop) => {
-	const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
+	const targetSection = useRef<HTMLDivElement>(null);
 	const [isVisible, setIsVisible] = useState(false);
 
 	// Simplified and more performant animation

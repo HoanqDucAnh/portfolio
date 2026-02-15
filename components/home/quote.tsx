@@ -5,19 +5,20 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import { gsap, Linear } from "gsap";
-import React, { MutableRefObject, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const QuoteSection = () => {
-	const quoteRef: MutableRefObject<HTMLDivElement> = useRef(null);
-	const targetSection: MutableRefObject<HTMLDivElement> = useRef(null);
+	const quoteRef = useRef<HTMLDivElement>(null);
+	const targetSection = useRef<HTMLDivElement>(null);
 
 	const [willChange, setwillChange] = useState(false);
 
 	const initQuoteAnimation = (
-		quoteRef: MutableRefObject<HTMLDivElement>,
-		targetSection: MutableRefObject<HTMLDivElement>
+		quoteRef: React.RefObject<HTMLDivElement | null>,
+		targetSection: React.RefObject<HTMLDivElement | null>
 	): ScrollTrigger => {
+		if (!quoteRef.current || !targetSection.current) return ScrollTrigger.create({});
 		const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
 		timeline
 			.from(quoteRef.current, { opacity: 0, duration: 2 })
