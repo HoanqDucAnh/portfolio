@@ -118,7 +118,7 @@ const CollaborationSection = () => {
 					href="https://www.linkedin.com/in/minhbphamm/"
 					target="_blank"
 					rel="noreferrer"
-					className="collab-btn inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#9146FF] text-gray-900 font-bold text-lg hover:bg-[#BF94FF] transition-all duration-300 hover:shadow-lg hover:shadow-[#9146FF]/30 hover:-translate-y-1"
+					className="collab-btn inline-flex items-center gap-2 px-8 py-3 rounded-full text-gray-900 font-bold text-lg transition-all duration-300 hover:-translate-y-1"
 				>
 					Let's Connect
 					<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">

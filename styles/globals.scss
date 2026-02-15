@@ -503,6 +503,15 @@ footer {
 	background-position: 100% 0;
 }
 
+.collab-btn {
+	background-color: #9146FF;
+	box-shadow: 0 10px 15px -3px rgba(145, 70, 255, 0.3);
+	&:hover {
+		background-color: #BF94FF;
+		box-shadow: 0 10px 15px -3px rgba(145, 70, 255, 0.4);
+	}
+}
+
 /* Glass-morphism utility */
 .glass {
 	background: rgba(17, 24, 39, 0.6);
