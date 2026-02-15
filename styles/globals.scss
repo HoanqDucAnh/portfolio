@@ -414,6 +414,53 @@ footer {
 		);
 }
 
+/* Orange theme for passion & startup pages */
+.theme-orange {
+	footer {
+		background: url("/footer-bg.svg"),
+			linear-gradient(
+				153.86deg,
+				#ff9a3c 0%,
+				#f27d0d 15.69%,
+				#c45e00 48.9%,
+				#f27d0d 95.52%
+			);
+	}
+
+	.text-strong {
+		background: linear-gradient(
+			90deg,
+			#ffffff 0%,
+			#ffffff 50%,
+			#ff9a3c 51%,
+			#f27d0d 100%
+		);
+		background-size: 200% 100%;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.text-gradient {
+		background: linear-gradient(90deg, #ff9a3c 0%, #f27d0d 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.cus-btn {
+		background: linear-gradient(90deg, #f27d0d 0%, #ff9a3c 50%, #f27d0d 100%),
+			linear-gradient(0deg, #ffffff, #ffffff);
+		background-size: 200% 100%;
+	}
+
+	.collab-btn {
+		background-color: #f27d0d !important;
+		&:hover {
+			background-color: #ff9a3c !important;
+			box-shadow: 0 10px 15px -3px rgba(242, 125, 13, 0.3) !important;
+		}
+	}
+}
+
 .section-heading {
 	@apply md:text-5xl text-4xl font-bold text-gradient w-fit;
 }
