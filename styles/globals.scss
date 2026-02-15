@@ -424,7 +424,7 @@ footer {
 				#f27d0d 15.69%,
 				#c45e00 48.9%,
 				#f27d0d 95.52%
-			);
+			) !important;
 	}
 
 	.text-strong {
@@ -434,22 +434,22 @@ footer {
 			#ffffff 50%,
 			#ff9a3c 51%,
 			#f27d0d 100%
-		);
-		background-size: 200% 100%;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
+		) !important;
+		background-size: 200% 100% !important;
+		-webkit-background-clip: text !important;
+		-webkit-text-fill-color: transparent !important;
 	}
 
 	.text-gradient {
-		background: linear-gradient(90deg, #ff9a3c 0%, #f27d0d 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
+		background: linear-gradient(90deg, #ff9a3c 0%, #f27d0d 100%) !important;
+		-webkit-background-clip: text !important;
+		-webkit-text-fill-color: transparent !important;
 	}
 
 	.cus-btn {
 		background: linear-gradient(90deg, #f27d0d 0%, #ff9a3c 50%, #f27d0d 100%),
-			linear-gradient(0deg, #ffffff, #ffffff);
-		background-size: 200% 100%;
+			linear-gradient(0deg, #ffffff, #ffffff) !important;
+		background-size: 200% 100% !important;
 	}
 
 	.collab-btn {
