@@ -185,7 +185,7 @@ const TimelineSection = (_props: IDesktop) => {
 	return (
 		<section
 			ref={sectionRef}
-			className="w-full relative select-none section-container py-8 flex flex-col"
+			className="w-full relative select-none section-container py-12 flex flex-col"
 			id={MENULINKS[3].ref}
 		>
 			{renderSectionTitle()}

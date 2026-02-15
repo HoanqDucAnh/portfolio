@@ -38,7 +38,7 @@ const CommentTile = (props: {
 						/>
 					</div>
 
-					<p className="text-base md:text-lg text-gray-300 leading-relaxed mb-8 italic text-left">
+					<p className="text-base md:text-lg text-gray-200 leading-relaxed mb-8 italic text-left">
 						"{props.text}"
 					</p>
 
@@ -83,7 +83,7 @@ const CommentSection = ({}: IDesktop) => {
 
 	return (
 		<section
-			className="w-full relative select-none section-container flex-col flex py-8 justify-center"
+			className="w-full relative select-none section-container flex-col flex py-12 justify-center"
 			id="comments"
 		>
 			<div className="flex flex-col inner-container">

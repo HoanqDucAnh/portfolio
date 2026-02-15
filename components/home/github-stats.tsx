@@ -137,7 +137,7 @@ const GitHubStats = memo(() => {
 		>
 			<div className="text-2xl mb-2 text-[#9146FF]">{icon}</div>
 			<div className="text-2xl font-bold text-white"><CountUp end={value} duration={2} separator="," /></div>
-			<div className="text-sm text-gray-400">{label}</div>
+			<div className="text-sm text-gray-300">{label}</div>
 		</div>
 	);
 

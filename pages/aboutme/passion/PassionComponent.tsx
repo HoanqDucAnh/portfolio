@@ -29,7 +29,7 @@ const DishCard = ({ image, title, subtitle, caption, description, reverse = fals
 		</div>
 		<div className="lg:w-1/2 w-full">
 			{subtitle && (
-				<span className="inline-block px-3 py-1 bg-[#f27d0d]/20 text-[#f27d0d] text-sm font-medium rounded-full mb-3">
+				<span className="inline-block px-3 py-1 bg-[#9146FF]/20 text-[#9146FF] text-sm font-medium rounded-full mb-3">
 					{subtitle}
 				</span>
 			)}
@@ -55,7 +55,7 @@ const CategoryTabs = ({ categories, activeCategory, onSelect }: CategoryTabProps
 				onClick={() => onSelect(category)}
 				className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
 					activeCategory === category
-						? 'bg-[#f27d0d] text-white shadow-lg shadow-[#f27d0d]/30'
+						? 'bg-[#9146FF] text-white shadow-lg shadow-[#9146FF]/30'
 						: 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
 				}`}
 			>
@@ -68,12 +68,12 @@ const CategoryTabs = ({ categories, activeCategory, onSelect }: CategoryTabProps
 const SectionDivider = ({ title, subtitle }: { title: string; subtitle?: string }) => (
 	<div className="text-center mb-12">
 		{subtitle && (
-			<span className="text-[#f27d0d] text-sm font-medium tracking-wider uppercase">{subtitle}</span>
+			<span className="text-[#9146FF] text-sm font-medium tracking-wider uppercase">{subtitle}</span>
 		)}
 		<h2 className="text-3xl md:text-5xl font-bold text-white mt-2">
 			{title}
 		</h2>
-		<div className="w-20 h-1 bg-gradient-to-r from-[#f27d0d] to-[#ff9a3c] mx-auto mt-4 rounded-full" />
+		<div className="w-20 h-1 bg-gradient-to-r from-[#9146FF] to-[#BF94FF] mx-auto mt-4 rounded-full" />
 	</div>
 );
 
@@ -98,11 +98,11 @@ export default function PassionComponent() {
 					/>
 				</div>
 				<div className="relative z-20 text-center px-4">
-					<p className="text-[#f27d0d] text-lg md:text-xl font-medium tracking-wider uppercase mb-4">
+					<p className="text-[#9146FF] text-lg md:text-xl font-medium tracking-wider uppercase mb-4">
 						Beyond the Code
 					</p>
 					<h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-						My Passion for <span className="text-[#f27d0d]">Cuisine</span>
+						My Passion for <span className="text-[#9146FF]">Cuisine</span>
 					</h1>
 					<div className="max-w-2xl mx-auto">
 						<blockquote className="text-xl md:text-2xl text-gray-200 italic">
@@ -136,7 +136,7 @@ export default function PassionComponent() {
 							description={
 								<p>
 									One of my favorite dishes to prepare at family gatherings and
-									anniversaries is <strong className="text-[#f27d0d]">Xa Xiu noodles</strong>. This traditional
+									anniversaries is <strong className="text-[#9146FF]">Xa Xiu noodles</strong>. This traditional
 									Vietnamese dish, made with egg noodles, tender char siu pork, and
 									quail eggs, embodies a world of nostalgic flavors. More than just
 									food, preparing meals is a way of showing my love, honoring family
@@ -195,7 +195,7 @@ export default function PassionComponent() {
 											seasoning to the sear to ensuring it's cooked to the perfect level of
 											doneness.
 										</p>
-										<blockquote className="border-l-4 border-[#f27d0d] pl-4 italic text-gray-400 my-4">
+										<blockquote className="border-l-4 border-[#9146FF] pl-4 italic text-gray-400 my-4">
 											"The greater the payoff, the greater the hardship." — Alex Hormozi
 										</blockquote>
 										<p>
@@ -280,7 +280,7 @@ export default function PassionComponent() {
 					<section className="mb-20">
 						<SectionDivider title="Italian Cuisine" subtitle="Pasta Perfection" />
 
-						<div className="bg-gradient-to-r from-[#f27d0d]/10 to-transparent rounded-2xl p-8 mb-12 border-l-4 border-[#f27d0d]">
+						<div className="bg-gradient-to-r from-[#9146FF]/10 to-transparent rounded-2xl p-8 mb-12 border-l-4 border-[#9146FF]">
 							<p className="text-lg text-gray-300 leading-relaxed">
 								Italian cuisine has always held a special place in my heart. The
 								simplicity, yet depth of flavor in Italian cooking is like an endless
@@ -354,15 +354,15 @@ export default function PassionComponent() {
 				{/* Closing Quote */}
 				<div className="py-20">
 					<div className="relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-3xl p-10 md:p-14 border border-gray-700/50 max-w-4xl mx-auto">
-						<div className="absolute -top-6 left-10 text-[#f27d0d] text-8xl font-serif opacity-50">"</div>
+						<div className="absolute -top-6 left-10 text-[#9146FF] text-8xl font-serif opacity-50">"</div>
 						<blockquote className="text-center relative z-10">
 							<p className="text-xl md:text-2xl lg:text-3xl text-gray-200 italic leading-relaxed">
 								Cooking is like love. It should be entered into with abandon or not at all.
 							</p>
 							<div className="mt-6 flex items-center justify-center gap-3">
-								<div className="w-12 h-px bg-[#f27d0d]"></div>
-								<p className="text-[#f27d0d] font-medium">Harriet Van Horne</p>
-								<div className="w-12 h-px bg-[#f27d0d]"></div>
+								<div className="w-12 h-px bg-[#9146FF]"></div>
+								<p className="text-[#9146FF] font-medium">Harriet Van Horne</p>
+								<div className="w-12 h-px bg-[#9146FF]"></div>
 							</div>
 						</blockquote>
 					</div>

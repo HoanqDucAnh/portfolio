@@ -78,7 +78,7 @@ table {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #6c3706;
+	background: #BF94FF;
 }
 
 th,
@@ -256,7 +256,7 @@ a {
 			-webkit-backdrop-filter: blur(0.625rem);
 			> div {
 				transform: scale(1);
-				transition-duration: 0.75s;
+				transition-duration: 0.4s;
 				> div {
 					opacity: 1;
 					transition: opacity 0.4s ease 0.4s;
@@ -323,8 +323,8 @@ a {
 							90deg,
 							#ffffff 0%,
 							#ffffff 50%,
-							#6dd5ed 51%,
-							#2193b0 100%
+							#BF94FF 51%,
+							#9146FF 100%
 						);
 						background-size: 200% 100%;
 						-webkit-background-clip: text;
