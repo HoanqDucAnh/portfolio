@@ -63,18 +63,16 @@ table {
 }
 
 ::-webkit-scrollbar {
-	width: 10px;
+	width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-	background: #282a36;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
+	background: #1a1b26;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #9146FF;
-	border-radius: 5px;
+	background: rgba(145, 70, 255, 0.6);
+	border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -204,12 +202,12 @@ html {
 
 ::-moz-selection {
 	color: white;
-	background: black;
+	background: #9146FF;
 }
 
 ::selection {
 	color: white;
-	background: black;
+	background: #9146FF;
 }
 
 .section-container {
@@ -349,7 +347,8 @@ a {
 		transform-origin: left;
 		will-change: transform;
 		transform: scaleX(0);
-		@apply w-full bg-white;
+		@apply w-full;
+		background: linear-gradient(90deg, #9146FF 0%, #BF94FF 100%);
 	}
 }
 

@@ -34,6 +34,10 @@ const StatCard = ({ value, label, icon }: { value: string; label: string; icon: 
 	</div>
 );
 
+const SectionDivider = () => (
+	<div className="h-px bg-gradient-to-r from-transparent via-[#f27d0d]/20 to-transparent" />
+);
+
 export default function StartupComponent() {
 	const teamMembers: TeamMemberProps[] = [
 		{ name: "Linh Nguyen", university: "Washington and Lee University", sat: "1550" },
@@ -96,6 +100,8 @@ export default function StartupComponent() {
 				</div>
 			</div>
 
+			<SectionDivider />
+
 			{/* Full-width Banner */}
 			<div className="w-full mb-20 relative z-10">
 				<Image
@@ -107,6 +113,8 @@ export default function StartupComponent() {
 					layout="responsive"
 				/>
 			</div>
+
+			<SectionDivider />
 
 			{/* Quote */}
 			<div className="max-w-4xl mx-auto px-4 mb-24 relative z-10">
@@ -125,6 +133,8 @@ export default function StartupComponent() {
 					</blockquote>
 				</div>
 			</div>
+
+			<SectionDivider />
 
 			{/* Founder Section */}
 			<div className="max-w-7xl mx-auto px-4 mb-24 relative z-10">
@@ -266,6 +276,8 @@ export default function StartupComponent() {
 					</div>
 				</div>
 			</div>
+
+			<SectionDivider />
 
 			{/* CTA */}
 			<div className="relative z-10 py-24">

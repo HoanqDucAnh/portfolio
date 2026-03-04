@@ -34,7 +34,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 	const renderSectionTitle = (): React.ReactNode => (
 		<div className="flex flex-col inner-container">
 			<h1 className="section-heading seq">My Works</h1>
-			<h2 className="text-xl md:text-2xl md:max-w-3xl w-full seq mt-2 text-gray-300">
+			<h2 className="text-xl md:text-2xl md:max-w-3xl w-full seq mt-2 text-gray-200">
 				My Friday nights? Debugging ETL pipelines at 2 AM and arguing with SQL
 				queries. Some call it sad, I call it living the dream
 			</h2>
@@ -43,6 +43,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 
 	const renderStats = (): React.ReactNode => (
 		<div className="w-full my-8 seq relative z-10">
+			<h2 className="section-heading mb-6">My Activity</h2>
 			<div className="flex flex-col gap-6">
 				<GitHubStats />
 				<WakatimeStats />

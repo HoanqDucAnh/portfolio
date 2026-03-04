@@ -113,7 +113,7 @@ const CommentSection = ({}: IDesktop) => {
 					</button>
 
 					{/* Slides Container */}
-					<div className="relative min-h-[620px]">
+					<div className="relative min-h-[420px]">
 						{COMMENTS.map((comment, index) => (
 							<CommentTile
 								key={index}
@@ -127,15 +127,20 @@ const CommentSection = ({}: IDesktop) => {
 					</div>
 				</div>
 
+				{/* Slide Counter */}
+				<div className="text-center text-sm text-gray-400 mt-6">
+					{currentIndex + 1} / {totalSlides}
+				</div>
+
 				{/* Navigation Dots */}
-				<div className="flex justify-center gap-3 mt-6">
+				<div className="flex justify-center gap-3 mt-3">
 					{COMMENTS.map((_, index) => (
 						<button
 							key={index}
 							onClick={() => goToSlide(index)}
-							className={`w-3 h-3 rounded-full transition-all duration-300 ${
+							className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${
 								index === currentIndex
-									? "bg-[#9146FF] w-8"
+									? "bg-[#9146FF] w-10"
 									: "bg-gray-600 hover:bg-gray-500"
 							}`}
 							aria-label={`Go to testimonial ${index + 1}`}

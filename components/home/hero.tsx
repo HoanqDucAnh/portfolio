@@ -140,7 +140,7 @@ const HeroSection = React.memo(() => {
 		if (!targetSection.current) return gsap.timeline();
 		const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
 		revealTl
-			.to(targetSection.current, { opacity: 1, duration: 2 })
+			.to(targetSection.current, { opacity: 1, duration: 0.8 })
 			.from(
 				targetSection.current.querySelectorAll(".seq"),
 				{ opacity: 0, duration: 0.5, stagger: 0.5 },
@@ -242,7 +242,7 @@ const HeroSection = React.memo(() => {
 			className={HERO_STYLES.SECTION}
 			id={heroSectionRef}
 			ref={targetSection}
-			style={{ opacity: 0 }}
+			style={{ opacity: 0.05 }}
 		>
 			{renderHeroContent()}
 			{renderBackgroundImage()}

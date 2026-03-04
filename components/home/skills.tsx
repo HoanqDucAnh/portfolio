@@ -115,7 +115,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						style={{ transitionDelay: `${index * 50}ms` }}
 					>
 						<Tooltip text={skill}>
-							<div className="rounded-xl p-2 hover:bg-gray-800/50 transition-all duration-200 hover:shadow-lg hover:shadow-[#9146FF]/5">
+							<div className="flex flex-col items-center rounded-xl p-2 hover:bg-gray-800/50 transition-all duration-200 hover:shadow-lg hover:shadow-[#9146FF]/5">
 								<Image
 									src={getSkillImagePath(skill)}
 									alt={skill}
@@ -125,6 +125,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 									loading={isPriority ? "eager" : "lazy"}
 									priority={isPriority}
 								/>
+								<span className="text-xs text-gray-400 mt-1 text-center truncate max-w-[7rem]">{skill}</span>
 							</div>
 						</Tooltip>
 					</div>
