@@ -44,8 +44,8 @@ export default function Home() {
 	const [isDesktop, setisDesktop] = useState(true);
 
 	const debouncedDimensionCalculator = useCallback(() => {
-		let timer: NodeJS.Timeout | undefined;
-		clearTimeout(timer);
+		let timer: ReturnType<typeof setTimeout> | undefined;
+		if (timer) clearTimeout(timer);
 		timer = setTimeout(() => {
 			const isDesktopResult =
 				typeof window.orientation === "undefined" &&
