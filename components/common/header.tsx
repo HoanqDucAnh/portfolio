@@ -16,9 +16,11 @@ const Header = () => {
 	return (
 		<header className="w-full fixed top-0 py-8 select-none z-50 bg-gradient-to-b from-gray-900 to-transparent">
 			<div className="flex justify-between section-container">
-				<a href="/#home" className="link">
-					<Image src="/logo.svg" alt="Logo" width={22} height={22} />
-				</a>
+				<Link href="/#home">
+					<a className="link">
+						<Image src="/logo.svg" alt="Logo" width={22} height={22} />
+					</a>
+				</Link>
 				<div className="hidden md:flex items-center justify-center">
 					{NAVBARITEMS.map((item: any) => (
 						<a
