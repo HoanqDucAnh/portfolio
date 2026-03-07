@@ -168,7 +168,7 @@ const TimelineSection = (_props: IDesktop) => {
 									layout="fill"
 									objectFit="cover"
 									className="transition-transform duration-500 group-hover:scale-105"
-									priority
+									loading="eager"
 								/>
 								{/* Permanent overlay */}
 								<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>

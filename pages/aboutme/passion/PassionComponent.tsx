@@ -18,8 +18,7 @@ const DishCard = ({ image, title, subtitle, caption, description, reverse = fals
 					src={image}
 					width={600}
 					height={400}
-					quality={100}
-					loading="lazy"
+						loading="lazy"
 					alt={title}
 					className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
 				/>
@@ -239,8 +238,7 @@ export default function PassionComponent() {
 											src={item.image}
 											width={400}
 											height={300}
-											quality={100}
-											loading="lazy"
+																		loading="lazy"
 											alt={item.title}
 											className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
 										/>

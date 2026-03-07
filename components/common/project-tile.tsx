@@ -70,7 +70,7 @@ const ProjectTile = ({
 						layout="fill"
 						objectFit="cover"
 						className="transition-transform duration-500 group-hover:scale-110"
-						priority
+						loading="eager"
 					/>
 					{/* Category Badge */}
 					<div className="absolute top-4 left-4 z-20">

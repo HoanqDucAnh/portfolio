@@ -75,7 +75,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					height={700}
 					width={320}
 					alt="pattern"
-					priority
+					loading="lazy"
 				/>
 			</div>
 			<div className="absolute left-0 -bottom-3.5 w-1/12 max-w-xs md:block hidden">
@@ -84,7 +84,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 					height={335}
 					width={140}
 					alt="pattern"
-					priority
+					loading="lazy"
 				/>
 			</div>
 		</>
@@ -100,7 +100,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 	const renderSkillColumn = useCallback((
 		title: string,
 		skills: string[],
-		isPriority: boolean = false
+		_isPriority: boolean = false
 	): React.ReactNode => (
 		<div
 			key={title}
@@ -122,8 +122,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 									width={76}
 									height={76}
 									className="skill hover:scale-110 transition-transform duration-200 w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40 2xl:w-44 2xl:h-44"
-									loading={isPriority ? "eager" : "lazy"}
-									priority={isPriority}
+									loading="lazy"
 								/>
 								<span className="text-xs text-gray-400 mt-1 text-center truncate max-w-[7rem]">{skill}</span>
 							</div>
