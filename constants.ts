@@ -377,6 +377,25 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
+		title: "May 2025",
+		size: ItemSize.LARGE,
+		shouldDrawLine: false,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "Data Mentor - <a class='underline underline-offset-2' href='https://acementorship.com/' target='_blank' rel='noopener noreferrer'><u>Ace Mentorships</u></a>",
+		size: ItemSize.SMALL,
+		subtitle:
+			"Mentored 5 reports in data engineering, ML, and stats. Coached them through internship and new grad recruiting",
+		location: "Remote",
+		image: "/timeline/Ace.png",
+		slideImage: "/timeline/Ace.png",
+		shouldDrawLine: true,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
 		title: "June 2024",
 		size: ItemSize.LARGE,
 		shouldDrawLine: false,
