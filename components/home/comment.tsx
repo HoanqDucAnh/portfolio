@@ -13,17 +13,15 @@ const CommentTile = (props: {
 }) => {
 	return (
 		<div
-			className={`absolute inset-0 transition-all duration-500 ease-in-out ${
-				props.isActive
+			className={`absolute inset-0 transition-all duration-500 ease-in-out ${props.isActive
 					? "opacity-100 translate-x-0 visible"
 					: "opacity-0 translate-x-8 pointer-events-none invisible"
-			}`}
+				}`}
 		>
-			<div className={`relative p-8 md:p-10 mx-auto max-w-3xl rounded-2xl border transition-all duration-500 ${
-				props.isActive
+			<div className={`relative p-8 md:p-10 mx-auto max-w-3xl rounded-2xl border transition-all duration-500 ${props.isActive
 					? "bg-gray-900/90 backdrop-blur-sm border-[#9146FF]/30 shadow-lg shadow-[#9146FF]/5"
 					: "bg-gray-900 border-gray-800"
-			}`}>
+				}`}>
 				<FaQuoteLeft className="absolute top-4 left-6 text-6xl text-[#9146FF] opacity-10" />
 
 				<div className="flex flex-col">
@@ -52,7 +50,7 @@ const CommentTile = (props: {
 	);
 };
 
-const CommentSection = ({}: IDesktop) => {
+const CommentSection = ({ }: IDesktop) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isPaused, setIsPaused] = useState(false);
 
@@ -113,7 +111,7 @@ const CommentSection = ({}: IDesktop) => {
 					</button>
 
 					{/* Slides Container */}
-					<div className="relative min-h-[420px]">
+					<div className="relative min-h-[560px] mb-4">
 						{COMMENTS.map((comment, index) => (
 							<CommentTile
 								key={index}
@@ -138,11 +136,10 @@ const CommentSection = ({}: IDesktop) => {
 						<button
 							key={index}
 							onClick={() => goToSlide(index)}
-							className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${
-								index === currentIndex
+							className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${index === currentIndex
 									? "bg-[#9146FF] w-10"
 									: "bg-gray-600 hover:bg-gray-500"
-							}`}
+								}`}
 							aria-label={`Go to testimonial ${index + 1}`}
 						/>
 					))}
