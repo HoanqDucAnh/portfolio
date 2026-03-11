@@ -10,6 +10,7 @@ const CATEGORIES = [
 	{ value: ProjectTypes.ENDTOEND, label: "Data Pipeline" },
 	{ value: ProjectTypes.STATISTICSML, label: "ML & Statistics" },
 	{ value: ProjectTypes.BIDASHBOARDVIZ, label: "BI & Dashboards" },
+	{ value: ProjectTypes.CLOUDINFRA, label: "Cloud & Infra" },
 ];
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {

@@ -92,7 +92,10 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 
 	// Helper function to get the correct file extension for each skill
 	const getSkillImagePath = useCallback((skill: string): string => {
-		// All skills now use SVG format
+		const pngSkills = ["Apache Iceberg", "Delta Lake", "Trino", "Flink", "S3", "EC2", "Lambda", "MWAA", "VPC", "Spark Streaming", "Kinesis Firehose", "PubSub", "Looker", "Hadoop", "Hive"];
+		if (pngSkills.includes(skill)) {
+			return `/skills/1st/${skill}.png`;
+		}
 		return `/skills/1st/${skill}.svg`;
 	}, []);
 
@@ -107,7 +110,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 			className={`p-6 rounded-2xl border border-gray-800/50 bg-gray-900/30 backdrop-blur-sm hover:border-gray-700/50 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
 		>
 			<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
-			<div className="flex flex-wrap gap-3 sm:gap-4 lg:gap-5 xl:gap-6 2xl:gap-8">
+			<div className="grid grid-cols-5 gap-2 sm:gap-3 lg:gap-3 xl:gap-4 2xl:gap-5">
 				{skills.map((skill, index) => (
 					<div
 						key={skill}
@@ -121,7 +124,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 									alt={skill}
 									width={76}
 									height={76}
-									className="skill hover:scale-110 transition-transform duration-200 w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40 2xl:w-44 2xl:h-44"
+									className="skill hover:scale-110 transition-transform duration-200 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32"
 									loading="lazy"
 								/>
 								<span className="text-xs text-gray-400 mt-1 text-center truncate max-w-[7rem]">{skill}</span>
@@ -150,12 +153,16 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8 xl:gap-12 2xl:gap-16">
 						{renderSkillColumn("Business Intelligence", SKILLS["Business Intelligence"], true)}
-						{renderSkillColumn("Data Warehousing", SKILLS["Data Warehousing"], true)}
+						{renderSkillColumn("Warehouse and Lakehouse", SKILLS["Warehouse and Lakehouse"], true)}
 					</div>
 
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8 xl:gap-12 2xl:gap-16">
-						{renderSkillColumn("Data Processing and Transformation", SKILLS["Data Processing and Transformation"], true)}
+						{renderSkillColumn("Data Processing", SKILLS["Data Processing"], true)}
 						{renderSkillColumn("Orchestration", SKILLS["Orchestration"], true)}
+					</div>
+					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8 xl:gap-12 2xl:gap-16">
+						{renderSkillColumn("Streaming", SKILLS["Streaming"], true)}
+						{renderSkillColumn("Cloud (AWS)", SKILLS["Cloud (AWS)"], true)}
 					</div>
 					<div className="grid lg:grid-cols-2 md:grid-cols-1 mt-10 gap-8 xl:gap-12 2xl:gap-16">
 						{renderSkillColumn("Data Integration", SKILLS["Data Integration"], true)}

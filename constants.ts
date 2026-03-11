@@ -134,6 +134,7 @@ export const ProjectTypes = {
 	ENDTOEND: "End-to-End Data Analytics",
 	BIDASHBOARDVIZ: "BI - Dashboard - Visualization",
 	STATISTICSML: "Statistics - ML - AI Project",
+	CLOUDINFRA: "Cloud - Infrastructure",
 }
 
 export const PROJECTS: IProject[] = [
@@ -147,6 +148,36 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#1e3a8a", "#3b82f6"],
 		url: "https://github.com/MarkPhamm/local_warehouse",
 		tech: ["Dbt", "prefect", "duckdb", "dlt", "Github"],
+	},
+	{
+		name: "Local Streaming Pipeline",
+		category: ProjectTypes.ENDTOEND,
+		image: "/projects/streaming_pipeline.png",
+		blurImage: "/projects/streaming_pipeline.png",
+		description: "Real-time analytics pipeline ingesting crypto prices via Kafka, processing with Spark/Flink, and visualizing in ClickHouse dashboards.",
+		gradient: ["#0f2027", "#2c5364"],
+		url: "https://github.com/MarkPhamm/local_streaming_pipeline",
+		tech: ["Kafka", "Spark", "Flink", "ClickHouse", "FastAPI"],
+	},
+	{
+		name: "Local Lakehouse Pipeline",
+		category: ProjectTypes.ENDTOEND,
+		image: "/projects/lakehouse_pipeline.png",
+		blurImage: "/projects/lakehouse_pipeline.png",
+		description: "Local lakehouse architecture processing NYC taxi data through a medallion pattern using Dagster, MinIO, Iceberg, Trino, and dbt.",
+		gradient: ["#1a1a2e", "#16213e"],
+		url: "https://github.com/MarkPhamm/local_lakehouse_pipeline",
+		tech: ["Dagster", "MinIO", "Apache Iceberg", "Trino", "Dbt"],
+	},
+	{
+		name: "AWS Infrastructure",
+		category: ProjectTypes.CLOUDINFRA,
+		image: "/projects/aws_infra.png",
+		blurImage: "/projects/aws_infra.png",
+		description: "AWS data engineering infrastructure with Terraform — VPC, MWAA Airflow, S3, EC2, and GitHub Actions OIDC CI/CD.",
+		gradient: ["#1a0a2e", "#ff9900"],
+		url: "https://github.com/MarkPhamm/AWS",
+		tech: ["S3", "EC2", "Lambda", "MWAA", "Terraform"],
 	},
 	{
 		name: "Consumer Complaint Pipeline",
@@ -267,37 +298,57 @@ export const SKILLS = {
 		"PowerBI",
 		"Tableau",
 		"Mode",
-		"Hex"
+		"Hex",
+		"Looker"
 	],
-	"Data Warehousing": [
+	"Warehouse and Lakehouse": [
 		"Snowflake",
 		"AWS Redshift",
-		"Google Bigquery",
-		"Databricks"
+		"Databricks",
+		"Apache Iceberg",
+		"Delta Lake"
 	],
 	"Data Integration": [
 		"Airbyte",
 		"Dlt",
 		"Fivetran",
-		"Stich"
+		"Stich",
+		"alteryx"
 	],
 	"Orchestration": [
 		"Apache Airflow",
 		"Dagster",
 		"MageAI",
-		"Orchestra"
-	],
-	"Data Processing and Transformation": [
-		"dbt",
-		"Spark",
-		"Kafka",
+		"Orchestra",
 		"Astronomer"
+	],
+	"Data Processing": [
+		"dbt",
+		"Trino",
+		"Spark",
+		"Hive",
+		"Hadoop"
+	],
+	"Streaming": [
+		"Kafka",
+		"Flink",
+		"Spark Streaming",
+		"Kinesis Firehose",
+		"PubSub"
+	],
+	"Cloud (AWS)": [
+		"S3",
+		"EC2",
+		"Lambda",
+		"MWAA",
+		"VPC"
 	],
 	"DevOps": [
 		"Docker",
 		"Kubernetes",
 		"Github",
-		"Terraform"
+		"Terraform",
+		"AWS"
 	],
 
 	certified: [

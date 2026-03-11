@@ -10,6 +10,8 @@ const getCategoryLabel = (category: string): string => {
 			return "BI & Dashboard";
 		case ProjectTypes.STATISTICSML:
 			return "ML & Statistics";
+		case ProjectTypes.CLOUDINFRA:
+			return "Cloud & Infra";
 		default:
 			return category;
 	}
@@ -23,6 +25,8 @@ const getCategoryColor = (category: string): string => {
 			return "bg-gray-900 text-orange-400";
 		case ProjectTypes.STATISTICSML:
 			return "bg-purple-600 text-white";
+		case ProjectTypes.CLOUDINFRA:
+			return "bg-orange-600 text-white";
 		default:
 			return "bg-gray-600 text-white";
 	}
@@ -124,7 +128,7 @@ const ProjectTile = ({
 								className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-800/80 border border-gray-700/50"
 							>
 								<Image
-									src={`/projects/tech/${techItem}.svg`}
+									src={`/projects/tech/${techItem}.${["S3", "EC2", "Lambda", "MWAA", "Terraform", "Dagster", "Flink", "Apache Iceberg", "MinIO", "Spark", "Trino", "ClickHouse", "FastAPI"].includes(techItem) ? "png" : "svg"}`}
 									alt={techItem}
 									height={18}
 									width={18}
