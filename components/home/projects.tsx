@@ -6,8 +6,7 @@ import GitHubStats from "./github-stats";
 import WakatimeStats from "./wakatime-stats";
 
 const CATEGORIES = [
-	{ value: "All", label: "All" },
-	{ value: ProjectTypes.ENDTOEND, label: "Data Pipeline" },
+{ value: ProjectTypes.ENDTOEND, label: "Data Pipeline" },
 	{ value: ProjectTypes.STATISTICSML, label: "ML & Statistics" },
 	{ value: ProjectTypes.BIDASHBOARDVIZ, label: "BI & Dashboards" },
 	{ value: ProjectTypes.CLOUDINFRA, label: "Cloud & Infra" },
@@ -15,7 +14,7 @@ const CATEGORIES = [
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {
 	const targetSectionRef = useRef<HTMLDivElement>(null);
-	const [activeCategory, setActiveCategory] = useState("All");
+	const [activeCategory, setActiveCategory] = useState(ProjectTypes.ENDTOEND);
 	const [isAnimating, setIsAnimating] = useState(false);
 
 	const handleCategoryChange = (category: string) => {
@@ -28,8 +27,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 	};
 
 	const filteredProjects = PROJECTS.filter(
-		(project) =>
-			activeCategory === "All" || project.category === activeCategory
+		(project) => project.category === activeCategory
 	);
 
 	const renderSectionTitle = (): React.ReactNode => (
@@ -55,9 +53,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 	const renderCategoryFilters = (): React.ReactNode => (
 		<div className="flex flex-wrap gap-3 mt-8 mb-10">
 			{CATEGORIES.map((category) => {
-				const count = category.value === "All"
-					? PROJECTS.length
-					: PROJECTS.filter((p) => p.category === category.value).length;
+				const count = PROJECTS.filter((p) => p.category === category.value).length;
 				return (
 					<button
 						key={category.value}

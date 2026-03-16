@@ -140,6 +140,36 @@ export const ProjectTypes = {
 export const PROJECTS: IProject[] = [
 	// Data Pipeline projects
 	{
+		name: "Skytrax Reviews Extract & Load",
+		category: ProjectTypes.ENDTOEND,
+		image: "/projects/skytrax_2.png",
+		blurImage: "/projects/skytrax_2.png",
+		description: "Production-grade pipeline scraping 160K+ airline reviews with 26 parallel Airflow tasks, staging in S3, and loading into Snowflake.",
+		gradient: ["#1b1b1b", "#d8d8d8"],
+		url: "https://github.com/MarkPhamm/skytrax_reviews_extract_load",
+		tech: ["Apache Airflow", "python", "S3", "Snowflake", "Terraform"],
+	},
+	{
+		name: "Skytrax Reviews Transformation",
+		category: ProjectTypes.ENDTOEND,
+		image: "/projects/skytrax.png",
+		blurImage: "/projects/skytrax.png",
+		description: "Kimball star-schema transformation layer with dbt, slim CI/CD via GitHub Actions, OIDC auth, and auto-deployed dbt docs on CloudFront.",
+		gradient: ["#1b1b1b", "#4a90d9"],
+		url: "https://github.com/MarkPhamm/skytrax_reviews_transformation",
+		tech: ["Dbt", "Snowflake", "Terraform", "Github", "Apache Airflow"],
+	},
+	{
+		name: "Consumer Complaint Pipeline",
+		category: ProjectTypes.ENDTOEND,
+		image: "/projects/consumer.png",
+		blurImage: "/projects/consumer.png",
+		description: "Scalable data pipeline processing consumer complaints with Airflow orchestration, dbt transformations, and Snowflake storage.",
+		gradient: ["#0a4c6a", "#1b7fa1"],
+		url: "https://github.com/MarkPhamm/consumer_complaint_pipeline",
+		tech: ["python", "Apache Airflow", "Dbt", "Snowflake", "Docker"],
+	},
+	{
 		name: "Local Warehouse",
 		category: ProjectTypes.ENDTOEND,
 		image: "/projects/local_elt2.png",
@@ -178,26 +208,6 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#1a0a2e", "#ff9900"],
 		url: "https://github.com/MarkPhamm/AWS",
 		tech: ["S3", "EC2", "Lambda", "MWAA", "Terraform"],
-	},
-	{
-		name: "Consumer Complaint Pipeline",
-		category: ProjectTypes.ENDTOEND,
-		image: "/projects/consumer.png",
-		blurImage: "/projects/consumer.png",
-		description: "Scalable data pipeline processing consumer complaints with Airflow orchestration, dbt transformations, and Snowflake storage.",
-		gradient: ["#0a4c6a", "#1b7fa1"],
-		url: "https://github.com/MarkPhamm/consumer_complaint_pipeline",
-		tech: ["python", "Apache Airflow", "Dbt", "Snowflake", "Docker"],
-	},
-	{
-		name: "Skytrax Review Pipeline",
-		category: ProjectTypes.ENDTOEND,
-		image: "/projects/skytrax.png",
-		blurImage: "/projects/skytrax.png",
-		description: "Airline review analytics pipeline extracting Skytrax data, transforming with dbt, and visualizing insights in Mode.",
-		gradient: ["#1b1b1b", "#d8d8d8"],
-		url: "https://github.com/MarkPhamm/British-Airway",
-		tech: ["python", "Snowflake", "Dbt", "Mode Reporting", "Apache Airflow"],
 	},
 	// ML & Statistics projects
 	{
