@@ -12,6 +12,8 @@ const getCategoryLabel = (category: string): string => {
 			return "ML & Statistics";
 		case ProjectTypes.CLOUDINFRA:
 			return "Cloud & Infra";
+		case ProjectTypes.LEARNING:
+			return "Learning";
 		default:
 			return category;
 	}
@@ -27,6 +29,8 @@ const getCategoryColor = (category: string): string => {
 			return "bg-purple-600 text-white";
 		case ProjectTypes.CLOUDINFRA:
 			return "bg-orange-600 text-white";
+		case ProjectTypes.LEARNING:
+			return "bg-green-600 text-white";
 		default:
 			return "bg-gray-600 text-white";
 	}

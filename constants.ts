@@ -135,6 +135,7 @@ export const ProjectTypes = {
 	BIDASHBOARDVIZ: "BI - Dashboard - Visualization",
 	STATISTICSML: "Statistics - ML - AI Project",
 	CLOUDINFRA: "Cloud - Infrastructure",
+	LEARNING: "Learning",
 }
 
 export const PROJECTS: IProject[] = [
@@ -209,6 +210,16 @@ export const PROJECTS: IProject[] = [
 		url: "https://github.com/MarkPhamm/AWS",
 		tech: ["S3", "EC2", "Lambda", "MWAA", "Terraform"],
 	},
+	{
+		name: "Airflow MWAA CI/CD",
+		category: ProjectTypes.CLOUDINFRA,
+		image: "/projects/amazon_mwaa.png",
+		blurImage: "/projects/amazon_mwaa.png",
+		description: "CI/CD pipeline for Apache Airflow on AWS MWAA — GitHub Actions linting, OIDC auth, and automated DAG syncing to S3.",
+		gradient: ["#1a0a2e", "#ff9900"],
+		url: "https://github.com/MarkPhamm/airflow_mwaa_CICD",
+		tech: ["MWAA", "Github", "S3", "Terraform", "Apache Airflow"],
+	},
 	// ML & Statistics projects
 	{
 		name: "Streamlit Statistics App",
@@ -240,6 +251,37 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#f2ece4", "#09091a"],
 		url: "https://mavenshowcase.com/project/19447",
 		tech: ["PowerBI", "alteryx", "excel", "powerquery", "Microsoft SQL Server"],
+	},
+	{
+		name: "EaseMyTrip Airline Dashboard",
+		category: ProjectTypes.BIDASHBOARDVIZ,
+		image: "/projects/easemytrip.png",
+		blurImage: "/projects/easemytrip.png",
+		description: "Interactive airline pricing dashboard analyzing EaseMyTrip flight data with Power BI visualizations and travel insights.",
+		gradient: ["#1a2a6c", "#b21f1f"],
+		url: "https://mavenshowcase.com/project/19418",
+		tech: ["PowerBI", "excel", "powerquery", "Microsoft SQL Server"],
+	},
+	// Learning projects
+	{
+		name: "LeetCode Solutions",
+		category: ProjectTypes.LEARNING,
+		image: "/projects/leetcode.png",
+		blurImage: "/projects/leetcode.png",
+		description: "489+ LeetCode solutions in Python and SQL covering arrays, dynamic programming, graphs, and database queries.",
+		gradient: ["#1a1a2e", "#ffa116"],
+		url: "https://github.com/MarkPhamm/Leetcode",
+		tech: ["python", "PostgreSQL"],
+	},
+	{
+		name: "TensorTonic Solutions",
+		category: ProjectTypes.LEARNING,
+		image: "/projects/tensortonic.png",
+		blurImage: "/projects/tensortonic.png",
+		description: "ML and deep learning fundamentals implemented from scratch — neural networks, loss functions, linear algebra, and statistics.",
+		gradient: ["#1a1a2e", "#e94560"],
+		url: "https://github.com/MarkPhamm/TensorTonic-Solutions",
+		tech: ["python"],
 	},
 	// {
 	// 	name: "Alcon Competitors Analysis",
