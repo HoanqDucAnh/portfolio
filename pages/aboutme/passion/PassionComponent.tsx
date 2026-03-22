@@ -1,5 +1,37 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Typed from "typed.js";
+
+const ScrollReveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
+	const ref = useRef<HTMLDivElement>(null);
+	const [isVisible, setIsVisible] = useState(false);
+
+	useEffect(() => {
+		const el = ref.current;
+		if (!el) return;
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					setIsVisible(true);
+					observer.unobserve(el);
+				}
+			},
+			{ threshold: 0.15 }
+		);
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, []);
+
+	return (
+		<div
+			ref={ref}
+			className={`transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+			style={{ transitionDelay: `${delay}ms` }}
+		>
+			{children}
+		</div>
+	);
+};
 
 interface DishCardProps {
 	image: string;
@@ -11,33 +43,35 @@ interface DishCardProps {
 }
 
 const DishCard = ({ image, title, subtitle, caption, description, reverse = false }: DishCardProps) => (
-	<div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 items-center`}>
-		<div className="lg:w-1/2 w-full group">
-			<div className="relative overflow-hidden rounded-2xl shadow-2xl">
-				<Image
-					src={image}
-					width={600}
-					height={400}
+	<ScrollReveal>
+		<div className={`grid grid-cols-1 lg:grid-cols-2 gap-6`}>
+			<div className={`group ${reverse ? 'lg:order-2' : ''}`}>
+				<div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-[4/3]">
+					<Image
+						src={image}
+						layout="fill"
+						objectFit="cover"
 						loading="lazy"
-					alt={title}
-					className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-				/>
-				<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+						alt={title}
+						className="transition-transform duration-500 group-hover:scale-105"
+					/>
+					<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+				</div>
+				<p className="text-sm text-gray-400 italic text-center mt-3">{caption}</p>
 			</div>
-			<p className="text-sm text-gray-400 italic text-center mt-3">{caption}</p>
-		</div>
-		<div className="lg:w-1/2 w-full">
-			{subtitle && (
-				<span className="inline-block px-3 py-1 bg-[#f27d0d]/20 text-[#f27d0d] text-sm font-medium rounded-full mb-3">
-					{subtitle}
-				</span>
-			)}
-			<h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{title}</h3>
-			<div className="text-gray-300 leading-relaxed space-y-4">
-				{description}
+			<div className={`${reverse ? 'lg:order-1' : ''}`}>
+				{subtitle && (
+					<span className="inline-block px-3 py-1 bg-[#f27d0d]/20 text-[#f27d0d] text-sm font-medium rounded-full mb-3">
+						{subtitle}
+					</span>
+				)}
+				<h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{title}</h3>
+				<div className="text-gray-300 text-lg md:text-xl leading-relaxed space-y-4">
+					{description}
+				</div>
 			</div>
 		</div>
-	</div>
+	</ScrollReveal>
 );
 
 interface CategoryTabProps {
@@ -64,8 +98,66 @@ const CategoryTabs = ({ categories, activeCategory, onSelect }: CategoryTabProps
 	</div>
 );
 
+const PASSION_TYPED_STRINGS = [
+	'The joy is in cooking for <span style="color:#f27d0d">others</span>',
+	'Every dish tells a <span style="color:#f27d0d">story</span>',
+	'Patience, precision, <span style="color:#f27d0d">passion</span>',
+];
+
+const PassionHero = () => {
+	const typedRef = useRef<HTMLSpanElement>(null);
+	const heroRef = useRef<HTMLDivElement>(null);
+	const [loaded, setLoaded] = useState(false);
+
+	useEffect(() => {
+		// Trigger fade-in
+		const timer = setTimeout(() => setLoaded(true), 100);
+		return () => clearTimeout(timer);
+	}, []);
+
+	useEffect(() => {
+		if (!typedRef.current) return;
+		const typed = new Typed(typedRef.current, {
+			strings: PASSION_TYPED_STRINGS,
+			typeSpeed: 40,
+			backSpeed: 25,
+			backDelay: 4000,
+			contentType: 'html',
+			loop: true,
+		});
+		return () => typed.destroy();
+	}, []);
+
+	return (
+		<div ref={heroRef} className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+			<div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-gray-900/60 to-gray-900 z-10" />
+			<div className="absolute inset-0">
+				<Image
+					src="/about/passion/steak3.jpg"
+					layout="fill"
+					objectFit="cover"
+					alt="Culinary background"
+					priority
+				/>
+			</div>
+			<div className={`relative z-20 text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+				<p className={`text-[#f27d0d] text-lg md:text-xl font-medium tracking-[0.25em] uppercase mb-6 transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+					Beyond the Code
+				</p>
+				<h1 className={`text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-10 transition-all duration-1000 delay-500 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+					My Passion for <span className="text-[#f27d0d]">Cuisine</span>
+				</h1>
+				<div className={`text-xl md:text-2xl text-gray-200/90 italic max-w-3xl mx-auto min-h-[1.5em] transition-all duration-1000 delay-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+					<span ref={typedRef}></span>
+				</div>
+			</div>
+			<div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent z-10" />
+		</div>
+	);
+};
+
 const SectionDivider = ({ title, subtitle }: { title: string; subtitle?: string }) => (
-	<div className="text-center mb-12">
+	<div className="text-center mb-8">
 		{subtitle && (
 			<span className="text-[#f27d0d] text-sm font-medium tracking-wider uppercase">{subtitle}</span>
 		)}
@@ -78,41 +170,14 @@ const SectionDivider = ({ title, subtitle }: { title: string; subtitle?: string 
 
 export default function PassionComponent() {
 	const [activeCategory, setActiveCategory] = useState("All");
-	const categories = ["All", "Family", "Steak & Meat", "Seafood", "Italian"];
+	const categories = ["All", "Family", "Steak & Lamb", "Seafood", "Italian"];
 
 	const shouldShow = (category: string) => activeCategory === "All" || activeCategory === category;
 
 	return (
 		<div className="min-h-screen">
 			{/* Hero Section */}
-			<div className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-				<div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-900/70 to-gray-900 z-10" />
-				<div className="absolute inset-0">
-					<Image
-						src="/about/passion/steak2.jpeg"
-						layout="fill"
-						objectFit="cover"
-						alt="Culinary background"
-						priority
-					/>
-				</div>
-				<div className="relative z-20 text-center px-4">
-					<p className="text-[#f27d0d] text-lg md:text-xl font-medium tracking-wider uppercase mb-4">
-						Beyond the Code
-					</p>
-					<h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-						My Passion for <span className="text-[#f27d0d]">Cuisine</span>
-					</h1>
-					<div className="max-w-2xl mx-auto">
-						<blockquote className="text-xl md:text-2xl text-gray-200 italic">
-							"If you are a chef, no matter how good a chef you are, it's not good
-							cooking for yourself; the joy is in cooking for others."
-						</blockquote>
-						<p className="text-gray-400 mt-3">— Will.i.am</p>
-					</div>
-				</div>
-				<div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent z-10" />
-			</div>
+			<PassionHero />
 
 			{/* Main Content */}
 			<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -131,25 +196,32 @@ export default function PassionComponent() {
 							image="/about/passion/xaxiu.jpg"
 							title="Xa Xiu Noodles"
 							subtitle="A Special Dish for Family Celebrations"
-							caption="Xa Xiu Noodles with Xa Xiu Pork, Steam and Fried Dumpling, Shrimp, Quail Eggs and Bok Choy"
+							caption="Xa Xiu Noodles with Char Siu Pork, Dumplings, Shrimp and Quail Eggs"
 							description={
-								<p>
-									One of my favorite dishes to prepare at family gatherings and
-									anniversaries is <strong className="text-[#f27d0d]">Xa Xiu noodles</strong>. This traditional
-									Vietnamese dish, made with egg noodles, tender char siu pork, and
-									quail eggs, embodies a world of nostalgic flavors. More than just
-									food, preparing meals is a way of showing my love, honoring family
-									connections, and cherishing our traditions.
-								</p>
+								<>
+									<p>
+										One of my favorite dishes to prepare at family gatherings and
+										anniversaries is <strong className="text-[#f27d0d]">Xa Xiu noodles</strong>. This traditional
+										Vietnamese dish, made with egg noodles, tender char siu pork, and
+										quail eggs, embodies a world of nostalgic flavors.
+									</p>
+									<p>
+										The recipe has been passed down through generations in my family.
+										Every step - from slow-braising the pork in a caramelized soy glaze
+										to carefully boiling the quail eggs - carries a story. I learned it
+										by watching my grandmother, who cooked by instinct rather than
+										measurements.
+									</p>
+								</>
 							}
 						/>
 					</section>
 				)}
 
 				{/* Steak Section */}
-				{shouldShow("Steak & Meat") && (
+				{shouldShow("Steak & Lamb") && (
 					<section className="mb-20">
-						<SectionDivider title="Steak & Meat" subtitle="Signature Dishes" />
+						<SectionDivider title="Steak & Lamb" subtitle="Signature Dishes" />
 
 						<DishCard
 							image="/about/passion/steak2.jpeg"
@@ -171,11 +243,7 @@ export default function PassionComponent() {
 										dry-aged ribeye, basted in rosemary-thyme butter that was tender,
 										juicy, and packed with flavor.
 									</p>
-									<p>
-										The dish became a symbol of my dedication and growth as a cook, and
-										the commitment I bring to my culinary creations.
-									</p>
-								</>
+									</>
 							}
 							reverse
 						/>
@@ -254,7 +322,7 @@ export default function PassionComponent() {
 
 						<div className="bg-gray-800/50 rounded-2xl p-8 backdrop-blur-sm">
 							<h3 className="text-2xl font-bold text-white mb-4">The Art of Seafood</h3>
-							<div className="text-gray-300 leading-relaxed space-y-4">
+							<div className="text-gray-300 text-lg md:text-xl leading-relaxed space-y-4">
 								<p>
 									Simple but delicious, these dishes are all about bringing out the natural
 									flavors. Starting with a salmon fillet, I sear it just right to get
