@@ -24,7 +24,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		setTimeout(() => {
 			setActiveCategory(category);
 			setIsAnimating(false);
-		}, 150);
+		}, 300);
 	};
 
 	const filteredProjects = PROJECTS.filter(
@@ -82,8 +82,8 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		<div
 			className={`
 				grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8
-				transition-opacity duration-150
-				${isAnimating ? "opacity-0" : "opacity-100"}
+				transition-all duration-300
+				${isAnimating ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"}
 			`}
 		>
 			{filteredProjects.map((project, index) => (

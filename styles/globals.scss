@@ -568,3 +568,40 @@ footer {
 .pulse-dot {
 	animation: pulse-dot 2s ease-in-out infinite;
 }
+
+/* Nav link hover underline */
+.nav-link-hover {
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 50%;
+		width: 0;
+		height: 2px;
+		background: #9146FF;
+		transition: all 0.3s ease;
+		transform: translateX(-50%);
+	}
+	&:hover::after {
+		width: 80%;
+	}
+}
+
+/* Timeline dot pulse */
+@keyframes timeline-dot-pulse {
+	0%, 100% { box-shadow: 0 0 0 0 rgba(145, 70, 255, 0.4); }
+	50% { box-shadow: 0 0 0 6px rgba(145, 70, 255, 0); }
+}
+
+.timeline-dot-glow {
+	animation: timeline-dot-pulse 3s ease-in-out infinite;
+}
+
+/* Section divider */
+.section-divider {
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(145, 70, 255, 0.2), transparent);
+	margin: 0 auto;
+	max-width: 60%;
+}

@@ -111,7 +111,7 @@ const CommentSection = ({ }: IDesktop) => {
 					</button>
 
 					{/* Slides Container */}
-					<div className="relative min-h-[560px] mb-4">
+					<div className="relative min-h-[420px] mb-4">
 						{COMMENTS.map((comment, index) => (
 							<CommentTile
 								key={index}
@@ -149,7 +149,7 @@ const CommentSection = ({ }: IDesktop) => {
 				<div className="mt-4 max-w-md mx-auto w-full">
 					<div className="h-1 bg-gray-800 rounded-full overflow-hidden">
 						<div
-							className="h-full bg-[#9146FF] transition-all duration-300"
+							className="h-full bg-[#9146FF] transition-all duration-500 ease-out"
 							style={{ width: `${((currentIndex + 1) / totalSlides) * 100}%` }}
 						/>
 					</div>

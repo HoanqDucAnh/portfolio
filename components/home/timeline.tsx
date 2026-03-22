@@ -74,6 +74,7 @@ const TimelineSection = (_props: IDesktop) => {
 		experiencesRef.current.forEach((el) => {
 			if (!el) return;
 
+			const idx = experiencesRef.current.indexOf(el);
 			const trigger = ScrollTrigger.create({
 				trigger: el,
 				start: "top 85%",
@@ -82,6 +83,7 @@ const TimelineSection = (_props: IDesktop) => {
 						opacity: 1,
 						y: 0,
 						duration: 0.6,
+						delay: idx * 0.1,
 						ease: "power2.out",
 					});
 				},
@@ -122,7 +124,7 @@ const TimelineSection = (_props: IDesktop) => {
 				{/* Timeline connector */}
 				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gray-700 transform md:-translate-x-1/2">
 					{/* Dot */}
-					<div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 border-2 border-[#9146FF] rounded-full z-10"></div>
+					<div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 border-2 border-[#9146FF] rounded-full z-10 timeline-dot-glow"></div>
 				</div>
 
 				{/* Content wrapper */}

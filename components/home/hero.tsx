@@ -93,7 +93,7 @@ const HERO_STYLES = {
 	SECTION:
 		"w-full flex md:items-center py-8 section-container min-h-screen relative mb-12",
 	CONTENT: "font-medium flex flex-col pt-32 md:pt-0 select-none",
-	SOCIAL_LINK: "link hover:opacity-80 duration-300 md:mr-4 mr-2",
+	SOCIAL_LINK: "link hover:opacity-90 hover:scale-110 transition-all duration-300 md:mr-4 mr-2",
 	BG_WRAPPER:
 		"absolute hero-bg right-0 md:bottom-0 bottom-8 -z-1 md:w-3/4 w-full scale-125 sm:scale-100 flex items-end",
 	TYPED_SPAN: "text-xl sm:text-2xl md:text-3xl seq",
@@ -123,6 +123,7 @@ const HeroSection = React.memo(() => {
 			typeSpeed: 50,
 			backSpeed: 50,
 			backDelay: 8000,
+			contentType: 'html',
 			loop: true,
 		});
 		return new Typed(typedSpanElement.current, {
@@ -130,6 +131,7 @@ const HeroSection = React.memo(() => {
 			typeSpeed: 50,
 			backSpeed: 50,
 			backDelay: 8000,
+			contentType: 'html',
 			loop: true,
 		});
 	};
@@ -143,7 +145,7 @@ const HeroSection = React.memo(() => {
 			.to(targetSection.current, { opacity: 1, duration: 0.8 })
 			.from(
 				targetSection.current.querySelectorAll(".seq"),
-				{ opacity: 0, duration: 0.5, stagger: 0.5 },
+				{ opacity: 0, duration: 0.5, stagger: 0.25 },
 				"<"
 			);
 
@@ -190,24 +192,21 @@ const HeroSection = React.memo(() => {
 	const renderHeroContent = (): React.ReactNode => (
 		<div className={HERO_STYLES.CONTENT}>
 			<div className="md:mb-4 mb-2">
-				<h2 className="text-4xl seq">Hello 👋🏻</h2>
+				<div className="flex items-center gap-4 seq">
+					<h2 className="text-4xl">Hello 👋🏻</h2>
+					{viewCount !== null && (
+						<span className="inline-flex items-center gap-1.5 text-sm text-gray-400">
+							<span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+							{viewCount.toLocaleString()} visitors
+						</span>
+					)}
+				</div>
 				<h1 className="text-3xl md:text-4xl lg:text-5xl seq font-bold">
 					I'm{" "}
 					<span className="bg-gradient-to-r from-[#9146FF] via-[#BF94FF] to-[#9146FF] bg-clip-text text-transparent">
 						Minh (Mark) Pham
 					</span>
 				</h1>
-				{viewCount !== null && (
-					<div className="seq mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/60 backdrop-blur-sm border border-gray-700/50">
-						<svg className="w-4 h-4 text-[#9146FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-							<path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-							<path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-						</svg>
-						<span className="text-sm font-medium text-gray-300">
-							<span className="text-[#9146FF] font-bold">{viewCount.toLocaleString()}</span> unique visitors
-						</span>
-					</div>
-				)}
 			</div>
 			<p className="mb-4">
 				<span className={HERO_STYLES.TYPED_SPAN} ref={typedSpanElement}></span>
@@ -215,23 +214,35 @@ const HeroSection = React.memo(() => {
 			<div className="flex seq gap-4">
 				{renderSocialLinks()}
 			</div>
-			<a
-				href="https://calendly.com/minh-pham-insurify/30min"
-				target="_blank"
-				rel="noreferrer"
-				className="seq mt-6 inline-flex items-center gap-3 px-5 py-3 border-2 border-white/80 hover:border-white bg-white/5 hover:bg-white/10 text-white text-base font-medium rounded-full transition-all duration-300 w-fit hover:shadow-lg hover:shadow-white/10"
-			>
-				<div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-					<svg className="w-4 h-4 text-gray-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+			<div className="flex flex-wrap gap-4 seq mt-6">
+				<a
+					href="/minh_pham_resume.pdf"
+					download
+					className="inline-flex items-center gap-3 px-5 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white text-base font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#9146FF]/25 hover:-translate-y-0.5"
+				>
+					<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+						<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+						<polyline points="7 10 12 15 17 10"/>
+						<line x1="12" y1="15" x2="12" y2="3"/>
+					</svg>
+					<span>Download Resume</span>
+				</a>
+				<a
+					href="https://calendly.com/minh-pham-insurify/30min"
+					target="_blank"
+					rel="noreferrer"
+					className="inline-flex items-center gap-3 px-5 py-3 border-2 border-white/80 hover:border-white bg-white/5 hover:bg-white/10 text-white text-base font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-white/10 hover:-translate-y-0.5"
+				>
+					<svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 						<path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
 						<path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
 						<line x1="6" y1="2" x2="6" y2="4"/>
 						<line x1="10" y1="2" x2="10" y2="4"/>
 						<line x1="14" y1="2" x2="14" y2="4"/>
 					</svg>
-				</div>
-				<span>Book a coffee chat (free)</span>
-			</a>
+					<span>Book a coffee chat</span>
+				</a>
+			</div>
 		</div>
 	);
 

@@ -14,7 +14,7 @@ const Footer = () => {
 			<a
 				href={SOCIAL_LINKS[el]}
 				key={el}
-				className="link hover:opacity-80 duration-300 md:px-2 px-1"
+				className="link hover:opacity-90 hover:scale-110 transition-all duration-300 md:px-2 px-1"
 				rel="noreferrer"
 				target="_blank"
 			>

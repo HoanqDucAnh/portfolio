@@ -14,7 +14,7 @@ const Header = () => {
 	const [menuVisible, setmenuVisible] = useState(false);
 
 	return (
-		<header className="w-full fixed top-0 py-8 select-none z-50 bg-gradient-to-b from-gray-900 to-transparent">
+		<header className="w-full fixed top-0 py-8 select-none z-50 bg-gray-900/80 backdrop-blur-md border-b border-white/5">
 			<div className="flex justify-between section-container">
 				<Link href="/#home">
 					<a className="link">
@@ -26,7 +26,7 @@ const Header = () => {
 						<a
 							key={item.name}
 							href={item.ref.startsWith('http') ? item.ref : (item.ref.startsWith('/') ? item.ref : `/#${item.ref}`)}
-							className="link px-3"
+							className="link px-3 nav-link-hover"
 							{...(item.ref.startsWith('http') && { target: "_blank", rel: "noreferrer" })}
 						>
 							{item.name}

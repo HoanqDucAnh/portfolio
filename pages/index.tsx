@@ -18,6 +18,7 @@ import Cursor from "@/components/common/cursor";
 import HeroSection from "@/components/home/hero";
 import ProjectsSection from "@/components/home/projects";
 import QuoteSection from "@/components/home/quote";
+import QuoteSection2 from "@/components/home/quote2";
 import SkillsSection from "@/components/home/skills";
 import CollaborationSection from "@/components/home/collaboration";
 import Footer from "@/components/common/footer";
@@ -89,12 +90,17 @@ export default function Home() {
 				<main className="flex-col flex">
 					{renderBackdrop()}
 					<HeroSection />
-					<QuoteSection />
+					<QuoteSection2 />
+					<div className="section-divider" />
 					<CommentSection isDesktop={isDesktop} />
 					<SkillsSection isDesktop={isDesktop} />
+					<QuoteSection />
+					<div className="section-divider" />
 					<ProjectsSection isDesktop={isDesktop} />
+					<div className="section-divider" />
 					<TimelineSection isDesktop={isDesktop} />
 					{/* <AboutSection /> */}
+					<div className="section-divider" />
 					<CertificateSection isDesktop={isDesktop} />
 					<CollaborationSection />
 					<Footer />

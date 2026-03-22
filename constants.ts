@@ -103,10 +103,10 @@ export const COMMENTS = [
 ]
 
 export const TYPED_STRINGS = [
-	"1000+ SQL questions solved",
-	"Analytics Engineer @Insurify",
-	"TCU class of 2025",
-	'Boston, MA'
+	'<span style="color:#9146FF">1000+</span> SQL questions solved',
+	'<span style="color:#9146FF">Analytics Engineer</span> @Insurify',
+	'<span style="color:#9146FF">TCU</span> class of 2025',
+	'<span style="color:#9146FF">Boston, MA</span>',
 ];
 
 export const EMAIL = "minhbpham2003@gmail.com";
@@ -114,6 +114,7 @@ export const EMAIL = "minhbpham2003@gmail.com";
 export const SOCIAL_LINKS = {
 	linkedin: "https://www.linkedin.com/in/minhbphamm/",
 	github: "https://github.com/MarkPhamm",
+	substack: "https://substack.com/@markphammm/posts",
 	wakatime: "https://wakatime.com/@MarkPham",
 	leetcode: "https://leetcode.com/u/markphammm/",
 	gmail: "mailto:minh.pham@insurify.com",

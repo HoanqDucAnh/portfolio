@@ -1,14 +1,8 @@
-// Copyright Ayush Singh 2021,2022. All Rights Reserved.
-// Project: folio
-// Author contact: https://www.linkedin.com/in/alphaayush/
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
 import { gsap, Linear } from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const QuoteSection = () => {
+const QuoteSection2 = () => {
 	const quoteRef = useRef<HTMLDivElement>(null);
 	const targetSection = useRef<HTMLDivElement>(null);
 
@@ -43,28 +37,24 @@ const QuoteSection = () => {
 		return quoteAnimationRef.kill;
 	}, [quoteRef, targetSection]);
 
-	const renderQuote = (): React.ReactNode => (
-		<div className="tall:py-30 py-36 section-container">
-			<div
-				ref={quoteRef}
-				className={`text-center ${willChange ? "will-change-opacity" : ""}`}
-			>
-				<h1 className="font-medium text-4xl md:text-5xl">
-					Always run the <span className="text-strong font-bold">extra miles</span>
-				</h1>
-				<p className="mt-4 text-xl md:text-2xl text-gray-400">
-					I don't just <span className="text-[#9146FF] font-bold">"meet"</span> expectations - I go{" "}
-					<span className="text-[#9146FF] font-bold">beyond</span> them
-				</p>
-			</div>
-		</div>
-	);
-
 	return (
 		<section className="w-full relative select-none" ref={targetSection}>
-			{renderQuote()}
+			<div className="tall:py-30 py-36 section-container">
+				<div
+					ref={quoteRef}
+					className={`text-center ${willChange ? "will-change-opacity" : ""}`}
+				>
+					<h1 className="font-medium text-4xl md:text-5xl">
+						Analytics isn't just my job - it's my{" "}
+						<span className="text-strong font-bold">obsession</span>
+					</h1>
+					<p className="mt-4 text-xl md:text-2xl text-gray-400">
+						scroll down and <span className="text-[#9146FF] font-bold">see for yourself</span>
+					</p>
+				</div>
+			</div>
 		</section>
 	);
 };
 
-export default QuoteSection;
+export default QuoteSection2;
