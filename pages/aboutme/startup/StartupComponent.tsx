@@ -144,7 +144,7 @@ export default function StartupComponent() {
 						From the Founder
 					</h2>
 				</div>
-				<div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+				<div className="grid lg:grid-cols-2 gap-8 items-start">
 					<div className="relative">
 						<div className="absolute -inset-4 bg-gradient-to-br from-[#f27d0d]/20 to-transparent rounded-3xl blur-2xl opacity-50"></div>
 						<Image
@@ -157,21 +157,27 @@ export default function StartupComponent() {
 						/>
 					</div>
 					<div className="space-y-6">
-						<p className="text-gray-300 leading-relaxed text-lg">
+						<p className="text-gray-300 leading-relaxed text-xl">
 							I am an eloquent individual driven by innovative ideas, passionately
 							embodying the philosophy of <span className="text-[#f27d0d] font-semibold">'Do what you love, and love what you do.'</span>
 						</p>
-						<p className="text-gray-300 leading-relaxed text-lg">
+						<p className="text-gray-300 leading-relaxed text-xl">
 							Committed to giving 100%, I prioritize and dedicate myself to my
 							pursuits, demonstrating resilience and a commitment to empowering and
 							inspiring others.
 						</p>
-						<p className="text-gray-300 leading-relaxed text-lg">
+						<p className="text-gray-300 leading-relaxed text-xl">
 							Launched in <span className="text-white font-semibold">May 2021</span>, Coconut Consulting Academy (TCCA) is my
 							inaugural startup dedicated to assisting global students in applying
 							to American universities. With a simple and effective model, we've
 							continually evolved to meet the needs of high school
 							students pursuing education in the United States.
+						</p>
+						<p className="text-gray-300 leading-relaxed text-xl">
+							What started as a small idea quickly grew into a team of <span className="text-white font-semibold">6+ consultants</span>,
+							reaching over <span className="text-white font-semibold">1,000 students</span> and generating
+							more than <span className="text-white font-semibold">$10K in revenue</span>. Every success story
+							from our students fuels my drive to keep building and improving.
 						</p>
 					</div>
 				</div>
