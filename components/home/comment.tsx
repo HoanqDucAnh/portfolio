@@ -4,6 +4,13 @@ import { IDesktop } from "pages";
 import { FaChevronLeft, FaChevronRight, FaQuoteLeft } from "react-icons/fa";
 import Image from "next/image";
 
+const getTextSize = (length: number): string => {
+	if (length < 200) return "text-xl md:text-2xl";
+	if (length < 300) return "text-base md:text-lg";
+	if (length < 400) return "text-sm md:text-base";
+	return "text-xs md:text-sm";
+};
+
 const CommentTile = (props: {
 	text: string;
 	currentPosition: string;
@@ -11,14 +18,16 @@ const CommentTile = (props: {
 	avatar: string;
 	isActive: boolean;
 }) => {
+	const textSize = getTextSize(props.text.length);
+
 	return (
 		<div
-			className={`absolute inset-0 transition-all duration-500 ease-in-out ${props.isActive
-					? "opacity-100 translate-x-0 visible"
-					: "opacity-0 translate-x-8 pointer-events-none invisible"
+			className={`transition-all duration-500 ease-in-out ${props.isActive
+					? "opacity-100 translate-x-0"
+					: "opacity-0 translate-x-8"
 				}`}
 		>
-			<div className={`relative p-8 md:p-10 mx-auto max-w-3xl rounded-2xl border transition-all duration-500 ${props.isActive
+			<div className={`relative p-8 md:p-10 mx-auto max-w-3xl h-[500px] flex flex-col justify-center rounded-2xl border transition-all duration-500 ${props.isActive
 					? "bg-gray-900/90 backdrop-blur-sm border-[#9146FF]/30 shadow-lg shadow-[#9146FF]/5"
 					: "bg-gray-900 border-gray-800"
 				}`}>
@@ -36,7 +45,7 @@ const CommentTile = (props: {
 						/>
 					</div>
 
-					<p className="text-base md:text-lg text-gray-200 leading-relaxed mb-8 italic text-left">
+					<p className={`${textSize} text-gray-200 leading-relaxed mb-8 italic text-left`}>
 						"{props.text}"
 					</p>
 
@@ -111,22 +120,26 @@ const CommentSection = ({ }: IDesktop) => {
 					</button>
 
 					{/* Slides Container */}
-					<div className="relative min-h-[420px] mb-4">
+					<div className="relative mb-4 overflow-hidden">
 						{COMMENTS.map((comment, index) => (
-							<CommentTile
+							<div
 								key={index}
-								text={comment.comment}
-								authorName={comment.author}
-								currentPosition={comment.position}
-								avatar={comment.avatar}
-								isActive={index === currentIndex}
-							/>
+								className={index === currentIndex ? "relative" : "absolute inset-0 pointer-events-none"}
+							>
+								<CommentTile
+									text={comment.comment}
+									authorName={comment.author}
+									currentPosition={comment.position}
+									avatar={comment.avatar}
+									isActive={index === currentIndex}
+								/>
+							</div>
 						))}
 					</div>
 				</div>
 
 				{/* Slide Counter */}
-				<div className="text-center text-sm text-gray-400 mt-6">
+				<div className="text-center text-sm text-gray-400 mt-4">
 					{currentIndex + 1} / {totalSlides}
 				</div>
 
