@@ -14,7 +14,7 @@ const Header = () => {
 	const [menuVisible, setmenuVisible] = useState(false);
 
 	return (
-		<header className="w-full fixed top-0 py-8 select-none z-50 bg-gray-900/80 backdrop-blur-md border-b border-white/5">
+		<header className={`w-full fixed top-0 py-8 select-none z-50 border-b border-white/5 ${menuVisible ? "bg-transparent" : "bg-gray-900/80 backdrop-blur-md"}`}>
 			<div className="flex justify-between section-container">
 				<Link href="/#home">
 					<a className="link">
@@ -36,7 +36,7 @@ const Header = () => {
 				<nav className={`outer-menu ${menuVisible ? "menu-visible" : ""}`}>
 					<button
 						className="hamburger w-6 h-6 flex items-center justify-center link relative"
-						onClick={setmenuVisible.bind(null, !menuVisible)}
+						onClick={() => setmenuVisible((prev) => !prev)}
 					>
 						<div className="relative flex-none w-full bg-white duration-300 flex items-center justify-center"></div>
 					</button>
