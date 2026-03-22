@@ -109,6 +109,13 @@ export const TYPED_STRINGS = [
 	'<span style="color:#9146FF">Boston, MA</span>',
 ];
 
+export const QUOTE_STRINGS = [
+	'Analytics isn\'t just my job - it\'s my <span style="color:#9146FF">obsession</span>',
+	'Always run the <span style="color:#9146FF">extra miles</span>',
+	'I don\'t just <span style="color:#9146FF">"meet"</span> expectations - I go <span style="color:#9146FF">beyond</span> them',
+	'Turning <span style="color:#9146FF">raw data</span> into <span style="color:#9146FF">actionable insights</span>',
+];
+
 export const EMAIL = "minhbpham2003@gmail.com";
 
 export const SOCIAL_LINKS = {

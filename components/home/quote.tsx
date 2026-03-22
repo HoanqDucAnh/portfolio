@@ -1,68 +1,53 @@
-// Copyright Ayush Singh 2021,2022. All Rights Reserved.
-// Project: folio
-// Author contact: https://www.linkedin.com/in/alphaayush/
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
-import { gsap, Linear } from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Typed from "typed.js";
+import { QUOTE_STRINGS } from "../../constants";
 
 const QuoteSection = () => {
-	const quoteRef = useRef<HTMLDivElement>(null);
+	const typedRef = useRef<HTMLSpanElement>(null);
 	const targetSection = useRef<HTMLDivElement>(null);
-
-	const [willChange, setwillChange] = useState(false);
-
-	const initQuoteAnimation = (
-		quoteRef: React.RefObject<HTMLDivElement | null>,
-		targetSection: React.RefObject<HTMLDivElement | null>
-	): ScrollTrigger => {
-		if (!quoteRef.current || !targetSection.current) return ScrollTrigger.create({});
-		const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-		timeline
-			.from(quoteRef.current, { opacity: 0, y: 30, duration: 2 })
-			.to(quoteRef.current.querySelector(".text-strong"), {
-				backgroundPositionX: "100%",
-				duration: 1,
-			});
-
-		return ScrollTrigger.create({
-			trigger: targetSection.current,
-			start: "center bottom",
-			end: "center center",
-			scrub: 0,
-			animation: timeline,
-			onToggle: (self) => setwillChange(self.isActive),
-		});
-	};
+	const [isVisible, setIsVisible] = useState(false);
+	const typedInstance = useRef<Typed | null>(null);
 
 	useEffect(() => {
-		const quoteAnimationRef = initQuoteAnimation(quoteRef, targetSection);
+		if (!targetSection.current) return;
 
-		return quoteAnimationRef.kill;
-	}, [quoteRef, targetSection]);
+		const trigger = ScrollTrigger.create({
+			trigger: targetSection.current,
+			start: "top 80%",
+			onEnter: () => setIsVisible(true),
+			once: true,
+		});
 
-	const renderQuote = (): React.ReactNode => (
-		<div className="tall:py-30 py-36 section-container">
-			<div
-				ref={quoteRef}
-				className={`text-center ${willChange ? "will-change-opacity" : ""}`}
-			>
-				<h1 className="font-medium text-4xl md:text-5xl">
-					Always run the <span className="text-strong font-bold">extra miles</span>
-				</h1>
-				<p className="mt-4 text-xl md:text-2xl text-gray-400">
-					I don't just <span className="text-[#9146FF] font-bold">"meet"</span> expectations - I go{" "}
-					<span className="text-[#9146FF] font-bold">beyond</span> them
-				</p>
-			</div>
-		</div>
-	);
+		return () => trigger.kill();
+	}, []);
+
+	useEffect(() => {
+		if (!isVisible || !typedRef.current) return;
+
+		typedInstance.current = new Typed(typedRef.current, {
+			strings: QUOTE_STRINGS,
+			typeSpeed: 40,
+			backSpeed: 25,
+			backDelay: 4000,
+			contentType: 'html',
+			loop: true,
+		});
+
+		return () => {
+			typedInstance.current?.destroy();
+		};
+	}, [isVisible]);
 
 	return (
 		<section className="w-full relative select-none" ref={targetSection}>
-			{renderQuote()}
+			<div className="tall:py-30 py-36 section-container">
+				<div className="text-center">
+					<h1 className="font-medium text-3xl md:text-5xl min-h-[1.5em]">
+						<span ref={typedRef}></span>
+					</h1>
+				</div>
+			</div>
 		</section>
 	);
 };

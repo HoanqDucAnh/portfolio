@@ -94,7 +94,6 @@ export default function Home() {
 					<div className="section-divider" />
 					<CommentSection isDesktop={isDesktop} />
 					<SkillsSection isDesktop={isDesktop} />
-					<QuoteSection />
 					<div className="section-divider" />
 					<ProjectsSection isDesktop={isDesktop} />
 					<div className="section-divider" />
