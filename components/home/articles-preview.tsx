@@ -66,8 +66,11 @@ const ArticlesPreview = () => {
 							<img
 								src={article.thumbnail}
 								alt={article.title}
+								width={1456}
+								height={762}
 								className="w-full h-full object-cover object-left transition-transform duration-500 group-hover:scale-105"
 								loading="lazy"
+								decoding="async"
 							/>
 							<div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent" />
 							<span className="absolute bottom-3 left-4 text-xs text-gray-400 font-medium">
