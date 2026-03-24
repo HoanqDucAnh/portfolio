@@ -48,7 +48,7 @@ const ArticlesPreview = () => {
 			<div className="flex flex-col mb-10">
 				<h1 className="section-heading seq">Articles</h1>
 				<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
-					Thoughts on data engineering & analytics
+					Sharing my journey, one post at a time
 				</h2>
 			</div>
 
