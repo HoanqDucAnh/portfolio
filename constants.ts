@@ -20,16 +20,20 @@ export const NAVBARITEMS = [
 		ref: "skills",
 	},
 	{
+		name: "Articles",
+		ref: "articles",
+	},
+	{
 		name: "Projects",
 		ref: "works",
 	},
 	{
-		name: "Experience",
-		ref: "timeline",
+		name: "My Activity",
+		ref: "activity",
 	},
 	{
-		name: "Articles",
-		ref: "https://substack.com/@markphammm/posts",
+		name: "Experience",
+		ref: "timeline",
 	},
 	{
 		name: "Passion",
@@ -47,20 +51,20 @@ export const MENULINKS = [
 		ref: "home",
 	},
 	{
-		name: "Projects",
-		ref: "works",
-	},
-	{
 		name: "Skillset",
 		ref: "skills",
 	},
 	{
-		name: "Experience",
-		ref: "timeline",
+		name: "Articles",
+		ref: "articles",
 	},
 	{
-		name: "Articles",
-		ref: "https://substack.com/@markphammm/posts",
+		name: "Projects",
+		ref: "works",
+	},
+	{
+		name: "Experience",
+		ref: "timeline",
 	},
 ];
 
@@ -136,6 +140,8 @@ export interface IProject {
 	gradient: [string, string];
 	url: string;
 	tech: string[];
+	fullDescription?: string;
+	impact?: string[];
 }
 
 export const ProjectTypes = {
@@ -157,6 +163,8 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#1b1b1b", "#d8d8d8"],
 		url: "https://github.com/MarkPhamm/skytrax_reviews_extract_load",
 		tech: ["Apache Airflow", "python", "S3", "Snowflake", "Terraform"],
+		fullDescription: "Built a production-grade data pipeline that scrapes 160K+ airline reviews from Skytrax. The pipeline uses 26 parallel Airflow tasks for extraction, stages data in S3, and loads into Snowflake with full idempotency and error handling. Infrastructure provisioned via Terraform with CI/CD through GitHub Actions.",
+		impact: ["160K+ reviews processed", "26 parallel Airflow tasks", "Fully automated CI/CD"],
 	},
 	{
 		name: "Skytrax Reviews Transformation",
@@ -167,6 +175,8 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#1b1b1b", "#4a90d9"],
 		url: "https://github.com/MarkPhamm/skytrax_reviews_transformation",
 		tech: ["Dbt", "Snowflake", "Terraform", "Github", "Apache Airflow"],
+		fullDescription: "Designed a Kimball star-schema transformation layer using dbt on top of Snowflake. Features slim CI/CD via GitHub Actions with OIDC authentication, automated dbt docs deployment to CloudFront, and comprehensive data quality tests.",
+		impact: ["Kimball star-schema design", "Slim CI/CD pipeline", "Auto-deployed dbt docs"],
 	},
 	{
 		name: "Consumer Complaint Pipeline",
@@ -197,6 +207,8 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#0f2027", "#2c5364"],
 		url: "https://github.com/MarkPhamm/local_streaming_pipeline",
 		tech: ["Kafka", "Spark", "Flink", "ClickHouse", "FastAPI"],
+		fullDescription: "Built a real-time analytics pipeline that ingests live cryptocurrency prices via Kafka, processes streams with Apache Spark and Flink, stores results in ClickHouse, and serves dashboards through a FastAPI backend. Fully containerized with Docker Compose.",
+		impact: ["Real-time crypto ingestion", "Spark + Flink processing", "ClickHouse OLAP dashboards"],
 	},
 	{
 		name: "Local Lakehouse Pipeline",
@@ -485,6 +497,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		slideImage: "/timeline/insurify.png",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
+		companyLogo: "/timeline/insurify.png",
+		companyUrl: "https://insurify.com",
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -504,6 +518,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		slideImage: "/timeline/Ace.png",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
+		companyLogo: "/timeline/Ace.png",
+		companyUrl: "https://acementorship.com/",
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -523,6 +539,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		slideImage: "/timeline/lazard.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
+		companyLogo: "/timeline/lazard.jpg",
+		companyUrl: "https://www.lazard.com/",
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -543,6 +561,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		slideImage: "/timeline/techsmith.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
+		companyLogo: "/timeline/techsmith.jpg",
+		companyUrl: "https://www.techsmith.com/",
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -563,6 +583,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		slideImage: "/timeline/Corning.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
+		companyLogo: "/timeline/Corning.png",
+		companyUrl: "https://www.corning.com/worldwide/en.html",
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -582,6 +604,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		slideImage: "/timeline/Stealth.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
+		companyLogo: "/timeline/Stealth1.jpg",
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -602,6 +625,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		slideImage: "/timeline/NAPAS.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
+		companyLogo: "/timeline/NAPAS1.png",
+		companyUrl: "https://en.napas.com.vn/",
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -623,6 +648,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		slideImage: "/timeline/KPIM.jpg",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
+		companyLogo: "/timeline/KPIM1.jpg",
+		companyUrl: "https://kpim.vn/",
 	},
 
 	{
@@ -643,6 +670,8 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		slideImage: "/timeline/Coconut.png",
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
+		companyLogo: "/timeline/Coconut.png",
+		companyUrl: "https://www.facebook.com/thecoconut.vn/",
 	},
 
 ];
@@ -659,10 +688,44 @@ export interface CheckpointNode {
 	slideImage?: string;
 	shouldDrawLine: boolean;
 	alignment: Branch;
+	companyLogo?: string;
+	companyUrl?: string;
 }
 
 export interface BranchNode {
 	type: NodeTypes.CONVERGE | NodeTypes.DIVERGE;
 }
+
+export interface IArticle {
+	title: string;
+	excerpt: string;
+	thumbnail: string;
+	url: string;
+	date: string;
+}
+
+export const ARTICLES: IArticle[] = [
+	{
+		title: "The Productivity Stack I Actually Use as an Analytics Engineer",
+		excerpt: "The tools, workflows, and habits that keep me productive as an analytics engineer — from IDE setup to daily rituals.",
+		thumbnail: "/article/productivity.png",
+		url: "https://substack.com/home/post/p-191266646",
+		date: "2025",
+	},
+	{
+		title: "Component of a Technical Data Project (Part 1 - The Prerequisite)",
+		excerpt: "Breaking down the essential components every technical data project needs before writing a single line of code.",
+		thumbnail: "/article/technical_component_1.png",
+		url: "https://substack.com/@markphammm/p-178000757",
+		date: "2025",
+	},
+	{
+		title: "Component of a Technical Data Project (Part 2 – Building Blocks)",
+		excerpt: "The core building blocks of a technical data project — from ingestion and storage to transformation and serving.",
+		thumbnail: "/article/technical_component_2.png",
+		url: "https://substack.com/@markphammm/p-178105495",
+		date: "2025",
+	},
+];
 
 export const GTAG = "UA-163844688-1";

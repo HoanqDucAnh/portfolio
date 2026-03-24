@@ -22,10 +22,11 @@ const CommentTile = (props: {
 
 	return (
 		<div
-			className={`transition-all duration-500 ease-in-out ${props.isActive
-					? "opacity-100 translate-x-0"
-					: "opacity-0 translate-x-8"
+			className={`transition-all duration-600 ${props.isActive
+					? "opacity-100 translate-x-0 scale-100"
+					: "opacity-0 translate-x-8 scale-[0.98]"
 				}`}
+			style={{ transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" }}
 		>
 			<div className={`relative p-8 md:p-10 mx-auto max-w-3xl h-[500px] flex flex-col justify-center rounded-2xl border transition-all duration-500 ${props.isActive
 					? "bg-gray-900/90 backdrop-blur-sm border-[#9146FF]/30 shadow-lg shadow-[#9146FF]/5"
@@ -38,9 +39,9 @@ const CommentTile = (props: {
 						<Image
 							src={props.avatar}
 							alt={props.authorName}
-							width={96}
-							height={96}
-							className="w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-[#9146FF]/30 shadow-lg shadow-[#9146FF]/10 object-cover"
+							width={128}
+							height={128}
+							className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-[#9146FF]/30 shadow-lg shadow-[#9146FF]/10 object-cover"
 							loading="eager"
 						/>
 					</div>

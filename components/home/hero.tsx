@@ -11,6 +11,7 @@ import Image from "next/image";
 import { gsap, Linear } from "gsap";
 import Button, { ButtonTypes } from "../common/button";
 import HeroImage from "./hero-image";
+import HeroParticles from "./hero-particles";
 import Link from "next/link";
 
 import { initializeApp, getApps } from "firebase/app";
@@ -255,6 +256,7 @@ const HeroSection = React.memo(() => {
 			ref={targetSection}
 			style={{ opacity: 0.05 }}
 		>
+			<HeroParticles />
 			{renderHeroContent()}
 			{renderBackgroundImage()}
 		</section>

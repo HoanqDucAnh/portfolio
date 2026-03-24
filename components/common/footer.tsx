@@ -4,7 +4,7 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import { EMAIL, MENULINKS, SOCIAL_LINKS } from "../../constants";
+import { EMAIL, SOCIAL_LINKS } from "../../constants";
 import Image from "next/image";
 import Button, { ButtonTypes } from "./button";
 
@@ -50,12 +50,10 @@ const Footer = () => {
 		</>
 	);
 
-	const { ref: footerRef } = MENULINKS[4];
-
 	return (
 		<footer
 			className="w-full relative select-none bg-cover flex flex-col items-stretch"
-			id={footerRef}
+			id="footer"
 		>
 			<img
 				src="/footer-curve.svg"

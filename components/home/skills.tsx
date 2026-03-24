@@ -143,7 +143,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 			{renderBackgroundPattern()}
 			<div
 				className={SKILL_STYLES.SECTION}
-				id={MENULINKS[2].ref}
+				id={MENULINKS[1].ref}
 				ref={targetSection}
 			>
 				<div className="flex flex-col">

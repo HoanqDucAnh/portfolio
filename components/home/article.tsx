@@ -70,7 +70,7 @@ const ArticleSection = () => {
 		<section className="relative">
 			<div
 				className={SKILL_STYLES.SECTION}
-				id={MENULINKS[3].ref}
+				id={MENULINKS[2].ref}
 				ref={targetSection}
 			>
 				<div className="flex flex-col skills-wrapper">

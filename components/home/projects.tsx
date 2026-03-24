@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { MENULINKS, PROJECTS, ProjectTypes } from "../../constants";
 import ProjectTile from "../common/project-tile";
 import { IDesktop } from "pages";
-import GitHubStats from "./github-stats";
-import WakatimeStats from "./wakatime-stats";
 
 const CATEGORIES = [
 { value: ProjectTypes.ENDTOEND, label: "Data Pipeline" },
@@ -41,15 +39,6 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		</div>
 	);
 
-	const renderStats = (): React.ReactNode => (
-		<div className="w-full my-8 seq relative z-10">
-			<h2 className="section-heading mb-6">My Activity</h2>
-			<div className="flex flex-col gap-6">
-				<GitHubStats />
-				<WakatimeStats />
-			</div>
-		</div>
-	);
 
 	const renderCategoryFilters = (): React.ReactNode => (
 		<div className="flex flex-wrap gap-3 mt-8 mb-10">
@@ -96,7 +85,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		</div>
 	);
 
-	const { ref: projectsSectionRef } = MENULINKS[1];
+	const { ref: projectsSectionRef } = MENULINKS[3];
 
 	return (
 		<section
@@ -111,7 +100,6 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 			{renderSectionTitle()}
 			{renderCategoryFilters()}
 			{renderProjectGrid()}
-			{renderStats()}
 		</section>
 	);
 };

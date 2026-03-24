@@ -24,6 +24,8 @@ interface ExperienceItem {
 	location: string;
 	image: string;
 	slideImage: string;
+	companyLogo?: string;
+	companyUrl?: string;
 }
 
 // Process TIMELINE data to extract experiences with their dates
@@ -46,6 +48,8 @@ const processTimelineData = (): ExperienceItem[] => {
 					location: checkpoint.location || "",
 					image: checkpoint.image || "",
 					slideImage: checkpoint.slideImage,
+					companyLogo: checkpoint.companyLogo,
+					companyUrl: checkpoint.companyUrl,
 				});
 			}
 		}
@@ -129,13 +133,13 @@ const TimelineSection = (_props: IDesktop) => {
 
 				{/* Content wrapper */}
 				<div
-					className={`flex flex-col md:flex-row items-start gap-8 ${isEven ? "md:flex-row" : "md:flex-row-reverse"
+					className={`flex flex-col md:flex-row items-start gap-8 transition-all duration-300 hover:-translate-y-1 ${isEven ? "md:flex-row" : "md:flex-row-reverse"
 						}`}
 				>
 					{/* Date and Info side */}
 					<div
-						className={`w-full md:w-1/2 ${isEven ? "md:pr-12 md:text-right" : "md:pl-12 md:text-left"
-							} pl-8 md:pl-0`}
+						className={`w-full md:w-1/2 pl-10 overflow-hidden ${isEven ? "md:pr-12 md:pl-0 md:text-right" : "md:pl-12 md:text-left"
+							}`}
 					>
 						<span className="inline-block text-[#9146FF] text-lg font-semibold mb-2">
 							{experience.date}
@@ -144,9 +148,11 @@ const TimelineSection = (_props: IDesktop) => {
 							className="text-xl md:text-2xl font-bold text-white mb-3"
 							dangerouslySetInnerHTML={{ __html: experience.title }}
 						/>
-						<p className="text-gray-200 text-base leading-relaxed">
-							{experience.subtitle}
-						</p>
+						<div className={`overflow-hidden ${isEven ? "md:text-right" : "md:text-left"}`}>
+							<p className={`text-gray-200 text-[clamp(0.65rem,1.5vw,1rem)] leading-relaxed whitespace-nowrap ${isEven ? "md:float-right" : ""}`}>
+								{experience.subtitle}
+							</p>
+						</div>
 						{experience.location && (
 							<span className={`inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full text-sm font-medium bg-gray-800/80 text-gray-200 border border-gray-700 ${isEven ? "md:ml-auto" : ""}`}>
 								<svg className="w-3.5 h-3.5 text-[#9146FF]" fill="currentColor" viewBox="0 0 20 20">
@@ -159,11 +165,11 @@ const TimelineSection = (_props: IDesktop) => {
 
 					{/* Image side */}
 					<div
-						className={`w-full md:w-1/2 ${isEven ? "md:pl-12" : "md:pr-12"
-							} pl-8 md:pl-0`}
+						className={`w-full md:w-1/2 pl-10 ${isEven ? "md:pl-12" : "md:pl-0 md:pr-12"
+							}`}
 					>
 						<div className="relative group">
-							<div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-transform duration-300 group-hover:scale-[1.02]">
+							<div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)]">
 								<Image
 									src={experience.slideImage}
 									alt={experience.title.replace(/<[^>]*>/g, "")}
@@ -190,7 +196,7 @@ const TimelineSection = (_props: IDesktop) => {
 		<section
 			ref={sectionRef}
 			className="w-full relative select-none section-container py-12 flex flex-col"
-			id={MENULINKS[3].ref}
+			id={MENULINKS[4].ref}
 		>
 			{renderSectionTitle()}
 

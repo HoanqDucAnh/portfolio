@@ -27,6 +27,9 @@ import Scripts from "@/components/common/scripts";
 import AboutSection from "@/components/home/about";
 import CommentSection from "@/components/home/comment";
 import CertificateSection from "@/components/home/certificate";
+import ArticlesPreview from "@/components/home/articles-preview";
+import ActivitySection from "@/components/home/activity";
+import WaveDivider from "@/components/common/wave-divider";
 
 const DEBOUNCE_TIME = 100;
 
@@ -91,15 +94,18 @@ export default function Home() {
 					{renderBackdrop()}
 					<HeroSection />
 					<QuoteSection2 />
-					<div className="section-divider" />
+					<WaveDivider />
 					<CommentSection isDesktop={isDesktop} />
 					<SkillsSection isDesktop={isDesktop} />
-					<div className="section-divider" />
+					<ArticlesPreview />
+					<WaveDivider flip />
 					<ProjectsSection isDesktop={isDesktop} />
-					<div className="section-divider" />
+					<WaveDivider />
+					<ActivitySection />
+					<WaveDivider flip />
 					<TimelineSection isDesktop={isDesktop} />
 					{/* <AboutSection /> */}
-					<div className="section-divider" />
+					<WaveDivider flip />
 					<CertificateSection isDesktop={isDesktop} />
 					<CollaborationSection />
 					<Footer />

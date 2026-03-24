@@ -557,6 +557,18 @@ footer {
 	50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
 }
 
+@keyframes particle-float {
+	0% { transform: translateY(0px) translateX(0px); }
+	25% { transform: translateY(-15px) translateX(8px); }
+	50% { transform: translateY(-25px) translateX(-5px); }
+	75% { transform: translateY(-10px) translateX(12px); }
+	100% { transform: translateY(0px) translateX(0px); }
+}
+
+.animate-particle-float {
+	animation: particle-float 20s ease-in-out infinite;
+}
+
 .animate-float {
 	animation: float 6s ease-in-out infinite;
 }
