@@ -13,13 +13,13 @@ const ArticleCard = ({
 	<>
 		<div
 			className={`relative overflow-hidden bg-gray-800 ${
-				featured ? "md:h-full" : ""
+				featured ? "md:h-full" : "h-[280px]"
 			}`}
 		>
 			<img
 				src={article.thumbnail}
 				alt={article.title}
-				className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+				className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
 				loading="lazy"
 				decoding="async"
 			/>
