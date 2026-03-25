@@ -168,24 +168,50 @@ const TimelineSection = (_props: IDesktop) => {
 						className={`w-full md:w-1/2 pl-10 ${isEven ? "md:pl-12" : "md:pl-0 md:pr-12"
 							}`}
 					>
-						<div className="relative group">
-							<div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)]">
-								<Image
-									src={experience.slideImage}
-									alt={experience.title.replace(/<[^>]*>/g, "")}
-									layout="fill"
-									objectFit="cover"
-									className="transition-transform duration-500 group-hover:scale-105"
-									loading="eager"
-								/>
-								{/* Permanent overlay */}
-								<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-								{/* Hover overlay */}
-								<div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+						{experience.companyUrl ? (
+							<a
+								href={experience.companyUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="block relative group cursor-pointer"
+							>
+								<div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)]">
+									<Image
+										src={experience.slideImage}
+										alt={experience.title.replace(/<[^>]*>/g, "")}
+										layout="fill"
+										objectFit="cover"
+										className="transition-transform duration-500 group-hover:scale-105"
+										loading="eager"
+									/>
+									{/* Permanent overlay */}
+									<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+									{/* Hover overlay */}
+									<div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+								</div>
+								{/* Decorative border */}
+								<div className="absolute -inset-1 bg-gradient-to-r from-[#9146FF]/20 to-yellow-600/20 rounded-xl blur-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+							</a>
+						) : (
+							<div className="relative group">
+								<div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)]">
+									<Image
+										src={experience.slideImage}
+										alt={experience.title.replace(/<[^>]*>/g, "")}
+										layout="fill"
+										objectFit="cover"
+										className="transition-transform duration-500 group-hover:scale-105"
+										loading="eager"
+									/>
+									{/* Permanent overlay */}
+									<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+									{/* Hover overlay */}
+									<div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+								</div>
+								{/* Decorative border */}
+								<div className="absolute -inset-1 bg-gradient-to-r from-[#9146FF]/20 to-yellow-600/20 rounded-xl blur-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 							</div>
-							{/* Decorative border */}
-							<div className="absolute -inset-1 bg-gradient-to-r from-[#9146FF]/20 to-yellow-600/20 rounded-xl blur-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-						</div>
+						)}
 					</div>
 				</div>
 			</div>

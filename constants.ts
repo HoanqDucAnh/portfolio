@@ -491,7 +491,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		title: "Analytics Engineer - <a class='underline underline-offset-2' href='https://insurify.com' target='_blank' rel='noopener noreferrer'><u>Insurify</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"Analytics Engineer @Insurify, Marketing & Growth Tech, Networks, and Core Analytics",
+			"Marketing & Growth Tech and Core Analytics",
 		location: "Boston",
 		image: "/timeline/insurify.png",
 		slideImage: "/timeline/insurify.png",
@@ -512,7 +512,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		title: "Data Mentor - <a class='underline underline-offset-2' href='https://acementorship.com/' target='_blank' rel='noopener noreferrer'><u>Ace Mentorships</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"Mentored 5 reports in data engineering, ML, and stats. Coached them through internship and new grad recruiting",
+			"Data Engineering, ML, and Stats Mentorship",
 		location: "Remote",
 		image: "/timeline/Ace.png",
 		slideImage: "/timeline/Ace.png",
@@ -533,7 +533,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		title: "Data Engineering Intern - <a class='underline underline-offset-2' href='https://www.lazard.com/' target='_blank' rel='noopener noreferrer'><u>Lazard</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"Data Engineering Intern @FABT team, focusing on data engineering and ETL pipelines",
+			"Financial Advisory Business Technology Team",
 		location: "New York City",
 		image: "/timeline/lazard.jpg",
 		slideImage: "/timeline/lazard.jpg",
@@ -555,7 +555,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 			"BI Engineering Intern - <a class='underline underline-offset-2' href='https://www.techsmith.com/' target='_blank' rel='noopener noreferrer'><u>Techsmith</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"BI Engineering Intern @Marketing/Sales teams, focusing on ROI/Revenue report and prediction",
+			"Marketing/Sales and GTM Teams",
 		location: "Remote",
 		image: "/timeline/techsmith.jpg",
 		slideImage: "/timeline/techsmith.jpg",
@@ -577,7 +577,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 			"Data Analyst Intern - <a class='' href='https://www.corning.com/worldwide/en.html' target='_blank' rel='noopener noreferrer'><u>Corning Inc</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"Data Analyst intern @Global Supply Chain Team, focusing on Logistic cost Analysis and Warehouse's Location optimization",
+			"Global Supply Chain Team",
 		location: "Keller",
 		image: "/timeline/Corning.png",
 		slideImage: "/timeline/Corning.jpg",
@@ -598,7 +598,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		title: "Product Management Intern - Stealth",
 		size: ItemSize.SMALL,
 		subtitle:
-			"Product Management @Payment Team, focusing on cryptocurrency payments",
+			"Payment Team",
 		location: "Remote",
 		image: "/timeline/Stealth1.jpg",
 		slideImage: "/timeline/Stealth.jpg",
@@ -619,7 +619,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 			"Data Analyst intern - <a class='' href='https://en.napas.com.vn/' target='_blank' rel='noopener noreferrer'><u>NAPAS Vietnam</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"Data Analyst @Information Technology team, focusing on data warehouse modeling and data visualization",
+			"Information Technology Team",
 		location: "Remote",
 		image: "/timeline/NAPAS1.png",
 		slideImage: "/timeline/NAPAS.jpg",
@@ -642,7 +642,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 			"Data Analyst intern - <a class='' href='https://kpim.vn/' target='_blank' rel='noopener noreferrer'><u>KPIM Consulting</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"Data Analyst @BI team, focusing on creating ad-hoc report and dashboards for the Sales team",
+			"Business Intelligence Team",
 		location: "Remote",
 		image: "/timeline/KPIM1.jpg",
 		slideImage: "/timeline/KPIM.jpg",
@@ -664,7 +664,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		title: "CEO, Founder - <a class='underline underline-offset-2' href='https://www.facebook.com/thecoconut.vn/' target='_blank' rel='noopener noreferrer'><u>The Coconut Consulting Academy</u></a>",
 		size: ItemSize.SMALL,
 		subtitle:
-			"CEO, Founder @The Coconut consulting Academy, managed team of 10 consultants to generate 10000$ in yearly revenue",
+			"Helping students achieve their US college dream",
 		location: "Remote",
 		image: "/timeline/Coconut.png",
 		slideImage: "/timeline/Coconut.png",
