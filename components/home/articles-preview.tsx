@@ -1,8 +1,57 @@
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { ARTICLES, SOCIAL_LINKS } from "../../constants";
+import { ARTICLES, IArticle, SOCIAL_LINKS } from "../../constants";
+
+const ArticleCard = ({
+	article,
+	featured = false,
+}: {
+	article: IArticle;
+	featured?: boolean;
+}) => (
+	<>
+		<div
+			className={`relative overflow-hidden bg-gray-800 ${
+				featured ? "md:h-full" : ""
+			}`}
+		>
+			<img
+				src={article.thumbnail}
+				alt={article.title}
+				className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
+				loading="lazy"
+				decoding="async"
+			/>
+			<div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-gray-900/10" />
+			<span className="absolute top-3 left-3 text-xs font-medium px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-sm text-gray-300 border border-white/10">
+				{article.date}
+			</span>
+		</div>
+		<div className={featured ? "p-6 md:p-8 flex flex-col justify-center" : "p-6"}>
+			<div className="flex items-center gap-3 mb-3">
+				<span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#9146FF]/15 text-[#BF94FF] border border-[#9146FF]/20">
+					{article.tag}
+				</span>
+				<span className="text-xs text-gray-500">{article.readingTime}</span>
+			</div>
+			<h3
+				className={`font-semibold text-white group-hover:text-[#BF94FF] transition-colors duration-300 leading-snug ${
+					featured ? "text-lg md:text-xl mb-3" : "text-base mb-3"
+				}`}
+			>
+				{article.title}
+			</h3>
+			<p
+				className={`text-sm text-gray-500 leading-relaxed ${
+					featured ? "line-clamp-4" : "line-clamp-3"
+				}`}
+			>
+				{article.excerpt}
+			</p>
+		</div>
+	</>
+);
 
 const ArticlesPreview = () => {
 	const sectionRef = useRef<HTMLElement>(null);
@@ -39,6 +88,8 @@ const ArticlesPreview = () => {
 		};
 	}, []);
 
+	const [featured, ...rest] = ARTICLES;
+
 	return (
 		<section
 			ref={sectionRef}
@@ -47,57 +98,56 @@ const ArticlesPreview = () => {
 		>
 			<div className="flex flex-col mb-10">
 				<h1 className="section-heading seq">Articles</h1>
-				<h2 className="text-2xl md:max-w-2xl w-full seq mt-2">
-					Sharing my journey, one post at a time
+				<h2 className="text-2xl md:max-w-2xl w-full seq mt-2 text-gray-200">
+					Analytics, data engineering, and the unglamorous truths from
+					working in data
 				</h2>
 			</div>
 
-			<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-				{ARTICLES.map((article, index) => (
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+				{/* Featured card — spans full width with horizontal layout */}
+				<a
+					ref={(el) => (cardsRef.current[0] = el)}
+					href={featured.url}
+					target="_blank"
+					rel="noreferrer"
+					className="group block md:col-span-2 rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-2 md:grid md:grid-cols-2"
+				>
+					<ArticleCard article={featured} featured />
+				</a>
+
+				{/* Remaining cards */}
+				{rest.map((article, index) => (
 					<a
-						key={index}
-						ref={(el) => (cardsRef.current[index] = el)}
+						key={index + 1}
+						ref={(el) => (cardsRef.current[index + 1] = el)}
 						href={article.url}
 						target="_blank"
 						rel="noreferrer"
 						className="group block rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-2"
 					>
-						<div className="relative aspect-[16/9] overflow-hidden bg-gray-800 flex items-center justify-center">
-							<img
-								src={article.thumbnail}
-								alt={article.title}
-								width={1456}
-								height={762}
-								className="w-full h-full object-cover object-left transition-transform duration-500 group-hover:scale-105"
-								loading="lazy"
-								decoding="async"
-							/>
-							<div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent" />
-							<span className="absolute bottom-3 left-4 text-xs text-gray-400 font-medium">
-								{article.date}
-							</span>
-						</div>
-						<div className="p-5">
-							<h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#BF94FF] transition-colors duration-300">
-								{article.title}
-							</h3>
-							<p className="text-sm text-gray-400 leading-relaxed line-clamp-2">
-								{article.excerpt}
-							</p>
-						</div>
+						<ArticleCard article={article} />
 					</a>
 				))}
 			</div>
 
-			<div className="mt-8 flex justify-center">
+			<div className="mt-12 flex justify-center">
 				<a
 					href={SOCIAL_LINKS.substack}
 					target="_blank"
 					rel="noreferrer"
-					className="inline-flex items-center gap-2 text-[#9146FF] hover:text-[#BF94FF] transition-colors duration-300 text-base font-medium"
+					className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#9146FF]/50 text-[#BF94FF] hover:bg-[#9146FF]/10 hover:border-[#9146FF] transition-all duration-300 text-sm font-medium"
 				>
 					Read more on Substack
-					<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+					<svg
+						className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+						strokeWidth={2}
+						strokeLinecap="round"
+						strokeLinejoin="round"
+					>
 						<path d="M5 12h14M12 5l7 7-7 7" />
 					</svg>
 				</a>

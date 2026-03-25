@@ -702,6 +702,8 @@ export interface IArticle {
 	thumbnail: string;
 	url: string;
 	date: string;
+	readingTime: string;
+	tag: string;
 }
 
 export const ARTICLES: IArticle[] = [
@@ -710,21 +712,27 @@ export const ARTICLES: IArticle[] = [
 		excerpt: "The tools, workflows, and habits that keep me productive as an analytics engineer — from IDE setup to daily rituals.",
 		thumbnail: "/article/productivity.png",
 		url: "https://substack.com/home/post/p-191266646",
-		date: "2025",
+		date: "Mar 2026",
+		readingTime: "10 min read",
+		tag: "Productivity",
 	},
 	{
 		title: "Component of a Technical Data Project (Part 1 - The Prerequisite)",
 		excerpt: "Breaking down the essential components every technical data project needs before writing a single line of code.",
-		thumbnail: "/article/technical_component_1.png",
+		thumbnail: "/article/part1.png",
 		url: "https://substack.com/@markphammm/p-178000757",
-		date: "2025",
+		date: "Jan 2026",
+		readingTime: "8 min read",
+		tag: "Data Engineering",
 	},
 	{
 		title: "Component of a Technical Data Project (Part 2 – Building Blocks)",
 		excerpt: "The core building blocks of a technical data project — from ingestion and storage to transformation and serving.",
-		thumbnail: "/article/technical_component_2.png",
+		thumbnail: "/article/part2.png",
 		url: "https://substack.com/@markphammm/p-178105495",
-		date: "2025",
+		date: "Feb 2026",
+		readingTime: "7 min read",
+		tag: "Data Engineering",
 	},
 ];
 
