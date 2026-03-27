@@ -11,7 +11,7 @@ import Image from "next/image";
 import { gsap, Linear } from "gsap";
 import Button, { ButtonTypes } from "../common/button";
 import HeroImage from "./hero-image";
-import HeroParticles from "./hero-particles";
+import HeroAurora from "./hero-aurora";
 import Link from "next/link";
 
 import { initializeApp, getApps } from "firebase/app";
@@ -202,7 +202,7 @@ const HeroSection = React.memo(() => {
 						</span>
 					)}
 				</div>
-				<h1 className="text-3xl md:text-4xl lg:text-5xl seq font-bold">
+				<h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl seq font-bold">
 					I'm{" "}
 					<span className="bg-gradient-to-r from-[#9146FF] via-[#BF94FF] to-[#9146FF] bg-clip-text text-transparent">
 						Minh (Mark) Pham
@@ -256,7 +256,7 @@ const HeroSection = React.memo(() => {
 			ref={targetSection}
 			style={{ opacity: 0.05 }}
 		>
-			<HeroParticles />
+			<HeroAurora />
 			{renderHeroContent()}
 			{renderBackgroundImage()}
 		</section>
