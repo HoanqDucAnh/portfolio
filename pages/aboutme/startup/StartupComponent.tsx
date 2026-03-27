@@ -8,9 +8,9 @@ interface TeamMemberProps {
 }
 
 const TeamMemberCard = ({ name, university, sat }: TeamMemberProps) => (
-	<div className="group bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-5 border border-gray-700/50 hover:border-[#f27d0d]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#f27d0d]/10">
+	<div className="group bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-5 border border-gray-700/50 hover:border-[#f27d0d]/50 transition-all duration-[10ms] hover:-translate-y-1 hover:shadow-lg hover:shadow-[#f27d0d]/10">
 		<div className="flex items-center gap-4">
-			<div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f27d0d] to-[#ff9a3c] flex items-center justify-center text-white font-bold text-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+			<div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f27d0d] to-[#ff9a3c] flex items-center justify-center text-white font-bold text-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-[10ms]">
 				{name.charAt(0)}
 			</div>
 			<div>
@@ -25,7 +25,7 @@ const TeamMemberCard = ({ name, university, sat }: TeamMemberProps) => (
 );
 
 const StatCard = ({ value, label, icon }: { value: string; label: string; icon: React.ReactNode }) => (
-	<div className="text-center p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/30 hover:border-[#f27d0d]/30 transition-all duration-300">
+	<div className="text-center p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/30 hover:border-[#f27d0d]/30 transition-all duration-[10ms]">
 		<div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-[#f27d0d]/10 flex items-center justify-center text-[#f27d0d]">
 			{icon}
 		</div>
@@ -303,7 +303,7 @@ export default function StartupComponent() {
 								href="https://www.facebook.com/thecoconut.vn/"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#f27d0d] to-[#ff9a3c] hover:from-[#e06d00] hover:to-[#f27d0d] text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-[#f27d0d]/25 hover:shadow-[#f27d0d]/40 hover:-translate-y-0.5"
+								className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#f27d0d] to-[#ff9a3c] hover:from-[#e06d00] hover:to-[#f27d0d] text-white font-semibold rounded-full transition-all duration-[10ms] shadow-lg shadow-[#f27d0d]/25 hover:shadow-[#f27d0d]/40 hover:-translate-y-0.5"
 							>
 								<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
 									<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />

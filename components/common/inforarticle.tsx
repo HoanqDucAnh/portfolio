@@ -12,7 +12,7 @@ export default function InfoArticle() {
 						href="https://www.linkedin.com/in/minhbphamm/"
 						target="_blank"
 						rel="noreferrer"
-						className="flex items-center hover:text-[#f27d0d] transition-colors duration-300"
+						className="flex items-center hover:text-[#f27d0d] transition-colors duration-[10ms]"
 					>
 						<Image 
 							src="/social/linkedin.svg" 
@@ -29,7 +29,7 @@ export default function InfoArticle() {
 						href="https://github.com/MarkPhamm"
 						target="_blank"
 						rel="noreferrer"
-						className="flex items-center hover:text-[#f27d0d] transition-colors duration-300"
+						className="flex items-center hover:text-[#f27d0d] transition-colors duration-[10ms]"
 					>
 						<Image 
 							src="/social/github.svg" 
@@ -48,28 +48,28 @@ export default function InfoArticle() {
 				<div className="space-y-2">
 					<div>
 						<Link href="/myarticle/userstreak">
-							<a className="block hover:text-[#f27d0d] transition-colors duration-300 text-sm">
+							<a className="block hover:text-[#f27d0d] transition-colors duration-[10ms] text-sm">
 								User Streak (Gaps and Islands)
 							</a>
 						</Link>
 					</div>
 					<div>
 						<Link href="/myarticle/retention">
-							<a className="block hover:text-[#f27d0d] transition-colors duration-300 text-sm">
+							<a className="block hover:text-[#f27d0d] transition-colors duration-[10ms] text-sm">
 								First Day Retention Rate
 							</a>
 						</Link>
 					</div>
 					<div>
 						<Link href="/myarticle/time">
-							<a className="block hover:text-[#f27d0d] transition-colors duration-300 text-sm">
+							<a className="block hover:text-[#f27d0d] transition-colors duration-[10ms] text-sm">
 								Time Between Two Events
 							</a>
 						</Link>
 					</div>
 					<div>
 						<Link href="/myarticle/marketcamp">
-							<a className="block hover:text-[#f27d0d] transition-colors duration-300 text-sm">
+							<a className="block hover:text-[#f27d0d] transition-colors duration-[10ms] text-sm">
 								Marketing Campaign Analysis
 							</a>
 						</Link>

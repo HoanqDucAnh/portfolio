@@ -33,7 +33,7 @@ const Menu = ({
 								{el.ref.startsWith('http') ? (
 									<a
 										href={el.ref}
-										className="link relative inline font-bold text-5xl duration-300 hover:no-underline"
+										className="link relative inline font-bold text-5xl duration-[10ms] hover:no-underline"
 										onClick={setmenuVisible.bind(null, false)}
 										target="_blank"
 										rel="noreferrer"
@@ -43,7 +43,7 @@ const Menu = ({
 								) : (
 									<Link href={el.ref.startsWith('/') ? el.ref : `/#${el.ref}`}>
 										<a
-											className="link relative inline font-bold text-5xl duration-300 hover:no-underline"
+											className="link relative inline font-bold text-5xl duration-[10ms] hover:no-underline"
 											onClick={setmenuVisible.bind(null, false)}
 										>
 											{el.name}

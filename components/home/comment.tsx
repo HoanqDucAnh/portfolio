@@ -22,13 +22,13 @@ const CommentTile = (props: {
 
 	return (
 		<div
-			className={`transition-all duration-600 ${props.isActive
+			className={`transition-all duration-[10ms] ${props.isActive
 					? "opacity-100 translate-x-0 scale-100"
 					: "opacity-0 translate-x-8 scale-[0.98]"
 				}`}
 			style={{ transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" }}
 		>
-			<div className={`relative p-8 md:p-10 mx-auto max-w-3xl h-[500px] flex flex-col justify-center rounded-2xl border transition-all duration-500 ${props.isActive
+			<div className={`relative p-8 md:p-10 mx-auto max-w-3xl h-[500px] flex flex-col justify-center rounded-2xl border transition-all duration-[10ms] ${props.isActive
 					? "bg-gray-900/90 backdrop-blur-sm border-[#9146FF]/30 shadow-lg shadow-[#9146FF]/5"
 					: "bg-gray-900 border-gray-800"
 				}`}>
@@ -106,7 +106,7 @@ const CommentSection = ({ }: IDesktop) => {
 					{/* Navigation Arrows - Outside overflow container */}
 					<button
 						onClick={goToPrev}
-						className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-6 z-10 p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-200 shadow-lg"
+						className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-6 z-10 p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-[10ms] shadow-lg"
 						aria-label="Previous testimonial"
 					>
 						<FaChevronLeft className="text-lg" />
@@ -114,7 +114,7 @@ const CommentSection = ({ }: IDesktop) => {
 
 					<button
 						onClick={goToNext}
-						className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-6 z-10 p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-200 shadow-lg"
+						className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-6 z-10 p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-[10ms] shadow-lg"
 						aria-label="Next testimonial"
 					>
 						<FaChevronRight className="text-lg" />
@@ -150,7 +150,7 @@ const CommentSection = ({ }: IDesktop) => {
 						<button
 							key={index}
 							onClick={() => goToSlide(index)}
-							className={`w-3.5 h-3.5 rounded-full transition-all duration-300 ${index === currentIndex
+							className={`w-3.5 h-3.5 rounded-full transition-all duration-[10ms] ${index === currentIndex
 									? "bg-[#9146FF] w-10"
 									: "bg-gray-600 hover:bg-gray-500"
 								}`}
@@ -163,7 +163,7 @@ const CommentSection = ({ }: IDesktop) => {
 				<div className="mt-4 max-w-md mx-auto w-full">
 					<div className="h-1 bg-gray-800 rounded-full overflow-hidden">
 						<div
-							className="h-full bg-[#9146FF] transition-all duration-500 ease-out"
+							className="h-full bg-[#9146FF] transition-all duration-[10ms] ease-out"
 							style={{ width: `${((currentIndex + 1) / totalSlides) * 100}%` }}
 						/>
 					</div>

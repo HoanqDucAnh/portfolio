@@ -49,7 +49,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 						key={category.value}
 						onClick={() => handleCategoryChange(category.value)}
 						className={`
-							px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300
+							px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-[10ms]
 							${
 								activeCategory === category.value
 									? "bg-[#9146FF] text-white shadow-lg shadow-[#9146FF]/20"
@@ -71,7 +71,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		<div
 			className={`
 				grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8
-				transition-all duration-300
+				transition-all duration-[10ms]
 				${isAnimating ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"}
 			`}
 		>

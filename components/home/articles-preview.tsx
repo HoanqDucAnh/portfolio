@@ -19,7 +19,7 @@ const ArticleCard = ({
 			<img
 				src={article.thumbnail}
 				alt={article.title}
-				className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+				className="w-full h-full object-cover object-top transition-transform duration-[10ms] group-hover:scale-105"
 				loading="lazy"
 				decoding="async"
 			/>
@@ -36,7 +36,7 @@ const ArticleCard = ({
 				<span className="text-xs text-gray-500">{article.readingTime}</span>
 			</div>
 			<h3
-				className={`font-semibold text-white group-hover:text-[#BF94FF] transition-colors duration-300 leading-snug ${
+				className={`font-semibold text-white group-hover:text-[#BF94FF] transition-colors duration-[10ms] leading-snug ${
 					featured ? "text-lg md:text-xl mb-3" : "text-base mb-3"
 				}`}
 			>
@@ -111,7 +111,7 @@ const ArticlesPreview = () => {
 					href={featured.url}
 					target="_blank"
 					rel="noreferrer"
-					className="group block md:col-span-2 rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-2 md:grid md:grid-cols-2"
+					className="group block md:col-span-2 rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-2 md:grid md:grid-cols-2"
 				>
 					<ArticleCard article={featured} featured />
 				</a>
@@ -124,7 +124,7 @@ const ArticlesPreview = () => {
 						href={article.url}
 						target="_blank"
 						rel="noreferrer"
-						className="group block rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-2"
+						className="group block rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-2"
 					>
 						<ArticleCard article={article} />
 					</a>
@@ -136,11 +136,11 @@ const ArticlesPreview = () => {
 					href={SOCIAL_LINKS.substack}
 					target="_blank"
 					rel="noreferrer"
-					className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#9146FF]/50 text-[#BF94FF] hover:bg-[#9146FF]/10 hover:border-[#9146FF] transition-all duration-300 text-sm font-medium"
+					className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#9146FF]/50 text-[#BF94FF] hover:bg-[#9146FF]/10 hover:border-[#9146FF] transition-all duration-[10ms] text-sm font-medium"
 				>
 					Read more on Substack
 					<svg
-						className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+						className="w-4 h-4 transition-transform duration-[10ms] group-hover:translate-x-1"
 						fill="none"
 						stroke="currentColor"
 						viewBox="0 0 24 24"

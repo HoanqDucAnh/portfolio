@@ -25,7 +25,7 @@ const ScrollReveal = ({ children, delay = 0 }: { children: React.ReactNode; dela
 	return (
 		<div
 			ref={ref}
-			className={`transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+			className={`transition-all duration-[10ms] ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
 			style={{ transitionDelay: `${delay}ms` }}
 		>
 			{children}
@@ -53,9 +53,9 @@ const DishCard = ({ image, title, subtitle, caption, description, reverse = fals
 						objectFit="cover"
 						loading="lazy"
 						alt={title}
-						className="transition-transform duration-500 group-hover:scale-105"
+						className="transition-transform duration-[10ms] group-hover:scale-105"
 					/>
-					<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+					<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms]" />
 				</div>
 				<p className="text-sm text-gray-400 italic text-center mt-3">{caption}</p>
 			</div>
@@ -86,7 +86,7 @@ const CategoryTabs = ({ categories, activeCategory, onSelect }: CategoryTabProps
 			<button
 				key={category}
 				onClick={() => onSelect(category)}
-				className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+				className={`px-6 py-2 rounded-full font-medium transition-all duration-[10ms] ${
 					activeCategory === category
 						? 'bg-[#f27d0d] text-white shadow-lg shadow-[#f27d0d]/30'
 						: 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
@@ -140,14 +140,14 @@ const PassionHero = () => {
 					priority
 				/>
 			</div>
-			<div className={`relative z-20 text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-				<p className={`text-[#f27d0d] text-lg md:text-xl font-medium tracking-[0.25em] uppercase mb-6 transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+			<div className={`relative z-20 text-center px-6 max-w-5xl mx-auto transition-all duration-[10ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+				<p className={`text-[#f27d0d] text-lg md:text-xl font-medium tracking-[0.25em] uppercase mb-6 transition-all duration-[10ms] delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
 					Beyond the Code
 				</p>
-				<h1 className={`text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-10 transition-all duration-1000 delay-500 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+				<h1 className={`text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-10 transition-all duration-[10ms] delay-500 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
 					My Passion for <span className="text-[#f27d0d]">Cuisine</span>
 				</h1>
-				<div className={`text-xl md:text-2xl text-gray-200/90 italic max-w-3xl mx-auto min-h-[1.5em] transition-all duration-1000 delay-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+				<div className={`text-xl md:text-2xl text-gray-200/90 italic max-w-3xl mx-auto min-h-[1.5em] transition-all duration-[10ms] delay-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
 					<span ref={typedRef}></span>
 				</div>
 			</div>
@@ -308,7 +308,7 @@ export default function PassionComponent() {
 											height={300}
 																		loading="lazy"
 											alt={item.title}
-											className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+											className="w-full h-full object-cover transition-transform duration-[10ms] group-hover:scale-110"
 										/>
 									</div>
 									<div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />

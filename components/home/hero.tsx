@@ -94,7 +94,7 @@ const HERO_STYLES = {
 	SECTION:
 		"w-full flex md:items-center py-8 section-container min-h-screen relative mb-12",
 	CONTENT: "font-medium flex flex-col pt-32 md:pt-0 select-none",
-	SOCIAL_LINK: "link hover:opacity-90 hover:scale-110 transition-all duration-300 md:mr-4 mr-2",
+	SOCIAL_LINK: "link hover:opacity-90 hover:scale-110 transition-all duration-[10ms] md:mr-4 mr-2",
 	BG_WRAPPER:
 		"absolute hero-bg right-0 md:bottom-0 bottom-8 -z-1 md:w-3/4 w-full scale-125 sm:scale-100 flex items-end",
 	TYPED_SPAN: "text-xl sm:text-2xl md:text-3xl seq",
@@ -219,7 +219,7 @@ const HeroSection = React.memo(() => {
 				<a
 					href="/minh_pham_resume.pdf"
 					download
-					className="inline-flex items-center gap-3 px-5 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white text-base font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#9146FF]/25 hover:-translate-y-0.5"
+					className="inline-flex items-center gap-3 px-5 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/25 hover:-translate-y-0.5"
 				>
 					<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 						<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -232,7 +232,7 @@ const HeroSection = React.memo(() => {
 					href="https://calendly.com/minh-pham-insurify/30min"
 					target="_blank"
 					rel="noreferrer"
-					className="inline-flex items-center gap-3 px-5 py-3 border-2 border-white/80 hover:border-white bg-white/5 hover:bg-white/10 text-white text-base font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-white/10 hover:-translate-y-0.5"
+					className="inline-flex items-center gap-3 px-5 py-3 border-2 border-white/80 hover:border-white bg-white/5 hover:bg-white/10 text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-white/10 hover:-translate-y-0.5"
 				>
 					<svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 						<path d="M17 8h1a4 4 0 1 1 0 8h-1"/>

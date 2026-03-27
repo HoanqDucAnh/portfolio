@@ -127,7 +127,7 @@ const GitHubStats = memo(() => {
 
 	const StatCard = ({ icon, label, value, delay }: { icon: React.ReactNode; label: string; value: number; delay: number }) => (
 		<div
-			className={`flex flex-col items-center justify-center p-4 rounded-lg hover:scale-105 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+			className={`flex flex-col items-center justify-center p-4 rounded-lg hover:scale-105 transition-all duration-[10ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
 				}`}
 			style={{
 				transitionDelay: `${delay}ms`,
@@ -168,7 +168,7 @@ const GitHubStats = memo(() => {
 
 	return (
 		<div
-			className={`w-full bg-gray-950 rounded-lg p-6 hover:bg-gray-900/50 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+			className={`w-full bg-gray-950 rounded-lg p-6 hover:bg-gray-900/50 transition-all duration-[10ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
 				}`}
 		>
 			<a
@@ -194,7 +194,7 @@ const GitHubStats = memo(() => {
 
 			{/* Language Stats */}
 			<div
-				className={`mt-4 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+				className={`mt-4 transition-all duration-[10ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
 					}`}
 				style={{ transitionDelay: '500ms' }}
 			>
@@ -203,7 +203,7 @@ const GitHubStats = memo(() => {
 					{stats.languages.map((lang, index) => (
 						<div
 							key={lang.name}
-							className={`group transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+							className={`group transition-all duration-[10ms] ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
 								}`}
 							style={{ transitionDelay: `${600 + index * 100}ms` }}
 						>
@@ -219,7 +219,7 @@ const GitHubStats = memo(() => {
 							</div>
 							<div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
 								<div
-									className="h-full rounded-full transition-all duration-700 ease-out"
+									className="h-full rounded-full transition-all duration-[10ms] ease-out"
 									style={{
 										width: isVisible ? `${lang.percentage}%` : '0%',
 										backgroundColor: lang.color,

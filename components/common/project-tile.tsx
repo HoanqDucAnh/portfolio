@@ -72,7 +72,7 @@ const ProjectTile = ({
 					}
 				}}
 			>
-				<div className="relative h-full rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-2">
+				<div className="relative h-full rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-2">
 					{/* Image Container */}
 					<div className="relative aspect-[16/10] overflow-hidden">
 						{/* Gradient Overlay */}
@@ -87,7 +87,7 @@ const ProjectTile = ({
 							alt={name}
 							layout="fill"
 							objectFit="cover"
-							className="transition-transform duration-500 group-hover:scale-110"
+							className="transition-transform duration-[10ms] group-hover:scale-110"
 							loading="eager"
 						/>
 						{/* Category Badge */}
@@ -99,7 +99,7 @@ const ProjectTile = ({
 							</span>
 						</div>
 						{/* Expand Icon */}
-						<div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+						<div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms]">
 							<div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
 								<svg
 									className="w-4 h-4 text-white"
@@ -121,7 +121,7 @@ const ProjectTile = ({
 					{/* Content */}
 					<div className="p-5">
 						{/* Project Name */}
-						<h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#BF94FF] transition-colors duration-300 line-clamp-2">
+						<h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#BF94FF] transition-colors duration-[10ms] line-clamp-2">
 							{name}
 						</h3>
 
@@ -137,7 +137,7 @@ const ProjectTile = ({
 							{tech.slice(0, 5).map((techItem) => (
 								<div
 									key={techItem}
-									className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-800/80 border border-gray-700/50 transition-colors duration-200 hover:border-[#9146FF]/30 hover:bg-gray-700/80"
+									className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-800/80 border border-gray-700/50 transition-colors duration-[10ms] hover:border-[#9146FF]/30 hover:bg-gray-700/80"
 								>
 									<Image
 										src={`/projects/tech/${techItem}.${["S3", "EC2", "Lambda", "MWAA", "Terraform", "Dagster", "Flink", "Apache Iceberg", "MinIO", "Spark", "Trino", "ClickHouse", "FastAPI"].includes(techItem) ? "png" : "svg"}`}
@@ -156,7 +156,7 @@ const ProjectTile = ({
 
 					{/* Bottom gradient line */}
 					<div
-						className="absolute bottom-0 left-0 right-0 h-1 opacity-30 group-hover:opacity-100 transition-opacity duration-300"
+						className="absolute bottom-0 left-0 right-0 h-1 opacity-30 group-hover:opacity-100 transition-opacity duration-[10ms]"
 						style={{
 							background: `linear-gradient(90deg, ${stop1} 0%, ${stop2} 100%)`,
 						}}

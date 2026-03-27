@@ -6,7 +6,7 @@ const WAKATIME_USERNAME = "MarkPham";
 
 const WakatimeStats = memo(() => {
 	return (
-		<div className="w-full bg-gray-950 rounded-lg p-6 hover:bg-gray-900/50 transition-all duration-500">
+		<div className="w-full bg-gray-950 rounded-lg p-6 hover:bg-gray-900/50 transition-all duration-[10ms]">
 			<a
 				href={`https://wakatime.com/@${WAKATIME_USERNAME}`}
 				target="_blank"
@@ -24,28 +24,28 @@ const WakatimeStats = memo(() => {
 			<div className="space-y-6">
 				{/* Stats Cards */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-					<div className="flex items-center gap-4 p-4 rounded-lg border border-gray-700/30 hover:border-[#9146FF]/20 transition-all duration-300 hover:scale-105" style={{ background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.6), rgba(17, 24, 39, 0.8))' }}>
+					<div className="flex items-center gap-4 p-4 rounded-lg border border-gray-700/30 hover:border-[#9146FF]/20 transition-all duration-[10ms] hover:scale-105" style={{ background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.6), rgba(17, 24, 39, 0.8))' }}>
 						<FaClock className="text-3xl text-blue-400" />
 						<div>
 							<p className="text-sm text-gray-400">Coding Activity</p>
 							<p className="text-lg font-semibold text-white">Since Sep 2024</p>
 						</div>
 					</div>
-					<div className="flex items-center gap-4 p-4 rounded-lg border border-gray-700/30 hover:border-[#9146FF]/20 transition-all duration-300 hover:scale-105" style={{ background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.6), rgba(17, 24, 39, 0.8))' }}>
+					<div className="flex items-center gap-4 p-4 rounded-lg border border-gray-700/30 hover:border-[#9146FF]/20 transition-all duration-[10ms] hover:scale-105" style={{ background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.6), rgba(17, 24, 39, 0.8))' }}>
 						<FaCode className="text-3xl text-green-400" />
 						<div>
 							<p className="text-sm text-gray-400">Tracking</p>
 							<p className="text-lg font-semibold text-white">All Projects</p>
 						</div>
 					</div>
-					<div className="flex items-center gap-4 p-4 rounded-lg border border-gray-700/30 hover:border-[#9146FF]/20 transition-all duration-300 hover:scale-105" style={{ background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.6), rgba(17, 24, 39, 0.8))' }}>
+					<div className="flex items-center gap-4 p-4 rounded-lg border border-gray-700/30 hover:border-[#9146FF]/20 transition-all duration-[10ms] hover:scale-105" style={{ background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.6), rgba(17, 24, 39, 0.8))' }}>
 						<FaChartBar className="text-3xl text-purple-400" />
 						<div>
 							<p className="text-sm text-gray-400">Daily Goal</p>
 							<p className="text-lg font-semibold text-white">2+ Hours</p>
 						</div>
 					</div>
-					<div className="flex items-center gap-4 p-4 rounded-lg border border-gray-700/30 hover:border-[#9146FF]/20 transition-all duration-300 hover:scale-105" style={{ background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.6), rgba(17, 24, 39, 0.8))' }}>
+					<div className="flex items-center gap-4 p-4 rounded-lg border border-gray-700/30 hover:border-[#9146FF]/20 transition-all duration-[10ms] hover:scale-105" style={{ background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.6), rgba(17, 24, 39, 0.8))' }}>
 						<FaLaptopCode className="text-3xl text-orange-400" />
 						<div>
 							<p className="text-sm text-gray-400">Main Editor</p>

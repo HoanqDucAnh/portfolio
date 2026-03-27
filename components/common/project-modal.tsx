@@ -167,7 +167,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
 							href={project.url}
 							target="_blank"
 							rel="noreferrer"
-							className="inline-flex items-center gap-2 px-6 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white font-medium rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#9146FF]/25"
+							className="inline-flex items-center gap-2 px-6 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/25"
 						>
 							View Project
 							<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
