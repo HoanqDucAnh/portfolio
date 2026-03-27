@@ -30,7 +30,7 @@ const Tooltip = memo(({ text, children }: { text: string; children: React.ReactN
 	return (
 		<div className="group/tip relative inline-block">
 			{children}
-			<div className="absolute invisible group-hover/tip:visible opacity-0 group-hover/tip:opacity-100 transition-opacity duration-300 bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 text-sm bg-white text-gray-800 rounded-lg shadow-lg whitespace-nowrap z-10">
+			<div className="absolute invisible group-hover/tip:visible opacity-0 group-hover/tip:opacity-100 transition-opacity duration-[10ms] bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 text-sm bg-white text-gray-800 rounded-lg shadow-lg whitespace-nowrap z-10">
 				{text}
 				<div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
 			</div>
@@ -133,7 +133,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 			return (
 				<div
 					key={title}
-					className="skill-card p-6 rounded-2xl border border-gray-800/50 bg-gray-900/30 backdrop-blur-sm hover:border-[#9146FF]/30 transition-all duration-500 relative overflow-hidden"
+					className="skill-card p-6 rounded-2xl border border-gray-800/50 bg-gray-900/30 backdrop-blur-sm hover:border-[#9146FF]/30 transition-all duration-[10ms] relative overflow-hidden"
 				>
 					{/* Gradient accent line at top */}
 					<div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#9146FF] via-[#BF94FF] to-[#9146FF] opacity-40" />
@@ -152,20 +152,20 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						{skills.map((skill) => (
 							<div key={skill}>
 								<Tooltip text={skill}>
-									<div className="flex flex-col items-center rounded-xl p-2 hover:bg-[#9146FF]/5 transition-all duration-200 hover:shadow-lg hover:shadow-[#9146FF]/5 group/skill">
+									<div className="flex flex-col items-center rounded-xl p-2 hover:bg-[#9146FF]/5 transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/5 group/skill">
 										<Image
 											src={getSkillImagePath(skill)}
 											alt={skill}
 											width={76}
 											height={76}
-											className="skill hover:scale-[1.15] transition-transform duration-200 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32"
+											className="skill hover:scale-[1.15] transition-transform duration-[10ms] w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32"
 											loading="lazy"
 										/>
-										<span className="text-xs text-gray-400 mt-1 text-center truncate max-w-[7rem] group-hover/skill:text-[#BF94FF] transition-colors duration-200">
+										<span className="text-xs text-gray-400 mt-1 text-center truncate max-w-[7rem] group-hover/skill:text-[#BF94FF] transition-colors duration-[10ms]">
 											{skill}
 										</span>
 										{/* Purple underline on hover */}
-										<div className="w-0 group-hover/skill:w-full h-[2px] bg-[#9146FF]/40 rounded-full transition-all duration-300 mt-0.5" />
+										<div className="w-0 group-hover/skill:w-full h-[2px] bg-[#9146FF]/40 rounded-full transition-all duration-[10ms] mt-0.5" />
 									</div>
 								</Tooltip>
 							</div>
