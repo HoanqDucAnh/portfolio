@@ -305,9 +305,9 @@ a {
 			border-radius: 50%;
 			transition: all 0.4s ease;
 			backface-visibility: hidden;
-			background: rgba(0, 0, 0, 0.5);
+			background: rgba(0, 0, 0, 0.85);
 			@supports not (backdrop-filter: blur(1px)) {
-				background: rgba(0, 0, 0, 0.8);
+				background: rgba(0, 0, 0, 0.95);
 			}
 
 			> div {
