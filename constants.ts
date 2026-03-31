@@ -384,8 +384,8 @@ export const SKILLS = {
 		"Airbyte",
 		"Dlt",
 		"Fivetran",
-		"Stich",
-		"alteryx"
+		"stitch",
+		"Alteryx-icon"
 	],
 	"Orchestration": [
 		"Apache Airflow",
