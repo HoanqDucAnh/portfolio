@@ -385,7 +385,7 @@ export const SKILLS = {
 		"Dlt",
 		"Fivetran",
 		"stitch",
-		"Alteryx-icon"
+		"alteryx"
 	],
 	"Orchestration": [
 		"Apache Airflow",
