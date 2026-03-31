@@ -1,7 +1,8 @@
 import { MENULINKS, SKILLS } from "../../constants";
 import Image from "next/image";
 import { useEffect, useRef, useState, useCallback, memo } from "react";
-import { createPortal } from "react-dom";
+// @ts-ignore
+import ReactDOM from "react-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { IDesktop } from "pages";
@@ -50,7 +51,7 @@ const SkillIcon = ({ skill, src }: { skill: string; src: string }) => {
 				className="skill"
 				loading="lazy"
 			/>
-			{tooltip && createPortal(
+			{tooltip && ReactDOM.createPortal(
 				<div
 					className="fixed px-3 py-1.5 text-xs bg-white text-gray-800 rounded-lg shadow-lg whitespace-nowrap pointer-events-none"
 					style={{ left: tooltip.x, top: tooltip.y - 8, transform: "translate(-50%, -100%)", zIndex: 9999 }}
