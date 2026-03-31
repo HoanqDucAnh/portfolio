@@ -28,7 +28,7 @@ const CommentTile = (props: {
 				}`}
 			style={{ transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" }}
 		>
-			<div className={`relative p-8 md:p-10 mx-auto max-w-3xl h-[500px] flex flex-col justify-center rounded-2xl border transition-all duration-[10ms] ${props.isActive
+			<div className={`relative p-8 md:p-10 mx-auto max-w-3xl min-h-[420px] md:min-h-[500px] flex flex-col justify-center rounded-2xl border transition-all duration-[10ms] ${props.isActive
 					? "bg-gray-900/90 backdrop-blur-sm border-[#9146FF]/30 shadow-lg shadow-[#9146FF]/5"
 					: "bg-gray-900 border-gray-800"
 				}`}>
@@ -102,11 +102,18 @@ const CommentSection = ({ }: IDesktop) => {
 					className="relative"
 					onMouseEnter={() => setIsPaused(true)}
 					onMouseLeave={() => setIsPaused(false)}
+					onKeyDown={(e) => {
+						if (e.key === "ArrowLeft") goToPrev();
+						if (e.key === "ArrowRight") goToNext();
+					}}
+					tabIndex={0}
+					role="region"
+					aria-label="Testimonial carousel"
 				>
-					{/* Navigation Arrows - Outside overflow container */}
+					{/* Navigation Arrows */}
 					<button
 						onClick={goToPrev}
-						className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-6 z-10 p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-[10ms] shadow-lg"
+						className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-10 p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-[10ms] shadow-lg"
 						aria-label="Previous testimonial"
 					>
 						<FaChevronLeft className="text-lg" />
@@ -114,7 +121,7 @@ const CommentSection = ({ }: IDesktop) => {
 
 					<button
 						onClick={goToNext}
-						className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-6 z-10 p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-[10ms] shadow-lg"
+						className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-10 p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-[10ms] shadow-lg"
 						aria-label="Next testimonial"
 					>
 						<FaChevronRight className="text-lg" />
@@ -137,6 +144,24 @@ const CommentSection = ({ }: IDesktop) => {
 							</div>
 						))}
 					</div>
+				</div>
+
+				{/* Mobile Navigation Arrows */}
+				<div className="flex md:hidden justify-center gap-4 mt-4">
+					<button
+						onClick={goToPrev}
+						className="p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-[10ms] shadow-lg"
+						aria-label="Previous testimonial"
+					>
+						<FaChevronLeft className="text-lg" />
+					</button>
+					<button
+						onClick={goToNext}
+						className="p-3 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-all duration-[10ms] shadow-lg"
+						aria-label="Next testimonial"
+					>
+						<FaChevronRight className="text-lg" />
+					</button>
 				</div>
 
 				{/* Slide Counter */}

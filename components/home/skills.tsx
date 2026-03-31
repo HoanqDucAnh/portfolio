@@ -158,7 +158,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 											alt={skill}
 											width={76}
 											height={76}
-											className="skill hover:scale-[1.15] transition-transform duration-[10ms] w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 2xl:w-32 2xl:h-32"
+											className="skill hover:scale-[1.15] transition-transform duration-[10ms] w-5 md:w-7 xl:w-8"
 											loading="lazy"
 										/>
 										<span className="text-xs text-gray-400 mt-1 text-center truncate max-w-[7rem] group-hover/skill:text-[#BF94FF] transition-colors duration-[10ms]">

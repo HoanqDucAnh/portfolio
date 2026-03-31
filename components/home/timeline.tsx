@@ -149,7 +149,7 @@ const TimelineSection = (_props: IDesktop) => {
 							dangerouslySetInnerHTML={{ __html: experience.title }}
 						/>
 						<div className={`overflow-hidden ${isEven ? "md:text-right" : "md:text-left"}`}>
-							<p className={`text-gray-200 text-[clamp(0.65rem,1.5vw,1rem)] leading-relaxed whitespace-nowrap ${isEven ? "md:float-right" : ""}`}>
+							<p className={`text-gray-200 text-[clamp(0.65rem,1.5vw,1rem)] leading-relaxed ${isEven ? "md:float-right" : ""}`}>
 								{experience.subtitle}
 							</p>
 						</div>
@@ -228,7 +228,7 @@ const TimelineSection = (_props: IDesktop) => {
 
 			<div className="relative">
 				{/* Main timeline line */}
-				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#9146FF]/50 via-gray-700 to-gray-700/50 transform md:-translate-x-1/2"></div>
+				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#9146FF]/50 via-[#9146FF]/20 to-transparent transform md:-translate-x-1/2"></div>
 
 				{/* Experience cards */}
 				<div className="relative">

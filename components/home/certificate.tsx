@@ -9,48 +9,21 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { IDesktop } from "pages";
-import styled from "styled-components";
+import { memo } from "react";
 
-const TooltipContainer = styled.div`
-	position: relative;
-	display: inline-block;
-`;
-
-const TooltipText = styled.span`
-	visibility: hidden;
-	width: 150px;
-	background-color: #fff;
-	color: #101827;
-	text-align: center;
-	border-radius: 6px;
-	padding: 5px;
-	position: absolute;
-	z-index: 1;
-	bottom: 125%;
-	left: 50%;
-	margin-left: -60px;
-	opacity: 0;
-	transition: opacity 0.3s;
-
-	${TooltipContainer}:hover & {
-		visibility: visible;
-		opacity: 1;
-	}
-`;
-
-interface TooltipProps {
-	text: string;
-	children: React.ReactNode;
-}
-
-const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
+const Tooltip = memo(({ text, children }: { text: string; children: React.ReactNode }) => {
 	return (
-		<TooltipContainer>
+		<div className="group/tip relative inline-block">
 			{children}
-			<TooltipText>{text}</TooltipText>
-		</TooltipContainer>
+			<div className="absolute invisible group-hover/tip:visible opacity-0 group-hover/tip:opacity-100 transition-opacity duration-[10ms] bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 text-sm bg-white text-gray-800 rounded-lg shadow-lg whitespace-nowrap z-10">
+				{text}
+				<div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
+			</div>
+		</div>
 	);
-};
+});
+
+Tooltip.displayName = "Tooltip";
 
 const CERTIFICATE_STYLES = {
 	SECTION:
