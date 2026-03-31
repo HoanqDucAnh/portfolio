@@ -1,6 +1,7 @@
 import { MENULINKS, SKILLS } from "../../constants";
 import Image from "next/image";
 import { useEffect, useRef, useState, useCallback, memo } from "react";
+import { createPortal } from "react-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { IDesktop } from "pages";
@@ -26,19 +27,42 @@ const CATEGORY_ICONS: Record<string, React.ElementType> = {
 	"DevOps": TbSettings,
 };
 
-const Tooltip = memo(({ text, children }: { text: string; children: React.ReactNode }) => {
+const SkillIcon = ({ skill, src }: { skill: string; src: string }) => {
+	const [tooltip, setTooltip] = useState<{ x: number; y: number } | null>(null);
+
 	return (
-		<div className="group/tip relative inline-block">
-			{children}
-			<div className="absolute invisible group-hover/tip:visible opacity-0 group-hover/tip:opacity-100 transition-opacity duration-[10ms] bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 text-sm bg-white text-gray-800 rounded-lg shadow-lg whitespace-nowrap z-10">
-				{text}
-				<div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-			</div>
+		<div
+			className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 hover:scale-[1.15] transition-transform duration-[10ms] cursor-pointer"
+			onMouseEnter={(e) => {
+				const rect = e.currentTarget.getBoundingClientRect();
+				const centerX = rect.left + rect.width / 2;
+				const centerY = rect.top + rect.height / 2;
+				const unscaledHalf = rect.height / 2 / 1.15;
+				setTooltip({ x: centerX, y: centerY - unscaledHalf });
+			}}
+			onMouseLeave={() => setTooltip(null)}
+		>
+			<Image
+				src={src}
+				alt={skill}
+				layout="fill"
+				objectFit="contain"
+				className="skill"
+				loading="lazy"
+			/>
+			{tooltip && createPortal(
+				<div
+					className="fixed px-3 py-1.5 text-xs bg-white text-gray-800 rounded-lg shadow-lg whitespace-nowrap pointer-events-none"
+					style={{ left: tooltip.x, top: tooltip.y - 8, transform: "translate(-50%, -100%)", zIndex: 9999 }}
+				>
+					{skill}
+					<div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white" />
+				</div>,
+				document.body
+			)}
 		</div>
 	);
-});
-
-Tooltip.displayName = "Tooltip";
+};
 
 const SKILL_STYLES = {
 	SECTION:
@@ -148,27 +172,9 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
 					</div>
 
-					<div className="grid grid-cols-5 gap-2 sm:gap-3 lg:gap-3 xl:gap-4 2xl:gap-5">
+					<div className="grid grid-cols-5 gap-2 sm:gap-3 lg:gap-3 xl:gap-4 2xl:gap-5 place-items-center">
 						{skills.map((skill) => (
-							<div key={skill}>
-								<Tooltip text={skill}>
-									<div className="flex flex-col items-center rounded-xl p-2 hover:bg-[#9146FF]/5 transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/5 group/skill">
-										<Image
-											src={getSkillImagePath(skill)}
-											alt={skill}
-											width={76}
-											height={76}
-											className="skill hover:scale-[1.15] transition-transform duration-[10ms] w-5 md:w-7 xl:w-8"
-											loading="lazy"
-										/>
-										<span className="text-xs text-gray-400 mt-1 text-center truncate max-w-[7rem] group-hover/skill:text-[#BF94FF] transition-colors duration-[10ms]">
-											{skill}
-										</span>
-										{/* Purple underline on hover */}
-										<div className="w-0 group-hover/skill:w-full h-[2px] bg-[#9146FF]/40 rounded-full transition-all duration-[10ms] mt-0.5" />
-									</div>
-								</Tooltip>
-							</div>
+							<SkillIcon key={skill} skill={skill} src={getSkillImagePath(skill)} />
 						))}
 					</div>
 				</div>
