@@ -69,11 +69,11 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
 				if (e.target === e.currentTarget) handleClose();
 			}}
 		>
-			<div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+			<div className="absolute inset-0 bg-black/70 backdrop-blur-sm pointer-events-none" />
 
 			<div
 				ref={cardRef}
-				className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl bg-gray-900 border border-gray-700/50 shadow-2xl"
+				className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto scrollbar-none rounded-2xl bg-gray-900 border border-gray-700/50 shadow-2xl"
 			>
 				{/* Close button */}
 				<button

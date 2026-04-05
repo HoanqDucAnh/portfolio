@@ -163,8 +163,8 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#1b1b1b", "#d8d8d8"],
 		url: "https://github.com/MarkPhamm/skytrax_reviews_extract_load",
 		tech: ["Apache Airflow", "python", "S3", "Snowflake", "Terraform"],
-		fullDescription: "Built a production-grade data pipeline that scrapes 160K+ airline reviews from Skytrax. The pipeline uses 26 parallel Airflow tasks for extraction, stages data in S3, and loads into Snowflake with full idempotency and error handling. Infrastructure provisioned via Terraform with CI/CD through GitHub Actions.",
-		impact: ["160K+ reviews processed", "26 parallel Airflow tasks", "Fully automated CI/CD"],
+		fullDescription: "Scrapes 160K+ airline reviews using 26 parallel Airflow tasks, stages in S3, and loads into Snowflake. Infra managed with Terraform and GitHub Actions CI/CD.",
+		impact: ["160K+ reviews", "26 parallel Airflow tasks", "Fully automated CI/CD"],
 	},
 	{
 		name: "Skytrax Reviews Transformation",
@@ -175,8 +175,8 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#1b1b1b", "#4a90d9"],
 		url: "https://github.com/MarkPhamm/skytrax_reviews_transformation",
 		tech: ["Dbt", "Snowflake", "Terraform", "Github", "Apache Airflow"],
-		fullDescription: "Designed a Kimball star-schema transformation layer using dbt on top of Snowflake. Features slim CI/CD via GitHub Actions with OIDC authentication, automated dbt docs deployment to CloudFront, and comprehensive data quality tests.",
-		impact: ["Kimball star-schema design", "Slim CI/CD pipeline", "Auto-deployed dbt docs"],
+		fullDescription: "Kimball star-schema transformations with dbt on Snowflake. Slim CI/CD via GitHub Actions with OIDC auth and auto-deployed dbt docs on CloudFront.",
+		impact: ["Kimball star-schema", "Slim CI/CD pipeline", "Deployed dbt docs"],
 	},
 	{
 		name: "Consumer Complaint Pipeline",
@@ -207,8 +207,8 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#0f2027", "#2c5364"],
 		url: "https://github.com/MarkPhamm/local_streaming_pipeline",
 		tech: ["Kafka", "Spark", "Flink", "ClickHouse", "FastAPI"],
-		fullDescription: "Built a real-time analytics pipeline that ingests live cryptocurrency prices via Kafka, processes streams with Apache Spark and Flink, stores results in ClickHouse, and serves dashboards through a FastAPI backend. Fully containerized with Docker Compose.",
-		impact: ["Real-time crypto ingestion", "Spark + Flink processing", "ClickHouse OLAP dashboards"],
+		fullDescription: "Ingests live data via Kafka, processes with Spark and Flink, stores in ClickHouse, and serves via FastAPI. Containerized with Docker Compose.",
+		impact: ["Real-time ingestion", "Spark + Flink processing", "ClickHouse OLAP"],
 	},
 	{
 		name: "Local Lakehouse Pipeline",

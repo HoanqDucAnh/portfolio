@@ -95,7 +95,10 @@ const CommentSection = ({ }: IDesktop) => {
 			id="comments"
 		>
 			<div className="flex flex-col inner-container">
-				<h2 className="section-heading seq mb-8">What Others Say</h2>
+				<h1 className="section-heading seq">What Others Say</h1>
+				<h2 className="text-2xl md:max-w-2xl w-full seq mt-2 mb-8">
+					Proof I'm not just making this up
+				</h2>
 
 				{/* Carousel Container with Navigation */}
 				<div
