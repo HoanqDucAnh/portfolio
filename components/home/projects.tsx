@@ -33,8 +33,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		<div className="flex flex-col inner-container">
 			<h1 className="section-heading seq">My Works</h1>
 			<h2 className="text-xl md:text-2xl md:max-w-3xl w-full seq mt-2 text-gray-200">
-				My Friday nights? Debugging ETL pipelines at 2 AM and arguing with SQL
-				queries. Some call it sad, I call it living the dream
+				What I do at 2 AM on a Saturday
 			</h2>
 		</div>
 	);
