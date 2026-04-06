@@ -64,7 +64,7 @@ const ArticlesPreview = () => {
 
 		cardsRef.current.forEach((el, idx) => {
 			if (!el) return;
-			gsap.set(el, { opacity: 0, y: 40 });
+			gsap.set(el, { opacity: 0, y: 50, scale: 0.96 });
 
 			const trigger = ScrollTrigger.create({
 				trigger: el,
@@ -73,15 +73,35 @@ const ArticlesPreview = () => {
 					gsap.to(el, {
 						opacity: 1,
 						y: 0,
-						duration: 0.6,
-						delay: idx * 0.15,
-						ease: "power2.out",
+						scale: 1,
+						duration: 0.7,
+						delay: idx * 0.12,
+						ease: "back.out(1.2)",
 					});
 				},
 				once: true,
 			});
 			triggers.push(trigger);
 		});
+
+		// ClipPath wipe on section heading
+		const heading = sectionRef.current.querySelector(".section-heading");
+		if (heading) {
+			gsap.set(heading, { clipPath: "inset(0 100% 0 0)" });
+			const headingTrigger = ScrollTrigger.create({
+				trigger: heading,
+				start: "top 85%",
+				once: true,
+				onEnter: () => {
+					gsap.to(heading, {
+						clipPath: "inset(0 0% 0 0)",
+						duration: 0.8,
+						ease: "power2.inOut",
+					});
+				},
+			});
+			triggers.push(headingTrigger);
+		}
 
 		return () => {
 			triggers.forEach((t) => t.kill());

@@ -5,16 +5,28 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Menu from "@/components/common/menu";
 import { NAVBARITEMS } from "../../constants";
 import Link from "next/link";
+import { gsap } from "gsap";
 
 const Header = () => {
 	const [menuVisible, setmenuVisible] = useState(false);
+	const headerRef = useRef<HTMLElement>(null);
+
+	useEffect(() => {
+		if (headerRef.current) {
+			gsap.fromTo(
+				headerRef.current,
+				{ y: -80, opacity: 0 },
+				{ y: 0, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.1 }
+			);
+		}
+	}, []);
 
 	return (
-		<header className={`w-full fixed top-0 py-8 select-none z-50 border-b border-white/5 ${menuVisible ? "bg-transparent" : "bg-gray-900/80 backdrop-blur-md"}`}>
+		<header ref={headerRef} className={`w-full fixed top-0 py-8 select-none z-50 border-b border-white/5 ${menuVisible ? "bg-transparent" : "bg-gray-900/80 backdrop-blur-md"}`} style={{ opacity: 0 }}>
 			<div className="flex justify-between section-container">
 				<Link href="/#home">
 					<a className="link">

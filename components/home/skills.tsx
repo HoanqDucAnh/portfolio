@@ -85,28 +85,54 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 		if (!cardsRef.current) return;
 
 		const cards = cardsRef.current.querySelectorAll(".skill-card");
+		const triggers: ScrollTrigger[] = [];
 
-		cards.forEach((card, i) => {
-			gsap.fromTo(
-				card,
-				{ opacity: 0, y: 40 },
-				{
+		// Set initial state
+		gsap.set(cards, { opacity: 0, y: 40, scale: 0.95 });
+
+		// Stagger from center outward when section enters view
+		const trigger = ScrollTrigger.create({
+			trigger: cardsRef.current,
+			start: "top 80%",
+			once: true,
+			onEnter: () => {
+				gsap.to(cards, {
 					opacity: 1,
 					y: 0,
-					duration: 0.6,
-					delay: i * 0.1,
+					scale: 1,
+					duration: 0.7,
 					ease: "power2.out",
-					scrollTrigger: {
-						trigger: card,
-						start: "top 85%",
-						toggleActions: "play none none none",
+					stagger: {
+						amount: 0.6,
+						grid: [4, 2],
+						from: "center",
 					},
-				}
-			);
+				});
+			},
 		});
+		triggers.push(trigger);
+
+		// ClipPath wipe on section heading
+		const heading = cardsRef.current.querySelector(".section-heading");
+		if (heading) {
+			gsap.set(heading, { clipPath: "inset(0 100% 0 0)" });
+			const headingTrigger = ScrollTrigger.create({
+				trigger: heading,
+				start: "top 85%",
+				once: true,
+				onEnter: () => {
+					gsap.to(heading, {
+						clipPath: "inset(0 0% 0 0)",
+						duration: 0.8,
+						ease: "power2.inOut",
+					});
+				},
+			});
+			triggers.push(headingTrigger);
+		}
 
 		return () => {
-			ScrollTrigger.getAll().forEach((t) => t.kill());
+			triggers.forEach((t) => t.kill());
 		};
 	}, []);
 

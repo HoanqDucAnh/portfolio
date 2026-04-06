@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 const AURORA_BLOBS = [
 	{
@@ -39,9 +39,10 @@ const AURORA_BLOBS = [
 	},
 ];
 
-const HeroAurora = () => {
+const HeroAurora = forwardRef<HTMLDivElement>((_, ref) => {
 	return (
 		<div
+			ref={ref}
 			className="absolute inset-0 overflow-hidden pointer-events-none"
 			style={{ zIndex: 0 }}
 			aria-hidden="true"
@@ -71,6 +72,8 @@ const HeroAurora = () => {
 			/>
 		</div>
 	);
-};
+});
+
+HeroAurora.displayName = "HeroAurora";
 
 export default HeroAurora;

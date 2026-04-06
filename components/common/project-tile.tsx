@@ -1,5 +1,6 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import VanillaTilt from "vanilla-tilt";
 import { IProject, ProjectTypes } from "../../constants";
 import ProjectModal from "./project-modal";
 
@@ -45,6 +46,24 @@ const ProjectTile = ({
 	index?: number;
 }) => {
 	const [showModal, setShowModal] = useState(false);
+	const tiltRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const node = tiltRef.current;
+		if (!node) return;
+		// Only enable on non-touch devices
+		if (typeof window !== "undefined" && "ontouchstart" in window) return;
+		VanillaTilt.init(node, {
+			max: 8,
+			speed: 400,
+			glare: true,
+			"max-glare": 0.12,
+			perspective: 1000,
+		});
+		return () => {
+			(node as any).vanillaTilt?.destroy();
+		};
+	}, []);
 
 	const {
 		name,
@@ -58,9 +77,12 @@ const ProjectTile = ({
 	return (
 		<>
 			<div
+				ref={tiltRef}
 				className="group block cursor-pointer"
+				data-cursor="view"
 				style={{
 					animationDelay: `${index * 50}ms`,
+					transformStyle: "preserve-3d",
 				}}
 				onClick={() => setShowModal(true)}
 				role="button"
@@ -119,7 +141,7 @@ const ProjectTile = ({
 					</div>
 
 					{/* Content */}
-					<div className="p-5">
+					<div className="p-5" style={{ transform: "translateZ(20px)" }}>
 						{/* Project Name */}
 						<h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#BF94FF] transition-colors duration-[10ms] line-clamp-2">
 							{name}

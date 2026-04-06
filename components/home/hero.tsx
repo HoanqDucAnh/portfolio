@@ -5,7 +5,7 @@
 // License text available at https://opensource.org/licenses/MIT
 
 import { EMAIL, MENULINKS, SOCIAL_LINKS, TYPED_STRINGS } from "../../constants";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Typed from "typed.js";
 import Image from "next/image";
 import { gsap, Linear } from "gsap";
@@ -13,6 +13,7 @@ import Button, { ButtonTypes } from "../common/button";
 import HeroImage from "./hero-image";
 import HeroAurora from "./hero-aurora";
 import Link from "next/link";
+import { isSmallScreen } from "pages";
 
 import { initializeApp, getApps } from "firebase/app";
 
@@ -115,6 +116,53 @@ const HeroSection = React.memo(() => {
 
 	const typedSpanElement = useRef<HTMLSpanElement>(null);
 	const targetSection = useRef<HTMLDivElement>(null);
+	const auroraRef = useRef<HTMLDivElement>(null);
+	const contentRef = useRef<HTMLDivElement>(null);
+	const bgWrapperRef = useRef<HTMLDivElement>(null);
+
+	// Mouse-reactive parallax for hero layers
+	useEffect(() => {
+		if (isSmallScreen()) return;
+		const section = targetSection.current;
+		if (!section) return;
+
+		const handleMouseMove = (e: MouseEvent) => {
+			const rect = section.getBoundingClientRect();
+			const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2; // -1 to 1
+			const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+
+			// Aurora moves most (background layer)
+			if (auroraRef.current) {
+				gsap.to(auroraRef.current, {
+					x: x * 20,
+					y: y * 20,
+					duration: 1.2,
+					ease: "power2.out",
+				});
+			}
+			// Content moves slightly opposite (foreground depth)
+			if (contentRef.current) {
+				gsap.to(contentRef.current, {
+					x: x * -4,
+					y: y * -4,
+					duration: 1,
+					ease: "power2.out",
+				});
+			}
+			// Background image moves opposite
+			if (bgWrapperRef.current) {
+				gsap.to(bgWrapperRef.current, {
+					x: x * -8,
+					y: y * -6,
+					duration: 1,
+					ease: "power2.out",
+				});
+			}
+		};
+
+		section.addEventListener("mousemove", handleMouseMove);
+		return () => section.removeEventListener("mousemove", handleMouseMove);
+	}, []);
 
 	const initTypeAnimation = (
 		typedSpanElement: React.RefObject<HTMLSpanElement | null>
@@ -141,14 +189,37 @@ const HeroSection = React.memo(() => {
 		targetSection: React.RefObject<HTMLDivElement | null>
 	): GSAPTimeline => {
 		if (!targetSection.current) return gsap.timeline();
-		const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-		revealTl
-			.to(targetSection.current, { opacity: 1, duration: 0.8 })
-			.from(
-				targetSection.current.querySelectorAll(".seq"),
-				{ opacity: 0, duration: 0.5, stagger: 0.25 },
-				"<"
+		const revealTl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+		// 1. Fade in the whole section
+		revealTl.to(targetSection.current, { opacity: 1, duration: 0.5 });
+
+		// 2. Aurora blooms from center (scale from 0.6 to 1)
+		if (auroraRef.current) {
+			revealTl.fromTo(
+				auroraRef.current,
+				{ scale: 0.6, opacity: 0 },
+				{ scale: 1, opacity: 1, duration: 1.2, ease: "power2.out" },
+				0.2
 			);
+		}
+
+		// 3. Hero content sequences in with stagger
+		revealTl.from(
+			targetSection.current.querySelectorAll(".seq"),
+			{ opacity: 0, y: 30, duration: 0.6, stagger: 0.15 },
+			0.4
+		);
+
+		// 4. Background image slides in from right
+		if (bgWrapperRef.current) {
+			revealTl.fromTo(
+				bgWrapperRef.current,
+				{ opacity: 0, x: 60 },
+				{ opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
+				0.6
+			);
+		}
 
 		return revealTl;
 	};
@@ -165,7 +236,7 @@ const HeroSection = React.memo(() => {
 	}, [typedSpanElement, targetSection]);
 
 	const renderBackgroundImage = (): React.ReactNode => (
-		<div className={HERO_STYLES.BG_WRAPPER} style={{ maxHeight: "650px" }}>
+		<div ref={bgWrapperRef} className={HERO_STYLES.BG_WRAPPER} style={{ maxHeight: "650px" }}>
 			<div
 				className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full animate-glow-pulse pointer-events-none"
 				style={{
@@ -191,7 +262,7 @@ const HeroSection = React.memo(() => {
 		));
 
 	const renderHeroContent = (): React.ReactNode => (
-		<div className={HERO_STYLES.CONTENT}>
+		<div ref={contentRef} className={HERO_STYLES.CONTENT}>
 			<div className="md:mb-4 mb-2">
 				<div className="flex items-center gap-4 seq">
 					<h2 className="text-4xl">Hello 👋🏻</h2>
@@ -219,6 +290,7 @@ const HeroSection = React.memo(() => {
 				<a
 					href="/minh_pham_resume.pdf"
 					download
+					data-magnetic
 					className="inline-flex items-center gap-3 px-5 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/25 hover:-translate-y-0.5"
 				>
 					<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -232,6 +304,7 @@ const HeroSection = React.memo(() => {
 					href="https://calendly.com/minh-pham-insurify/30min"
 					target="_blank"
 					rel="noreferrer"
+					data-magnetic
 					className="inline-flex items-center gap-3 px-5 py-3 border-2 border-white/80 hover:border-white bg-white/5 hover:bg-white/10 text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-white/10 hover:-translate-y-0.5"
 				>
 					<svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -256,7 +329,7 @@ const HeroSection = React.memo(() => {
 			ref={targetSection}
 			style={{ opacity: 0.05 }}
 		>
-			<HeroAurora />
+			<HeroAurora ref={auroraRef} />
 			{renderHeroContent()}
 			{renderBackgroundImage()}
 		</section>

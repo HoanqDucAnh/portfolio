@@ -69,35 +69,54 @@ const TimelineSection = (_props: IDesktop) => {
 		setIsMounted(true);
 	}, []);
 
-	// Animate experience cards on scroll
+	// Animate experience cards on scroll — alternate left/right slide
 	useEffect(() => {
 		if (!isMounted || !sectionRef.current) return;
 
 		const triggers: ScrollTrigger[] = [];
 
-		experiencesRef.current.forEach((el) => {
+		experiencesRef.current.forEach((el, idx) => {
 			if (!el) return;
 
-			const idx = experiencesRef.current.indexOf(el);
+			const isEven = idx % 2 === 0;
+			// Set initial state: slide from left for even, right for odd
+			gsap.set(el, { opacity: 0, x: isEven ? -60 : 60, y: 20 });
+
 			const trigger = ScrollTrigger.create({
 				trigger: el,
 				start: "top 85%",
 				onEnter: () => {
 					gsap.to(el, {
 						opacity: 1,
+						x: 0,
 						y: 0,
-						duration: 0.6,
-						delay: idx * 0.1,
+						duration: 0.7,
 						ease: "power2.out",
 					});
 				},
 				once: true,
 			});
 			triggers.push(trigger);
-
-			// Set initial state
-			gsap.set(el, { opacity: 0, y: 50 });
 		});
+
+		// ClipPath wipe on section heading
+		const heading = sectionRef.current.querySelector(".section-heading");
+		if (heading) {
+			gsap.set(heading, { clipPath: "inset(0 100% 0 0)" });
+			const headingTrigger = ScrollTrigger.create({
+				trigger: heading,
+				start: "top 85%",
+				once: true,
+				onEnter: () => {
+					gsap.to(heading, {
+						clipPath: "inset(0 0% 0 0)",
+						duration: 0.8,
+						ease: "power2.inOut",
+					});
+				},
+			});
+			triggers.push(headingTrigger);
+		}
 
 		return () => {
 			triggers.forEach((t) => t.kill());
