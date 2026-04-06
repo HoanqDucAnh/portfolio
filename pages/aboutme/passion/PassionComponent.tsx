@@ -1,8 +1,10 @@
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 import Typed from "typed.js";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const ScrollReveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
+const ScrollReveal = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
 	const ref = useRef<HTMLDivElement>(null);
 	const [isVisible, setIsVisible] = useState(false);
 
@@ -25,7 +27,7 @@ const ScrollReveal = ({ children, delay = 0 }: { children: React.ReactNode; dela
 	return (
 		<div
 			ref={ref}
-			className={`transition-all duration-[10ms] ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+			className={`transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-16 scale-[0.97]"} ${className}`}
 			style={{ transitionDelay: `${delay}ms` }}
 		>
 			{children}
@@ -43,35 +45,33 @@ interface DishCardProps {
 }
 
 const DishCard = ({ image, title, subtitle, caption, description, reverse = false }: DishCardProps) => (
-	<ScrollReveal>
-		<div className={`grid grid-cols-1 lg:grid-cols-2 gap-6`}>
-			<div className={`group ${reverse ? 'lg:order-2' : ''}`}>
-				<div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-[4/3]">
-					<Image
-						src={image}
-						layout="fill"
-						objectFit="cover"
-						loading="lazy"
-						alt={title}
-						className="transition-transform duration-[10ms] group-hover:scale-105"
-					/>
-					<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms]" />
-				</div>
-				<p className="text-sm text-gray-400 italic text-center mt-3">{caption}</p>
+	<div className={`grid grid-cols-1 lg:grid-cols-2 gap-6`}>
+		<ScrollReveal delay={0} className={`group ${reverse ? 'lg:order-2' : ''}`}>
+			<div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-[4/3]">
+				<Image
+					src={image}
+					layout="fill"
+					objectFit="cover"
+					loading="lazy"
+					alt={title}
+					className="transition-transform duration-500 group-hover:scale-105"
+				/>
+				<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 			</div>
-			<div className={`${reverse ? 'lg:order-1' : ''}`}>
-				{subtitle && (
-					<span className="inline-block px-3 py-1 bg-[#f27d0d]/20 text-[#f27d0d] text-sm font-medium rounded-full mb-3">
-						{subtitle}
-					</span>
-				)}
-				<h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{title}</h3>
-				<div className="text-gray-300 text-lg md:text-xl leading-relaxed space-y-4">
-					{description}
-				</div>
+			<p className="text-sm text-gray-400 italic text-center mt-3">{caption}</p>
+		</ScrollReveal>
+		<ScrollReveal delay={200} className={`${reverse ? 'lg:order-1' : ''}`}>
+			{subtitle && (
+				<span className="inline-block px-3 py-1 bg-[#f27d0d]/20 text-[#f27d0d] text-sm font-medium rounded-full mb-3">
+					{subtitle}
+				</span>
+			)}
+			<h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{title}</h3>
+			<div className="text-gray-300 text-lg md:text-xl leading-relaxed space-y-4">
+				{description}
 			</div>
-		</div>
-	</ScrollReveal>
+		</ScrollReveal>
+	</div>
 );
 
 interface CategoryTabProps {
@@ -86,10 +86,10 @@ const CategoryTabs = ({ categories, activeCategory, onSelect }: CategoryTabProps
 			<button
 				key={category}
 				onClick={() => onSelect(category)}
-				className={`px-6 py-2 rounded-full font-medium transition-all duration-[10ms] ${
+				className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
 					activeCategory === category
-						? 'bg-[#f27d0d] text-white shadow-lg shadow-[#f27d0d]/30'
-						: 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
+						? 'bg-[#f27d0d] text-white shadow-lg shadow-[#f27d0d]/30 scale-105'
+						: 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white hover:scale-105'
 				}`}
 			>
 				{category}
@@ -107,12 +107,31 @@ const PASSION_TYPED_STRINGS = [
 const PassionHero = () => {
 	const typedRef = useRef<HTMLSpanElement>(null);
 	const heroRef = useRef<HTMLDivElement>(null);
+	const bgRef = useRef<HTMLDivElement>(null);
 	const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {
-		// Trigger fade-in
 		const timer = setTimeout(() => setLoaded(true), 100);
 		return () => clearTimeout(timer);
+	}, []);
+
+	useEffect(() => {
+		if (!bgRef.current || !heroRef.current) return;
+		gsap.registerPlugin(ScrollTrigger);
+		const tween = gsap.to(bgRef.current, {
+			yPercent: 30,
+			ease: "none",
+			scrollTrigger: {
+				trigger: heroRef.current,
+				start: "top top",
+				end: "bottom top",
+				scrub: true,
+			},
+		});
+		return () => {
+			tween.scrollTrigger?.kill();
+			tween.kill();
+		};
 	}, []);
 
 	useEffect(() => {
@@ -131,7 +150,7 @@ const PassionHero = () => {
 	return (
 		<div ref={heroRef} className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
 			<div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-gray-900/60 to-gray-900 z-10" />
-			<div className="absolute inset-0">
+			<div ref={bgRef} className="absolute inset-0 will-change-transform">
 				<Image
 					src="/about/passion/steak3.jpg"
 					layout="fill"
@@ -140,14 +159,14 @@ const PassionHero = () => {
 					priority
 				/>
 			</div>
-			<div className={`relative z-20 text-center px-6 max-w-5xl mx-auto transition-all duration-[10ms] ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-				<p className={`text-[#f27d0d] text-lg md:text-xl font-medium tracking-[0.25em] uppercase mb-6 transition-all duration-[10ms] delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+			<div className={`relative z-20 text-center px-6 max-w-5xl mx-auto transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+				<p className={`text-[#f27d0d] text-lg md:text-xl font-medium tracking-[0.25em] uppercase mb-6 transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
 					Beyond the Code
 				</p>
-				<h1 className={`text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-10 transition-all duration-[10ms] delay-500 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+				<h1 className={`text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-10 transition-all duration-1000 delay-500 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
 					My Passion for <span className="text-[#f27d0d]">Cuisine</span>
 				</h1>
-				<div className={`text-xl md:text-2xl text-gray-200/90 italic max-w-3xl mx-auto min-h-[1.5em] transition-all duration-[10ms] delay-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+				<div className={`text-xl md:text-2xl text-gray-200/90 italic max-w-3xl mx-auto min-h-[1.5em] transition-all duration-1000 delay-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
 					<span ref={typedRef}></span>
 				</div>
 			</div>
@@ -156,23 +175,64 @@ const PassionHero = () => {
 	);
 };
 
+const AnimatedLine = () => {
+	const ref = useRef<HTMLDivElement>(null);
+	const [isVisible, setIsVisible] = useState(false);
+
+	useEffect(() => {
+		const el = ref.current;
+		if (!el) return;
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					setIsVisible(true);
+					observer.unobserve(el);
+				}
+			},
+			{ threshold: 0.5 }
+		);
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, []);
+
+	return (
+		<div ref={ref} className="flex justify-center mt-4">
+			<div
+				className={`h-1 bg-gradient-to-r from-[#f27d0d] to-[#ff9a3c] rounded-full transition-all duration-700 ease-out ${isVisible ? "w-20" : "w-0"}`}
+			/>
+		</div>
+	);
+};
+
 const SectionDivider = ({ title, subtitle }: { title: string; subtitle?: string }) => (
-	<div className="text-center mb-8">
-		{subtitle && (
-			<span className="text-[#f27d0d] text-sm font-medium tracking-wider uppercase">{subtitle}</span>
-		)}
-		<h2 className="text-3xl md:text-5xl font-bold text-white mt-2">
-			{title}
-		</h2>
-		<div className="w-20 h-1 bg-gradient-to-r from-[#f27d0d] to-[#ff9a3c] mx-auto mt-4 rounded-full" />
-	</div>
+	<ScrollReveal>
+		<div className="text-center mb-8">
+			{subtitle && (
+				<span className="text-[#f27d0d] text-sm font-medium tracking-wider uppercase">{subtitle}</span>
+			)}
+			<h2 className="text-3xl md:text-5xl font-bold text-white mt-2">
+				{title}
+			</h2>
+			<AnimatedLine />
+		</div>
+	</ScrollReveal>
 );
 
 export default function PassionComponent() {
 	const [activeCategory, setActiveCategory] = useState("All");
+	const [contentVisible, setContentVisible] = useState(true);
 	const categories = ["All", "Family", "Steak & Lamb", "Seafood", "Italian"];
 
 	const shouldShow = (category: string) => activeCategory === "All" || activeCategory === category;
+
+	const handleCategoryChange = (category: string) => {
+		if (category === activeCategory) return;
+		setContentVisible(false);
+		setTimeout(() => {
+			setActiveCategory(category);
+			setContentVisible(true);
+		}, 250);
+	};
 
 	return (
 		<div className="min-h-screen">
@@ -185,9 +245,10 @@ export default function PassionComponent() {
 				<CategoryTabs
 					categories={categories}
 					activeCategory={activeCategory}
-					onSelect={setActiveCategory}
+					onSelect={handleCategoryChange}
 				/>
 
+				<div className={`transition-all duration-300 ease-out ${contentVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-[0.97] translate-y-4"}`}>
 				{/* Family Dish Section */}
 				{shouldShow("Family") && (
 					<section className="mb-20">
@@ -300,27 +361,30 @@ export default function PassionComponent() {
 									caption: "With asparagus and garlic chips"
 								}
 							].map((item, index) => (
-								<div key={index} className="group relative overflow-hidden rounded-2xl bg-gray-800 cursor-pointer">
-									<div className="aspect-[4/3] overflow-hidden">
-										<Image
-											src={item.image}
-											width={400}
-											height={300}
-																		loading="lazy"
-											alt={item.title}
-											className="w-full h-full object-cover transition-transform duration-[10ms] group-hover:scale-110"
-										/>
+								<ScrollReveal key={index} delay={index * 150}>
+									<div className="group relative overflow-hidden rounded-2xl bg-gray-800 cursor-pointer">
+										<div className="aspect-[4/3] overflow-hidden">
+											<Image
+												src={item.image}
+												width={400}
+												height={300}
+												loading="lazy"
+												alt={item.title}
+												className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+											/>
+										</div>
+										<div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+										<div className="absolute bottom-0 left-0 right-0 p-5">
+											<h4 className="text-xl font-bold text-white mb-1">{item.title}</h4>
+											<p className="text-sm text-gray-300">{item.caption}</p>
+										</div>
 									</div>
-									<div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-									<div className="absolute bottom-0 left-0 right-0 p-5">
-										<h4 className="text-xl font-bold text-white mb-1">{item.title}</h4>
-										<p className="text-sm text-gray-300">{item.caption}</p>
-									</div>
-								</div>
+								</ScrollReveal>
 							))}
 						</div>
 
-						<div className="bg-gray-800/50 rounded-2xl p-8 backdrop-blur-sm">
+						<ScrollReveal>
+					<div className="bg-gray-800/50 rounded-2xl p-8 backdrop-blur-sm">
 							<h3 className="text-2xl font-bold text-white mb-4">The Art of Seafood</h3>
 							<div className="text-gray-300 text-lg md:text-xl leading-relaxed space-y-4">
 								<p>
@@ -338,6 +402,7 @@ export default function PassionComponent() {
 								</p>
 							</div>
 						</div>
+					</ScrollReveal>
 					</section>
 				)}
 
@@ -346,7 +411,8 @@ export default function PassionComponent() {
 					<section className="mb-20">
 						<SectionDivider title="Italian Cuisine" subtitle="Pasta Perfection" />
 
-						<div className="bg-gradient-to-r from-[#f27d0d]/10 to-transparent rounded-2xl p-8 mb-12 border-l-4 border-[#f27d0d]">
+						<ScrollReveal>
+					<div className="bg-gradient-to-r from-[#f27d0d]/10 to-transparent rounded-2xl p-8 mb-12 border-l-4 border-[#f27d0d]">
 							<p className="text-lg text-gray-300 leading-relaxed">
 								Italian cuisine has always held a special place in my heart. The
 								simplicity, yet depth of flavor in Italian cooking is like an endless
@@ -356,6 +422,7 @@ export default function PassionComponent() {
 								flavors—a combination that keeps me coming back for more.
 							</p>
 						</div>
+					</ScrollReveal>
 
 						<div className="space-y-16">
 							<DishCard
@@ -418,6 +485,7 @@ export default function PassionComponent() {
 				)}
 
 				{/* Closing Quote */}
+				<ScrollReveal>
 				<div className="py-20">
 					<div className="relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-3xl p-10 md:p-14 border border-gray-700/50 max-w-4xl mx-auto">
 						<div className="absolute -top-6 left-10 text-[#f27d0d] text-8xl font-serif opacity-50">"</div>
@@ -433,6 +501,8 @@ export default function PassionComponent() {
 						</blockquote>
 					</div>
 				</div>
+				</ScrollReveal>
+			</div>
 			</div>
 		</div>
 	);
