@@ -97,7 +97,7 @@ const HERO_STYLES = {
 	CONTENT: "font-medium flex flex-col pt-20 sm:pt-24 md:pt-0 select-none relative z-10",
 	SOCIAL_LINK: "link hover:opacity-90 hover:scale-110 transition-all duration-[10ms] md:mr-4 mr-2",
 	BG_WRAPPER:
-		"absolute hero-bg right-0 md:bottom-0 md:top-auto top-[60%] -z-1 md:w-3/4 w-full scale-125 sm:scale-100 flex items-end opacity-30 sm:opacity-50 md:opacity-100",
+		"absolute hero-bg right-0 md:bottom-0 bottom-8 -z-1 md:w-3/4 w-full scale-125 sm:scale-100 flex items-end",
 	TYPED_SPAN: "text-xl sm:text-2xl md:text-3xl seq",
 };
 

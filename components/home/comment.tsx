@@ -28,7 +28,7 @@ const CommentTile = (props: {
 				}`}
 			style={{ transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" }}
 		>
-			<div className={`relative p-5 sm:p-8 md:p-10 mx-auto max-w-3xl h-[380px] sm:h-[440px] md:h-[520px] flex flex-col justify-center rounded-2xl border transition-all duration-[10ms] overflow-hidden ${props.isActive
+			<div className={`relative p-5 sm:p-8 md:p-10 mx-auto max-w-3xl min-h-[380px] sm:min-h-[440px] md:min-h-[520px] flex flex-col justify-center rounded-2xl border transition-all duration-[10ms] overflow-hidden ${props.isActive
 					? "bg-gray-900/90 backdrop-blur-sm border-[#9146FF]/30 shadow-lg shadow-[#9146FF]/5"
 					: "bg-gray-900 border-gray-800"
 				}`}>
