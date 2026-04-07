@@ -41,7 +41,7 @@ const QuoteSection = () => {
 
 	return (
 		<section className="w-full relative select-none" ref={targetSection}>
-			<div className="tall:py-30 py-36 section-container">
+			<div className="py-16 sm:py-24 md:py-36 tall:py-30 section-container">
 				<div className="text-center">
 					<h1 className="font-medium text-3xl md:text-5xl min-h-[1.5em]">
 						<span ref={typedRef}></span>

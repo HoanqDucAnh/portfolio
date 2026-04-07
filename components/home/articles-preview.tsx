@@ -113,7 +113,7 @@ const ArticlesPreview = () => {
 	return (
 		<section
 			ref={sectionRef}
-			className="w-full relative select-none section-container py-12 flex flex-col"
+			className="w-full relative select-none section-container py-8 md:py-12 flex flex-col"
 			id="articles"
 		>
 			<div className="flex flex-col mb-10">

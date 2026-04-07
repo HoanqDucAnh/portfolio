@@ -212,12 +212,24 @@ html {
 
 .section-container {
 	@apply xl:px-20 md:px-12 px-4 mx-auto;
-	max-width: 90vw;
-	
+	max-width: 95vw;
+
+	@media (min-width: 640px) {
+		max-width: 92vw;
+	}
+
+	@media (min-width: 768px) {
+		max-width: 90vw;
+	}
+
+	@media (min-width: 1024px) {
+		max-width: 88vw;
+	}
+
 	@media (min-width: 1536px) {
 		max-width: 85vw;
 	}
-	
+
 	@media (min-width: 1800px) {
 		max-width: 80vw;
 	}
@@ -469,7 +481,7 @@ footer {
 }
 
 .section-heading {
-	@apply md:text-5xl text-4xl font-bold text-gradient w-fit;
+	@apply text-3xl sm:text-4xl md:text-5xl font-bold text-gradient w-fit;
 }
 
 .section-title-sm {

@@ -65,7 +65,7 @@ const Footer = () => {
 				width={1440}
 			/>
 			<div className="h-full w-full">
-				<div className="section-container flex-col flex h-full justify-end z-10 items-center py-12">
+				<div className="section-container flex-col flex h-full justify-end z-10 items-center py-8 md:py-12">
 					{renderFooterContent()}
 				</div>
 			</div>

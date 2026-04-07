@@ -10,10 +10,10 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { isSmallScreen, NO_MOTION_PREFERENCE_QUERY } from "pages";
 
 const COLLABORATION_STYLE = {
-	SLIDING_TEXT: "text-[#9146FF] opacity-[0.15] motion-reduce:opacity-[0.25] text-5xl md:text-7xl font-bold whitespace-nowrap",
+	SLIDING_TEXT: "text-[#9146FF] opacity-[0.15] motion-reduce:opacity-[0.25] text-3xl sm:text-5xl md:text-7xl font-bold whitespace-nowrap",
 	SECTION:
-		"w-full relative select-none tall:py-18 py-24 section-container flex flex-col",
-	TITLE: "mt-6 md:mt-8 font-medium text-4xl md:text-5xl text-center",
+		"w-full relative select-none py-12 sm:py-18 md:py-24 tall:py-18 section-container flex flex-col",
+	TITLE: "mt-6 md:mt-8 font-medium text-3xl sm:text-4xl md:text-5xl text-center",
 };
 
 const CollaborationSection = () => {

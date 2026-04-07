@@ -67,7 +67,7 @@ const SkillIcon = ({ skill, src }: { skill: string; src: string }) => {
 
 const SKILL_STYLES = {
 	SECTION:
-		"w-full relative select-none mb-6 section-container py-12 flex flex-col justify-center",
+		"w-full relative select-none mb-6 section-container py-8 md:py-12 flex flex-col justify-center",
 	SKILL_TITLE: "section-title-sm seq",
 };
 
@@ -199,7 +199,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 						<h3 className={SKILL_STYLES.SKILL_TITLE}>{title}</h3>
 					</div>
 
-					<div className="grid grid-cols-5 gap-2 sm:gap-3 lg:gap-3 xl:gap-4 2xl:gap-5 place-items-center">
+					<div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 sm:gap-3 lg:gap-3 xl:gap-4 2xl:gap-5 place-items-center">
 						{skills.map((skill) => (
 							<SkillIcon key={skill} skill={skill} src={getSkillImagePath(skill)} />
 						))}

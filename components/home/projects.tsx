@@ -89,7 +89,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 	return (
 		<section
 			ref={targetSectionRef}
-			className={`${isDesktop && "min-h-screen"} w-full relative select-none section-container flex-col flex py-12 justify-center`}
+			className={`${isDesktop && "min-h-screen"} w-full relative select-none section-container flex-col flex py-8 md:py-12 justify-center`}
 			id={projectsSectionRef}
 			style={{
 				zIndex: 10,

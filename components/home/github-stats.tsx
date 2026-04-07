@@ -148,7 +148,7 @@ const GitHubStats = memo(() => {
 					<div className="w-6 h-6 bg-gray-800 rounded"></div>
 					<div className="h-6 w-32 bg-gray-800 rounded"></div>
 				</div>
-				<div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+				<div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
 					{[...Array(4)].map((_, i) => (
 						<div key={i} className="h-24 bg-gray-800 rounded-lg"></div>
 					))}
@@ -185,7 +185,7 @@ const GitHubStats = memo(() => {
 			</a>
 
 			{/* Stats Grid */}
-			<div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+			<div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
 				<StatCard icon={<FaBook />} label="Repositories" value={stats.repos} delay={100} />
 				<StatCard icon={<FaStar />} label="Total Stars" value={stats.stars} delay={200} />
 				<StatCard icon={<FaUsers />} label="Followers" value={stats.followers} delay={300} />

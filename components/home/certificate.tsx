@@ -27,7 +27,7 @@ Tooltip.displayName = "Tooltip";
 
 const CERTIFICATE_STYLES = {
 	SECTION:
-		"w-full relative select-none mb-12 section-container py-12 flex flex-col justify-center",
+		"w-full relative select-none mb-12 section-container py-8 md:py-12 flex flex-col justify-center",
 };
 
 const CertificateSection = ({ isDesktop }: IDesktop) => {

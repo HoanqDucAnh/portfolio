@@ -26,7 +26,7 @@ const Header = () => {
 	}, []);
 
 	return (
-		<header ref={headerRef} className={`w-full fixed top-0 py-8 select-none z-50 border-b border-white/5 ${menuVisible ? "bg-transparent" : "bg-gray-900/80 backdrop-blur-md"}`} style={{ opacity: 0 }}>
+		<header ref={headerRef} className={`w-full fixed top-0 py-4 md:py-8 select-none z-50 border-b border-white/5 ${menuVisible ? "bg-transparent" : "bg-gray-900/80 backdrop-blur-md"}`} style={{ opacity: 0 }}>
 			<div className="flex justify-between section-container">
 				<Link href="/#home">
 					<a className="link">
