@@ -9,8 +9,14 @@ import "../styles/article.css";
 
 import type { AppProps } from "next/app";
 import Script from "next/script";
+import { useEffect } from "react";
+import Clarity from "@microsoft/clarity";
 
 function MyApp({ Component, pageProps }: AppProps) {
+	useEffect(() => {
+		Clarity.init("w99ronz0em");
+	}, []);
+
 	return (
 		<>
 			<Component {...pageProps} />
@@ -26,17 +32,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 					function gtag(){dataLayer.push(arguments);}
 					gtag('js', new Date());
 					gtag('config', 'G-6T2HTBS4WQ', { page_path: window.location.pathname });
-				`}
-			</Script>
-
-			{/* Microsoft Clarity */}
-			<Script id="clarity" strategy="afterInteractive">
-				{`
-					(function(c,l,a,r,i,t,y){
-						c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-						t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-						y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-					})(window,document,"clarity","script","w99ronz0em");
 				`}
 			</Script>
 		</>
