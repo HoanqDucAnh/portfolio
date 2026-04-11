@@ -126,8 +126,11 @@ const GitHubStats = memo(() => {
 	}, [fetchGitHubStats]);
 
 	const StatCard = ({ icon, label, value, delay }: { icon: React.ReactNode; label: string; value: number; delay: number }) => (
-		<div
-			className={`flex flex-col items-center justify-center p-4 rounded-lg hover:scale-105 transition-all duration-[10ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+		<a
+			href={`https://github.com/${GITHUB_USERNAME}`}
+			target="_blank"
+			rel="noopener noreferrer"
+			className={`flex flex-col items-center justify-center p-4 rounded-lg hover:scale-105 transition-all duration-[10ms] cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
 				}`}
 			style={{
 				transitionDelay: `${delay}ms`,
@@ -138,7 +141,7 @@ const GitHubStats = memo(() => {
 			<div className="text-2xl mb-2 text-[#9146FF]">{icon}</div>
 			<div className="text-2xl font-bold text-white"><CountUp end={value} duration={2} separator="," /></div>
 			<div className="text-sm text-gray-300">{label}</div>
-		</div>
+		</a>
 	);
 
 	if (loading) {
@@ -193,8 +196,11 @@ const GitHubStats = memo(() => {
 			</div>
 
 			{/* Language Stats */}
-			<div
-				className={`mt-4 transition-all duration-[10ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+			<a
+				href={`https://github.com/${GITHUB_USERNAME}`}
+				target="_blank"
+				rel="noopener noreferrer"
+				className={`block mt-4 transition-all duration-[10ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
 					}`}
 				style={{ transitionDelay: '500ms' }}
 			>
@@ -230,10 +236,15 @@ const GitHubStats = memo(() => {
 						</div>
 					))}
 				</div>
-			</div>
+			</a>
 
 			{/* Contribution Activity */}
-			<div className="mt-6 pt-6 border-t border-gray-800">
+			<a
+				href={`https://github.com/${GITHUB_USERNAME}`}
+				target="_blank"
+				rel="noopener noreferrer"
+				className="block mt-6 pt-6 border-t border-gray-800"
+			>
 				<h4 className="text-sm font-medium text-gray-400 mb-4">Contribution Activity</h4>
 				<img
 					src={`https://ghchart.rshah.org/9146FF/${GITHUB_USERNAME}`}
@@ -242,7 +253,7 @@ const GitHubStats = memo(() => {
 					style={{ filter: 'invert(1) hue-rotate(180deg)', opacity: 0.85 }}
 					loading="lazy"
 				/>
-			</div>
+			</a>
 		</div>
 	);
 });
