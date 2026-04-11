@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { IProject } from "../../constants";
 import { gsap } from "gsap";
+import { trackEvent, setTag } from "../../utils/clarity";
 
 interface ProjectModalProps {
 	project: IProject;
@@ -168,6 +169,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
 							target="_blank"
 							rel="noreferrer"
 							className="inline-flex items-center gap-2 px-6 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/25"
+							onClick={() => { trackEvent("project_view_external"); setTag("project_name", project.name); }}
 						>
 							View Project
 							<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>

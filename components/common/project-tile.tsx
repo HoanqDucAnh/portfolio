@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import VanillaTilt from "vanilla-tilt";
 import { IProject, ProjectTypes } from "../../constants";
 import ProjectModal from "./project-modal";
+import { trackEvent, setTag } from "../../utils/clarity";
 
 const getCategoryLabel = (category: string): string => {
 	switch (category) {
@@ -84,12 +85,13 @@ const ProjectTile = ({
 					animationDelay: `${index * 50}ms`,
 					transformStyle: "preserve-3d",
 				}}
-				onClick={() => setShowModal(true)}
+				onClick={() => { trackEvent("project_open"); setTag("project_name", name); setShowModal(true); }}
 				role="button"
 				tabIndex={0}
 				onKeyDown={(e) => {
 					if (e.key === "Enter" || e.key === " ") {
 						e.preventDefault();
+						trackEvent("project_open"); setTag("project_name", name);
 						setShowModal(true);
 					}
 				}}

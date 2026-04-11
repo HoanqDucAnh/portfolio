@@ -14,6 +14,7 @@ import HeroImage from "./hero-image";
 import HeroAurora from "./hero-aurora";
 import Link from "next/link";
 import { isSmallScreen } from "pages";
+import { trackEvent, setTag, upgradeSession } from "../../utils/clarity";
 
 import { initializeApp, getApps } from "firebase/app";
 
@@ -256,6 +257,7 @@ const HeroSection = React.memo(() => {
 				className={HERO_STYLES.SOCIAL_LINK}
 				rel="noreferrer"
 				target="_blank"
+				onClick={() => { trackEvent("social_click"); setTag("social_platform", el); }}
 			>
 				<Image src={`/social/${el}.svg`} alt={el} width={48} height={48} priority />
 			</a>
@@ -291,6 +293,7 @@ const HeroSection = React.memo(() => {
 					href="/minh_pham_resume.pdf"
 					download
 					data-magnetic
+					onClick={() => { trackEvent("resume_download"); upgradeSession("resume_download"); }}
 					className="inline-flex items-center gap-3 px-5 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/25 hover:-translate-y-0.5"
 				>
 					<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -305,6 +308,7 @@ const HeroSection = React.memo(() => {
 					target="_blank"
 					rel="noreferrer"
 					data-magnetic
+					onClick={() => { trackEvent("coffee_chat_click"); upgradeSession("coffee_chat_click"); }}
 					className="inline-flex items-center gap-3 px-5 py-3 border-2 border-white/80 hover:border-white bg-white/5 hover:bg-white/10 text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-white/10 hover:-translate-y-0.5"
 				>
 					<svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

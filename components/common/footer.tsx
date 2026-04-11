@@ -7,6 +7,7 @@
 import { EMAIL, SOCIAL_LINKS } from "../../constants";
 import Image from "next/image";
 import Button, { ButtonTypes } from "./button";
+import { trackEvent, setTag } from "../../utils/clarity";
 
 const Footer = () => {
 	const renderSocialIcons = (): React.ReactNode => {
@@ -17,6 +18,7 @@ const Footer = () => {
 				className="link hover:opacity-90 hover:scale-110 transition-all duration-[10ms] md:px-2 px-1"
 				rel="noreferrer"
 				target="_blank"
+				onClick={() => { trackEvent("footer_social_click"); setTag("social_platform", el); }}
 			>
 				<Image src={`/social/${el}.svg`} alt={el} width={40} height={40} />
 			</a>
@@ -38,6 +40,7 @@ const Footer = () => {
 					type={ButtonTypes.WHITE}
 					name="Let's Talk"
 					href="https://www.linkedin.com/in/minhbphamm/"
+					onClick={() => trackEvent("footer_lets_talk")}
 					otherProps={{
 						target: "_blank",
 						rel: "noreferrer",

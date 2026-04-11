@@ -10,12 +10,26 @@ import "../styles/article.css";
 import type { AppProps } from "next/app";
 import Script from "next/script";
 import { useEffect } from "react";
-import Clarity from "@microsoft/clarity";
+import { useRouter } from "next/router";
+import { initClarity, trackPageView } from "../utils/clarity";
 
 function MyApp({ Component, pageProps }: AppProps) {
+	const router = useRouter();
+
 	useEffect(() => {
-		Clarity.init("w99ronz0em");
+		initClarity();
 	}, []);
+
+	useEffect(() => {
+		trackPageView(router.pathname);
+		const handleRouteChange = (url: string) => {
+			trackPageView(url);
+		};
+		router.events.on("routeChangeComplete", handleRouteChange);
+		return () => {
+			router.events.off("routeChangeComplete", handleRouteChange);
+		};
+	}, [router]);
 
 	return (
 		<>

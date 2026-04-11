@@ -8,6 +8,7 @@ import { gsap, Linear } from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { isSmallScreen, NO_MOTION_PREFERENCE_QUERY } from "pages";
+import { trackEvent } from "../../utils/clarity";
 
 const COLLABORATION_STYLE = {
 	SLIDING_TEXT: "text-[#9146FF] opacity-[0.15] motion-reduce:opacity-[0.25] text-3xl sm:text-5xl md:text-7xl font-bold whitespace-nowrap",
@@ -119,6 +120,7 @@ const CollaborationSection = () => {
 					target="_blank"
 					rel="noreferrer"
 					className="collab-btn inline-flex items-center gap-2 px-8 py-3 rounded-full text-gray-900 font-bold text-lg transition-all duration-[10ms] hover:-translate-y-1 hover:scale-105"
+					onClick={() => trackEvent("collaboration_connect")}
 				>
 					Let's Connect
 					<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">

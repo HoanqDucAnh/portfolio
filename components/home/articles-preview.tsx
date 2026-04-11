@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ARTICLES, IArticle, SOCIAL_LINKS } from "../../constants";
+import { trackEvent, setTag } from "../../utils/clarity";
 
 const ArticleCard = ({
 	article,
@@ -132,6 +133,7 @@ const ArticlesPreview = () => {
 					target="_blank"
 					rel="noreferrer"
 					className="group block md:col-span-2 rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-2 md:grid md:grid-cols-2"
+					onClick={() => { trackEvent("article_click"); setTag("article_title", featured.title); }}
 				>
 					<ArticleCard article={featured} featured />
 				</a>
@@ -145,6 +147,7 @@ const ArticlesPreview = () => {
 						target="_blank"
 						rel="noreferrer"
 						className="group block rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-2"
+						onClick={() => { trackEvent("article_click"); setTag("article_title", article.title); }}
 					>
 						<ArticleCard article={article} />
 					</a>
@@ -157,6 +160,7 @@ const ArticlesPreview = () => {
 					target="_blank"
 					rel="noreferrer"
 					className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#9146FF]/50 text-[#BF94FF] hover:bg-[#9146FF]/10 hover:border-[#9146FF] transition-all duration-[10ms] text-sm font-medium"
+					onClick={() => trackEvent("substack_click")}
 				>
 					Read more on Substack
 					<svg
