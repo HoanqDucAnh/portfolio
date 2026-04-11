@@ -20,7 +20,7 @@ const Header = () => {
 			gsap.fromTo(
 				headerRef.current,
 				{ y: -80, opacity: 0 },
-				{ y: 0, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.1 }
+				{ y: 0, opacity: 1, duration: 0.6, ease: "power2.out", delay: 0.1, clearProps: "transform" }
 			);
 		}
 	}, []);
