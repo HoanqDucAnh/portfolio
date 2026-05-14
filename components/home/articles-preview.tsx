@@ -15,7 +15,7 @@ const ArticleCard = ({
 	<>
 		<div
 			className={`relative overflow-hidden bg-gray-800 ${
-				featured ? "md:h-full aspect-[5/4] md:aspect-auto" : "aspect-video"
+				featured ? "aspect-[5/4]" : "aspect-video"
 			}`}
 		>
 			<Image
