@@ -856,7 +856,7 @@ export const FAV_ARTICLES: IFavoriteRead[] = [
 			"How to become fit, sharp, balanced, and independent across every domain — once you get over the embarrassment of trying hard.",
 		url: "https://ixcarus.substack.com/p/how-to-win-at-everything-in-life",
 		domain: "ixcarus.substack.com",
-		category: "Self-Improvement",
+		category: "Psychology",
 		image: "/reads/the_forbidden_files.png",
 	},
 ];
