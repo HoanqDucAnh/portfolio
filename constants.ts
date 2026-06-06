@@ -43,6 +43,10 @@ export const NAVBARITEMS = [
 		name: "Start-up",
 		ref: "/aboutme/startup",
 	},
+	{
+		name: "Reads",
+		ref: "/reads",
+	},
 ];
 
 export const MENULINKS = [
@@ -759,6 +763,101 @@ export const ARTICLES: IArticle[] = [
 		date: "Feb 2026",
 		readingTime: "7 min read",
 		tag: "Data Engineering",
+	},
+];
+
+export interface IFavoriteRead {
+	title: string;
+	author: string;
+	description: string;
+	url: string;
+	domain: string; // used to build the favicon URL + shown as a pill
+	category: string;
+	image?: string; // optional local avatar in /public; overrides the favicon
+}
+
+export const FAVORITE_READS: IFavoriteRead[] = [
+	{
+		title: "Variance Explained",
+		author: "David Robinson",
+		description: "Stats stuff from an Anthropic Member of Technical Staff.",
+		url: "http://varianceexplained.org/posts/",
+		domain: "varianceexplained.org",
+		category: "Data Science",
+		image: "/reads/variance_explained.png",
+	},
+	{
+		title: "VuTrinh.",
+		author: "Vu Trinh",
+		description:
+			"Data Engineer · Trusted by 18,000+ engineers · I write what it takes to become a production-ready data engineer.",
+		url: "https://vutr.substack.com/",
+		domain: "vutr.substack.com",
+		category: "Data Engineering",
+		image: "/reads/vutrinh.jpg",
+	},
+	{
+		title: "The Operator's Handbook",
+		author: "Torsten Walbaum",
+		description:
+			"Operating frameworks and career advice drawn from years as an operator at Uber, Meta, and Rippling.",
+		url: "https://www.operatorshandbook.com/",
+		domain: "operatorshandbook.com",
+		category: "Career & Ops",
+	},
+	{
+		title: "mixtapes by gor",
+		author: "Goransh Bharal",
+		description: "I want to memorize your taste like my favorite coffee.",
+		url: "https://substack.com/@goranshbharal",
+		domain: "substack.com",
+		category: "Life & Reflection",
+		image: "/reads/gor.png",
+	},
+	{
+		title: "The Forbidden Files",
+		author: "ixcarus",
+		description:
+			"Secret knowledge. Public platform. If you get it, you get it. Reject mediocrity or go away.",
+		url: "https://substack.com/@ixcarus",
+		domain: "substack.com",
+		category: "Psychology",
+		image: "/reads/the_forbidden_files.png",
+	},
+	{
+		title: "Conquer",
+		author: "conquer1",
+		description: "Fix your attention, find your mission, Conquer.",
+		url: "https://substack.com/@conquer1",
+		domain: "substack.com",
+		category: "Philosophy",
+		image: "/reads/conquer.png",
+	},
+];
+
+// Individual posts worth reading in full (vs FAVORITE_READS, which are whole
+// publications). Reuses IFavoriteRead — `author` is the publication and
+// `domain` is the article's host.
+export const FAV_ARTICLES: IFavoriteRead[] = [
+	{
+		title: "You Don't Have What You Want Because You Don't Want It Enough",
+		author: "Conquer",
+		description:
+			"How a culture of instant gratification and detachment quietly kills the intense desire that drives real achievement.",
+		url: "https://conquer1.substack.com/p/you-dont-have-what-you-want-because-78c",
+		domain: "conquer1.substack.com",
+		category: "Philosophy",
+		image: "/reads/conquer.png",
+	},
+	{
+		title: "How To Win At Everything In Life: Becoming A Jack Of All Trades",
+		author: "The Forbidden Files",
+		description:
+			"How to become fit, sharp, balanced, and independent across every domain — once you get over the embarrassment of trying hard.",
+		url: "https://ixcarus.substack.com/p/how-to-win-at-everything-in-life",
+		domain: "ixcarus.substack.com",
+		category: "Self-Improvement",
+		image: "/reads/the_forbidden_files.png",
 	},
 ];
 
