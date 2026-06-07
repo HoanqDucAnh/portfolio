@@ -774,6 +774,8 @@ export interface IFavoriteRead {
 	domain: string; // used to build the favicon URL + shown as a pill
 	category: string;
 	image?: string; // optional local avatar in /public; overrides the favicon
+	date?: string; // optional publish date, shown in the article list meta row
+	cover?: string; // optional article cover art (list layout); falls back to image
 }
 
 export const FAVORITE_READS: IFavoriteRead[] = [
@@ -848,6 +850,8 @@ export const FAV_ARTICLES: IFavoriteRead[] = [
 		domain: "conquer1.substack.com",
 		category: "Philosophy",
 		image: "/reads/conquer.png",
+		cover: "/reads/want.png",
+		date: "Feb 24, 2026",
 	},
 	{
 		title: "How To Win At Everything In Life: Becoming A Jack Of All Trades",
@@ -858,6 +862,20 @@ export const FAV_ARTICLES: IFavoriteRead[] = [
 		domain: "ixcarus.substack.com",
 		category: "Psychology",
 		image: "/reads/the_forbidden_files.png",
+		cover: "/reads/jack.png",
+		date: "Apr 7, 2026",
+	},
+	{
+		title: "No, don't compete with yesterday you",
+		author: "Conquer",
+		description:
+			"Why \"1% better every day\" falls apart when you start from zero — and the three things that actually work: a rival, better company, and a mentor.",
+		url: "https://conquer1.substack.com/p/no-dont-compete-with-yesterday-you",
+		domain: "conquer1.substack.com",
+		category: "Philosophy",
+		image: "/reads/conquer.png",
+		cover: "/reads/compare.png",
+		date: "Dec 3, 2025",
 	},
 ];
 

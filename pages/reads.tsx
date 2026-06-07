@@ -16,6 +16,7 @@ import Header from "@/components/common/header2";
 import ProgressIndicator from "@/components/common/progress-indicator";
 import Cursor from "@/components/common/cursor";
 import FavoriteReads from "@/components/home/favorite-reads";
+import FavoriteArticles from "@/components/home/favorite-articles";
 import CollaborationSection from "@/components/home/collaboration";
 import Footer from "@/components/common/footer";
 import Scripts from "@/components/common/scripts";
@@ -76,11 +77,8 @@ export default function Reads() {
 				<Cursor isDesktop={isDesktop} />
 				<div className="flex-col flex">
 					{renderBackdrop()}
-					<FavoriteReads
+					<FavoriteArticles
 						items={FAV_ARTICLES}
-						heading="Favorite Articles"
-						subheading="Single posts that stuck with me — worth reading start to finish"
-						id="fav-articles"
 						className="pt-28 md:pt-36 pb-8 md:pb-12"
 					/>
 					<FavoriteReads />
