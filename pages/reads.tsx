@@ -78,7 +78,7 @@ export default function Reads() {
 					{renderBackdrop()}
 					<FavoriteReads
 						items={FAV_ARTICLES}
-						heading="Fav Articles"
+						heading="Favorite Articles"
 						subheading="Single posts that stuck with me — worth reading start to finish"
 						id="fav-articles"
 						className="pt-28 md:pt-36 pb-8 md:pb-12"
