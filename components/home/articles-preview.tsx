@@ -39,7 +39,7 @@ const ArticleCard = ({
 				<span className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#9146FF]/15 text-[#BF94FF] border border-[#9146FF]/20">
 					{article.tag}
 				</span>
-				<span className="text-xs text-gray-500">{article.readingTime}</span>
+				<span className="text-xs text-gray-400">{article.readingTime}</span>
 			</div>
 			<h4
 				className={`font-semibold text-white group-hover:text-[#BF94FF] transition-colors duration-[10ms] leading-snug ${
@@ -49,7 +49,7 @@ const ArticleCard = ({
 				{article.title}
 			</h4>
 			<p
-				className={`text-sm text-gray-500 leading-relaxed ${
+				className={`text-sm text-gray-400 leading-relaxed ${
 					featured ? "line-clamp-4" : "line-clamp-3"
 				}`}
 			>

@@ -20,7 +20,7 @@ const ArticleRow = ({ article }: { article: IFavoriteRead }) => {
 				<p className="text-sm md:text-base text-gray-400 leading-relaxed mt-2 line-clamp-2">
 					{article.description}
 				</p>
-				<div className="flex items-center gap-2 mt-4 text-xs font-medium tracking-wide text-gray-500 uppercase">
+				<div className="flex items-center gap-2 mt-4 text-xs font-medium tracking-wide text-gray-400 uppercase">
 					{article.date && <span>{article.date}</span>}
 					{article.date && <span aria-hidden>·</span>}
 					<span>{article.author}</span>

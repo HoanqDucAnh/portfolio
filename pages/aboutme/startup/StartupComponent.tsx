@@ -391,12 +391,12 @@ export default function StartupComponent() {
 								<div className="flex items-center gap-6">
 									<div>
 										<p className="text-4xl font-bold text-[#f27d0d]">$37.5K</p>
-										<p className="text-sm text-gray-500">Minimum</p>
+										<p className="text-sm text-gray-400">Minimum</p>
 									</div>
 									<ScholarshipBar />
 									<div className="text-right">
 										<p className="text-4xl font-bold text-[#f27d0d]">$45.5K</p>
-										<p className="text-sm text-gray-500">Maximum</p>
+										<p className="text-sm text-gray-400">Maximum</p>
 									</div>
 								</div>
 							</div>

@@ -22,7 +22,7 @@ const WakatimeStats = memo(() => {
 				<span className="text-xl font-semibold text-gray-300 group-hover:text-white transition-colors">
 					Wakatime Stats
 				</span>
-				<span className="text-gray-500 text-sm">@{WAKATIME_USERNAME}</span>
+				<span className="text-gray-400 text-sm">@{WAKATIME_USERNAME}</span>
 			</a>
 
 			{/* Wakatime Coding Activity */}

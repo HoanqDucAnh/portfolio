@@ -187,7 +187,7 @@ const GitHubStats = memo(() => {
 				<span className="text-xl font-semibold text-gray-300 group-hover:text-white transition-colors">
 					GitHub Stats
 				</span>
-				<span className="text-gray-500 text-sm">@{GITHUB_USERNAME}</span>
+				<span className="text-gray-400 text-sm">@{GITHUB_USERNAME}</span>
 			</a>
 
 			{/* Stats Grid */}
@@ -225,7 +225,7 @@ const GitHubStats = memo(() => {
 									></span>
 									<span className="text-sm text-gray-300">{lang.name}</span>
 								</div>
-								<span className="text-sm text-gray-500">{lang.percentage}%</span>
+								<span className="text-sm text-gray-400">{lang.percentage}%</span>
 							</div>
 							<div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
 								<div

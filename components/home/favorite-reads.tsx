@@ -59,14 +59,14 @@ const ReadCard = ({ read }: { read: IFavoriteRead }) => (
 				<h4 className="font-semibold text-white group-hover:text-[#BF94FF] transition-colors duration-[10ms] leading-snug text-base truncate">
 					{read.title}
 				</h4>
-				<p className="text-sm text-gray-500 truncate">by {read.author}</p>
+				<p className="text-sm text-gray-400 truncate">by {read.author}</p>
 			</div>
 		</div>
 		<p className="text-sm text-gray-400 leading-relaxed line-clamp-3 flex-grow">
 			{read.description}
 		</p>
 		<div className="flex items-center justify-between gap-3 mt-5">
-			<span className="text-xs text-gray-500 truncate">{read.domain}</span>
+			<span className="text-xs text-gray-400 truncate">{read.domain}</span>
 			<span className="flex-none text-xs font-medium px-2.5 py-1 rounded-full bg-[#9146FF]/15 text-[#BF94FF] border border-[#9146FF]/20">
 				{read.category}
 			</span>
