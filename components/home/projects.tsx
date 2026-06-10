@@ -63,7 +63,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 						`}
 					>
 						{category.label}
-						<span className={`ml-1.5 sm:ml-2 text-[11px] sm:text-xs ${activeCategory === category.value ? "opacity-80" : "opacity-60"}`}>
+						<span className={`ml-1.5 sm:ml-2 text-[11px] sm:text-xs ${activeCategory === category.value ? "opacity-100" : "opacity-60"}`}>
 							({count})
 						</span>
 					</button>

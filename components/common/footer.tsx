@@ -60,7 +60,7 @@ const Footer = () => {
 		>
 			<img
 				src="/footer-curve.svg"
-				alt="Footer"
+				alt=""
 				className="w-full"
 				loading="lazy"
 				height={290}

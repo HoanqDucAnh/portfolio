@@ -25,9 +25,8 @@ const ArticleCard = ({
 				objectFit="cover"
 				objectPosition="top"
 				className="transition-transform duration-[10ms] group-hover:scale-105"
-				sizes={featured ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
-				priority={featured}
-				loading={featured ? "eager" : "lazy"}
+				sizes={featured ? "(max-width: 768px) 92vw, 50vw" : "(max-width: 768px) 92vw, 33vw"}
+				loading="lazy"
 			/>
 			<div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-gray-900/10" />
 			<span className="absolute top-3 left-3 text-xs font-medium px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-sm text-gray-300 border border-white/10">

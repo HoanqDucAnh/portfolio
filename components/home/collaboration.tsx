@@ -87,7 +87,7 @@ const CollaborationSection = () => {
 	}, [quoteRef, targetSection]);
 
 	const renderSlidingText = (text: string, layoutClasses: string) => (
-		<p className={`${layoutClasses} ${COLLABORATION_STYLE.SLIDING_TEXT}`}>
+		<p className={`${layoutClasses} ${COLLABORATION_STYLE.SLIDING_TEXT}`} aria-hidden="true">
 			{Array(5)
 				.fill(text)
 				.reduce((str, el) => str.concat(el), "")}
@@ -119,7 +119,7 @@ const CollaborationSection = () => {
 					href="https://www.linkedin.com/in/minhbphamm/"
 					target="_blank"
 					rel="noreferrer"
-					className="collab-btn inline-flex items-center gap-2 px-8 py-3 rounded-full text-gray-900 font-bold text-lg transition-all duration-[10ms] hover:-translate-y-1 hover:scale-105"
+					className="collab-btn inline-flex items-center gap-2 px-8 py-3 rounded-full text-white font-bold text-lg transition-all duration-[10ms] hover:-translate-y-1 hover:scale-105"
 					onClick={() => trackEvent("collaboration_connect")}
 				>
 					Let's Connect

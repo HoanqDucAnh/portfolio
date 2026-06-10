@@ -441,27 +441,25 @@ a {
 }
 
 footer {
-	background: url("/footer-bg.svg"),
-		linear-gradient(
-			153.86deg,
-			#BF94FF 0%,
-			#9146FF 15.69%,
-			#6B2FBF 48.9%,
-			#9146FF 95.52%
-		);
+	background: linear-gradient(
+		153.86deg,
+		#BF94FF 0%,
+		#9146FF 15.69%,
+		#6B2FBF 48.9%,
+		#9146FF 95.52%
+	);
 }
 
 /* Orange theme for passion & startup pages */
 .theme-orange {
 	footer {
-		background: url("/footer-bg.svg"),
-			linear-gradient(
-				153.86deg,
-				#ff9a3c 0%,
-				#f27d0d 15.69%,
-				#c45e00 48.9%,
-				#f27d0d 95.52%
-			) !important;
+		background: linear-gradient(
+			153.86deg,
+			#ff9a3c 0%,
+			#f27d0d 15.69%,
+			#c45e00 48.9%,
+			#f27d0d 95.52%
+		) !important;
 	}
 
 	.text-strong {

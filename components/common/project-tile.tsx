@@ -31,9 +31,9 @@ const getCategoryColor = (category: string): string => {
 		case ProjectTypes.STATISTICSML:
 			return "bg-purple-600 text-white";
 		case ProjectTypes.CLOUDINFRA:
-			return "bg-orange-600 text-white";
+			return "bg-orange-700 text-white";
 		case ProjectTypes.LEARNING:
-			return "bg-green-600 text-white";
+			return "bg-green-700 text-white";
 		default:
 			return "bg-gray-600 text-white";
 	}
