@@ -45,7 +45,7 @@ export const NAVBARITEMS = [
 	},
 	{
 		name: "Reads",
-		ref: "/reads",
+		ref: "/aboutme/reads",
 	},
 ];
 

@@ -4,7 +4,7 @@
 // This file is licensed under the MIT License.
 // License text available at https://opensource.org/licenses/MIT
 
-import { METADATA, FAV_ARTICLES } from "../constants";
+import { METADATA, FAV_ARTICLES } from "../../constants";
 import Head from "next/head";
 import React, { useEffect, useState, useCallback, useRef } from "react";
 
@@ -15,6 +15,7 @@ import Layout from "@/components/common/layout";
 import Header from "@/components/common/header2";
 import ProgressIndicator from "@/components/common/progress-indicator";
 import Cursor from "@/components/common/cursor";
+import ReadsHero from "@/components/home/reads-hero";
 import FavoriteReads from "@/components/home/favorite-reads";
 import FavoriteArticles from "@/components/home/favorite-articles";
 import CollaborationSection from "@/components/home/collaboration";
@@ -77,10 +78,9 @@ export default function Reads() {
 				<Cursor isDesktop={isDesktop} />
 				<div className="flex-col flex">
 					{renderBackdrop()}
-					<FavoriteArticles
-						items={FAV_ARTICLES}
-						className="pt-28 md:pt-36 pb-8 md:pb-12"
-					/>
+					<ReadsHero />
+					<FavoriteArticles items={FAV_ARTICLES} />
+					<div className="section-divider my-4 md:my-6" />
 					<FavoriteReads />
 					<CollaborationSection />
 					<Footer />

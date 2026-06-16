@@ -17,6 +17,11 @@ module.exports = withBundleAnalyzer({
         destination: 'https://substack.com/@markphammm',
         permanent: true,
       },
+      {
+        source: '/reads',
+        destination: '/aboutme/reads',
+        permanent: true,
+      },
     ]
   },
 })

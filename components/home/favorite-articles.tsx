@@ -4,33 +4,18 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { FAV_ARTICLES, IFavoriteRead } from "../../constants";
 import { trackEvent, setTag } from "../../utils/clarity";
 
-// Substack-style list row: title + description + meta on the left, cover art on
-// the right, divider between rows. Cover falls back to the publication avatar
-// (`image`) until a real article cover is provided. Plain <img> (not next/image)
+// Secondary articles render as vertical cards: a cover on top with the category
+// pill overlaid on a gradient scrim, then title / description / meta below. The
+// meta is pinned to the bottom (`mt-auto`) so cards in a row stay even. Cover
+// falls back to the publication avatar (`image`). Plain <img> (not next/image)
 // for the same akamai/Netlify reason as the reads cards.
-const ArticleRow = ({ article }: { article: IFavoriteRead }) => {
+const ArticleCard = ({ article }: { article: IFavoriteRead }) => {
 	const cover = article.cover || article.image;
 
 	return (
-		<div className="flex items-start gap-5 md:gap-8 py-7 first:pt-0">
-			<div className="flex flex-col min-w-0 flex-grow">
-				<h4 className="font-bold text-white group-hover:text-[#BF94FF] transition-colors duration-[10ms] leading-snug text-xl md:text-2xl">
-					{article.title}
-				</h4>
-				<p className="text-sm md:text-base text-gray-400 leading-relaxed mt-2 line-clamp-2">
-					{article.description}
-				</p>
-				<div className="flex items-center gap-2 mt-4 text-xs font-medium tracking-wide text-gray-400 uppercase">
-					{article.date && <span>{article.date}</span>}
-					{article.date && <span aria-hidden>·</span>}
-					<span>{article.author}</span>
-					<span className="hidden sm:inline-flex ml-1 normal-case tracking-normal text-[#BF94FF] bg-[#9146FF]/15 border border-[#9146FF]/20 rounded-full px-2.5 py-0.5">
-						{article.category}
-					</span>
-				</div>
-			</div>
+		<div className="flex flex-col h-full">
 			{cover && (
-				<div className="flex-none w-24 h-24 md:w-44 md:h-32 rounded-xl overflow-hidden border border-white/10 bg-gray-800">
+				<div className="relative aspect-[16/10] overflow-hidden">
 					{/* eslint-disable-next-line @next/next/no-img-element */}
 					<img
 						src={cover}
@@ -38,8 +23,70 @@ const ArticleRow = ({ article }: { article: IFavoriteRead }) => {
 						className="w-full h-full object-cover transition-transform duration-[10ms] group-hover:scale-105"
 						loading="lazy"
 					/>
+					<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+					<span className="absolute top-3 left-3 text-xs font-medium text-white bg-[#9146FF]/80 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-0.5">
+						{article.category}
+					</span>
 				</div>
 			)}
+			<div className="p-5 md:p-6 flex flex-col flex-grow">
+				<h4 className="font-bold text-white group-hover:text-[#BF94FF] transition-colors duration-[10ms] leading-snug text-lg md:text-xl">
+					{article.title}
+				</h4>
+				<p className="text-sm text-gray-400 leading-relaxed mt-2 line-clamp-2">
+					{article.description}
+				</p>
+				<div className="flex items-center gap-2 mt-auto pt-4 text-xs font-medium tracking-wide text-gray-400 uppercase">
+					{article.date && <span>{article.date}</span>}
+					{article.date && <span aria-hidden>·</span>}
+					<span>{article.author}</span>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+// The lead article gets a magazine-style treatment: a large cover on one side
+// and an oversized title + description on the other. The cover cell keeps a
+// fixed aspect ratio at ALL breakpoints (object-cover center-crops) — never
+// `md:aspect-auto md:h-full`, which let the text panel dictate height and
+// clipped the artwork (see VERSION.md v3.6.6/v3.6.7).
+const FeaturedArticle = ({ article }: { article: IFavoriteRead }) => {
+	const cover = article.cover || article.image;
+
+	return (
+		<div className="grid md:grid-cols-2">
+			{cover && (
+				<div className="relative aspect-[16/10] overflow-hidden">
+					{/* eslint-disable-next-line @next/next/no-img-element */}
+					<img
+						src={cover}
+						alt={article.title}
+						className="w-full h-full object-cover transition-transform duration-[10ms] group-hover:scale-105"
+						loading="lazy"
+					/>
+					<div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+				</div>
+			)}
+			<div className="p-6 md:p-8 flex flex-col justify-center">
+				<div className="flex items-center gap-2 mb-4 text-xs font-medium uppercase tracking-wide text-gray-400">
+					<span className="normal-case tracking-normal text-[#BF94FF] bg-[#9146FF]/15 border border-[#9146FF]/20 rounded-full px-2.5 py-0.5">
+						Featured
+					</span>
+					<span>{article.category}</span>
+				</div>
+				<h4 className="font-bold text-white group-hover:text-[#BF94FF] transition-colors duration-[10ms] leading-tight text-2xl md:text-4xl">
+					{article.title}
+				</h4>
+				<p className="text-sm md:text-base text-gray-400 leading-relaxed mt-4 line-clamp-3">
+					{article.description}
+				</p>
+				<div className="flex items-center gap-2 mt-5 text-xs font-medium tracking-wide text-gray-400 uppercase">
+					{article.date && <span>{article.date}</span>}
+					{article.date && <span aria-hidden>·</span>}
+					<span>{article.author}</span>
+				</div>
+			</div>
 		</div>
 	);
 };
@@ -59,6 +106,9 @@ const FavoriteArticles = ({
 }) => {
 	const sectionRef = useRef<HTMLElement>(null);
 	const rowsRef = useRef<(HTMLAnchorElement | null)[]>([]);
+
+	// First article is the magazine-style lead; the rest fall into the list.
+	const [featured, ...rest] = items;
 
 	useEffect(() => {
 		if (!sectionRef.current) return;
@@ -80,6 +130,9 @@ const FavoriteArticles = ({
 						duration: 0.6,
 						delay: idx * 0.1,
 						ease: "power2.out",
+						// Drop the inline transform on finish so the featured
+						// card's CSS hover lift (-translate-y-1) isn't blocked.
+						clearProps: "transform",
 					});
 				},
 			});
@@ -123,24 +176,44 @@ const FavoriteArticles = ({
 				</h3>
 			</div>
 
-			<div className="flex flex-col divide-y divide-gray-800/70">
-				{items.map((article, index) => (
-					<a
-						key={index}
-						ref={(el) => (rowsRef.current[index] = el)}
-						href={article.url}
-						target="_blank"
-						rel="noreferrer"
-						className="group block transition-colors duration-[10ms]"
-						onClick={() => {
-							trackEvent("article_click", { article_title: article.title });
-							setTag("article_domain", article.domain);
-						}}
-					>
-						<ArticleRow article={article} />
-					</a>
-				))}
-			</div>
+			{featured && (
+				<a
+					ref={(el) => (rowsRef.current[0] = el)}
+					href={featured.url}
+					target="_blank"
+					rel="noreferrer"
+					className="group block rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-1"
+					onClick={() => {
+						trackEvent("article_click", { article_title: featured.title });
+						setTag("article_domain", featured.domain);
+					}}
+				>
+					<FeaturedArticle article={featured} />
+				</a>
+			)}
+
+			{rest.length > 0 && (
+				<div className="grid md:grid-cols-2 gap-6 mt-6 md:mt-8">
+					{rest.map((article, index) => (
+						<a
+							key={index}
+							ref={(el) => (rowsRef.current[index + 1] = el)}
+							href={article.url}
+							target="_blank"
+							rel="noreferrer"
+							className="group block h-full rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-1"
+							onClick={() => {
+								trackEvent("article_click", {
+									article_title: article.title,
+								});
+								setTag("article_domain", article.domain);
+							}}
+						>
+							<ArticleCard article={article} />
+						</a>
+					))}
+				</div>
+			)}
 		</section>
 	);
 };
