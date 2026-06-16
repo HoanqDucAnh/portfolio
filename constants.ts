@@ -878,5 +878,3 @@ export const FAV_ARTICLES: IFavoriteRead[] = [
 		date: "Dec 3, 2025",
 	},
 ];
-
-export const GTAG = "UA-163844688-1";
