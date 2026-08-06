@@ -151,6 +151,14 @@ export const MENULINKS = [
 
 export const COMMENTS = [
 	{
+		comment: "I worked with Mark at Insurify, where he owned a large breadth and depth of marketing data models and pipelines. Analytics engineering is not only Mark's career, it's his passion — no one talks about it with such conviction. His best trait is that he is a team multiplier: an expert IC who takes the time to educate and mentor those around him, democratizing analytics for all. If I'm starting a business tomorrow, Mark is my first analytics engineering hire.",
+		author: "Noah, Pelberg",
+		position: "Product & Analytics @ Insurify",
+		recomendationType: "work",
+		company: "insurify",
+		avatar: "/person/noah.webp",
+	},
+	{
 		comment: "Mark is a huge asset to the team at Insurify — smart, hardworking, and someone who really cares about doing things well. He owns several end-to-end data pipelines supporting our marketing team. As my mentor in analytics engineering, he guided me through the AE Academy and pushed me to think beyond just writing code — to really understand the data and the business context. Any team would be lucky to have him!",
 		author: "Ethan, Liu",
 		position: "Data @ Insurify",
