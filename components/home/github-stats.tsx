@@ -1,7 +1,10 @@
-import React, { useEffect, useState, useCallback, memo } from "react";
+import React, { useEffect, useState, useCallback, useRef, memo } from "react";
 import { FaGithub, FaStar, FaCodeBranch, FaUsers, FaBook } from "react-icons/fa";
 import CountUp from "react-countup";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { trackEvent } from "../../utils/clarity";
+import { prefersReducedMotion } from "../../utils/motion";
 
 interface GitHubUser {
 	public_repos: number;
@@ -59,11 +62,15 @@ const LANGUAGE_COLORS: Record<string, string> = {
 
 const GITHUB_USERNAME = "MarkPhamm";
 
+const PANEL_CLASSES =
+	"w-full rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 shadow-xl hover:border-[#9146FF]/30 hover:shadow-[0_0_30px_-5px_rgba(145,70,255,0.15)] transition-all duration-[10ms]";
+
 const GitHubStats = memo(() => {
 	const [stats, setStats] = useState<GitHubStatsData | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
-	const [isVisible] = useState(true);
+	const [inView, setInView] = useState(false);
+	const containerRef = useRef<HTMLDivElement>(null);
 
 	const fetchGitHubStats = useCallback(async () => {
 		try {
@@ -126,29 +133,81 @@ const GitHubStats = memo(() => {
 		fetchGitHubStats();
 	}, [fetchGitHubStats]);
 
-	const StatCard = ({ icon, label, value, delay }: { icon: React.ReactNode; label: string; value: number; delay: number }) => (
+	// Entrance choreography: stat cards pop in, language rows slide in and
+	// their bars grow, all once the loaded panel scrolls into view.
+	useEffect(() => {
+		if (loading || !stats || !containerRef.current) return;
+
+		if (prefersReducedMotion()) {
+			setInView(true);
+			return;
+		}
+
+		const el = containerRef.current;
+		const cards = el.querySelectorAll(".gh-stat-card");
+		const rows = el.querySelectorAll(".gh-lang-row");
+		const bars = el.querySelectorAll(".gh-lang-bar");
+
+		gsap.set(cards, { opacity: 0, y: 30 });
+		gsap.set(rows, { opacity: 0, x: -16 });
+
+		const trigger = ScrollTrigger.create({
+			trigger: el,
+			start: "top 85%",
+			once: true,
+			onEnter: () => {
+				setInView(true);
+				gsap.to(cards, {
+					opacity: 1,
+					y: 0,
+					duration: 0.6,
+					ease: "back.out(1.4)",
+					stagger: 0.08,
+				});
+				gsap.to(rows, {
+					opacity: 1,
+					x: 0,
+					duration: 0.5,
+					ease: "power2.out",
+					stagger: 0.08,
+					delay: 0.2,
+				});
+				gsap.from(bars, {
+					width: 0,
+					duration: 0.9,
+					ease: "power3.out",
+					stagger: 0.1,
+					delay: 0.3,
+				});
+			},
+		});
+
+		return () => trigger.kill();
+	}, [loading, stats]);
+
+	const StatCard = ({ icon, label, value }: { icon: React.ReactNode; label: string; value: number }) => (
 		<a
 			href={`https://github.com/${GITHUB_USERNAME}`}
 			target="_blank"
 			rel="noopener noreferrer"
 			onClick={() => trackEvent("github_stats_click", { location: `stat_card_${label.toLowerCase().replace(/\s+/g, "_")}` })}
-			className={`flex flex-col items-center justify-center p-4 rounded-lg hover:scale-105 transition-all duration-[10ms] cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-				}`}
+			className="gh-stat-card flex flex-col items-center justify-center p-4 rounded-xl hover:scale-105 transition-all duration-[10ms] cursor-pointer"
 			style={{
-				transitionDelay: `${delay}ms`,
 				background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.9))',
 				border: '1px solid rgba(145, 70, 255, 0.15)',
 			}}
 		>
 			<div className="text-2xl mb-2 text-[#9146FF]">{icon}</div>
-			<div className="text-2xl font-bold text-white"><CountUp end={value} duration={2} separator="," /></div>
+			<div className="text-2xl font-bold text-white">
+				{inView ? <CountUp end={value} duration={2} separator="," /> : <span>0</span>}
+			</div>
 			<div className="text-sm text-gray-300">{label}</div>
 		</a>
 	);
 
 	if (loading) {
 		return (
-			<div className="w-full bg-gray-950 rounded-lg p-6 animate-pulse">
+			<div className={`${PANEL_CLASSES} animate-pulse`}>
 				<div className="flex items-center gap-2 mb-4">
 					<div className="w-6 h-6 bg-gray-800 rounded"></div>
 					<div className="h-6 w-32 bg-gray-800 rounded"></div>
@@ -165,17 +224,14 @@ const GitHubStats = memo(() => {
 
 	if (error || !stats) {
 		return (
-			<div className="w-full bg-gray-950 rounded-lg p-6 text-center">
+			<div className={`${PANEL_CLASSES} text-center`}>
 				<p className="text-gray-400">{error || "Unable to load GitHub stats"}</p>
 			</div>
 		);
 	}
 
 	return (
-		<div
-			className={`w-full bg-gray-950 rounded-lg p-6 hover:bg-gray-900/50 transition-all duration-[10ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-				}`}
-		>
+		<div ref={containerRef} className={PANEL_CLASSES}>
 			<a
 				href={`https://github.com/${GITHUB_USERNAME}`}
 				target="_blank"
@@ -192,10 +248,10 @@ const GitHubStats = memo(() => {
 
 			{/* Stats Grid */}
 			<div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
-				<StatCard icon={<FaBook />} label="Repositories" value={stats.repos} delay={100} />
-				<StatCard icon={<FaStar />} label="Total Stars" value={stats.stars} delay={200} />
-				<StatCard icon={<FaUsers />} label="Followers" value={stats.followers} delay={300} />
-				<StatCard icon={<FaCodeBranch />} label="Following" value={stats.following} delay={400} />
+				<StatCard icon={<FaBook />} label="Repositories" value={stats.repos} />
+				<StatCard icon={<FaStar />} label="Total Stars" value={stats.stars} />
+				<StatCard icon={<FaUsers />} label="Followers" value={stats.followers} />
+				<StatCard icon={<FaCodeBranch />} label="Following" value={stats.following} />
 			</div>
 
 			{/* Language Stats */}
@@ -204,19 +260,12 @@ const GitHubStats = memo(() => {
 				target="_blank"
 				rel="noopener noreferrer"
 				onClick={() => trackEvent("github_stats_click", { location: "languages" })}
-				className={`block mt-4 transition-all duration-[10ms] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-					}`}
-				style={{ transitionDelay: '500ms' }}
+				className="block mt-4"
 			>
 				<h4 className="text-sm font-medium text-gray-400 mb-3">Most Used Languages</h4>
 				<div className="space-y-3">
-					{stats.languages.map((lang, index) => (
-						<div
-							key={lang.name}
-							className={`group transition-all duration-[10ms] ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
-								}`}
-							style={{ transitionDelay: `${600 + index * 100}ms` }}
-						>
+					{stats.languages.map((lang) => (
+						<div key={lang.name} className="gh-lang-row group">
 							<div className="flex justify-between items-center mb-1">
 								<div className="flex items-center gap-2">
 									<span
@@ -229,11 +278,10 @@ const GitHubStats = memo(() => {
 							</div>
 							<div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
 								<div
-									className="h-full rounded-full transition-all duration-[10ms] ease-out"
+									className="gh-lang-bar h-full rounded-full"
 									style={{
-										width: isVisible ? `${lang.percentage}%` : '0%',
+										width: `${lang.percentage}%`,
 										backgroundColor: lang.color,
-										transitionDelay: `${700 + index * 100}ms`,
 									}}
 								></div>
 							</div>

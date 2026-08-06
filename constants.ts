@@ -151,12 +151,20 @@ export const MENULINKS = [
 
 export const COMMENTS = [
 	{
-		comment: "Mark is a superb analytics engineer and coworker. At Insurify, he owns a number of key data pipelines and is the human dictionary of our tech stack. He works hard, efficiently, and sets the example for learning new technologies. He is a force for progress within Insurify, and I'm thankful to count him as a coworker and friend.",
-		author: "Peter, Manto",
-		position: "Data Analyst - Insurify",
+		comment: "Mark is a huge asset to the team at Insurify — smart, hardworking, and someone who really cares about doing things well. He owns several end-to-end data pipelines supporting our marketing team. As my mentor in analytics engineering, he guided me through the AE Academy and pushed me to think beyond just writing code — to really understand the data and the business context. Any team would be lucky to have him!",
+		author: "Ethan, Liu",
+		position: "Data @ Insurify",
 		recomendationType: "work",
 		company: "insurify",
-		avatar: "/person/manto.webp",
+		avatar: "/person/ethan.webp",
+	},
+	{
+		comment: "Mark was one of the first people I met at Insurify, and his knowledge and expertise made me assume he'd been there for years. During my rotation on the Analytics Engineering team, he took me from 0 to 1 — teaching me dbt, Airflow, and GitHub, and walking me through my first PR. What stands out most is how genuinely eager he is to support, train, and invest in new team members. I feel very lucky to have crossed paths with him at the start of my career.",
+		author: "Yuki, Fang",
+		position: "Data @ Insurify",
+		recomendationType: "work",
+		company: "insurify",
+		avatar: "/person/yuki.webp",
 	},
 	{
 		comment: "I have worked closely with Mark for over a year at Insurify, where he owns the data pipelines that inform our everyday decision-making on the marketing team. I've learned more technical skills from him than from everyone else combined. His exceptional command of SQL, Python, and dbt allows him to solve problems and build with efficiency — Mark will coordinate across teams and make it happen. He is an exemplar of best practice, and I can't recommend him highly enough.",
@@ -167,12 +175,12 @@ export const COMMENTS = [
 		avatar: "/person/max.webp",
 	},
 	{
-		comment: "Mark was one of the first people I met at Insurify, and his knowledge and expertise made me assume he'd been there for years. During my rotation on the Analytics Engineering team, he took me from 0 to 1 — teaching me dbt, Airflow, and GitHub, and walking me through my first PR. What stands out most is how genuinely eager he is to support, train, and invest in new team members. I feel very lucky to have crossed paths with him at the start of my career.",
-		author: "Yuki, Fang",
-		position: "Data @ Insurify",
+		comment: "Mark is a superb analytics engineer and coworker. At Insurify, he owns a number of key data pipelines and is the human dictionary of our tech stack. He works hard, efficiently, and sets the example for learning new technologies. He is a force for progress within Insurify, and I'm thankful to count him as a coworker and friend.",
+		author: "Peter, Manto",
+		position: "Data Analyst - Insurify",
 		recomendationType: "work",
 		company: "insurify",
-		avatar: "/person/yuki.webp",
+		avatar: "/person/manto.webp",
 	},
 	{
 		comment: "Minh's exceptional documentation skills stood out significantly. He always meticulously documented every process and project he worked on, ensuring that his contributions would continue to benefit the team long after his internship concluded. His proactive approach and willingness to go above and beyond what was expected of his position truly set him apart.",
@@ -580,6 +588,30 @@ export const SKILLS = {
 	hackerank: "HackerRank",
 	airflow: "Airflow",
 };
+
+export interface ICertificate {
+	name: string;
+	issuer: string;
+	image: string; // file name under /public/skills/3rd/ (webp)
+}
+
+export const CERTIFICATES: ICertificate[] = [
+	{
+		name: "Alteryx Core Designer",
+		issuer: "Alteryx",
+		image: "alteryx",
+	},
+	{
+		name: "SQL Advanced",
+		issuer: "HackerRank",
+		image: "HackerRank",
+	},
+	{
+		name: "Apache Airflow Certified",
+		issuer: "Astronomer",
+		image: "airflow",
+	},
+];
 
 export const SQLCode = {
 	sql1: `SELECT * FROM marketing_campaign

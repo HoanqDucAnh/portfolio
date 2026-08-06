@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { isSmallScreen, NO_MOTION_PREFERENCE_QUERY } from "pages";
 import { trackEvent } from "../../utils/clarity";
+import { initMagneticHover } from "../../utils/motion";
 
 const COLLABORATION_STYLE = {
 	SLIDING_TEXT: "text-[#9146FF] opacity-[0.15] motion-reduce:opacity-[0.25] text-3xl sm:text-5xl md:text-7xl font-bold whitespace-nowrap",
@@ -14,6 +15,7 @@ const COLLABORATION_STYLE = {
 const CollaborationSection = () => {
 	const quoteRef = useRef<HTMLDivElement>(null);
 	const targetSection = useRef<HTMLDivElement>(null);
+	const ctaRef = useRef<HTMLAnchorElement>(null);
 
 	const [willChange, setwillChange] = useState(false);
 
@@ -80,6 +82,9 @@ const CollaborationSection = () => {
 		};
 	}, [quoteRef, targetSection]);
 
+	// Magnetic hover on the CTA (desktop pointers only, respects reduced motion)
+	useEffect(() => initMagneticHover(ctaRef.current), []);
+
 	const renderSlidingText = (text: string, layoutClasses: string) => (
 		<p className={`${layoutClasses} ${COLLABORATION_STYLE.SLIDING_TEXT}`} aria-hidden="true">
 			{Array(5)
@@ -104,12 +109,13 @@ const CollaborationSection = () => {
 
 	return (
 		<section className={COLLABORATION_STYLE.SECTION} ref={targetSection}>
-			{renderSlidingText(" dbt - Airflow - Snowflake -  ", "ui-left")}
+			{renderSlidingText(" dbt - Airflow - Redshift -  ", "ui-left")}
 
 			{renderTitle()}
 
 			<div className="flex justify-center mt-6">
 				<a
+					ref={ctaRef}
 					href="https://www.linkedin.com/in/minhbphamm/"
 					target="_blank"
 					rel="noreferrer"
@@ -124,7 +130,7 @@ const CollaborationSection = () => {
 			</div>
 
 			{renderSlidingText(
-				" dbt - Airflow - Snowflake -  ",
+				" dbt - Airflow - Redshift -  ",
 				"mt-6 md:mt-8 ui-right"
 			)}
 		</section>

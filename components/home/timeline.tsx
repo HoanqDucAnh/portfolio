@@ -11,6 +11,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { IDesktop } from "pages";
 import { trackEvent } from "../../utils/clarity";
+import { prefersReducedMotion } from "../../utils/motion";
 
 interface ExperienceItem {
 	date: string;
@@ -69,6 +70,7 @@ const TimelineSection = (_props: IDesktop) => {
 		if (!isMounted || !sectionRef.current) return;
 
 		const triggers: ScrollTrigger[] = [];
+		const reduceMotion = prefersReducedMotion();
 
 		experiencesRef.current.forEach((el, idx) => {
 			if (!el) return;
@@ -92,6 +94,45 @@ const TimelineSection = (_props: IDesktop) => {
 				once: true,
 			});
 			triggers.push(trigger);
+
+			if (reduceMotion) return;
+
+			// Rail segment draws itself as the entry scrolls through the viewport;
+			// chained per entry it reads as one continuous line.
+			const seg = el.querySelector(".timeline-rail-seg");
+			if (seg) {
+				const draw = gsap.fromTo(
+					seg,
+					{ scaleY: 0, transformOrigin: "top center" },
+					{
+						scaleY: 1,
+						ease: "none",
+						scrollTrigger: {
+							trigger: el,
+							start: "top 80%",
+							end: "bottom 60%",
+							scrub: 0.5,
+						},
+					}
+				);
+				if (draw.scrollTrigger) triggers.push(draw.scrollTrigger);
+			}
+
+			// Dot pops once the rail reaches it
+			const dot = el.querySelector(".timeline-dot");
+			if (dot) {
+				gsap.set(dot, { scale: 0, xPercent: -50 });
+				triggers.push(
+					ScrollTrigger.create({
+						trigger: el,
+						start: "top 70%",
+						once: true,
+						onEnter: () => {
+							gsap.to(dot, { scale: 1, duration: 0.5, ease: "back.out(3)" });
+						},
+					})
+				);
+			}
 		});
 
 		// ClipPath wipe on section heading
@@ -140,9 +181,14 @@ const TimelineSection = (_props: IDesktop) => {
 				className="relative mb-16 last:mb-0"
 			>
 				{/* Timeline connector */}
-				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gray-700 transform md:-translate-x-1/2">
+				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px transform md:-translate-x-1/2">
+					{/* Rail segment (draws on scroll; sibling of the dot so its scaleY doesn't distort it) */}
+					<div
+						className="timeline-rail-seg absolute inset-0 bg-gradient-to-b from-[#9146FF]/70 via-[#9146FF]/40 to-[#9146FF]/10"
+						aria-hidden="true"
+					></div>
 					{/* Dot */}
-					<div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 border-2 border-[#9146FF] rounded-full z-10 timeline-dot-glow"></div>
+					<div className="timeline-dot absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 border-2 border-[#9146FF] rounded-full z-10 timeline-dot-glow"></div>
 				</div>
 
 				{/* Content wrapper */}
@@ -168,7 +214,7 @@ const TimelineSection = (_props: IDesktop) => {
 							</p>
 						</div>
 						{experience.location && (
-							<span className={`inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full text-sm font-medium bg-gray-800/80 text-gray-200 border border-gray-700 ${isEven ? "md:ml-auto" : ""}`}>
+							<span className={`inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full text-sm font-medium bg-gray-800/80 text-gray-200 ${isEven ? "md:ml-auto" : ""}`}>
 								<svg className="w-3.5 h-3.5 text-[#9146FF]" fill="currentColor" viewBox="0 0 20 20">
 									<path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
 								</svg>
@@ -242,8 +288,8 @@ const TimelineSection = (_props: IDesktop) => {
 			{renderSectionTitle()}
 
 			<div className="relative">
-				{/* Main timeline line */}
-				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#9146FF]/50 via-[#9146FF]/20 to-transparent transform md:-translate-x-1/2"></div>
+				{/* Main timeline track — faint so the purple per-entry segments visibly draw over it */}
+				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gray-800 transform md:-translate-x-1/2"></div>
 
 				{/* Experience cards */}
 				<div className="relative">

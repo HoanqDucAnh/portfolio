@@ -9,6 +9,7 @@ import Button, { ButtonTypes } from "../common/button";
 import HeroAurora from "./hero-aurora";
 import { isSmallScreen } from "pages";
 import { trackEvent, setTag, upgradeSession } from "../../utils/clarity";
+import { initMagneticHover } from "../../utils/motion";
 
 const HeroImage = dynamic(() => import("./hero-image"), { ssr: false });
 
@@ -129,6 +130,8 @@ const HeroSection = React.memo(() => {
 	const auroraRef = useRef<HTMLDivElement>(null);
 	const contentRef = useRef<HTMLDivElement>(null);
 	const bgWrapperRef = useRef<HTMLDivElement>(null);
+	const resumeCtaRef = useRef<HTMLAnchorElement>(null);
+	const coffeeCtaRef = useRef<HTMLAnchorElement>(null);
 	// Parallax must wait until the reveal timeline finishes — otherwise
 	// `overwrite: true` on the mousemove tween kills the reveal mid-flight
 	// and bg/aurora stay stuck at opacity:0.
@@ -244,6 +247,15 @@ const HeroSection = React.memo(() => {
 		};
 	}, [typedSpanElement, targetSection]);
 
+	// Magnetic hover on the two CTAs (desktop pointers only, respects reduced motion)
+	useEffect(() => {
+		const cleanups = [
+			initMagneticHover(resumeCtaRef.current),
+			initMagneticHover(coffeeCtaRef.current),
+		];
+		return () => cleanups.forEach((fn) => fn());
+	}, []);
+
 	const renderBackgroundImage = (): React.ReactNode => (
 		<div ref={bgWrapperRef} className={HERO_STYLES.BG_WRAPPER} style={{ maxHeight: "650px" }}>
 			<div
@@ -294,6 +306,7 @@ const HeroSection = React.memo(() => {
 			</div>
 			<div className="flex flex-wrap gap-4 seq mt-6">
 				<a
+					ref={resumeCtaRef}
 					href="/minh_pham_resume.pdf"
 					download
 					onClick={() => { trackEvent("resume_download"); upgradeSession("resume_download"); }}
@@ -307,6 +320,7 @@ const HeroSection = React.memo(() => {
 					<span>Download Resume</span>
 				</a>
 				<a
+					ref={coffeeCtaRef}
 					href="https://calendly.com/minh-pham-insurify/30min"
 					target="_blank"
 					rel="noreferrer"

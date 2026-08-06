@@ -1,7 +1,13 @@
 import { SOCIAL_LINKS } from "../../constants";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { trackEvent, setTag, upgradeSession } from "../../utils/clarity";
+import { prefersReducedMotion } from "../../utils/motion";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const EXPLORE_LINKS = [
 	{ name: "Home", ref: "home" },
@@ -22,13 +28,54 @@ const COLUMN_HEADING = "text-white/80 text-xs uppercase tracking-widest mb-4";
 const FOOTER_LINK = "link block text-sm text-white/90 hover:text-white w-fit";
 
 const Footer = () => {
+	const footerRef = useRef<HTMLElement>(null);
+
+	// Entrance choreography: columns rise in sequence, social icons pop,
+	// bottom bar fades in last.
+	useEffect(() => {
+		if (!footerRef.current || prefersReducedMotion()) return;
+
+		const el = footerRef.current;
+		const cols = el.querySelectorAll(".footer-col");
+		const socials = el.querySelectorAll(".footer-social");
+		const bottom = el.querySelector(".footer-bottom");
+
+		gsap.set(cols, { opacity: 0, y: 30 });
+		gsap.set(socials, { scale: 0 });
+		if (bottom) gsap.set(bottom, { opacity: 0 });
+
+		const trigger = ScrollTrigger.create({
+			trigger: el,
+			start: "top 92%",
+			once: true,
+			onEnter: () => {
+				const tl = gsap.timeline();
+				tl.to(cols, {
+					opacity: 1,
+					y: 0,
+					duration: 0.6,
+					ease: "power3.out",
+					stagger: 0.1,
+				})
+					.to(
+						socials,
+						{ scale: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.05 },
+						"-=0.4"
+					)
+					.to(bottom, { opacity: 1, duration: 0.5, ease: "power2.out" }, "-=0.2");
+			},
+		});
+
+		return () => trigger.kill();
+	}, []);
+
 	const renderSocialIcons = (): React.ReactNode => (
 		<div className="flex flex-wrap gap-2">
 			{(Object.keys(SOCIAL_LINKS) as Array<keyof typeof SOCIAL_LINKS>).map((el) => (
 				<a
 					href={SOCIAL_LINKS[el]}
 					key={el}
-					className="link hover:opacity-90 hover:scale-110 transition-all duration-[10ms]"
+					className="footer-social link hover:opacity-90 hover:scale-110 transition-all duration-[10ms]"
 					rel="noreferrer"
 					target="_blank"
 					onClick={() => { trackEvent("footer_social_click"); setTag("social_platform", el); }}
@@ -40,7 +87,7 @@ const Footer = () => {
 	);
 
 	const renderIdentity = (): React.ReactNode => (
-		<div className="col-span-2 md:col-span-1">
+		<div className="footer-col col-span-2 md:col-span-1">
 			<div className="flex items-center gap-2.5 mb-3">
 				<Image src="/logo.svg" alt="" width={26} height={26} />
 				<span className="font-bold text-lg">Minh (Mark) Pham</span>
@@ -57,7 +104,7 @@ const Footer = () => {
 	);
 
 	const renderExplore = (): React.ReactNode => (
-		<div>
+		<div className="footer-col">
 			<p className={COLUMN_HEADING}>Explore</p>
 			<div className="space-y-2.5">
 				{EXPLORE_LINKS.map((item) => (
@@ -75,7 +122,7 @@ const Footer = () => {
 	);
 
 	const renderAbout = (): React.ReactNode => (
-		<div>
+		<div className="footer-col">
 			<p className={COLUMN_HEADING}>About me</p>
 			<div className="space-y-2.5">
 				{ABOUT_LINKS.map((item) => (
@@ -93,7 +140,7 @@ const Footer = () => {
 	);
 
 	const renderConnect = (): React.ReactNode => (
-		<div className="col-span-2 md:col-span-1">
+		<div className="footer-col col-span-2 md:col-span-1">
 			<p className={COLUMN_HEADING}>Connect with me</p>
 			<div className="space-y-2.5 mb-4">
 				<a
@@ -119,7 +166,7 @@ const Footer = () => {
 	);
 
 	const renderBottomBar = (): React.ReactNode => (
-		<div className="w-full border-t border-white/20 mt-10 pt-6 flex flex-col sm:flex-row sm:justify-between gap-2 text-xs text-white/70">
+		<div className="footer-bottom w-full border-t border-white/20 mt-10 pt-6 flex flex-col sm:flex-row sm:justify-between gap-2 text-xs text-white/70">
 			<span>© 2025–2026 Minh (Mark) Pham</span>
 			<span>
 				Built with Next.js, Tailwind &amp; GSAP —{" "}
@@ -138,6 +185,7 @@ const Footer = () => {
 
 	return (
 		<footer
+			ref={footerRef}
 			className="w-full relative select-none bg-cover flex flex-col items-stretch"
 			id="footer"
 		>

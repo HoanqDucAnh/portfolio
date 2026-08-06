@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 import { MENULINKS, PROJECTS, ProjectTypes } from "../../constants";
 import ProjectTile from "../common/project-tile";
 import { IDesktop } from "pages";
 import { trackEvent } from "../../utils/clarity";
+import { initHeadingWipe, prefersReducedMotion } from "../../utils/motion";
 
 const CATEGORIES = [
 	{ value: ProjectTypes.FEATURED, label: "Featured" },
@@ -18,18 +20,57 @@ const matchesCategory = (project: typeof PROJECTS[number], category: string) =>
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {
 	const targetSectionRef = useRef<HTMLDivElement>(null);
+	const gridRef = useRef<HTMLDivElement>(null);
 	const [activeCategory, setActiveCategory] = useState(ProjectTypes.FEATURED);
-	const [isAnimating, setIsAnimating] = useState(false);
+	const isFirstRender = useRef(true);
+	const isSwitching = useRef(false);
+
+	useEffect(() => {
+		const wipe = initHeadingWipe(targetSectionRef.current);
+		return () => wipe?.kill();
+	}, []);
 
 	const handleCategoryChange = (category: string) => {
-		if (category === activeCategory) return;
+		if (category === activeCategory || isSwitching.current) return;
 		trackEvent("project_category_filter", { category });
-		setIsAnimating(true);
-		setTimeout(() => {
+
+		if (prefersReducedMotion() || !gridRef.current) {
 			setActiveCategory(category);
-			setIsAnimating(false);
-		}, 300);
+			return;
+		}
+
+		// Quick fade-out, then the new tiles cascade in (see the effect below)
+		isSwitching.current = true;
+		gsap.to(gridRef.current, {
+			opacity: 0,
+			y: 8,
+			duration: 0.15,
+			ease: "power2.in",
+			onComplete: () => {
+				isSwitching.current = false;
+				setActiveCategory(category);
+			},
+		});
 	};
+
+	// Cascade the tiles in like dealt cards whenever the filter changes
+	useEffect(() => {
+		if (isFirstRender.current) {
+			isFirstRender.current = false;
+			return;
+		}
+		if (prefersReducedMotion() || !gridRef.current) return;
+
+		gsap.set(gridRef.current, { opacity: 1, y: 0 });
+		gsap.from(gridRef.current.querySelectorAll(".project-tile-wrap"), {
+			opacity: 0,
+			y: 28,
+			duration: 0.6,
+			ease: "back.out(1.2)",
+			stagger: 0.06,
+			clearProps: "all",
+		});
+	}, [activeCategory]);
 
 	const filteredProjects = PROJECTS.filter((project) =>
 		matchesCategory(project, activeCategory)
@@ -74,18 +115,13 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 
 	const renderProjectGrid = (): React.ReactNode => (
 		<div
-			className={`
-				grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8
-				transition-all duration-[10ms]
-				${isAnimating ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"}
-			`}
+			ref={gridRef}
+			className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8"
 		>
 			{filteredProjects.map((project, index) => (
-				<ProjectTile
-					project={project}
-					key={`${project.name}-${activeCategory}`}
-					index={index}
-				/>
+				<div className="project-tile-wrap h-full" key={`${project.name}-${activeCategory}`}>
+					<ProjectTile project={project} index={index} />
+				</div>
 			))}
 		</div>
 	);

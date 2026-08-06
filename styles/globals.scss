@@ -641,6 +641,10 @@ footer {
 	.wave-drift { animation: none !important; }
 	.timeline-dot-glow::after { animation: none !important; opacity: 0; }
 	.pl-packet { display: none; }
+	.shimmer-loading::after { animation: none !important; }
+	.carousel-countdown { animation: none !important; transform: scaleX(1); }
+	.card-shine::before { animation: none !important; }
+	.chevron-bounce { animation: none !important; }
 	html { scroll-behavior: auto; }
 }
 
@@ -704,6 +708,72 @@ footer {
 		will-change: transform, opacity;
 		pointer-events: none;
 	}
+}
+
+/* Skeleton shimmer for third-party embeds while they load */
+@keyframes shimmer-sweep {
+	to { transform: translateX(100%); }
+}
+
+.shimmer-loading {
+	position: relative;
+	overflow: hidden;
+	background: rgba(31, 41, 55, 0.6);
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		transform: translateX(-100%);
+		background: linear-gradient(90deg, transparent, rgba(191, 148, 255, 0.08), transparent);
+		animation: shimmer-sweep 1.6s ease-in-out infinite;
+	}
+}
+
+/* Testimonial autoplay countdown (composited: scaleX) */
+@keyframes carousel-countdown {
+	from { transform: scaleX(0); }
+	to { transform: scaleX(1); }
+}
+
+.carousel-countdown {
+	transform-origin: left;
+	animation: carousel-countdown 6s linear forwards;
+	will-change: transform;
+}
+
+/* One-shot light sweep across certificate cards on hover */
+@keyframes card-shine-sweep {
+	to { left: 125%; }
+}
+
+.card-shine {
+	position: relative;
+	overflow: hidden;
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: -75%;
+		width: 50%;
+		background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+		transform: skewX(-20deg);
+		pointer-events: none;
+		z-index: 2;
+	}
+	&:hover::before {
+		animation: card-shine-sweep 0.9s ease;
+	}
+}
+
+/* Bouncing scroll-cue chevron */
+@keyframes chevron-bounce {
+	0%, 100% { transform: translateY(0); opacity: 0.7; }
+	50% { transform: translateY(8px); opacity: 1; }
+}
+
+.chevron-bounce {
+	animation: chevron-bounce 1.8s ease-in-out infinite;
 }
 
 /* Section divider */

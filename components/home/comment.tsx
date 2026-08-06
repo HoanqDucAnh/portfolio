@@ -1,9 +1,22 @@
 import { COMMENTS } from "../../constants";
-import React, { useEffect, useState, useCallback } from "react";
+import React, {
+	useEffect,
+	useLayoutEffect,
+	useState,
+	useCallback,
+	useRef,
+} from "react";
 import { IDesktop } from "pages";
 import { FaChevronLeft, FaChevronRight, FaQuoteLeft } from "react-icons/fa";
 import Image from "next/image";
+import { gsap } from "gsap";
 import { trackEvent } from "../../utils/clarity";
+import { initHeadingWipe, prefersReducedMotion } from "../../utils/motion";
+
+// useLayoutEffect on the client (animates before paint, no flash); useEffect
+// during SSR to avoid the React warning.
+const useIsoLayoutEffect =
+	typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const CommentTile = (props: {
 	text: string;
@@ -63,6 +76,11 @@ const CommentSection = ({ }: IDesktop) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [isPaused, setIsPaused] = useState(false);
 	const [activeFilter, setActiveFilter] = useState("all");
+	const sectionRef = useRef<HTMLElement>(null);
+	const slidesRef = useRef<HTMLDivElement>(null);
+	// +1 = navigating forward, -1 = backward; drives the slide direction
+	const dirRef = useRef(1);
+	const isFirstRender = useRef(true);
 
 	const filteredComments =
 		activeFilter === "all"
@@ -72,15 +90,20 @@ const CommentSection = ({ }: IDesktop) => {
 	const totalSlides = filteredComments.length;
 
 	const goToNext = useCallback(() => {
+		dirRef.current = 1;
 		setCurrentIndex((prev) => (prev + 1) % totalSlides);
 	}, [totalSlides]);
 
 	const goToPrev = useCallback(() => {
+		dirRef.current = -1;
 		setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
 	}, [totalSlides]);
 
 	const goToSlide = useCallback((index: number) => {
-		setCurrentIndex(index);
+		setCurrentIndex((prev) => {
+			dirRef.current = index >= prev ? 1 : -1;
+			return index;
+		});
 	}, []);
 
 	const handleNav = (direction: "prev" | "next" | "dot", slide?: number) => {
@@ -94,7 +117,9 @@ const CommentSection = ({ }: IDesktop) => {
 		setCurrentIndex(0);
 	};
 
-	// Auto-play functionality
+	// Auto-play functionality. currentIndex in the deps resets the 6s timer on
+	// manual navigation, keeping it in sync with the countdown bar (which also
+	// remounts per slide).
 	useEffect(() => {
 		if (isPaused) return;
 
@@ -103,10 +128,40 @@ const CommentSection = ({ }: IDesktop) => {
 		}, 6000); // Change slide every 6 seconds
 
 		return () => clearInterval(interval);
-	}, [isPaused, goToNext]);
+	}, [isPaused, goToNext, currentIndex]);
+
+	// Directional slide choreography: GSAP animates the incoming slide so the
+	// carousel glides instead of hard-cutting (the Tailwind transitions here are
+	// intentionally 10ms site-wide).
+	useIsoLayoutEffect(() => {
+		if (isFirstRender.current) {
+			isFirstRender.current = false;
+			return;
+		}
+		if (prefersReducedMotion() || !slidesRef.current) return;
+
+		const active = slidesRef.current.querySelector(".slide-active");
+		if (!active) return;
+
+		const tween = gsap.fromTo(
+			active,
+			{ x: dirRef.current * 60, opacity: 0, scale: 0.97 },
+			{ x: 0, opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }
+		);
+		return () => {
+			tween.kill();
+		};
+	}, [currentIndex, activeFilter]);
+
+	// Cinematic heading wipe, matching Skills/Timeline
+	useEffect(() => {
+		const wipe = initHeadingWipe(sectionRef.current);
+		return () => wipe?.kill();
+	}, []);
 
 	return (
 		<section
+			ref={sectionRef}
 			className="w-full relative select-none section-container flex-col flex py-8 md:py-12 justify-center"
 			id="comments"
 		>
@@ -147,11 +202,11 @@ const CommentSection = ({ }: IDesktop) => {
 					</button>
 
 					{/* Slides Container */}
-					<div className="relative mb-4 overflow-hidden">
+					<div className="relative mb-4 overflow-hidden" ref={slidesRef}>
 						{filteredComments.map((comment, index) => (
 							<div
 								key={comment.author}
-								className={index === currentIndex ? "relative" : "absolute inset-0 pointer-events-none"}
+								className={index === currentIndex ? "slide-active relative" : "absolute inset-0 pointer-events-none"}
 							>
 								<CommentTile
 									text={comment.comment}
@@ -203,12 +258,13 @@ const CommentSection = ({ }: IDesktop) => {
 					))}
 				</div>
 
-				{/* Progress Bar */}
+				{/* Autoplay countdown — fills over the 6s cycle, freezes while hovered */}
 				<div className="mt-4 max-w-md mx-auto w-full">
 					<div className="h-1 bg-gray-800 rounded-full overflow-hidden">
 						<div
-							className="h-full bg-[#9146FF] transition-all duration-[10ms] ease-out"
-							style={{ width: `${((currentIndex + 1) / totalSlides) * 100}%` }}
+							key={`${activeFilter}-${currentIndex}-${isPaused ? "p" : "r"}`}
+							className="carousel-countdown h-full w-full bg-gradient-to-r from-[#9146FF] to-[#BF94FF] rounded-full"
+							style={{ animationPlayState: isPaused ? "paused" : "running" }}
 						/>
 					</div>
 				</div>

@@ -1,23 +1,9 @@
-import { SKILLS } from "../../constants";
-import React, { useEffect, useRef, useState } from "react";
-import { gsap, Linear } from "gsap";
+import { CERTIFICATES } from "../../constants";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { IDesktop } from "pages";
-import { memo } from "react";
-
-const Tooltip = memo(({ text, children }: { text: string; children: React.ReactNode }) => {
-	return (
-		<div className="group/tip relative inline-block">
-			{children}
-			<div className="absolute invisible group-hover/tip:visible opacity-0 group-hover/tip:opacity-100 transition-opacity duration-[10ms] bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 text-sm bg-white text-gray-800 rounded-lg shadow-lg whitespace-nowrap z-10">
-				{text}
-				<div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white"></div>
-			</div>
-		</div>
-	);
-});
-
-Tooltip.displayName = "Tooltip";
+import { initHeadingWipe, prefersReducedMotion } from "../../utils/motion";
 
 const CERTIFICATE_STYLES = {
 	SECTION:
@@ -26,62 +12,74 @@ const CERTIFICATE_STYLES = {
 
 const CertificateSection = ({ isDesktop }: IDesktop) => {
 	const targetSection = useRef<HTMLDivElement>(null);
-	const [willChange, setwillChange] = useState(false);
-
-	const initRevealAnimation = (
-		targetSection: React.RefObject<HTMLDivElement | null>
-	): ScrollTrigger => {
-		if (!targetSection.current) return ScrollTrigger.create({});
-		const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-		revealTl.from(
-			targetSection.current.querySelectorAll(".seq"),
-			{ opacity: 0, duration: 0.5, stagger: 0.5 },
-			"<"
-		);
-
-		return ScrollTrigger.create({
-			trigger: targetSection.current.querySelector(".certificate-wrapper"),
-			start: "100px bottom",
-			end: `center center`,
-			animation: revealTl,
-			scrub: 0,
-			onToggle: (self) => setwillChange(self.isActive),
-		});
-	};
 
 	useEffect(() => {
-		const revealAnimationRef = initRevealAnimation(targetSection);
+		if (!targetSection.current) return;
 
-		return revealAnimationRef.kill;
-	}, [targetSection]);
+		const triggers: (ScrollTrigger | null)[] = [initHeadingWipe(targetSection.current)];
+
+		const cards = targetSection.current.querySelectorAll(".cert-card");
+		if (cards.length && !prefersReducedMotion()) {
+			gsap.set(cards, {
+				opacity: 0,
+				y: 50,
+				rotateX: 8,
+				transformOrigin: "center bottom",
+				transformPerspective: 800,
+			});
+
+			triggers.push(
+				ScrollTrigger.create({
+					trigger: targetSection.current.querySelector(".certificate-wrapper"),
+					start: "top 80%",
+					once: true,
+					onEnter: () => {
+						gsap.to(cards, {
+							opacity: 1,
+							y: 0,
+							rotateX: 0,
+							duration: 0.8,
+							ease: "back.out(1.4)",
+							stagger: 0.12,
+						});
+					},
+				})
+			);
+		}
+
+		return () => triggers.forEach((t) => t?.kill());
+	}, []);
 
 	const renderSectionTitle = (): React.ReactNode => (
 		<div className="flex flex-col">
-			<h2 className="section-heading seq">My certifications</h2>
-			<h3 className="text-2xl md:max-w-2xl w-full seq mt-2">
+			<h2 className="section-heading">My certifications</h2>
+			<h3 className="text-2xl md:max-w-2xl w-full mt-2">
 				Professional certifications that validate my expertise
 			</h3>
 		</div>
 	);
 
-	const renderCertified = (skill: string): React.ReactNode => (
-		<div
-			className={`flex flex-col seq ${willChange ? "will-change-opacity" : ""
-				} group cursor-pointer`}
-		>
-			<div
-				style={{ height: "310px" }}
-				className="flex align-middle justify-center p-4 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 shadow-xl hover:shadow-[0_0_30px_-5px_rgba(145,70,255,0.2)] hover:bg-gray-800/70 hover:border-[#9146FF]/30 transition-all duration-[10ms] transform hover:scale-105 hover:-translate-y-2"
-			>
-				<img
-					src={`/skills/3rd/${skill}.webp`}
-					alt={skill}
-					width="400"
-					height="280"
-					loading="lazy"
-					decoding="async"
-					className="object-contain max-w-full max-h-full rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-[10ms]"
-				/>
+	const renderCertificate = (cert: typeof CERTIFICATES[number]): React.ReactNode => (
+		<div key={cert.name} className="cert-card group h-full">
+			<div className="card-shine h-full flex flex-col rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 shadow-xl overflow-hidden hover:border-[#9146FF]/30 hover:bg-gray-800/70 hover:shadow-[0_0_30px_-5px_rgba(145,70,255,0.2)] hover:-translate-y-2 transition-all duration-[10ms]">
+				{/* Uniform white "stage" so badges/certificates of any shape read consistently */}
+				<div className="p-4">
+					<div className="h-52 md:h-56 w-full rounded-xl bg-white flex items-center justify-center p-5 overflow-hidden">
+						<img
+							src={`/skills/3rd/${cert.image}.webp`}
+							alt={cert.name}
+							loading="lazy"
+							decoding="async"
+							className="object-contain max-w-full max-h-full"
+						/>
+					</div>
+				</div>
+				<div className="mt-auto px-5 py-4 border-t border-gray-700/50 text-left">
+					<p className="text-white font-bold">{cert.name}</p>
+					<span className="inline-block mt-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#9146FF]/10 text-[#BF94FF] border border-[#9146FF]/20">
+						{cert.issuer}
+					</span>
+				</div>
 			</div>
 		</div>
 	);
@@ -96,21 +94,7 @@ const CertificateSection = ({ isDesktop }: IDesktop) => {
 				<div className="flex flex-col certificate-wrapper">
 					{renderSectionTitle()}
 					<div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-10 gap-8 lg:gap-10">
-						<div className="col-span-1 text-center">
-							<Tooltip text="Alteryx Core Designer">
-								{renderCertified(SKILLS.alteryx)}
-							</Tooltip>
-						</div>
-						<div className="col-span-1 text-center">
-							<Tooltip text="HackerRank SQL Advanced">
-								{renderCertified(SKILLS.hackerank)}
-							</Tooltip>
-						</div>
-						<div className="col-span-1 text-center">
-							<Tooltip text="Astronomer Apache Airflow Certified">
-								{renderCertified(SKILLS.airflow)}
-							</Tooltip>
-						</div>
+						{CERTIFICATES.map(renderCertificate)}
 					</div>
 				</div>
 			</div>
@@ -118,4 +102,4 @@ const CertificateSection = ({ isDesktop }: IDesktop) => {
 	);
 };
 
-export default CertificateSection; 
+export default CertificateSection;
