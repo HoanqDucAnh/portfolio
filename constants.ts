@@ -159,6 +159,22 @@ export const COMMENTS = [
 		avatar: "/person/manto.webp",
 	},
 	{
+		comment: "I have worked closely with Mark for over a year at Insurify, where he owns the data pipelines that inform our everyday decision-making on the marketing team. I've learned more technical skills from him than from everyone else combined. His exceptional command of SQL, Python, and dbt allows him to solve problems and build with efficiency — Mark will coordinate across teams and make it happen. He is an exemplar of best practice, and I can't recommend him highly enough.",
+		author: "Max, Brinker",
+		position: "Data Analyst - Insurify",
+		recomendationType: "work",
+		company: "insurify",
+		avatar: "/person/max.webp",
+	},
+	{
+		comment: "Mark was one of the first people I met at Insurify, and his knowledge and expertise made me assume he'd been there for years. During my rotation on the Analytics Engineering team, he took me from 0 to 1 — teaching me dbt, Airflow, and GitHub, and walking me through my first PR. What stands out most is how genuinely eager he is to support, train, and invest in new team members. I feel very lucky to have crossed paths with him at the start of my career.",
+		author: "Yuki, Fang",
+		position: "Data @ Insurify",
+		recomendationType: "work",
+		company: "insurify",
+		avatar: "/person/yuki.webp",
+	},
+	{
 		comment: "Minh's exceptional documentation skills stood out significantly. He always meticulously documented every process and project he worked on, ensuring that his contributions would continue to benefit the team long after his internship concluded. His proactive approach and willingness to go above and beyond what was expected of his position truly set him apart.",
 		author: "Josef, Cohen",
 		position: "Associate Data Engineer - Meta (Ex-Lazard)",
