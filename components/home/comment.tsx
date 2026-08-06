@@ -285,15 +285,25 @@ const CommentSection = ({ }: IDesktop) => {
 					))}
 				</div>
 
-				<div className="mt-6 flex justify-center">
+				<div className="mt-6 flex flex-wrap justify-center items-center gap-x-3 gap-y-2">
+					<a
+						href="https://www.linkedin.com/in/minhbphamm/details/recommendations/"
+						className="text-[#BF94FF] text-md underline hover:text-white transition-colors"
+						target="_blank"
+						rel="noreferrer"
+						onClick={() => trackEvent("recommendations_click", { source: "linkedin" })}
+					>
+						View all on LinkedIn &rarr;
+					</a>
+					<span className="text-gray-600" aria-hidden="true">·</span>
 					<a
 						href="https://drive.google.com/file/d/1EyMtIZU1_ohN9i2lJ7sGvAiPnxX7vVAv/view?usp=sharing"
 						className="text-[#BF94FF] text-md underline hover:text-white transition-colors"
 						target="_blank"
 						rel="noreferrer"
-						onClick={() => trackEvent("recommendations_click")}
+						onClick={() => trackEvent("recommendations_click", { source: "lazard_pdf" })}
 					>
-						View all recommendations &rarr;
+						Lazard reference letter (PDF)
 					</a>
 				</div>
 			</div>
