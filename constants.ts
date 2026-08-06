@@ -256,6 +256,83 @@ export const COMMENTS = [
 	}
 ]
 
+export interface ITestimonialTheme {
+	label: string;
+	blurb: string;
+	// Values must match COMMENTS[].author exactly — the section derives
+	// counts, avatar stacks, and carousel jumps from this lookup.
+	authors: string[];
+}
+
+export const TESTIMONIAL_THEMES: ITestimonialTheme[] = [
+	{
+		label: "Mentorship & teaching",
+		blurb: "Educates and levels up everyone around him",
+		authors: [
+			"Noah, Pelberg",
+			"Ethan, Liu",
+			"Yuki, Fang",
+			"Max, Brinker",
+			"Mia, Tran",
+			"Gwen, Nguyen",
+		],
+	},
+	{
+		label: "Owns pipelines end-to-end",
+		blurb: "Trusted with the data models decisions run on",
+		authors: [
+			"Noah, Pelberg",
+			"Ethan, Liu",
+			"Max, Brinker",
+			"Peter, Manto",
+			"Derek, Le",
+		],
+	},
+	{
+		label: "Deep technical expertise",
+		blurb: "SQL, Python, dbt — the team's human dictionary",
+		authors: [
+			"Max, Brinker",
+			"Peter, Manto",
+			"Yuki, Fang",
+			"Luo, Hubert",
+			"Tom, Kinch",
+		],
+	},
+	{
+		label: "Passion & fast learning",
+		blurb: "Genuine drive; learns anything by next Monday",
+		authors: [
+			"Noah, Pelberg",
+			"Kelly, Slaughter",
+			"Gary, Klinger",
+			"Mia, Tran",
+			"Josef, Cohen",
+			"Derek, Le",
+		],
+	},
+	{
+		label: "Team multiplier",
+		blurb: "Coordinates across teams and lifts everyone's output",
+		authors: ["Noah, Pelberg", "Max, Brinker", "Peter, Manto", "Derek, Le"],
+	},
+	{
+		label: "Goes above & beyond",
+		blurb: "Does more than the role asks — every time",
+		authors: ["Josef, Cohen", "Tom, Kinch", "Gary, Klinger", "Luo, Hubert"],
+	},
+	{
+		label: "Speed & efficiency",
+		blurb: "Ships fast with a scalability mindset",
+		authors: ["Derek, Le", "Max, Brinker", "Peter, Manto"],
+	},
+	{
+		label: "Docs & best practices",
+		blurb: "Meticulous documentation that outlives the project",
+		authors: ["Josef, Cohen", "Max, Brinker", "Luo, Hubert"],
+	},
+];
+
 export const TYPED_STRINGS = [
 	'<span style="color:#9146FF">1000+</span> SQL questions solved',
 	'<span style="color:#9146FF">Analytics Engineer</span> @Insurify',

@@ -643,6 +643,9 @@ footer {
 	.pl-packet { display: none; }
 	.shimmer-loading::after { animation: none !important; }
 	.carousel-countdown { animation: none !important; transform: scaleX(1); }
+	/* JS marquee driver is skipped under reduced motion; fall back to a
+	   plain native horizontal scroller */
+	.theme-marquee-wrap { overflow-x: auto !important; cursor: default; }
 	.card-shine::before { animation: none !important; }
 	.chevron-bounce { animation: none !important; }
 	html { scroll-behavior: auto; }
@@ -763,6 +766,27 @@ footer {
 	}
 	&:hover::before {
 		animation: card-shine-sweep 0.9s ease;
+	}
+}
+
+/* Testimonial theme marquee — track holds two copies of the cards and is
+   driven by JS (rAF in comment.tsx) so users can also drag it left/right;
+   the -50% wrap point makes the loop seamless. Composited transform only. */
+.theme-marquee-track {
+	will-change: transform;
+}
+
+.theme-marquee-wrap {
+	cursor: grab;
+	touch-action: pan-y; /* horizontal drags belong to the marquee, vertical to the page */
+
+	&.is-dragging {
+		cursor: grabbing;
+	}
+
+	img {
+		-webkit-user-drag: none;
+		user-select: none;
 	}
 }
 
