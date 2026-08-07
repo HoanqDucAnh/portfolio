@@ -139,14 +139,14 @@ const ColumnHeading = ({ x, label }: { x: number; label: string }) => (
 );
 
 // Edge paths in flow order — packet i rides edge i.
-// 0-11 solid (primary flow), 12-13 dashed (direct paths skipping S3),
-// 14-15 reverse ETL (warehouse → Hightouch → marketing APIs),
-// 16 is the Airflow orchestration bar.
+// 0-11 solid (primary flow), 12-14 dashed (direct paths skipping S3),
+// 15-16 reverse ETL (warehouse → Hightouch → marketing APIs),
+// 17 is the Airflow orchestration bar.
 const SOLID_EDGES = [
-	"M230,240 C256,240 269,240 295,240", // operational APIs -> apis processor
+	"M230,222 C256,222 269,240 295,240", // operational APIs -> apis processor
 	"M475,240 C505,240 509,300 535,300", // apis processor -> S3
-	"M230,350 C350,350 420,340 535,340", // partner files -> S3
-	"M230,460 C256,460 269,460 295,460", // partner email -> email processor
+	"M230,314 C350,314 420,332 535,340", // partner files -> S3
+	"M230,406 C260,406 265,460 295,460", // partner email -> email processor
 	"M475,460 C505,460 509,380 535,380", // email processor -> S3
 	"M675,290 C699,290 711,290 735,290", // S3 -> Airbyte
 	"M675,390 C699,390 711,390 735,390", // S3 -> COPY
@@ -160,6 +160,7 @@ const SOLID_EDGES = [
 const DASHED_EDGES = [
 	"M230,130 C440,104 630,180 735,275", // marketing APIs -> Airbyte (skip S3)
 	"M230,590 C520,615 760,580 945,500", // RDS -> Redshift (skip S3 + Airbyte)
+	"M230,498 C520,530 760,520 945,470", // front-end events (Snowplow) -> Redshift
 ];
 
 // Reverse ETL — curated marts flow back out to the ad platforms via Hightouch.
@@ -198,7 +199,7 @@ const PipelineDag = () => {
 		const nodes = Array.from(svg.querySelectorAll<SVGGElement>(".pl-node"));
 		const labels = svg.querySelectorAll(".pl-label");
 		const status = svg.querySelector(".pl-status");
-		// Packet path lookup: 0-11 solid, 12-13 dashed, 14-15 reverse ETL, 16 orchestration.
+		// Packet path lookup: 0-11 solid, 12-14 dashed, 15-16 reverse ETL, 17 orchestration.
 		const packetPaths: (SVGPathElement | null)[] = [...solidEdges, ...dashedEdges, ...reverseEdges, orchLine];
 
 		const nodeByName = (name: string): SVGGElement | undefined =>
@@ -281,8 +282,8 @@ const PipelineDag = () => {
 			runPacket(5, 2.0, 0.8);
 			runPacket(7, 2.9, 0.8);
 			runPacket(9, 3.8, 0.9);
-			runPacket(14, 4.8, 1.0);
-			runPacket(15, 5.9, 1.1);
+			runPacket(15, 4.8, 1.0);
+			runPacket(16, 5.9, 1.1);
 			loop.to({}, { duration: 1.0 }, 7.1);
 		} else {
 			// Extract: sources feed ingestion + the lake (plus direct paths).
@@ -304,6 +305,7 @@ const PipelineDag = () => {
 			runPacket(7, 3.55, 0.8);
 			runPacket(8, 3.7, 0.8);
 			runPacket(13, 1.5, 2.4);
+			runPacket(14, 1.7, 2.3); // front-end events (Snowplow) -> Redshift
 
 			// Transform: dbt runs inside Redshift.
 			pulse("warehouse", 4.5);
@@ -321,13 +323,13 @@ const PipelineDag = () => {
 			pulse("con-hex", 6.45);
 
 			// Activate: Hightouch syncs curated marts back to the ad platforms.
-			runPacket(14, 6.0, 1.1);
+			runPacket(15, 6.0, 1.1);
 			pulse("rev-ht", 7.0);
-			runPacket(15, 7.15, 1.2);
+			runPacket(16, 7.15, 1.2);
 			pulse("src-marketing", 8.25);
 
 			// Orchestration heartbeat across the whole cycle.
-			runPacket(16, 0, 8.6);
+			runPacket(17, 0, 8.6);
 
 			// Settle before the next run.
 			loop.to({}, { duration: 1.3 }, 8.7);
@@ -480,9 +482,10 @@ const PipelineDag = () => {
 
 				{/* Sources */}
 				<Node x={30} y={102} w={200} h={56} label="marketing APIs" sub="Google Ads · FB · MS" name="src-marketing" icon="/pipeline/megaphone.svg" />
-				<Node x={30} y={212} w={200} h={56} label="operational APIs" sub="leads · quotes · policies" name="src-operational" icon="/pipeline/api.svg" />
-				<Node x={30} y={322} w={200} h={56} label="partner files" sub="drop into S3" name="src-files" icon="/pipeline/files.svg" />
-				<Node x={30} y={432} w={200} h={56} label="partner email" sub="files as attachments" name="src-email" icon="/pipeline/email.svg" />
+				<Node x={30} y={194} w={200} h={56} label="operational APIs" sub="leads · quotes · policies" name="src-operational" icon="/pipeline/api.svg" />
+				<Node x={30} y={286} w={200} h={56} label="partner files" sub="drop into S3" name="src-files" icon="/pipeline/files.svg" />
+				<Node x={30} y={378} w={200} h={56} label="partner email" sub="files as attachments" name="src-email" icon="/pipeline/email.svg" />
+				<Node x={30} y={470} w={200} h={56} label="front-end events" sub="Snowplow trackers" name="src-snowplow" icon="/pipeline/snowplow.png" tech="Snowplow" />
 				<Node x={30} y={562} w={200} h={56} label="RDS tables" sub="Postgres / MySQL" name="src-rds" icon="/projects/tech/PostgreSQL.svg" tech="PostgreSQL" />
 
 				{/* Reverse ETL — Hightouch activates curated marts back to the ad platforms.

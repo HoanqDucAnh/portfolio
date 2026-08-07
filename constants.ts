@@ -81,6 +81,7 @@ export const TECH_LINKS: Record<string, string> = {
 	openai: "https://openai.com/",
 	// Pipeline-only
 	hightouch: "https://hightouch.com/",
+	snowplow: "https://snowplow.io/",
 };
 
 /** Official site for a tech name, or undefined when it has no link. */
