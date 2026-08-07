@@ -318,15 +318,10 @@ const CommentSection = ({ }: IDesktop) => {
 						: "bg-gray-800/50 border-gray-700/50 hover:border-[#9146FF]/40 hover:bg-gray-800/70"
 					}`}
 			>
-				<div className="flex items-baseline justify-between gap-2">
-					<span className="text-sm font-semibold text-white">
-						{theme.label}
-					</span>
-					<span className="text-xs font-semibold text-[#BF94FF] whitespace-nowrap">
-						{theme.authors.length} of {COMMENTS.length}
-					</span>
-				</div>
-				<p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
+				<span className="block text-sm font-semibold text-white">
+					{theme.label}
+				</span>
+				<p className="text-xs text-gray-400 mt-1.5 leading-relaxed min-h-[2.4375rem]">
 					{theme.blurb}
 				</p>
 				<div className="flex mt-3 -space-x-2">
