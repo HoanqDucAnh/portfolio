@@ -14,13 +14,13 @@ import { folderColor, ITestimonialFile } from "./files";
 export const lineCount = (file: ITestimonialFile): number =>
 	6 + file.quoteLines.length;
 
-// Human-ish typing: 1–2 chars per keystroke, 24–60ms between keystrokes,
-// with the occasional longer "thinking" pause. ~50 chars/s on average.
-const nextBurst = () => (Math.random() < 0.7 ? 2 : 1);
+// Human-ish typing, brisk: 2–4 chars per keystroke, 16–40ms between
+// keystrokes, with the occasional longer "thinking" pause. ~110 chars/s.
+const nextBurst = () => 2 + Math.floor(Math.random() * 3);
 const nextDelay = () =>
-	Math.random() < 0.04
-		? 180 + Math.random() * 220 // brief pause, like a real writer
-		: 24 + Math.random() * 36;
+	Math.random() < 0.025
+		? 140 + Math.random() * 160 // brief pause, like a real writer
+		: 16 + Math.random() * 24;
 
 interface ISeg {
 	t: string;
