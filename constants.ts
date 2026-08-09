@@ -98,6 +98,10 @@ export const NAVBARITEMS = [
 		ref: "sql",
 	},
 	{
+		name: "Testimonials",
+		ref: "comments",
+	},
+	{
 		name: "Skillset",
 		ref: "skills",
 	},
