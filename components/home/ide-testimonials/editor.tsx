@@ -14,8 +14,13 @@ import { folderColor, ITestimonialFile } from "./files";
 export const lineCount = (file: ITestimonialFile): number =>
 	6 + file.quoteLines.length;
 
-// Chars revealed per 16ms tick while the file "types out"
-const CHARS_PER_TICK = 5;
+// Human-ish typing: 1–2 chars per keystroke, 24–60ms between keystrokes,
+// with the occasional longer "thinking" pause. ~50 chars/s on average.
+const nextBurst = () => (Math.random() < 0.7 ? 2 : 1);
+const nextDelay = () =>
+	Math.random() < 0.04
+		? 180 + Math.random() * 220 // brief pause, like a real writer
+		: 24 + Math.random() * 36;
 
 interface ISeg {
 	t: string;
@@ -104,7 +109,7 @@ const Caret = () => (
 const Editor = ({ file }: { file: ITestimonialFile | null }) => {
 	const paneRef = useRef<HTMLDivElement>(null);
 	const scrollRef = useRef<HTMLDivElement>(null);
-	const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 	// Typing starts only once the pane has scrolled into view; until then the
 	// initial file renders in full (also keeps the SSR HTML crawlable).
 	const armedRef = useRef(false);
@@ -118,25 +123,34 @@ const Editor = ({ file }: { file: ITestimonialFile | null }) => {
 		() => lines.reduce((sum, l) => sum + lineLen(l), 0),
 		[lines]
 	);
+	// Frontmatter (5 lines + blank) appears instantly — only the review itself
+	// is "typed" by the reviewer.
+	const preLen = useMemo(
+		() => lines.slice(0, 6).reduce((sum, l) => sum + lineLen(l), 0),
+		[lines]
+	);
+
 	const totalRef = useRef(total);
 	totalRef.current = total;
+	const preLenRef = useRef(preLen);
+	preLenRef.current = preLen;
 
 	const [shown, setShown] = useState(total);
 
-	const type = useCallback((target: number) => {
-		if (intervalRef.current) clearInterval(intervalRef.current);
-		setShown(0);
-		intervalRef.current = setInterval(() => {
+	const type = useCallback((target: number, from: number) => {
+		if (timeoutRef.current) clearTimeout(timeoutRef.current);
+		setShown(from);
+		const tick = () => {
+			let done = false;
 			setShown((s) => {
-				const next = s + CHARS_PER_TICK;
-				if (next >= target) {
-					if (intervalRef.current) clearInterval(intervalRef.current);
-					intervalRef.current = null;
-					return target;
-				}
+				const next = Math.min(s + nextBurst(), target);
+				done = next >= target;
 				return next;
 			});
-		}, 16);
+			if (!done) timeoutRef.current = setTimeout(tick, nextDelay());
+			else timeoutRef.current = null;
+		};
+		timeoutRef.current = setTimeout(tick, nextDelay());
 	}, []);
 
 	// First scroll-into-view types the initially open file
@@ -150,7 +164,7 @@ const Editor = ({ file }: { file: ITestimonialFile | null }) => {
 			([entry]) => {
 				if (!entry.isIntersecting || armedRef.current) return;
 				armedRef.current = true;
-				type(totalRef.current);
+				type(totalRef.current, preLenRef.current);
 				io.disconnect();
 			},
 			{ rootMargin: "0px 0px -10% 0px" }
@@ -163,13 +177,13 @@ const Editor = ({ file }: { file: ITestimonialFile | null }) => {
 	useEffect(() => {
 		if (!file || prevIdRef.current === file.id) return;
 		prevIdRef.current = file.id;
-		if (armedRef.current && !prefersReducedMotion()) type(total);
+		if (armedRef.current && !prefersReducedMotion()) type(total, preLen);
 		else setShown(total);
-	}, [file, total, type]);
+	}, [file, total, preLen, type]);
 
 	useEffect(
 		() => () => {
-			if (intervalRef.current) clearInterval(intervalRef.current);
+			if (timeoutRef.current) clearTimeout(timeoutRef.current);
 		},
 		[]
 	);
