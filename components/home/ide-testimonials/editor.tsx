@@ -70,6 +70,8 @@ const Editor = ({ file }: { file: ITestimonialFile | null }) => {
 			</div>
 
 			<div className="sql-editor-metrics ide-scroll flex-1 min-h-0 overflow-y-auto">
+			{/* Frontmatter wraps early so it never runs under the floating portrait */}
+			<div className="pr-24 md:pr-40">
 			<Line n={next()}>
 				<span className="text-gray-500">---</span>
 			</Line>
@@ -96,6 +98,7 @@ const Editor = ({ file }: { file: ITestimonialFile | null }) => {
 			<Line n={next()}>
 				<span className="text-gray-500">---</span>
 			</Line>
+			</div>
 			<Line n={next()} />
 			{file.quoteLines.map((line, i) => (
 				<Line key={i} n={next()} highlight={i === 0}>

@@ -16,7 +16,7 @@ export interface ITestimonialFile {
 // Per-folder accent (material-icon-theme spirit): folder icons, file icons,
 // and quick-open dots all pick up their company's color.
 export const FOLDER_COLORS: Record<string, string> = {
-	insurify: "#BF94FF",
+	insurify: "#fb923c",
 	lazard: "#38bdf8",
 	academia: "#fbbf24",
 	mentees: "#34d399",

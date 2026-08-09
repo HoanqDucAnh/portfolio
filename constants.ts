@@ -273,7 +273,7 @@ export const COMMENTS = [
 	{
 		comment: "Minh reached out to me on LinkedIn some time ago to ask about my experience in data engineering, and since then we've exchanged a lot of ideas and knowledge in the field. He is also a technical writer for my newsletter, vutr, and is responsible for the dbt-cli project, a CLI application that lets users learn dbt right on their laptops. What impresses me most about Minh is that he is one of the most proactive, enthusiastic, and dedicated people I have ever met — he doesn't stop until a concept truly clicks, and he can spend an entire weekend working on a task he has committed to. With this kind of spirit, I wouldn't be surprised if he achieves even greater success in the future. Although he sees me as his mentor, there are actually many things I have learned — and continue to learn — from him.",
 		author: "Vu, Trinh",
-		position: "Data Engineer · vutr.substack.com, trusted by 19,000+ engineers",
+		position: "Data Engineer · vutr.substack.com",
 		recomendationType: "mentor",
 		company: "mentors",
 		avatar: "/person/vu.webp",
