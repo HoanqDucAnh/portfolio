@@ -6,6 +6,7 @@ import React, {
 } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { FaSnowflake } from "react-icons/fa";
 import Prism from "prismjs";
 import "prismjs/components/prism-sql";
 import { initHeadingWipe, prefersReducedMotion } from "../../utils/motion";
@@ -271,6 +272,10 @@ const SqlTerminalSection = () => {
 						<span className="w-3 h-3 rounded-full bg-green-500/80"></span>
 					</div>
 					<span className="font-mono text-xs text-gray-400 flex items-center gap-2">
+						<FaSnowflake
+							className="text-[#29B5E8] text-sm"
+							aria-hidden="true"
+						/>
 						markpham_dw · connected
 						<span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
 					</span>
