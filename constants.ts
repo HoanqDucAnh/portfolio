@@ -277,6 +277,14 @@ export const COMMENTS = [
 		recomendationType: "mentor",
 		company: "mentors",
 		avatar: "/person/vu.webp",
+	},
+	{
+		comment: "I highly recommend Minh based on our time working together at Xóm Data. Minh is a skilled professional who consistently demonstrates a deep understanding of data and a strong analytical mindset. He is a natural problem-solver who tackles complex challenges with precision and attention to detail. Minh's technical abilities and collaborative spirit make him a fantastic asset to any data-driven team.",
+		author: "Tu, Nguyen",
+		position: "Senior Analytics Engineer @ GPBank",
+		recomendationType: "mentor",
+		company: "mentors",
+		avatar: "/person/tu.webp",
 	}
 ]
 
@@ -321,6 +329,7 @@ export const TESTIMONIAL_THEMES: ITestimonialTheme[] = [
 			"Yuki, Fang",
 			"Luo, Hubert",
 			"Tom, Kinch",
+			"Tu, Nguyen",
 		],
 	},
 	{
