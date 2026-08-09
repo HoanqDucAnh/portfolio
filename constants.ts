@@ -94,6 +94,10 @@ export const NAVBARITEMS = [
 		ref: "home",
 	},
 	{
+		name: "Query Me",
+		ref: "sql",
+	},
+	{
 		name: "Skillset",
 		ref: "skills",
 	},
@@ -127,6 +131,9 @@ export const NAVBARITEMS = [
 	},
 ];
 
+// NOTE: home sections read their DOM ids from this array BY INDEX
+// (hero=0, skills=1, projects=3, timeline=4) — append new entries at the
+// END, never insert in the middle, or every section id shifts.
 export const MENULINKS = [
 	{
 		name: "Home",
@@ -147,6 +154,10 @@ export const MENULINKS = [
 	{
 		name: "Experience",
 		ref: "timeline",
+	},
+	{
+		name: "Query Me",
+		ref: "sql",
 	},
 ];
 

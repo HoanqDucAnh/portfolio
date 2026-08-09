@@ -651,6 +651,55 @@ footer {
 	html { scroll-behavior: auto; }
 }
 
+/* SQL terminal ("Query my career") — the editable textarea sits transparently
+   over a Prism-highlighted <pre> mirror, so BOTH must share identical font
+   metrics or the caret drifts off the colored text. One class, one truth. */
+.sql-editor-metrics {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		"Liberation Mono", "Courier New", monospace;
+	/* 16px on mobile prevents iOS focus-zoom; tighter on desktop */
+	font-size: 16px;
+	line-height: 1.6;
+	padding: 1rem;
+	white-space: pre-wrap;
+	word-break: break-word;
+	tab-size: 2;
+
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
+}
+
+/* Brand-matched Prism token colors (deliberately not a stock Prism theme so
+   the highlighting sits in the site's purple system) */
+.sql-terminal {
+	.token.keyword {
+		color: #bf94ff;
+		font-weight: 600;
+	}
+	.token.function {
+		color: #5eead4;
+	}
+	.token.string {
+		color: #86efac;
+	}
+	.token.number,
+	.token.boolean {
+		color: #fbbf24;
+	}
+	.token.operator,
+	.token.punctuation {
+		color: #9ca3af;
+	}
+	.token.comment {
+		color: #6b7280;
+		font-style: italic;
+	}
+	code {
+		color: #e5e7eb; /* identifiers/default text */
+	}
+}
+
 /* Ambient drift for the section wave dividers (composited transform only).
    Paths are periodic over 720 SVG units, so -720px loops seamlessly. */
 @keyframes wave-drift {
