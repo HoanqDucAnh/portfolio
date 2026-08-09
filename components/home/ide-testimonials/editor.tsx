@@ -1,30 +1,185 @@
-import React from "react";
+import React, {
+	useCallback,
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react";
 import Image from "next/image";
 import { VscChevronRight, VscFolderOpened, VscMarkdown } from "react-icons/vsc";
+import { prefersReducedMotion } from "../../../utils/motion";
 import { folderColor, ITestimonialFile } from "./files";
 
 // Line count for a rendered file: 5 frontmatter lines + 1 blank + quote lines
 export const lineCount = (file: ITestimonialFile): number =>
 	6 + file.quoteLines.length;
 
-const Line = ({
-	n,
-	highlight,
-	children,
-}: {
-	n: number;
+// Chars revealed per 16ms tick while the file "types out"
+const CHARS_PER_TICK = 5;
+
+interface ISeg {
+	t: string;
+	cls?: string;
+	style?: React.CSSProperties;
+	noSelect?: boolean;
+}
+
+interface ILineModel {
+	segs: ISeg[];
 	highlight?: boolean;
-	children?: React.ReactNode;
-}) => (
-	<div className={`flex ${highlight ? "bg-[#9146FF]/10" : ""}`}>
-		<span className="w-8 shrink-0 pr-3 text-right text-gray-600 select-none">
-			{n}
-		</span>
-		<span className="flex-1 min-w-0">{children ?? " "}</span>
-	</div>
+	frontmatter?: boolean;
+}
+
+const lineLen = (line: ILineModel) =>
+	line.segs.reduce((sum, seg) => sum + seg.t.length, 0);
+
+const buildLines = (file: ITestimonialFile, color: string): ILineModel[] => [
+	{ frontmatter: true, segs: [{ t: "---", cls: "text-gray-500" }] },
+	{
+		frontmatter: true,
+		segs: [
+			{ t: "author", cls: "text-[#BF94FF]" },
+			{ t: ": ", cls: "text-gray-500" },
+			{ t: `"${file.displayName}"`, cls: "text-emerald-300" },
+		],
+	},
+	{
+		frontmatter: true,
+		segs: [
+			{ t: "role", cls: "text-[#BF94FF]" },
+			{ t: ": ", cls: "text-gray-500" },
+			{ t: `"${file.role}"`, cls: "text-sky-300" },
+		],
+	},
+	{
+		frontmatter: true,
+		segs: [
+			{ t: "tags", cls: "text-[#BF94FF]" },
+			{ t: ": [", cls: "text-gray-500" },
+			{ t: file.tag, cls: "text-amber-300" },
+			{ t: ", ", cls: "text-gray-500" },
+			{ t: file.folder, style: { color } },
+			{ t: "]", cls: "text-gray-500" },
+		],
+	},
+	{ frontmatter: true, segs: [{ t: "---", cls: "text-gray-500" }] },
+	{ segs: [{ t: " " }] },
+	...file.quoteLines.map((line, i) => ({
+		highlight: i === 0,
+		segs: [
+			{ t: "> ", cls: "text-[#BF94FF]/70", noSelect: true },
+			{ t: line, cls: "text-gray-200" },
+		],
+	})),
+];
+
+// Render a line's segments, truncated to `visible` characters
+const renderSegs = (segs: ISeg[], visible: number) => {
+	const out: React.ReactNode[] = [];
+	let remaining = visible;
+	for (let i = 0; i < segs.length && remaining > 0; i++) {
+		const seg = segs[i];
+		const text = seg.t.slice(0, remaining);
+		remaining -= seg.t.length;
+		out.push(
+			<span
+				key={i}
+				className={`${seg.cls ?? ""}${seg.noSelect ? " select-none" : ""}`}
+				style={seg.style}
+			>
+				{text}
+			</span>
+		);
+	}
+	return out;
+};
+
+const Caret = () => (
+	<span
+		className="ide-caret inline-block w-[8px] h-[15px] align-text-bottom bg-[#BF94FF] ml-px"
+		aria-hidden="true"
+	/>
 );
 
 const Editor = ({ file }: { file: ITestimonialFile | null }) => {
+	const paneRef = useRef<HTMLDivElement>(null);
+	const scrollRef = useRef<HTMLDivElement>(null);
+	const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+	// Typing starts only once the pane has scrolled into view; until then the
+	// initial file renders in full (also keeps the SSR HTML crawlable).
+	const armedRef = useRef(false);
+	const prevIdRef = useRef(file?.id ?? null);
+
+	const lines = useMemo(
+		() => (file ? buildLines(file, folderColor(file.folder)) : []),
+		[file]
+	);
+	const total = useMemo(
+		() => lines.reduce((sum, l) => sum + lineLen(l), 0),
+		[lines]
+	);
+	const totalRef = useRef(total);
+	totalRef.current = total;
+
+	const [shown, setShown] = useState(total);
+
+	const type = useCallback((target: number) => {
+		if (intervalRef.current) clearInterval(intervalRef.current);
+		setShown(0);
+		intervalRef.current = setInterval(() => {
+			setShown((s) => {
+				const next = s + CHARS_PER_TICK;
+				if (next >= target) {
+					if (intervalRef.current) clearInterval(intervalRef.current);
+					intervalRef.current = null;
+					return target;
+				}
+				return next;
+			});
+		}, 16);
+	}, []);
+
+	// First scroll-into-view types the initially open file
+	useEffect(() => {
+		const el = paneRef.current;
+		if (!el || prefersReducedMotion()) {
+			armedRef.current = true;
+			return;
+		}
+		const io = new IntersectionObserver(
+			([entry]) => {
+				if (!entry.isIntersecting || armedRef.current) return;
+				armedRef.current = true;
+				type(totalRef.current);
+				io.disconnect();
+			},
+			{ rootMargin: "0px 0px -10% 0px" }
+		);
+		io.observe(el);
+		return () => io.disconnect();
+	}, [type]);
+
+	// Every file switch after that types the new file
+	useEffect(() => {
+		if (!file || prevIdRef.current === file.id) return;
+		prevIdRef.current = file.id;
+		if (armedRef.current && !prefersReducedMotion()) type(total);
+		else setShown(total);
+	}, [file, total, type]);
+
+	useEffect(
+		() => () => {
+			if (intervalRef.current) clearInterval(intervalRef.current);
+		},
+		[]
+	);
+
+	// Keep the caret in view while a long quote is still typing
+	useEffect(() => {
+		const el = scrollRef.current;
+		if (el && shown < total) el.scrollTop = el.scrollHeight;
+	}, [shown, total]);
+
 	if (!file) {
 		return (
 			<div className="h-[380px] lg:h-auto lg:flex-1 lg:min-h-0 flex items-center justify-center bg-gray-950/60">
@@ -38,12 +193,33 @@ const Editor = ({ file }: { file: ITestimonialFile | null }) => {
 		);
 	}
 
-	let n = 0;
-	const next = () => ++n;
+	const typing = shown < total;
 	const color = folderColor(file.folder);
 
+	// Rendered lines: everything typed so far, plus the line mid-type
+	let consumed = 0;
+	const rendered: {
+		line: ILineModel;
+		visible: number;
+		hasCaret: boolean;
+	}[] = [];
+	for (const line of lines) {
+		if (consumed >= shown) break;
+		const len = lineLen(line);
+		const visible = Math.min(shown - consumed, len);
+		consumed += len;
+		rendered.push({
+			line,
+			visible,
+			hasCaret: typing && consumed >= shown,
+		});
+	}
+
 	return (
-		<div className="relative h-[380px] lg:h-auto lg:flex-1 lg:min-h-0 flex flex-col bg-gray-950/60">
+		<div
+			ref={paneRef}
+			className="relative h-[380px] lg:h-auto lg:flex-1 lg:min-h-0 flex flex-col bg-gray-950/60"
+		>
 			{/* Reviewer portrait — floats in the empty top-right of the pane
 			    instead of squeezing next to the author value */}
 			<div className="absolute top-10 right-4 md:top-12 md:right-8 z-10 pointer-events-none">
@@ -56,6 +232,7 @@ const Editor = ({ file }: { file: ITestimonialFile | null }) => {
 					loading="lazy"
 				/>
 			</div>
+
 			{/* Breadcrumbs */}
 			<div className="flex items-center gap-1 px-4 pt-2 font-mono text-[11px] text-gray-500 select-none">
 				recommendations
@@ -69,43 +246,29 @@ const Editor = ({ file }: { file: ITestimonialFile | null }) => {
 				</span>
 			</div>
 
-			<div className="sql-editor-metrics ide-scroll flex-1 min-h-0 overflow-y-auto">
-			{/* Frontmatter wraps early so it never runs under the floating portrait */}
-			<div className="pr-24 md:pr-40">
-			<Line n={next()}>
-				<span className="text-gray-500">---</span>
-			</Line>
-			<Line n={next()}>
-				<span className="text-[#BF94FF]">author</span>
-				<span className="text-gray-500">: </span>
-				<span className="text-emerald-300">
-					&quot;{file.displayName}&quot;
-				</span>
-			</Line>
-			<Line n={next()}>
-				<span className="text-[#BF94FF]">role</span>
-				<span className="text-gray-500">: </span>
-				<span className="text-sky-300">&quot;{file.role}&quot;</span>
-			</Line>
-			<Line n={next()}>
-				<span className="text-[#BF94FF]">tags</span>
-				<span className="text-gray-500">: [</span>
-				<span className="text-amber-300">{file.tag}</span>
-				<span className="text-gray-500">, </span>
-				<span style={{ color }}>{file.folder}</span>
-				<span className="text-gray-500">]</span>
-			</Line>
-			<Line n={next()}>
-				<span className="text-gray-500">---</span>
-			</Line>
-			</div>
-			<Line n={next()} />
-			{file.quoteLines.map((line, i) => (
-				<Line key={i} n={next()} highlight={i === 0}>
-					<span className="text-[#BF94FF]/70 select-none">&gt; </span>
-					<span className="text-gray-200">{line}</span>
-				</Line>
-			))}
+			<div
+				ref={scrollRef}
+				className="sql-editor-metrics ide-scroll flex-1 min-h-0 overflow-y-auto"
+			>
+				{rendered.map(({ line, visible, hasCaret }, i) => (
+					<div
+						key={i}
+						className={`flex ${line.highlight ? "bg-[#9146FF]/10" : ""}`}
+					>
+						<span className="w-8 shrink-0 pr-3 text-right text-gray-600 select-none">
+							{i + 1}
+						</span>
+						{/* Frontmatter wraps early so it never runs under the portrait */}
+						<span
+							className={`flex-1 min-w-0 ${
+								line.frontmatter ? "pr-24 md:pr-40" : ""
+							}`}
+						>
+							{renderSegs(line.segs, visible)}
+							{hasCaret && <Caret />}
+						</span>
+					</div>
+				))}
 			</div>
 		</div>
 	);
