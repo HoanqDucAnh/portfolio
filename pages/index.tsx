@@ -18,7 +18,7 @@ import WaveDivider from "@/components/common/wave-divider";
 // they don't compete with hero hydration on the main thread.
 const PipelineSection = dynamic(() => import("@/components/home/pipeline"));
 const SqlTerminalSection = dynamic(() => import("@/components/home/sql-terminal"));
-const CommentSection = dynamic(() => import("@/components/home/comment"));
+const CommentSection = dynamic(() => import("@/components/home/ide-testimonials"));
 const ArticlesPreview = dynamic(() => import("@/components/home/articles-preview"));
 const ProjectsSection = dynamic(() => import("@/components/home/projects"));
 const ActivitySection = dynamic(() => import("@/components/home/activity"));
@@ -93,7 +93,7 @@ export default function Home() {
 					<QuoteSection2 />
 					<SqlTerminalSection />
 					<WaveDivider />
-					<CommentSection isDesktop={isDesktop} />
+					<CommentSection />
 					<SkillsSection isDesktop={isDesktop} />
 					<ArticlesPreview />
 					<WaveDivider flip />

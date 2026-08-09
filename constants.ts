@@ -163,7 +163,7 @@ export const MENULINKS = [
 
 export const COMMENTS = [
 	{
-		comment: "I worked with Mark at Insurify, where he owned a large breadth and depth of marketing data models and pipelines. Analytics engineering is not only Mark's career, it's his passion — no one talks about it with such conviction. His best trait is that he is a team multiplier: an expert IC who takes the time to educate and mentor those around him, democratizing analytics for all. If I'm starting a business tomorrow, Mark is my first analytics engineering hire.",
+		comment: "I worked with Mark at Insurify, where he owned a large breadth and depth of marketing data models and pipelines. What sets Mark apart is that analytics engineering is not only his career, it's his passion — no one talks about it with such passion and conviction as Mark does. Amongst many great traits and skills, his best is that he is A TEAM MULTIPLIER: an expert IC who multiplies those around him, taking the time to educate and mentor his teammates, unlocking and democratizing analytics for all. If I'm starting a business tomorrow, Mark is my first analytics engineering hire.",
 		author: "Noah, Pelberg",
 		position: "Product & Analytics @ Insurify",
 		recomendationType: "work",
@@ -171,7 +171,7 @@ export const COMMENTS = [
 		avatar: "/person/noah.webp",
 	},
 	{
-		comment: "Mark is a huge asset to the team at Insurify — smart, hardworking, and someone who really cares about doing things well. He owns several end-to-end data pipelines supporting our marketing team. As my mentor in analytics engineering, he guided me through the AE Academy and pushed me to think beyond just writing code — to really understand the data and the business context. Any team would be lucky to have him!",
+		comment: "Mark is a huge asset to the team at Insurify and an awesome coworker — smart, hardworking, and someone who really cares about doing things well. He owns several end-to-end data pipelines that support our marketing team. He was one of the first people I met at Insurify, even before I officially joined, and I was immediately impressed by how open, welcoming, and supportive he was. As my mentor in analytics engineering, he guided me through the AE Academy and pushed me to think beyond just writing code — to really understand the data, the business context, and the reasoning behind each decision. He's also hilarious and just a great person to hang out with. Any team would be lucky to have him!",
 		author: "Ethan, Liu",
 		position: "Data @ Insurify",
 		recomendationType: "work",
@@ -179,7 +179,7 @@ export const COMMENTS = [
 		avatar: "/person/ethan.webp",
 	},
 	{
-		comment: "Mark was one of the first people I met at Insurify, and his knowledge and expertise made me assume he'd been there for years. During my rotation on the Analytics Engineering team, he took me from 0 to 1 — teaching me dbt, Airflow, and GitHub, and walking me through my first PR. What stands out most is how genuinely eager he is to support, train, and invest in new team members. I feel very lucky to have crossed paths with him at the start of my career.",
+		comment: "Mark was one of the first people I met at Insurify, and his knowledge and expertise made me assume he'd been there for years. During my rotation on the Analytics Engineering team, he took me from 0 to 1 — teaching me dbt, Airflow, and GitHub, and walking me through my first PR. As a business analyst with no prior data engineering experience, it was one of the most impactful months since I started working. What stands out most is how genuinely eager he is to support, train, and invest in new team members. I feel very lucky to have crossed paths with him at the beginning of my career journey. Any team is extremely lucky to have him!",
 		author: "Yuki, Fang",
 		position: "Data @ Insurify",
 		recomendationType: "work",
@@ -187,17 +187,17 @@ export const COMMENTS = [
 		avatar: "/person/yuki.webp",
 	},
 	{
-		comment: "I have worked closely with Mark for over a year at Insurify, where he owns the data pipelines that inform our everyday decision-making on the marketing team. I've learned more technical skills from him than from everyone else combined. His exceptional command of SQL, Python, and dbt allows him to solve problems and build with efficiency — Mark will coordinate across teams and make it happen. He is an exemplar of best practice, and I can't recommend him highly enough.",
+		comment: "I have worked closely with Mark for over a year at Insurify, where he owns the data pipelines that inform our everyday decisions on the marketing team. During this time, I've learned more technical skills from him than from everyone else combined. His exceptional command of SQL, Python, and dbt allows him to solve problems and build with efficiency. Whether it's writing a script to pull conversion data, creating a pipeline to bring a new channel's spend into our database, or making structural improvements to key business tables, Mark will coordinate across teams and make it happen. He is an exemplar of best practice with a work ethic that shows in everything he does. He has been a joy to work with and I can't recommend him highly enough.",
 		author: "Max, Brinker",
-		position: "Data Analyst - Insurify",
+		position: "Data Analyst @ Insurify",
 		recomendationType: "work",
 		company: "insurify",
 		avatar: "/person/max.webp",
 	},
 	{
-		comment: "Mark is a superb analytics engineer and coworker. At Insurify, he owns a number of key data pipelines and is the human dictionary of our tech stack. He works hard, efficiently, and sets the example for learning new technologies. He is a force for progress within Insurify, and I'm thankful to count him as a coworker and friend.",
+		comment: "Mark is a superb analytics engineer and coworker. At Insurify, he owns a number of data pipelines, including many of the pipelines that drive key marketing channels, and is the human dictionary of our tech stack. He works hard, efficiently, and can write/review the code you need fast. Mark sets the example for learning new technologies and expanding his analytical capabilities. He is a force for progress within Insurify and his contributions have been essential to the team. I am thankful to count him as my coworker and friend.",
 		author: "Peter, Manto",
-		position: "Data Analyst - Insurify",
+		position: "Business Data Analyst @ Insurify",
 		recomendationType: "work",
 		company: "insurify",
 		avatar: "/person/manto.webp",
@@ -243,7 +243,7 @@ export const COMMENTS = [
 		avatar: "/person/hubert.webp",
 	},
 	{
-		comment: "Minh's passion for data is genuine and inspiring, whether he's writing on Substack or just asking questions to deepen his own understanding. What I appreciate most is how he mentors: he believes in his students and always pushes us to think deeper instead of handing over the answers. His support and belief in my potential have meant more than he probably realizes.",
+		comment: "I'm incredibly grateful to have had the opportunity to learn from Minh. He's one of the people whose passion for data is truly genuine and inspiring — whether he's writing thoughtful data blogs on Substack, sharing and discussing ideas, or asking questions simply to deepen his understanding, he's constantly learning and refining his craft. His curiosity is contagious. What I appreciate most is the way he mentors: he genuinely believes in his students and encourages us to think deeper instead of simply giving us the answers. He challenges us to be curious, ask better questions, and grow into more confident data professionals. His support and belief in my potential have meant more than he probably realizes. I couldn't recommend him more highly.",
 		author: "Mia, Tran",
 		position: "GHC '25 | SDS, Quant Econ @ Smith College",
 		recomendationType: "mentee",
@@ -251,15 +251,15 @@ export const COMMENTS = [
 		avatar: "/person/mia.webp",
 	},
 	{
-		comment: "Mark is the kind of mentor that pushes you forward and is critical of your work — he won't let you look back on a failure without a lesson attached. Your notes end up full of irreplaceable insights: interview tips, business context, technical updates. Working with Mark is the fastest way to level up your skills in a corporate setting, even if you've never experienced one before.",
+		comment: "Mark is the kind of mentor that will push you forward and is very critical of your work — he will not let you look back on failures without lessons attached. At the end of the day, your notes will be full of cool and irreplaceable insights: interview tips, business contexts, and technical updates. He never runs out of cool things to teach you. I believe working with Mark is the fastest way to level up your skills in a corporate setting, even if you've never experienced one.",
 		author: "Gwen, Nguyen",
-		position: "Incoming @ Arch",
+		position: "Cloud & Data Engineer Intern @ Arch Insurance",
 		recomendationType: "mentee",
 		company: "mentorship",
 		avatar: "/person/gwen.webp",
 	},
 	{
-		comment: "Mark owns numerous pipelines and alert systems that improved efficiency across all sites at Insurify, and is credited for his speed and scalability mindset. He's good at what he knows — and if he doesn't know something yet, he will by next Monday. Glad to work with him as a coworker and a friend.",
+		comment: "Mark owns numerous pipelines and alert systems that were proven to improve efficiency across all sites at Insurify. As a coworker, he is credited for his speed and scalability mindset. He is good at what he knows — if he doesn't know, he will by next Monday. Mark will achieve the greatness that is destined for the hard work he has put in. Glad to work and have him as a coworker and a friend.",
 		author: "Derek, Le",
 		position: "Data @ Insurify | Data Science @ TCU",
 		recomendationType: "work",

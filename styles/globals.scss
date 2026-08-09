@@ -642,11 +642,11 @@ footer {
 	.timeline-dot-glow::after { animation: none !important; opacity: 0; }
 	.pl-packet { display: none; }
 	.shimmer-loading::after { animation: none !important; }
-	.carousel-countdown { animation: none !important; transform: scaleX(1); }
 	/* JS marquee driver is skipped under reduced motion; fall back to a
 	   plain native horizontal scroller */
 	.theme-marquee-wrap { overflow-x: auto !important; cursor: default; }
 	.card-shine::before { animation: none !important; }
+	.ide-caret { animation: none !important; }
 	.chevron-bounce { animation: none !important; }
 	html { scroll-behavior: auto; }
 }
@@ -781,18 +781,6 @@ footer {
 	}
 }
 
-/* Testimonial autoplay countdown (composited: scaleX) */
-@keyframes carousel-countdown {
-	from { transform: scaleX(0); }
-	to { transform: scaleX(1); }
-}
-
-.carousel-countdown {
-	transform-origin: left;
-	animation: carousel-countdown 6s linear forwards;
-	will-change: transform;
-}
-
 /* One-shot light sweep across certificate cards on hover */
 @keyframes card-shine-sweep {
 	to { left: 125%; }
@@ -819,8 +807,9 @@ footer {
 }
 
 /* Testimonial theme marquee — track holds two copies of the cards and is
-   driven by JS (rAF in comment.tsx) so users can also drag it left/right;
-   the -50% wrap point makes the loop seamless. Composited transform only. */
+   driven by JS (rAF in threads-marquee.tsx) so users can also drag it
+   left/right; the -50% wrap point makes the loop seamless. Composited
+   transform only. */
 .theme-marquee-track {
 	will-change: transform;
 }
@@ -837,6 +826,33 @@ footer {
 		-webkit-user-drag: none;
 		user-select: none;
 	}
+}
+
+/* IDE testimonials ("What Others Say" fake editor window) */
+.ide-scroll {
+	scrollbar-width: thin;
+	scrollbar-color: #374151 transparent;
+
+	&::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #374151;
+		border-radius: 3px;
+	}
+}
+
+/* MARKBOT streaming caret */
+@keyframes ide-blink {
+	50% { opacity: 0; }
+}
+
+.ide-caret {
+	animation: ide-blink 1s step-end infinite;
 }
 
 /* Bouncing scroll-cue chevron */
