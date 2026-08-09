@@ -4,7 +4,7 @@ import { COMMENTS } from "../../../constants";
 export interface ITestimonialFile {
 	id: string; // "noah-pelberg"
 	fileName: string; // "noah_pelberg.md"
-	folder: string; // company: insurify | lazard | academia | mentorship
+	folder: string; // company: insurify | lazard | academia | mentees | mentors
 	tag: string; // recomendationType: work | college | mentee
 	displayName: string; // "Noah Pelberg"
 	rawAuthor: string; // "Noah, Pelberg" — the COMMENTS/THEMES join key
@@ -19,7 +19,8 @@ export const FOLDER_COLORS: Record<string, string> = {
 	insurify: "#BF94FF",
 	lazard: "#38bdf8",
 	academia: "#fbbf24",
-	mentorship: "#34d399",
+	mentees: "#34d399",
+	mentors: "#fb7185",
 };
 
 export const folderColor = (folder: string): string =>
