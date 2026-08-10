@@ -217,6 +217,11 @@ select:focus-visible {
 	background: #9146FF;
 }
 
+/* Collaboration marquee color — themed pages override under .theme-orange */
+.collab-marquee {
+	color: #9146FF;
+}
+
 .section-container {
 	@apply xl:px-20 md:px-12 px-4 mx-auto;
 	max-width: 95vw;
@@ -493,6 +498,22 @@ footer {
 
 	.nav-link-hover::after {
 		background: #f27d0d;
+	}
+
+	.progress-bar {
+		background: linear-gradient(90deg, #f27d0d 0%, #ff9a3c 100%) !important;
+	}
+
+	::-moz-selection {
+		background: #f27d0d;
+	}
+
+	::selection {
+		background: #f27d0d;
+	}
+
+	.collab-marquee {
+		color: #f27d0d;
 	}
 }
 

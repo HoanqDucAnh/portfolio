@@ -63,8 +63,10 @@ export default function Home() {
 				<ProgressIndicator />
 				<div className="flex-col flex">
 					{renderBackdrop()}
-					<PassionComponent />
-					<CollaborationSection />
+					<main>
+						<PassionComponent />
+						<CollaborationSection />
+					</main>
 					<Footer />
 				</div>
 				<Scripts />

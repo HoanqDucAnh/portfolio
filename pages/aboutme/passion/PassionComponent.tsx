@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import Typed from "typed.js";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { prefersReducedMotion } from "../../../utils/motion";
 
 const ScrollReveal = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
 	const ref = useRef<HTMLDivElement>(null);
@@ -27,7 +29,7 @@ const ScrollReveal = ({ children, delay = 0, className = "" }: { children: React
 	return (
 		<div
 			ref={ref}
-			className={`transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-16 scale-[0.97]"} ${className}`}
+			className={`transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-16 scale-[0.97] motion-reduce:translate-y-0 motion-reduce:scale-100"} ${className}`}
 			style={{ transitionDelay: `${delay}ms` }}
 		>
 			{children}
@@ -47,18 +49,18 @@ interface DishCardProps {
 const DishCard = ({ image, title, subtitle, caption, description, reverse = false }: DishCardProps) => (
 	<div className={`grid grid-cols-1 lg:grid-cols-2 gap-6`}>
 		<ScrollReveal delay={0} className={`group ${reverse ? 'lg:order-2' : ''}`}>
-			<div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-[4/3]">
+			<div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-[4/3] border border-gray-700/50 group-hover:border-[#f27d0d]/50 group-hover:shadow-lg group-hover:shadow-[#f27d0d]/10 transition-all duration-500">
 				<Image
 					src={image}
 					layout="fill"
 					objectFit="cover"
 					loading="lazy"
+					sizes="(max-width: 1024px) 100vw, 50vw"
 					alt={title}
 					className="transition-transform duration-500 group-hover:scale-105"
 				/>
-				<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 			</div>
-			<p className="text-sm text-gray-400 italic text-center mt-3">{caption}</p>
+			<p className="text-sm text-gray-300 italic text-center mt-3">{caption}</p>
 		</ScrollReveal>
 		<ScrollReveal delay={200} className={`${reverse ? 'lg:order-1' : ''}`}>
 			{subtitle && (
@@ -81,11 +83,12 @@ interface CategoryTabProps {
 }
 
 const CategoryTabs = ({ categories, activeCategory, onSelect }: CategoryTabProps) => (
-	<div className="flex flex-wrap justify-center gap-3 mb-12">
+	<div className="flex flex-wrap justify-center gap-3 mb-12" role="group" aria-label="Filter dishes by category">
 		{categories.map((category) => (
 			<button
 				key={category}
 				onClick={() => onSelect(category)}
+				aria-pressed={activeCategory === category}
 				className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
 					activeCategory === category
 						? 'bg-[#f27d0d] text-white shadow-lg shadow-[#f27d0d]/30 scale-105'
@@ -117,6 +120,7 @@ const PassionHero = () => {
 
 	useEffect(() => {
 		if (!bgRef.current || !heroRef.current) return;
+		if (prefersReducedMotion()) return;
 		gsap.registerPlugin(ScrollTrigger);
 		const tween = gsap.to(bgRef.current, {
 			yPercent: 30,
@@ -136,6 +140,10 @@ const PassionHero = () => {
 
 	useEffect(() => {
 		if (!typedRef.current) return;
+		if (prefersReducedMotion()) {
+			typedRef.current.innerHTML = PASSION_TYPED_STRINGS[0];
+			return;
+		}
 		const typed = new Typed(typedRef.current, {
 			strings: PASSION_TYPED_STRINGS,
 			typeSpeed: 40,
@@ -148,7 +156,7 @@ const PassionHero = () => {
 	}, []);
 
 	return (
-		<div ref={heroRef} className="relative h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+		<div ref={heroRef} className="relative h-[85vh] min-h-[480px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
 			<div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-gray-900/60 to-gray-900 z-10" />
 			<div ref={bgRef} className="absolute inset-0 will-change-transform">
 				<Image
@@ -163,11 +171,12 @@ const PassionHero = () => {
 				<p className={`text-[#f27d0d] text-lg md:text-xl font-medium tracking-[0.25em] uppercase mb-6 transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
 					Beyond the Code
 				</p>
-				<h1 className={`text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-10 transition-all duration-1000 delay-500 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+				<h1 className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-10 transition-all duration-1000 delay-500 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
 					My Passion for <span className="text-[#f27d0d]">Cuisine</span>
 				</h1>
-				<div className={`text-xl md:text-2xl text-gray-200/90 italic max-w-3xl mx-auto min-h-[1.5em] transition-all duration-1000 delay-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-					<span ref={typedRef}></span>
+				<div className={`text-xl md:text-2xl text-gray-200/90 italic max-w-3xl mx-auto min-h-[3.5rem] md:min-h-[2.5rem] transition-all duration-1000 delay-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+					<span className="sr-only">The joy is in cooking for others</span>
+					<span ref={typedRef} aria-hidden="true"></span>
 				</div>
 			</div>
 			<div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent z-10" />
@@ -196,13 +205,17 @@ const AnimatedLine = () => {
 	}, []);
 
 	return (
-		<div ref={ref} className="flex justify-center mt-4">
+		<div ref={ref} className="flex justify-center mt-4" aria-hidden="true">
 			<div
-				className={`h-1 bg-gradient-to-r from-[#f27d0d] to-[#ff9a3c] rounded-full transition-all duration-700 ease-out ${isVisible ? "w-20" : "w-0"}`}
+				className={`h-1 bg-gradient-to-r from-[#f27d0d] to-[#ff9a3c] rounded-full transition-all duration-700 ease-out ${isVisible ? "w-20" : "w-0 motion-reduce:w-20"}`}
 			/>
 		</div>
 	);
 };
+
+const HairlineDivider = () => (
+	<div className="mt-20 h-px bg-gradient-to-r from-transparent via-[#f27d0d]/20 to-transparent" aria-hidden="true" />
+);
 
 const SectionDivider = ({ title, subtitle }: { title: string; subtitle?: string }) => (
 	<ScrollReveal>
@@ -221,34 +234,51 @@ const SectionDivider = ({ title, subtitle }: { title: string; subtitle?: string 
 export default function PassionComponent() {
 	const [activeCategory, setActiveCategory] = useState("All");
 	const [contentVisible, setContentVisible] = useState(true);
+	const filterTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const tabsRef = useRef<HTMLDivElement>(null);
 	const categories = ["All", "Family", "Steak & Lamb", "Seafood", "Italian"];
 
 	const shouldShow = (category: string) => activeCategory === "All" || activeCategory === category;
 
+	useEffect(() => () => {
+		if (filterTimer.current) clearTimeout(filterTimer.current);
+	}, []);
+
 	const handleCategoryChange = (category: string) => {
 		if (category === activeCategory) return;
 		setContentVisible(false);
-		setTimeout(() => {
+		if (filterTimer.current) clearTimeout(filterTimer.current);
+		filterTimer.current = setTimeout(() => {
 			setActiveCategory(category);
 			setContentVisible(true);
+			const tabs = tabsRef.current;
+			if (tabs && window.scrollY > tabs.offsetTop) {
+				tabs.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+			}
 		}, 250);
 	};
 
 	return (
-		<div className="min-h-screen">
+		<div className="min-h-screen relative">
 			{/* Hero Section */}
 			<PassionHero />
 
-			{/* Main Content */}
-			<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-				{/* Category Navigation */}
-				<CategoryTabs
-					categories={categories}
-					activeCategory={activeCategory}
-					onSelect={handleCategoryChange}
-				/>
+			{/* Background decorations */}
+			<div className="absolute top-[100vh] left-0 w-96 h-96 bg-[#f27d0d]/5 rounded-full blur-3xl pointer-events-none animate-float" />
+			<div className="absolute top-[220vh] right-0 w-96 h-96 bg-[#f27d0d]/5 rounded-full blur-3xl pointer-events-none animate-float" style={{ animationDelay: "3s" }} />
 
-				<div className={`transition-all duration-300 ease-out ${contentVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-[0.97] translate-y-4"}`}>
+			{/* Main Content */}
+			<div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+				{/* Category Navigation */}
+				<div ref={tabsRef} className="scroll-mt-24">
+					<CategoryTabs
+						categories={categories}
+						activeCategory={activeCategory}
+						onSelect={handleCategoryChange}
+					/>
+				</div>
+
+				<div className={`transition-all duration-300 ease-out ${contentVisible ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-[0.97] translate-y-4 motion-reduce:translate-y-0 motion-reduce:scale-100"}`}>
 				{/* Family Dish Section */}
 				{shouldShow("Family") && (
 					<section className="mb-20">
@@ -276,6 +306,7 @@ export default function PassionComponent() {
 								</>
 							}
 						/>
+						<HairlineDivider />
 					</section>
 				)}
 
@@ -284,6 +315,7 @@ export default function PassionComponent() {
 					<section className="mb-20">
 						<SectionDivider title="Steak & Lamb" subtitle="Signature Dishes" />
 
+						<div className="space-y-16">
 						<DishCard
 							image="/about/passion/steak2.webp"
 							title="Dry-Aged Ribeye"
@@ -309,8 +341,7 @@ export default function PassionComponent() {
 							reverse
 						/>
 
-						<div className="mt-16">
-							<DishCard
+						<DishCard
 								image="/about/passion/steak3.webp"
 								title="Seared Lamb Rack"
 								subtitle="The Next Challenge"
@@ -323,7 +354,7 @@ export default function PassionComponent() {
 											seasoning to the sear to ensuring it's cooked to the perfect level of
 											doneness.
 										</p>
-										<blockquote className="border-l-4 border-[#f27d0d] pl-4 italic text-gray-400 my-4">
+										<blockquote className="border-l-4 border-[#f27d0d] pl-4 italic text-gray-300 my-4">
 											"The greater the payoff, the greater the hardship." — Alex Hormozi
 										</blockquote>
 										<p>
@@ -334,6 +365,7 @@ export default function PassionComponent() {
 								}
 							/>
 						</div>
+						<HairlineDivider />
 					</section>
 				)}
 
@@ -362,7 +394,7 @@ export default function PassionComponent() {
 								}
 							].map((item, index) => (
 								<ScrollReveal key={index} delay={index * 150}>
-									<div className="group relative overflow-hidden rounded-2xl bg-gray-800 cursor-pointer">
+									<div className="group relative overflow-hidden rounded-2xl bg-gray-800 border border-gray-700/50 hover:border-[#f27d0d]/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#f27d0d]/10 transition-all duration-500">
 										<div className="aspect-[4/3] overflow-hidden">
 											<Image
 												src={item.image}
@@ -374,7 +406,7 @@ export default function PassionComponent() {
 											/>
 										</div>
 										<div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-										<div className="absolute bottom-0 left-0 right-0 p-5">
+										<div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 opacity-90 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 motion-reduce:translate-y-0 motion-reduce:opacity-100">
 											<h4 className="text-xl font-bold text-white mb-1">{item.title}</h4>
 											<p className="text-sm text-gray-300">{item.caption}</p>
 										</div>
@@ -384,7 +416,7 @@ export default function PassionComponent() {
 						</div>
 
 						<ScrollReveal>
-					<div className="bg-gray-800/50 rounded-2xl p-8 backdrop-blur-sm">
+					<div className="bg-gray-800/50 rounded-2xl p-8 backdrop-blur-sm border border-gray-700/50">
 							<h3 className="text-2xl font-bold text-white mb-4">The Art of Seafood</h3>
 							<div className="text-gray-300 text-lg md:text-xl leading-relaxed space-y-4">
 								<p>
@@ -403,6 +435,7 @@ export default function PassionComponent() {
 							</div>
 						</div>
 					</ScrollReveal>
+						<HairlineDivider />
 					</section>
 				)}
 
@@ -412,7 +445,7 @@ export default function PassionComponent() {
 						<SectionDivider title="Italian Cuisine" subtitle="Pasta Perfection" />
 
 						<ScrollReveal>
-					<div className="bg-gradient-to-r from-[#f27d0d]/10 to-transparent rounded-2xl p-8 mb-12 border-l-4 border-[#f27d0d]">
+					<div className="bg-gradient-to-r from-[#f27d0d]/10 to-transparent rounded-2xl p-8 mb-12 border border-gray-700/50 border-l-4 border-l-[#f27d0d]">
 							<p className="text-lg text-gray-300 leading-relaxed">
 								Italian cuisine has always held a special place in my heart. The
 								simplicity, yet depth of flavor in Italian cooking is like an endless
@@ -481,14 +514,15 @@ export default function PassionComponent() {
 								reverse
 							/>
 						</div>
+						<HairlineDivider />
 					</section>
 				)}
 
 				{/* Closing Quote */}
 				<ScrollReveal>
-				<div className="py-20">
+				<div className="pt-4 pb-20">
 					<div className="relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-3xl p-10 md:p-14 border border-gray-700/50 max-w-4xl mx-auto">
-						<div className="absolute -top-6 left-10 text-[#f27d0d] text-8xl font-serif opacity-50">"</div>
+						<div className="absolute -top-6 left-10 text-[#f27d0d] text-8xl font-serif opacity-50" aria-hidden="true">"</div>
 						<blockquote className="text-center relative z-10">
 							<p className="text-xl md:text-2xl lg:text-3xl text-gray-200 italic leading-relaxed">
 								Cooking is like love. It should be entered into with abandon or not at all.
@@ -501,6 +535,21 @@ export default function PassionComponent() {
 						</blockquote>
 					</div>
 				</div>
+				</ScrollReveal>
+
+				{/* Cross-link CTA */}
+				<ScrollReveal>
+					<div className="text-center pb-8">
+						<p className="text-gray-400 mb-6">Curious what I build when I&apos;m not at the stove?</p>
+						<Link href="/aboutme/startup">
+							<a className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#f27d0d] to-[#ff9a3c] hover:from-[#e06d00] hover:to-[#f27d0d] text-white font-semibold rounded-full transition-all duration-500 shadow-lg shadow-[#f27d0d]/25 hover:shadow-[#f27d0d]/40 hover:-translate-y-0.5">
+								My Startup Story
+								<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
+									<path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+								</svg>
+							</a>
+						</Link>
+					</div>
 				</ScrollReveal>
 			</div>
 			</div>

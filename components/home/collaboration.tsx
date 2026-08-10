@@ -6,7 +6,7 @@ import { trackEvent } from "../../utils/clarity";
 import { initMagneticHover } from "../../utils/motion";
 
 const COLLABORATION_STYLE = {
-	SLIDING_TEXT: "text-[#9146FF] opacity-[0.15] motion-reduce:opacity-[0.25] text-3xl sm:text-5xl md:text-7xl font-bold whitespace-nowrap",
+	SLIDING_TEXT: "collab-marquee opacity-[0.15] motion-reduce:opacity-[0.25] text-3xl sm:text-5xl md:text-7xl font-bold whitespace-nowrap",
 	SECTION:
 		"w-full relative select-none py-12 sm:py-18 md:py-24 tall:py-18 section-container flex flex-col",
 	TITLE: "mt-6 md:mt-8 font-medium text-3xl sm:text-4xl md:text-5xl text-center",
