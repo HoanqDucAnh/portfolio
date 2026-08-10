@@ -375,9 +375,9 @@ export const TESTIMONIAL_THEMES: ITestimonialTheme[] = [
 
 export const TYPED_STRINGS = [
 	'<span style="color:#9146FF">1000+</span> SQL questions solved',
-	'<span style="color:#9146FF">Analytics Engineer</span> @Insurify',
+	'<span style="color:#9146FF">Senior Analytics Engineer</span> @InfiniteLambda',
 	'<span style="color:#9146FF">TCU</span> class of 2025',
-	'<span style="color:#9146FF">Boston, MA</span>',
+	'<span style="color:#9146FF">Remote</span>',
 ];
 
 export const QUOTE_STRINGS = [
@@ -773,6 +773,26 @@ export enum ItemSize {
 }
 
 export const TIMELINE: Array<TimelineNodeV2> = [
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "October 2026",
+		size: ItemSize.LARGE,
+		shouldDrawLine: false,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "Senior Analytics Engineer - <a class='underline underline-offset-2' href='https://infinitelambda.com' target='_blank' rel='noopener noreferrer'><u>Infinite Lambda</u></a>",
+		size: ItemSize.SMALL,
+		subtitle: "Data & AI consultancy · Snowflake, dbt & Fivetran partner",
+		location: "Remote",
+		image: "/timeline/infinitelambda.webp",
+		slideImage: "/timeline/infinitelambda.webp",
+		shouldDrawLine: true,
+		alignment: Branch.LEFT,
+		companyLogo: "/timeline/infinitelambda.webp",
+		companyUrl: "https://infinitelambda.com",
+	},
 	{
 		type: NodeTypes.CHECKPOINT,
 		title: "June 2025",
