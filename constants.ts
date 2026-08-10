@@ -784,7 +784,7 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		type: NodeTypes.CHECKPOINT,
 		title: "Senior Analytics Engineer - <a class='underline underline-offset-2' href='https://infinitelambda.com' target='_blank' rel='noopener noreferrer'><u>Infinite Lambda</u></a>",
 		size: ItemSize.SMALL,
-		subtitle: "Youngest L6 Analytics Engineer · dbt, Snowflake & Fivetran partner consultancy",
+		subtitle: "Youngest L6 Analytics Engineer · dbt, Snowflake & Fivetran partner",
 		location: "Remote",
 		image: "/timeline/infinitelambda.webp",
 		slideImage: "/timeline/infinitelambda.webp",
