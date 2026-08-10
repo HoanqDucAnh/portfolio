@@ -1,4 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { READS_LAST_UPDATED } from "../../constants";
+import { trackEvent } from "../../utils/clarity";
+
+// Classes applied to a random card by the "Surprise me" chip, then removed.
+// Kept as full literal strings so Tailwind's scanner generates them.
+const PULSE_CLASSES = [
+	"ring-2",
+	"ring-[#9146FF]",
+	"ring-offset-2",
+	"ring-offset-gray-900",
+];
 
 // Typographic, photo-free hero for the Reads page. Mirrors the entrance
 // choreography of the Passion page hero (PassionComponent → PassionHero) — a
@@ -7,11 +18,35 @@ import React, { useEffect, useState } from "react";
 // behind the text so the dark hero reads as deliberate rather than empty.
 const ReadsHero = () => {
 	const [loaded, setLoaded] = useState(false);
+	const pulseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	useEffect(() => {
 		const timer = setTimeout(() => setLoaded(true), 100);
-		return () => clearTimeout(timer);
+		return () => {
+			clearTimeout(timer);
+			if (pulseTimer.current) clearTimeout(pulseTimer.current);
+		};
 	}, []);
+
+	// Scroll to a random card (any section) and pulse a purple ring on it —
+	// the data-engineer answer to "where do I start?".
+	const surpriseMe = () => {
+		const cards = document.querySelectorAll<HTMLElement>("[data-read-card]");
+		if (!cards.length) return;
+		const pick = cards[Math.floor(Math.random() * cards.length)];
+
+		cards.forEach((c) => c.classList.remove(...PULSE_CLASSES));
+		pick.scrollIntoView({ behavior: "smooth", block: "center" });
+		pick.classList.add(...PULSE_CLASSES);
+
+		if (pulseTimer.current) clearTimeout(pulseTimer.current);
+		pulseTimer.current = setTimeout(
+			() => pick.classList.remove(...PULSE_CLASSES),
+			1600
+		);
+
+		trackEvent("reads_shuffle");
+	};
 
 	const reveal = (delay: string) =>
 		`transition-all duration-1000 ${delay} ${
@@ -57,6 +92,22 @@ const ReadsHero = () => {
 					The blogs, essays, and ideas I keep coming back to — from data
 					engineering to philosophy and the gloriously unconventional.
 				</p>
+				<div
+					className={`flex flex-wrap items-center gap-x-5 gap-y-3 mt-8 ${reveal(
+						"delay-1000"
+					)}`}
+				>
+					<button
+						type="button"
+						onClick={surpriseMe}
+						className="font-mono text-sm text-[#BF94FF] bg-[#9146FF]/10 border border-[#9146FF]/30 rounded-lg px-4 py-2 hover:border-[#9146FF]/60 hover:bg-[#9146FF]/20 transition-all duration-[10ms]"
+					>
+						<span aria-hidden>🎲 </span>$ shuf reads.txt -n 1
+					</button>
+					<span className="text-xs uppercase tracking-[0.15em] text-gray-500">
+						Last updated {READS_LAST_UPDATED}
+					</span>
+				</div>
 			</div>
 		</section>
 	);

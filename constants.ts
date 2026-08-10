@@ -1030,6 +1030,10 @@ export const ARTICLES: IArticle[] = [
 	},
 ];
 
+// "reading" gets a pulsing purple dot ("Currently reading"), "must-read" a
+// star pill. Leave undefined for the steady-state majority of items.
+export type ReadStatus = "reading" | "must-read";
+
 export interface IFavoriteRead {
 	title: string;
 	author: string;
@@ -1040,7 +1044,27 @@ export interface IFavoriteRead {
 	image?: string; // optional local avatar in /public; overrides the favicon
 	date?: string; // optional publish date, shown in the article list meta row
 	cover?: string; // optional article cover art (list layout); falls back to image
+	take?: string; // optional first-person one-liner — my take, in my voice
+	status?: ReadStatus;
 }
+
+// Per-category accent (same spirit as FOLDER_COLORS in the IDE testimonials):
+// pill border/text pick up the category's color; card chrome stays purple.
+export const READ_CATEGORY_COLORS: Record<string, string> = {
+	"Data Science": "#5eead4",
+	"Data Engineering": "#38bdf8",
+	"Career & Ops": "#fbbf24",
+	"Life & Reflection": "#f472b6",
+	Psychology: "#fb7185",
+	Philosophy: "#fb923c",
+};
+
+export const readCategoryColor = (category: string): string =>
+	READ_CATEGORY_COLORS[category] ?? "#BF94FF";
+
+// Shown in the reads hero — bump manually when the lists change, same
+// discipline as VERSION.md.
+export const READS_LAST_UPDATED = "Aug 2026";
 
 export const FAVORITE_READS: IFavoriteRead[] = [
 	{
@@ -1051,6 +1075,7 @@ export const FAVORITE_READS: IFavoriteRead[] = [
 		domain: "varianceexplained.org",
 		category: "Data Science",
 		image: "/reads/variance_explained.png",
+		take: "Stats intuition from someone who actually ships.",
 	},
 	{
 		title: "VuTrinh.",
@@ -1061,6 +1086,8 @@ export const FAVORITE_READS: IFavoriteRead[] = [
 		domain: "vutr.substack.com",
 		category: "Data Engineering",
 		image: "/reads/vutrinh.jpg",
+		take: "The first newsletter I open — pipelines explained the way I wish my textbooks had.",
+		status: "reading",
 	},
 	{
 		title: "The Operator's Handbook",
@@ -1070,6 +1097,7 @@ export const FAVORITE_READS: IFavoriteRead[] = [
 		url: "https://www.operatorshandbook.com/",
 		domain: "operatorshandbook.com",
 		category: "Career & Ops",
+		take: "Reread this whenever I catch myself over-engineering my career plans.",
 	},
 	{
 		title: "mixtapes by gor",
@@ -1116,6 +1144,8 @@ export const FAV_ARTICLES: IFavoriteRead[] = [
 		image: "/reads/conquer.png",
 		cover: "/reads/want.png",
 		date: "Feb 24, 2026",
+		take: "The essay that made me delete three apps the same night.",
+		status: "must-read",
 	},
 	{
 		title: "How To Win At Everything In Life: Becoming A Jack Of All Trades",

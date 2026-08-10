@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { FAV_ARTICLES, IFavoriteRead } from "../../constants";
+import { FAV_ARTICLES, IFavoriteRead, readCategoryColor } from "../../constants";
 import { trackEvent, setTag } from "../../utils/clarity";
+import { StatusBadge, TakeLine, SectionCount } from "./read-badges";
 
 // Secondary articles render as vertical cards: a cover on top with the category
 // pill overlaid on a gradient scrim, then title / description / meta below. The
@@ -24,9 +25,15 @@ const ArticleCard = ({ article }: { article: IFavoriteRead }) => {
 						loading="lazy"
 					/>
 					<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-					<span className="absolute top-3 left-3 text-xs font-medium text-white bg-[#9146FF]/80 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-0.5">
-						{article.category}
-					</span>
+					<div className="absolute top-3 left-3 flex items-center gap-2">
+						<span
+							className="text-xs font-semibold text-gray-900 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-0.5"
+							style={{ backgroundColor: `${readCategoryColor(article.category)}E6` }}
+						>
+							{article.category}
+						</span>
+						<StatusBadge status={article.status} />
+					</div>
 				</div>
 			)}
 			<div className="p-5 md:p-6 flex flex-col flex-grow">
@@ -36,6 +43,7 @@ const ArticleCard = ({ article }: { article: IFavoriteRead }) => {
 				<p className="text-sm text-gray-400 leading-relaxed mt-2 line-clamp-2">
 					{article.description}
 				</p>
+				<TakeLine take={article.take} />
 				<div className="flex items-center gap-2 mt-auto pt-4 text-xs font-medium tracking-wide text-gray-400 uppercase">
 					{article.date && <span>{article.date}</span>}
 					{article.date && <span aria-hidden>·</span>}
@@ -69,11 +77,14 @@ const FeaturedArticle = ({ article }: { article: IFavoriteRead }) => {
 				</div>
 			)}
 			<div className="p-6 md:p-8 flex flex-col justify-center">
-				<div className="flex items-center gap-2 mb-4 text-xs font-medium uppercase tracking-wide text-gray-400">
+				<div className="flex items-center flex-wrap gap-2 mb-4 text-xs font-medium uppercase tracking-wide text-gray-400">
 					<span className="normal-case tracking-normal text-[#BF94FF] bg-[#9146FF]/15 border border-[#9146FF]/20 rounded-full px-2.5 py-0.5">
 						Featured
 					</span>
-					<span>{article.category}</span>
+					<span style={{ color: readCategoryColor(article.category) }}>
+						{article.category}
+					</span>
+					<StatusBadge status={article.status} />
 				</div>
 				<h4 className="font-bold text-white group-hover:text-[#BF94FF] transition-colors duration-[10ms] leading-tight text-2xl md:text-4xl">
 					{article.title}
@@ -81,6 +92,7 @@ const FeaturedArticle = ({ article }: { article: IFavoriteRead }) => {
 				<p className="text-sm md:text-base text-gray-400 leading-relaxed mt-4 line-clamp-3">
 					{article.description}
 				</p>
+				<TakeLine take={article.take} />
 				<div className="flex items-center gap-2 mt-5 text-xs font-medium tracking-wide text-gray-400 uppercase">
 					{article.date && <span>{article.date}</span>}
 					{article.date && <span aria-hidden>·</span>}
@@ -97,12 +109,14 @@ const FavoriteArticles = ({
 	subheading = "Single posts that stuck with me — worth reading start to finish",
 	id = "fav-articles",
 	className = "py-8 md:py-12",
+	animate = true,
 }: {
 	items?: IFavoriteRead[];
 	heading?: string;
 	subheading?: string;
 	id?: string;
 	className?: string;
+	animate?: boolean;
 }) => {
 	const sectionRef = useRef<HTMLElement>(null);
 	const rowsRef = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -112,6 +126,16 @@ const FavoriteArticles = ({
 
 	useEffect(() => {
 		if (!sectionRef.current) return;
+
+		// After the user touches the filter, cards re-render mid-scroll and a
+		// `once` ScrollTrigger below the fold would leave them stuck invisible —
+		// so we strip inline styles and skip the entrance entirely.
+		if (!animate) {
+			rowsRef.current.forEach((el) => el && gsap.set(el, { clearProps: "all" }));
+			const heading = sectionRef.current.querySelector(".section-heading");
+			if (heading) gsap.set(heading, { clearProps: "all" });
+			return;
+		}
 
 		const triggers: ScrollTrigger[] = [];
 
@@ -161,7 +185,7 @@ const FavoriteArticles = ({
 		return () => {
 			triggers.forEach((t) => t.kill());
 		};
-	}, []);
+	}, [animate, items]);
 
 	return (
 		<section
@@ -170,7 +194,10 @@ const FavoriteArticles = ({
 			id={id}
 		>
 			<div className="flex flex-col mb-8">
-				<h2 className="section-heading seq">{heading}</h2>
+				<div className="flex items-end gap-3">
+					<h2 className="section-heading seq">{heading}</h2>
+					<SectionCount count={items.length} noun="article" />
+				</div>
 				<h3 className="text-2xl md:max-w-2xl w-full seq mt-2 text-gray-200">
 					{subheading}
 				</h3>
@@ -182,6 +209,7 @@ const FavoriteArticles = ({
 					href={featured.url}
 					target="_blank"
 					rel="noreferrer"
+					data-read-card
 					className="group block rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-1"
 					onClick={() => {
 						trackEvent("article_click", { article_title: featured.title });
@@ -201,6 +229,7 @@ const FavoriteArticles = ({
 							href={article.url}
 							target="_blank"
 							rel="noreferrer"
+							data-read-card
 							className="group block h-full rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-1"
 							onClick={() => {
 								trackEvent("article_click", {
