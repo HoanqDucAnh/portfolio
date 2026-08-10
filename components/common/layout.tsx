@@ -14,7 +14,7 @@ const jsonLd = {
   ],
 };
 
-const PREVIEW_IMAGE = `${METADATA.siteUrl}/preview.jpg?v=2`;
+const PREVIEW_IMAGE = `${METADATA.siteUrl}/preview.jpg?v=3`;
 const PREVIEW_ALT = "Mark Pham — Analytics Engineer bridging data and actionable insights";
 
 interface LayoutProps {
