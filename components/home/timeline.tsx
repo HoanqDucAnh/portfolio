@@ -22,6 +22,7 @@ interface ExperienceItem {
 	slideImage: string;
 	companyLogo?: string;
 	companyUrl?: string;
+	techStack?: Array<{ name: string; icon: string }>;
 }
 
 // Process TIMELINE data to extract experiences with their dates
@@ -46,6 +47,7 @@ const processTimelineData = (): ExperienceItem[] => {
 					slideImage: checkpoint.slideImage,
 					companyLogo: checkpoint.companyLogo,
 					companyUrl: checkpoint.companyUrl,
+					techStack: checkpoint.techStack,
 				});
 			}
 		}
@@ -220,6 +222,29 @@ const TimelineSection = (_props: IDesktop) => {
 								</svg>
 								{experience.location}
 							</span>
+						)}
+						{experience.techStack && experience.techStack.length > 0 && (
+							<div
+								className={`flex flex-wrap items-center gap-2 mt-4 ${isEven ? "md:justify-end" : "md:justify-start"}`}
+							>
+								{experience.techStack.map((tech) => (
+									<span
+										key={tech.name}
+										className="group relative flex items-center justify-center w-8 h-8 rounded-lg bg-gray-800/80 border border-gray-700/60 p-1.5 transition-all duration-[10ms] hover:border-[#9146FF]/50 hover:bg-gray-800"
+									>
+										{/* eslint-disable-next-line @next/next/no-img-element */}
+										<img
+											src={tech.icon}
+											alt={tech.name}
+											className="w-full h-full object-contain"
+											loading="lazy"
+										/>
+										<span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 border border-[#9146FF]/30 px-2 py-0.5 text-xs text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms] z-20">
+											{tech.name}
+										</span>
+									</span>
+								))}
+							</div>
 						)}
 					</div>
 

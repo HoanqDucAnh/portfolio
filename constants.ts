@@ -793,6 +793,15 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		alignment: Branch.LEFT,
 		companyLogo: "/timeline/insurify.webp",
 		companyUrl: "https://insurify.com",
+		techStack: [
+			{ name: "Redshift", icon: "/skills/1st/AWS Redshift.svg" },
+			{ name: "dbt", icon: "/skills/1st/dbt.svg" },
+			{ name: "Mode", icon: "/skills/1st/Mode.svg" },
+			{ name: "Hex", icon: "/skills/1st/Hex.svg" },
+			{ name: "Airflow", icon: "/skills/1st/Apache Airflow.svg" },
+			{ name: "Airbyte", icon: "/skills/1st/Airbyte.svg" },
+			{ name: "Terraform", icon: "/skills/1st/Terraform.svg" },
+		],
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -835,6 +844,13 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		alignment: Branch.LEFT,
 		companyLogo: "/timeline/lazard.webp",
 		companyUrl: "https://www.lazard.com/",
+		techStack: [
+			{ name: "Snowflake", icon: "/skills/1st/Snowflake.svg" },
+			{ name: "dbt", icon: "/skills/1st/dbt.svg" },
+			{ name: "Power BI", icon: "/skills/1st/PowerBI.svg" },
+			{ name: "Python", icon: "/projects/tech/python.svg" },
+			{ name: "Streamlit", icon: "/projects/tech/streamlit-mark.svg" },
+		],
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -857,6 +873,13 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		alignment: Branch.LEFT,
 		companyLogo: "/timeline/techsmith.webp",
 		companyUrl: "https://www.techsmith.com/",
+		techStack: [
+			{ name: "Kafka", icon: "/skills/1st/Kafka.svg" },
+			{ name: "Databricks", icon: "/skills/1st/Databricks.svg" },
+			{ name: "Excel", icon: "/projects/tech/excel.svg" },
+			{ name: "Power BI", icon: "/skills/1st/PowerBI.svg" },
+			{ name: "SQL Server", icon: "/projects/tech/Microsoft SQL Server.svg" },
+		],
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -899,6 +922,12 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		shouldDrawLine: true,
 		alignment: Branch.LEFT,
 		companyLogo: "/timeline/Stealth1.webp",
+		techStack: [
+			{ name: "Python", icon: "/projects/tech/python.svg" },
+			{ name: "PostgreSQL", icon: "/projects/tech/PostgreSQL.svg" },
+			{ name: "Power BI", icon: "/skills/1st/PowerBI.svg" },
+			{ name: "Excel", icon: "/projects/tech/excel.svg" },
+		],
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -921,6 +950,14 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		alignment: Branch.LEFT,
 		companyLogo: "/timeline/NAPAS1.webp",
 		companyUrl: "https://en.napas.com.vn/",
+		techStack: [
+			{ name: "Hadoop", icon: "/skills/1st/Hadoop.webp" },
+			{ name: "Spark", icon: "/skills/1st/Spark.svg" },
+			{ name: "Excel", icon: "/projects/tech/excel.svg" },
+			{ name: "Power BI", icon: "/skills/1st/PowerBI.svg" },
+			{ name: "Python", icon: "/projects/tech/python.svg" },
+			{ name: "PostgreSQL", icon: "/projects/tech/PostgreSQL.svg" },
+		],
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
@@ -944,6 +981,12 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		alignment: Branch.LEFT,
 		companyLogo: "/timeline/KPIM1.webp",
 		companyUrl: "https://kpim.vn/",
+		techStack: [
+			{ name: "SQL Server", icon: "/projects/tech/Microsoft SQL Server.svg" },
+			{ name: "Excel", icon: "/projects/tech/excel.svg" },
+			{ name: "Power BI", icon: "/skills/1st/PowerBI.svg" },
+			{ name: "Python", icon: "/projects/tech/python.svg" },
+		],
 	},
 
 	{
@@ -984,6 +1027,7 @@ export interface CheckpointNode {
 	alignment: Branch;
 	companyLogo?: string;
 	companyUrl?: string;
+	techStack?: Array<{ name: string; icon: string }>;
 }
 
 export interface BranchNode {
