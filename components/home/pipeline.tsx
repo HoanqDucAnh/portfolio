@@ -519,12 +519,11 @@ const PipelineDag = ({ variant, onAutoMorph, onReady, onMorphingChange }: DagPro
 		if (ins.status) entrance.set(ins.status, { opacity: 0.6 });
 
 		ctrl.loop = buildLoop(svg, "ins", ctrl.small);
-		// Auto-morph once: onRepeat fires after exactly one full pass, and it
-		// inherently respects the off-screen pause gate (no wall-clock timers).
-		ctrl.loop.eventCallback("onRepeat", () => {
-			ctrl.loop?.eventCallback("onRepeat", null);
-			cbRef.current.onAutoMorph();
-		});
+		// Auto-morph once, 5s into the Insurify loop. Riding the timeline (not
+		// a wall-clock timer) means it inherently respects the off-screen pause
+		// gate. The parent ignores it after any manual pill click, and the
+		// morph rebuilds the loop without this call, so it only ever fires once.
+		ctrl.loop.call(() => cbRef.current.onAutoMorph(), [], 5);
 
 		entrance.eventCallback("onComplete", () => {
 			ctrl.started = true;
