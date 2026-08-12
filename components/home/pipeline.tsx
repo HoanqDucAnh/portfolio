@@ -743,9 +743,12 @@ const PipelineDag = ({ variant, onAutoMorph, onReady, onMorphingChange }: DagPro
 							Redshift + dbt
 						</text>
 						<line x1={972} y1={212} x2={1138} y2={212} stroke="#9146FF" strokeOpacity={0.3} strokeWidth={1} />
+						{/* Row icons sit so each icon+label pair centers on x=1055 —
+						    the same axis the sub lines center on (label at 1069 =
+						    1055 + half the icon+gap width; icon x from label length). */}
 						<TechLink tech="AWS Redshift">
-							<image href="/skills/1st/AWS%20Redshift.svg" x={988} y={232} width={20} height={20} />
-							<text x={1065} y={248} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+							<image href="/skills/1st/AWS%20Redshift.svg" x={1007} y={232} width={20} height={20} />
+							<text x={1069} y={248} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 								Redshift
 							</text>
 							<text x={1055} y={266} textAnchor="middle" fill="#6B7280" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
@@ -754,8 +757,8 @@ const PipelineDag = ({ variant, onAutoMorph, onReady, onMorphingChange }: DagPro
 						</TechLink>
 						<line x1={972} y1={292} x2={1138} y2={292} stroke="#9146FF" strokeOpacity={0.18} strokeWidth={1} strokeDasharray="3 5" />
 						<TechLink tech="dbt">
-							<image href="/skills/1st/dbt.svg" x={978} y={312} width={20} height={20} />
-							<text x={1065} y={328} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+							<image href="/skills/1st/dbt.svg" x={999} y={312} width={20} height={20} />
+							<text x={1069} y={328} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 								dbt models
 							</text>
 							<text x={1055} y={346} textAnchor="middle" fill="#6B7280" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
@@ -764,8 +767,8 @@ const PipelineDag = ({ variant, onAutoMorph, onReady, onMorphingChange }: DagPro
 						</TechLink>
 						<line x1={972} y1={372} x2={1138} y2={372} stroke="#9146FF" strokeOpacity={0.18} strokeWidth={1} strokeDasharray="3 5" />
 						<TechLink tech="Github">
-							<image href="/skills/1st/Github.svg" x={982} y={392} width={20} height={20} />
-							<text x={1065} y={408} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+							<image href="/skills/1st/Github.svg" x={1003} y={392} width={20} height={20} />
+							<text x={1069} y={408} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 								dbt CI/CD
 							</text>
 							<text x={1055} y={426} textAnchor="middle" fill="#6B7280" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
@@ -868,8 +871,8 @@ const PipelineDag = ({ variant, onAutoMorph, onReady, onMorphingChange }: DagPro
 						</text>
 						<line x1={972} y1={212} x2={1138} y2={212} stroke="#9146FF" strokeOpacity={0.3} strokeWidth={1} />
 						<TechLink tech="Snowflake">
-							<image href="/skills/1st/Snowflake.svg" x={988} y={232} width={20} height={20} />
-							<text x={1065} y={248} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+							<image href="/skills/1st/Snowflake.svg" x={1003} y={232} width={20} height={20} />
+							<text x={1069} y={248} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 								Snowflake
 							</text>
 							<text x={1055} y={266} textAnchor="middle" fill="#6B7280" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
@@ -878,8 +881,8 @@ const PipelineDag = ({ variant, onAutoMorph, onReady, onMorphingChange }: DagPro
 						</TechLink>
 						<line x1={972} y1={292} x2={1138} y2={292} stroke="#9146FF" strokeOpacity={0.18} strokeWidth={1} strokeDasharray="3 5" />
 						<TechLink tech="dbt">
-							<image href="/skills/1st/dbt.svg" x={978} y={312} width={20} height={20} />
-							<text x={1065} y={328} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+							<image href="/skills/1st/dbt.svg" x={999} y={312} width={20} height={20} />
+							<text x={1069} y={328} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 								dbt models
 							</text>
 							<text x={1055} y={346} textAnchor="middle" fill="#6B7280" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
@@ -888,8 +891,8 @@ const PipelineDag = ({ variant, onAutoMorph, onReady, onMorphingChange }: DagPro
 						</TechLink>
 						<line x1={972} y1={372} x2={1138} y2={372} stroke="#9146FF" strokeOpacity={0.18} strokeWidth={1} strokeDasharray="3 5" />
 						<TechLink tech="Github">
-							<image href="/skills/1st/Github.svg" x={982} y={392} width={20} height={20} />
-							<text x={1065} y={408} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+							<image href="/skills/1st/Github.svg" x={1003} y={392} width={20} height={20} />
+							<text x={1069} y={408} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 								dbt CI/CD
 							</text>
 							<text x={1055} y={426} textAnchor="middle" fill="#6B7280" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
