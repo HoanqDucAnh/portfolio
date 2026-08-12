@@ -96,9 +96,9 @@ const Footer = () => {
 				I bridge the gap between data and actionable insights.
 			</p>
 			<p className="text-sm text-white/80">
-				Analytics Engineer @ Insurify
+				Senior Analytics Engineer @ Infinite Lambda
 				<br />
-				Boston, MA
+				Remote
 			</p>
 		</div>
 	);
@@ -144,7 +144,7 @@ const Footer = () => {
 			<p className={COLUMN_HEADING}>Connect with me</p>
 			<div className="space-y-2.5 mb-4">
 				<a
-					href="https://calendly.com/minh-pham-insurify/30min"
+					href="https://calendly.com/minhbpham2003/30min"
 					target="_blank"
 					rel="noreferrer"
 					className={FOOTER_LINK}

@@ -6,16 +6,16 @@ const jsonLd = {
   "@type": "Person",
   name: "Minh (Mark) Pham",
   url: METADATA.siteUrl,
-  jobTitle: "Analytics Engineer",
-  worksFor: { "@type": "Organization", name: "Insurify" },
+  jobTitle: "Senior Analytics Engineer",
+  worksFor: { "@type": "Organization", name: "Infinite Lambda" },
   sameAs: [
     "https://www.linkedin.com/in/minhbphamm/",
     "https://github.com/MarkPhamm",
   ],
 };
 
-const PREVIEW_IMAGE = `${METADATA.siteUrl}/preview.jpg?v=3`;
-const PREVIEW_ALT = "Mark Pham — Analytics Engineer bridging data and actionable insights";
+const PREVIEW_IMAGE = `${METADATA.siteUrl}/preview.jpg?v=4`;
+const PREVIEW_ALT = "Mark Pham — Senior Analytics Engineer bridging data and actionable insights";
 
 interface LayoutProps {
   children: React.ReactNode;

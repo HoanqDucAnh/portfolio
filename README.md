@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Personal portfolio of **Minh (Mark) Pham**, Analytics Engineer — live at [minhbpham.com](https://minhbpham.com).
+Personal portfolio of **Minh (Mark) Pham**, Senior Analytics Engineer — live at [minhbpham.com](https://minhbpham.com).
 
 ## Stack
 
