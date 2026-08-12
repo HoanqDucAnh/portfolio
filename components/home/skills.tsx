@@ -91,7 +91,8 @@ const SKILL_STYLES = {
 const PNG_SKILLS = [
 	"Apache Iceberg", "Delta Lake", "Trino", "Flink", "S3", "EC2", "Lambda",
 	"MWAA", "VPC", "Spark Streaming", "Kinesis Firehose", "PubSub", "Looker",
-	"Hadoop", "Hive",
+	"Hadoop", "Hive", "Omni", "ClickHouse", "Prefect", "IAM", "GitLab",
+	"Hightouch",
 ];
 
 const SkillsSection = ({ isDesktop }: IDesktop) => {
@@ -218,9 +219,10 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 
 					{(() => {
 						const needsGrid = skills.length >= 5;
+						const cols = skills.length >= 6 ? "md:grid-cols-6" : "md:grid-cols-5";
 						const wrapperCls = needsGrid
-							? "flex flex-wrap justify-center gap-y-3 sm:gap-y-4 md:grid md:grid-cols-5 md:gap-3 md:place-items-center lg:gap-3 xl:gap-4 2xl:gap-5"
-							: "flex flex-wrap justify-center gap-x-3 gap-y-3 sm:gap-x-4 sm:gap-y-4 md:grid md:grid-cols-5 md:gap-3 md:place-items-center lg:gap-3 xl:gap-4 2xl:gap-5";
+							? `flex flex-wrap justify-center gap-y-3 sm:gap-y-4 md:grid ${cols} md:gap-3 md:place-items-center lg:gap-3 xl:gap-4 2xl:gap-5`
+							: `flex flex-wrap justify-center gap-x-3 gap-y-3 sm:gap-x-4 sm:gap-y-4 md:grid ${cols} md:gap-3 md:place-items-center lg:gap-3 xl:gap-4 2xl:gap-5`;
 						const itemCls = needsGrid
 							? "basis-1/3 flex justify-center md:basis-auto"
 							: "flex justify-center md:basis-auto";

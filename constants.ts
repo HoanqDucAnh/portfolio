@@ -17,6 +17,7 @@ export const TECH_LINKS: Record<string, string> = {
 	mode: "https://mode.com/",
 	hex: "https://hex.tech/",
 	looker: "https://cloud.google.com/looker",
+	omni: "https://omni.co/",
 	// Warehouse and Lakehouse
 	snowflake: "https://www.snowflake.com/",
 	"aws redshift": "https://aws.amazon.com/redshift/",
@@ -41,24 +42,28 @@ export const TECH_LINKS: Record<string, string> = {
 	spark: "https://spark.apache.org/",
 	hive: "https://hive.apache.org/",
 	hadoop: "https://hadoop.apache.org/",
+	beam: "https://beam.apache.org/",
 	// Streaming
 	kafka: "https://kafka.apache.org/",
 	flink: "https://flink.apache.org/",
 	"spark streaming": "https://spark.apache.org/streaming/",
 	"kinesis firehose": "https://aws.amazon.com/firehose/",
 	pubsub: "https://cloud.google.com/pubsub",
+	pulsar: "https://pulsar.apache.org/",
 	// Cloud (AWS)
 	s3: "https://aws.amazon.com/s3/",
 	ec2: "https://aws.amazon.com/ec2/",
 	lambda: "https://aws.amazon.com/lambda/",
 	mwaa: "https://aws.amazon.com/managed-workflows-for-apache-airflow/",
 	vpc: "https://aws.amazon.com/vpc/",
+	iam: "https://aws.amazon.com/iam/",
 	// DevOps
 	docker: "https://www.docker.com/",
 	kubernetes: "https://kubernetes.io/",
 	github: "https://github.com/",
 	terraform: "https://www.terraform.io/",
 	aws: "https://aws.amazon.com/",
+	gitlab: "https://about.gitlab.com/",
 	// Project-only tech
 	python: "https://www.python.org/",
 	prefect: "https://www.prefect.io/",
@@ -641,56 +646,64 @@ export const SKILLS = {
 		"Tableau",
 		"Mode",
 		"Hex",
-		"Looker"
+		"Looker",
+		"Omni"
 	],
 	"Warehouse and Lakehouse": [
 		"Snowflake",
 		"AWS Redshift",
 		"Databricks",
 		"Apache Iceberg",
-		"Delta Lake"
+		"Delta Lake",
+		"ClickHouse"
 	],
 	"Data Integration": [
 		"Airbyte",
 		"Dlt",
 		"Fivetran",
 		"stitch",
-		"alteryx"
+		"alteryx",
+		"Hightouch"
 	],
 	"Orchestration": [
 		"Apache Airflow",
 		"Dagster",
 		"MageAI",
 		"Orchestra",
-		"Astronomer"
+		"Astronomer",
+		"Prefect"
 	],
 	"Data Processing": [
 		"dbt",
 		"Trino",
 		"Spark",
 		"Hive",
-		"Hadoop"
+		"Hadoop",
+		"Beam"
 	],
 	"Streaming": [
 		"Kafka",
 		"Flink",
 		"Spark Streaming",
 		"Kinesis Firehose",
-		"PubSub"
+		"PubSub",
+		"Pulsar"
 	],
 	"Cloud (AWS)": [
 		"S3",
 		"EC2",
 		"Lambda",
 		"MWAA",
-		"VPC"
+		"VPC",
+		"IAM"
 	],
 	"DevOps": [
 		"Docker",
 		"Kubernetes",
 		"Github",
 		"Terraform",
-		"AWS"
+		"AWS",
+		"GitLab"
 	],
 
 	certified: [
