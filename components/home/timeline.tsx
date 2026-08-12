@@ -215,14 +215,6 @@ const TimelineSection = (_props: IDesktop) => {
 								{experience.subtitle}
 							</p>
 						</div>
-						{experience.location && (
-							<span className={`inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full text-sm font-medium bg-gray-800/80 text-gray-200 ${isEven ? "md:ml-auto" : ""}`}>
-								<svg className="w-3.5 h-3.5 text-[#9146FF]" fill="currentColor" viewBox="0 0 20 20">
-									<path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-								</svg>
-								{experience.location}
-							</span>
-						)}
 						{experience.techStack && experience.techStack.length > 0 && (
 							<div
 								className={`flex flex-wrap items-center gap-2 mt-4 ${isEven ? "md:justify-end" : "md:justify-start"}`}
@@ -245,6 +237,14 @@ const TimelineSection = (_props: IDesktop) => {
 									</span>
 								))}
 							</div>
+						)}
+						{experience.location && (
+							<span className={`inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full text-sm font-medium bg-gray-800/80 text-gray-200 ${isEven ? "md:ml-auto" : ""}`}>
+								<svg className="w-3.5 h-3.5 text-[#9146FF]" fill="currentColor" viewBox="0 0 20 20">
+									<path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+								</svg>
+								{experience.location}
+							</span>
 						)}
 					</div>
 

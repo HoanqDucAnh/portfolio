@@ -836,6 +836,14 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		alignment: Branch.LEFT,
 		companyLogo: "/timeline/Ace.webp",
 		companyUrl: "https://acementorship.com/",
+		techStack: [
+			{ name: "Snowflake", icon: "/skills/1st/Snowflake.svg" },
+			{ name: "dbt", icon: "/skills/1st/dbt.svg" },
+			{ name: "Mode", icon: "/skills/1st/Mode.svg" },
+			{ name: "Airflow", icon: "/skills/1st/Apache Airflow.svg" },
+			{ name: "Python", icon: "/projects/tech/python.svg" },
+			{ name: "Terraform", icon: "/skills/1st/Terraform.svg" },
+		],
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
