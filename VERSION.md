@@ -2,6 +2,7 @@
 
 | Version | Date | Changes |
 |---------|------|---------|
+| v3.16.5 | 2026-08-12 | Tech stack for the Infinite Lambda timeline card (Mark: "add in icon in that employment status too: it's dbt, airflow, snowflake, omni, fivtran") — dbt · Airflow · Snowflake · Omni · Fivetran, all reusing existing `/skills/1st/` assets. Done on `feat/infinite-lambda-transition` right after merging `main` into it (conflicts in the version badge + VERSION.md resolved keeping both histories). |
 | v3.16.4 | 2026-08-11 | Ace Mentorships stack tweak (Mark: "remove airbyte add python there") — Airbyte swapped for Python; final stack: Snowflake · dbt · Mode · Airflow · Python · Terraform. |
 | v3.16.3 | 2026-08-11 | Tech stack for the Ace Mentorships timeline card (Mark: "data career montor is similar to insurify but remove redshift add snowflake and remove hex") — the Data Mentor entry gets Insurify's stack with Snowflake in place of Redshift and Hex dropped: Snowflake · dbt · Mode · Airflow · Airbyte · Terraform. |
 | v3.16.2 | 2026-08-11 | Timeline card order tweak (Mark: "move the icon of the experience to above the location") — the tech-stack icon row now renders between the role subtitle and the location badge instead of below the badge. Pure JSX reorder in `timeline.tsx`; alignment/margins unchanged. |

@@ -805,6 +805,13 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 		alignment: Branch.LEFT,
 		companyLogo: "/timeline/infinitelambda.webp",
 		companyUrl: "https://infinitelambda.com",
+		techStack: [
+			{ name: "dbt", icon: "/skills/1st/dbt.svg" },
+			{ name: "Airflow", icon: "/skills/1st/Apache Airflow.svg" },
+			{ name: "Snowflake", icon: "/skills/1st/Snowflake.svg" },
+			{ name: "Omni", icon: "/skills/1st/Omni.webp" },
+			{ name: "Fivetran", icon: "/skills/1st/Fivetran.svg" },
+		],
 	},
 	{
 		type: NodeTypes.CHECKPOINT,
