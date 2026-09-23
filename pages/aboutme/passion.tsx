@@ -89,7 +89,7 @@ export default function Home() {
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(RECIPE_JSON_LD) }}
 				/>
 			</Head>
-			<Layout title={`My Passion — ${METADATA.title}`} path="/aboutme/passion">
+			<Layout title={`My Passion — ${METADATA.shortName}`} path="/aboutme/passion">
 				<Header />
 				<ProgressIndicator />
 				<div className="flex-col flex">

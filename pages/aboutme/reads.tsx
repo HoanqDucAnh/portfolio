@@ -76,7 +76,7 @@ export default function Reads() {
 
 	return (
 		<>
-			<Layout title={`Favorite Reads — ${METADATA.title}`} path="/aboutme/reads">
+			<Layout title={`Favorite Reads — ${METADATA.shortName}`} path="/aboutme/reads">
 				<Header />
 				<ProgressIndicator />
 				<div className="flex-col flex">

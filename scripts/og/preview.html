@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>OG preview card — minhbpham.com</title>
+		<style>
+			/*
+			 * Source for public/preview.jpg (the 1200x630 social share card).
+			 * Rendered by scripts/og/render.sh via headless Chrome + sips.
+			 * Edit here, re-run `npm run og`, never hand-edit the JPEG.
+			 *
+			 * No byline on the card — the share preview already prints the name
+			 * and domain underneath it, so the canvas is given entirely to the
+			 * diagram. Every label must stay readable at ~330px wide, which is
+			 * the size these actually render at in a feed.
+			 *
+			 * EB Garamond lives in scripts/og/fonts: build-time only, never
+			 * shipped to visitors, vendored so the render works offline.
+			 */
+			@font-face {
+				font-family: "EB Garamond";
+				src: url("fonts/EBGaramond-Regular.woff2") format("woff2");
+				font-weight: 400;
+				font-style: normal;
+			}
+			@font-face {
+				font-family: "EB Garamond";
+				src: url("fonts/EBGaramond-Italic.woff2") format("woff2");
+				font-weight: 400;
+				font-style: italic;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				background: #111827;
+			}
+			svg {
+				display: block;
+			}
+
+			/* The decision tree. Lines purple, labels near-white. */
+			.edge {
+				stroke: #bf94ff;
+				stroke-width: 4;
+				stroke-linecap: square;
+				fill: none;
+			}
+			.node {
+				font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+				font-size: 62px;
+				fill: #f3f4f6;
+			}
+			.tagline {
+				font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+				font-style: italic;
+				font-size: 52px;
+				fill: #bf94ff;
+			}
+		</style>
+	</head>
+	<body>
+		<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<radialGradient id="glow" cx="50%" cy="45%" r="55%">
+					<stop offset="0%" stop-color="#9146FF" stop-opacity="0.10" />
+					<stop offset="100%" stop-color="#9146FF" stop-opacity="0" />
+				</radialGradient>
+			</defs>
+
+			<rect width="1200" height="630" fill="#111827" />
+			<rect width="1200" height="630" fill="url(#glow)" />
+
+			<!-- Left spine: the single decision, branching into try / don't try -->
+			<path class="edge" d="M170 220 V435" />
+			<path class="edge" d="M170 220 H320" />
+			<path class="edge" d="M170 435 H320" />
+
+			<!-- try -> right spine -> win / lose -->
+			<path class="edge" d="M480 220 H860" />
+			<path class="edge" d="M860 125 V315" />
+			<path class="edge" d="M860 125 H910" />
+			<path class="edge" d="M860 315 H910" />
+
+			<!-- don't try -> lose, no branch -->
+			<path class="edge" d="M610 435 H910" />
+
+			<text class="node" x="350" y="220" dominant-baseline="central">try</text>
+			<text class="node" x="350" y="435" dominant-baseline="central">don&rsquo;t try</text>
+			<text class="node" x="935" y="125" dominant-baseline="central">win</text>
+			<text class="node" x="935" y="315" dominant-baseline="central">lose</text>
+			<text class="node" x="935" y="435" dominant-baseline="central">lose</text>
+
+			<text class="tagline" x="600" y="550" text-anchor="middle">Whatever it takes.</text>
+		</svg>
+	</body>
+</html>

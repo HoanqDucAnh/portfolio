@@ -1,6 +1,12 @@
 export const METADATA = {
-	title: "Portfolio | Mark Pham",
-	description: "I bridge the gap between data and actionable insights",
+	title: "Minh (Mark) Pham — Senior Analytics Engineer",
+	// Sub-page titles append to this, not `title`, so they stay scannable.
+	shortName: "Minh (Mark) Pham",
+	// og:site_name only. Must differ from `title`, or share cards print the
+	// same string twice — the bold headline and the grey line beneath it.
+	siteName: "minhbpham.com",
+	description:
+		"Senior Analytics Engineer at Infinite Lambda, building dbt and Snowflake pipelines that turn raw data into decisions teams act on.",
 	siteUrl: "https://minhbpham.com",
 };
 

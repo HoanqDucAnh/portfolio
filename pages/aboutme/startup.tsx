@@ -54,7 +54,7 @@ export default function Home() {
 					::-webkit-scrollbar-thumb:hover { background: #ff9a3c !important; }
 				`}</style>
 			</Head>
-			<Layout title={`Start-up — ${METADATA.title}`} path="/aboutme/startup">
+			<Layout title={`Start-up — ${METADATA.shortName}`} path="/aboutme/startup">
 				<Header />
 				<ProgressIndicator />
 				<div className="flex-col flex">
