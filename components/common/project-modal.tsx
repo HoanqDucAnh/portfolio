@@ -225,7 +225,8 @@ const ProjectModal = ({ project, onClose, originRect }: ProjectModalProps) => {
 						</div>
 					</div>
 
-					{/* CTA button */}
+					{/* CTA buttons */}
+					<div className="flex flex-wrap gap-3">
 					{project.url && (
 						<a
 							href={project.url}
@@ -240,6 +241,22 @@ const ProjectModal = ({ project, onClose, originRect }: ProjectModalProps) => {
 							</svg>
 						</a>
 					)}
+					{project.links?.map((link) => (
+						<a
+							key={link.url}
+							href={link.url}
+							target="_blank"
+							rel="noreferrer"
+							className="inline-flex items-center gap-2 px-6 py-3 border border-[#9146FF]/40 text-gray-100 hover:bg-[#9146FF]/15 hover:border-[#9146FF] font-medium rounded-full transition-all duration-[10ms]"
+							onClick={() => { trackEvent("project_view_external"); setTag("project_name", project.name); setTag("project_link", link.label); }}
+						>
+							{link.label}
+							<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+								<path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+							</svg>
+						</a>
+					))}
+					</div>
 				</div>
 			</div>
 		</div>

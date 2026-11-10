@@ -8,6 +8,7 @@ import { initHeadingWipe, prefersReducedMotion } from "../../utils/motion";
 
 const CATEGORIES = [
 	{ value: ProjectTypes.FEATURED, label: "Featured" },
+	{ value: ProjectTypes.OPENSOURCE, label: "Open Source" },
 	{ value: ProjectTypes.ENDTOEND, label: "Data Pipeline" },
 	{ value: ProjectTypes.STATISTICSML, label: "ML & Statistics" },
 	{ value: ProjectTypes.BIDASHBOARDVIZ, label: "BI & Dashboards" },

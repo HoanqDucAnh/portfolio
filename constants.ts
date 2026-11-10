@@ -453,10 +453,13 @@ export interface IProject {
 	fullDescription?: string;
 	impact?: string[];
 	featured?: boolean;
+	// Extra buttons in the project modal, after "View Project" (which opens `url`)
+	links?: { label: string; url: string }[];
 }
 
 export const ProjectTypes = {
 	FEATURED: "Featured",
+	OPENSOURCE: "Open Source",
 	ENDTOEND: "End-to-End Data Analytics",
 	BIDASHBOARDVIZ: "BI - Dashboard - Visualization",
 	STATISTICSML: "Statistics - ML - AI Project",
@@ -465,29 +468,64 @@ export const ProjectTypes = {
 }
 
 export const PROJECTS: IProject[] = [
-	// Data Pipeline projects
+	// Open source tools
 	{
-		name: "Skytrax Reviews Extract & Load",
-		category: ProjectTypes.ENDTOEND,
-		image: "/projects/skytrax_2.webp",
-		description: "Production-grade pipeline scraping 160K+ airline reviews with 26 parallel Airflow tasks, staging in S3, and loading into Snowflake.",
+		name: "qdbd (quickdbd-cli)",
+		category: ProjectTypes.OPENSOURCE,
+		image: "/projects/qdbd.webp",
+		description: "Turns QuickDBD, DBML or dbt schemas into interactive ER diagrams that stay readable at 200+ tables. On PyPI and the VS Code Marketplace.",
 		gradient: ["#1b1b1b", "#d8d8d8"],
-		url: "https://github.com/MarkPhamm/skytrax_reviews_extract_load",
-		tech: ["Apache Airflow", "python", "S3", "Snowflake", "Terraform"],
-		fullDescription: "Scrapes 160K+ airline reviews using 26 parallel Airflow tasks, stages in S3, and loads into Snowflake. Infra managed with Terraform and GitHub Actions CI/CD.",
-		impact: ["160K+ reviews", "26 parallel Airflow tasks", "Fully automated CI/CD"],
+		url: "https://qdbd.dev/",
+		tech: ["python", "Dbt", "duckdb", "Github"],
+		fullDescription: "ER diagram compiler for QuickDBD text, DBML and dbt projects. Ships as a PyPI CLI, a VS Code extension and a GitHub Action, with live demos at qdbd.dev.",
+		impact: ["PyPI + VS Code extension", "Readable at 200+ tables", "GitHub Action for docs"],
 		featured: true,
+		links: [
+			{ label: "VS Code", url: "https://marketplace.visualstudio.com/items?itemName=MarkPhamm.quickdbd" },
+			{ label: "PyPI", url: "https://pypi.org/project/quickdbd-cli/" },
+		],
 	},
 	{
-		name: "Skytrax Reviews Transformation",
+		name: "CTE Diff",
+		category: ProjectTypes.OPENSOURCE,
+		image: "/projects/ctediff.webp",
+		description: "VS Code extension that previews any dbt CTE's rows and compares a CTE across both sides of a git diff, through dbt show.",
+		gradient: ["#1b1b1b", "#d8d8d8"],
+		url: "https://ctediff.dev/",
+		tech: ["Dbt", "Snowflake", "Git"],
+		fullDescription: "See what a dbt change did to the data, one CTE at a time. Previews CTE rows on HEAD vs the working tree and diffs them, with a browser playground at ctediff.dev.",
+		impact: ["VS Code + Open VSX", "Per-CTE data diffs", "Browser playground"],
+		featured: true,
+		links: [
+			{ label: "VS Code", url: "https://marketplace.visualstudio.com/items?itemName=MarkPhamm.cte-diff" },
+			{ label: "GitHub", url: "https://github.com/MarkPhamm/cte-diff" },
+		],
+	},
+	{
+		name: "QLineage CLI",
+		category: ProjectTypes.OPENSOURCE,
+		image: "/projects/qlineage.webp",
+		description: "Local SQL + dbt lineage for Snowflake and Redshift. Parses SQL with SQLGlot, no warehouse connection required.",
+		gradient: ["#1b1b1b", "#d8d8d8"],
+		url: "https://markphamm.github.io/qlineage_cli/",
+		tech: ["python", "Dbt", "Snowflake"],
+		featured: true,
+		links: [
+			{ label: "PyPI", url: "https://pypi.org/project/qlineage-cli/" },
+			{ label: "GitHub", url: "https://github.com/MarkPhamm/qlineage_cli" },
+		],
+	},
+	// Data Pipeline projects
+	{
+		name: "Skytrax Reviews",
 		category: ProjectTypes.ENDTOEND,
-		image: "/projects/skytrax.webp",
-		description: "Kimball star-schema transformation layer with dbt, slim CI/CD via GitHub Actions, OIDC auth, and auto-deployed dbt docs on CloudFront.",
-		gradient: ["#1b1b1b", "#4a90d9"],
-		url: "https://github.com/MarkPhamm/skytrax_reviews_transformation",
-		tech: ["Dbt", "Snowflake", "Terraform", "Github", "Apache Airflow"],
-		fullDescription: "Kimball star-schema transformations with dbt on Snowflake. Slim CI/CD via GitHub Actions with OIDC auth and auto-deployed dbt docs on CloudFront.",
-		impact: ["Kimball star-schema", "Slim CI/CD pipeline", "Deployed dbt docs"],
+		image: "/projects/skytrax_2.webp",
+		description: "End-to-end ELT for 160K+ Skytrax airline reviews: Airflow scraping into S3, Snowflake warehouse, dbt star schema, Terraform IaC and GitHub Actions CI/CD.",
+		gradient: ["#1b1b1b", "#d8d8d8"],
+		url: "https://github.com/MarkPhamm/skytrax_reviews",
+		tech: ["Apache Airflow", "S3", "Snowflake", "Dbt", "Terraform"],
+		fullDescription: "Scrapes 160K+ airline reviews with BeautifulSoup and Airflow, stages in S3, and loads into Snowflake. dbt models a Kimball star schema, with Terraform IaC and GitHub Actions CI/CD.",
+		impact: ["160K+ reviews", "Kimball star schema", "Fully automated CI/CD"],
 		featured: true,
 	},
 	{
@@ -574,7 +612,6 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#191414", "#f5f5f5"],
 		url: "https://github.com/MarkPhamm/Stats-Calculator",
 		tech: ["python", "streamlit", "normalDis", "Pandas", "Matplotlib"],
-		featured: true,
 	},
 	{
 		name: "Housing Purchase Predictor",
@@ -614,7 +651,6 @@ export const PROJECTS: IProject[] = [
 		gradient: ["#1a1a2e", "#ffa116"],
 		url: "https://github.com/MarkPhamm/Leetcode",
 		tech: ["python", "PostgreSQL"],
-		featured: true,
 	},
 	{
 		name: "TensorTonic Solutions",
@@ -852,6 +888,32 @@ export const TIMELINE: Array<TimelineNodeV2> = [
 			{ name: "Snowflake", icon: "/skills/1st/Snowflake.svg" },
 			{ name: "Omni", icon: "/skills/1st/Omni.webp" },
 			{ name: "Fivetran", icon: "/skills/1st/Fivetran.svg" },
+		],
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "October 2026",
+		size: ItemSize.LARGE,
+		shouldDrawLine: false,
+		alignment: Branch.LEFT,
+	},
+	{
+		type: NodeTypes.CHECKPOINT,
+		title: "Data Stuff - Stealth Startup",
+		size: ItemSize.SMALL,
+		subtitle: "Built the data platform from zero · 209K-user EdTech, 33M+ docs, 307 dbt tests",
+		location: "Remote",
+		image: "/timeline/StealthIcon.webp",
+		slideImage: "/timeline/StealthIcon.webp",
+		shouldDrawLine: true,
+		alignment: Branch.LEFT,
+		companyLogo: "/timeline/StealthIcon.webp",
+		techStack: [
+			{ name: "Python", icon: "/projects/tech/python.svg" },
+			{ name: "Airflow", icon: "/skills/1st/Apache Airflow.svg" },
+			{ name: "dbt", icon: "/skills/1st/dbt.svg" },
+			{ name: "DuckDB", icon: "/projects/tech/duckdb.svg" },
+			{ name: "S3", icon: "/skills/1st/S3.webp" },
 		],
 	},
 	{
